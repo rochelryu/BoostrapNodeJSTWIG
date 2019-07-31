@@ -12,6 +12,8 @@ const session = require('express-session');
 const cookie = require('cookieparser');
 const config = require('./Setting/config');
 const AdminRoute = require('./Routes/Admin/Index')
+const API = require('./Routes/API/Index')
+const ClientRoute = require('./Routes/Client/Index')
 class Serveur {
      constructor(port){
          this.port = port;
@@ -20,6 +22,9 @@ class Serveur {
          this.middleware();
          this.route();
      }
+     getApp(){
+         return this.app;
+}
 
      setting(){
          this.app.use(express.static(__dirname+'/Views')); //On utilise ce paramettre pour dire a express ou se trouve nos fichier images | css | js. on les appels souvents des fichiers assets
@@ -46,7 +51,9 @@ class Serveur {
      }
 
      route(){
-         this.app.use('/admin', AdminRoute);
+         this.app.use('/ryu', AdminRoute);
+         this.app.use('/API/V1/focus/', API);
+         this.app.use('/', ClientRoute);
      }
     start(){
         this.app.listen(this.port, ()=>{

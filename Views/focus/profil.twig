@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="description" content="">
+    <meta name="author" content="websmirno.site">
+    <meta name="format-detection" content="telephone=no">
+    <title>Allô| {{ info.name|upper }}</title>
+    <!-- Stylesheets -->
+    <link href="focus/vendor/slick/slick.css" rel="stylesheet">
+    <link href="focus/vendor/animate/animate.min.css" rel="stylesheet">
+    <link href="focus/icons/style.css" rel="stylesheet">
+    <link href="focus/css/style.css" rel="stylesheet">
+    <link href="focus/css/simpletab.min.css" rel="stylesheet">
+    <link href="focus/css/datatables.min.css" rel="stylesheet">
+    <!--Favicon-->
+    <link rel="icon" href="focus/images/logo.png" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+    <!-- Google map -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiFdr5Z0WRIXKUOqoRRvzRQ5SkzhkUVjk"></script>
+</head>
+
+<body class="shop-page layout-landing">
+<!--header-->
+<header class="header">
+    <div class="header-quickLinks js-header-quickLinks d-lg-none">
+        <div class="quickLinks-top js-quickLinks-top"></div>
+        <div class="js-quickLinks-wrap-m">
+        </div>
+    </div>
+    <div class="header-topline d-none d-lg-flex">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-auto d-flex align-items-center">
+                    <div class="header-info"><i class="icon-placeholder2"></i>Cocody Nouveau CHU, Abidjan, Côte d'Ivoire</div>
+                    <div class="header-phone"><i class="icon-telephone"></i><a href="tel:+225-48-80-33-77">+225-48-80-33-77</a></div>
+                    <div class="header-info"><i class="icon-black-envelope"></i><a href="mailto:info@dentco.net">info@allo.ci</a></div>
+                </div>
+                <div class="col-auto ml-auto d-flex align-items-center">
+						<span class="header-social">
+							<a href="#" class="hovicon"><i class="icon-facebook-logo-circle"></i></a>
+							<a href="#" class="hovicon"><i class="icon-twitter-logo-circle"></i></a>
+							<a href="#" class="hovicon"><i class="icon-google-plus-circle"></i></a>
+						</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-content">
+        <div class="container">
+            <div class="row align-items-lg-center">
+                <button class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarNavDropdown">
+                    <span class="icon-menu"></span>
+                </button>
+                <div class="col-lg-auto col-lg-2 d-flex align-items-lg-center">
+                    <a href="/" class="header-logo"><img src="focus/images/logo.png" alt="" class="img-fluid"></a>
+                </div>
+                <div class="col-lg ml-auto header-nav-wrap">
+                    <div class="header-nav js-header-nav">
+                        <nav class="navbar navbar-expand-lg btco-hover-menu">
+                            <div class="abs">
+                                <img src="focus/images/doctor.png" class="imgProfil" alt="">
+                                <ul>
+                                    <li>{{ info.name }}</li>
+                                    <li><a href="/logout">Deconnexion</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <ul class="tab" data-tab-name="tab1">
+                <li><a href="#content1">Prendre un rendez-vous</a></li>
+                <li><a href="#content2">Demander une assistance</a></li>
+                <li><a href="#content3">Recouvrir son assurance</a></li>
+                <li><a href="#content4">Se faire livrer un médicament</a></li>
+                <li><a href="#content5">Paramettre</a></li>
+            </ul>
+
+            <!-- Content -->
+            <div class="tabContent" id="content1">
+                Content of TAB 1
+            </div>
+
+            <div class="tabContent" id="content2">
+                Content of TAB 2
+            </div>
+
+            <div class="tabContent" id="content3">
+                Content of TAB 3
+            </div>
+
+            <div class="tabContent" id="content4">
+                Contenu 4
+            </div>
+            <div class="tabContent" id="content5">
+                Contenu 5
+            </div>
+        </div>
+    </div>
+    <div class="row m-5">
+        <div class="col-lg-12 col-md-12">
+            <table class="display table table-hover table-striped table-bordered" style="width:100%">
+                <thead>
+                <tr>
+                    <th>N</th>
+                    <th>Catégorie</th>
+                    <th>Date d'enregistrement</th>
+                    <th>Medecin</th>
+                    <th>Malaise soulévé</th>
+                    <th>Medicaments</th>
+                    <th>Code</th>
+                </tr>
+                </thead>
+                <tbody>
+                {#{% for item in info.CommandeInWait %}
+
+                    <tr class="mtn" id="{{ item._id }}" data-CliendId="{{ item.CliendId }}" data-platId="{{ item.platId }}" data-ryu="{{ item.contain }}">
+                        <td scope="row">{{ loop.index }}</td>
+                        <td>{{ item.code }}</td>
+                        <td>{{item.price}} F cfa</td>
+                        <td>{{item.ecole}}</td>
+                        <td><a class="btn btn-action fake" data-toggle="modal" data-target="#sideModalTR"><i class="far fa-eye"></i></a></td>
+                    </tr>
+                {% endfor %}#}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="focus/vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="focus/js/simpletab.min.js"></script>
+
+<script src="focus/js/datatables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".tab").simpleTab({
+            defaultSkin: true //default value is false.
+        });
+        $('.table-bordered').DataTable({
+            "dom": '<"toolbar">frtip',
+            "paging": true,
+            "pagingType": "full_numbers"
+        });
+    })
+</script>
+</body>
+
+</html>

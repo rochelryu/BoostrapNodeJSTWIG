@@ -1,0 +1,124 @@
+{% include 'Include/header.twig' %}
+
+<div class="content-main">
+
+    <div class="banner">
+        <h2>
+            <a href="/admin">Accueil</a>
+            <i class="fa fa-angle-right"></i>
+            <span>Medecin</span>
+        </h2>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-7">
+                <form style="background: white" action="/admin/medecin" method="post">
+                    <div class="vali-form">
+                        <div class="col-md-6 form-group1">
+                            <label class="control-label">Nom</label>
+                            <input name="name" type="text" placeholder="nom" required="">
+                        </div>
+                        <div class="col-md-6 form-group1 form-last">
+                            <label class="control-label">Numero</label>
+                            <input name="numero" type="text" placeholder="48803377" required="">
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+
+                    <div class="vali-form">
+                        <div class="col-md-6 form-group1">
+                            <label class="control-label">Nom de Clinique</label>
+                            <input name="clinic" type="text" placeholder="Attention à ne pas vous tromper" required="">
+                        </div>
+                        <div class="col-md-6 form-group1 form-last">
+                            <label class="control-label">Spécialité</label>
+                            <input name="specialite" type="text" placeholder="Pediatrie, Génecologie" required="">
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="col-md-12 form-group2 group-mail">
+                        <label class="control-label">Adresse</label>
+                        <select name="address" class="form-control">
+                            <option selected="selected" disabled="disabled">La Commune</option>
+                            {% for err in info.ville %}
+                                {% for item in err.commune %}
+                                    <option value="{{ err.name }} - {{ item.nameCommune }}">{{ err.name }} - {{ item.nameCommune }}</option>
+                                {% endfor %}
+                            {% endfor %}
+                            <option value="Autres">Autres</option>
+                        </select>
+                    </div>
+                    <div class="clearfix"> </div>
+                    <div class="col-md-12 form-group">
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                        <button type="reset" class="btn btn-default">Vider</button>
+                    </div>
+                    <div class="clearfix"> </div>
+                </form>
+            </div>
+            <div class="col-md-5">
+                <form style="background: white" action="/admin/ville" method="post">
+                    <div class="col-md-12 form-group2 group-mail">
+                        <label class="control-label">Adresse</label>
+                        <select name="address" class="form-control">
+                            <option selected="selected" disabled="disabled">La Commune</option>
+                            {% for err in info.ville %}
+                                <option value="{{ err.name }}">{{ err.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="vali-form">
+                        <div class="col-md-6 form-group1">
+                            <label class="control-label">Commune 1</label>
+                            <input name="commune" multiple type="text" required="">
+                        </div>
+                        <div class="col-md-6 form-group1 form-last">
+                            <label class="control-label">Commune 2</label>
+                            <input name="commune" type="text">
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="vali-form">
+                        <div class="col-md-6 form-group1">
+                            <label class="control-label">Commune 1</label>
+                            <input name="commune" multiple type="text" required="">
+                        </div>
+                        <div class="col-md-6 form-group1 form-last">
+                            <label class="control-label">Commune 2</label>
+                            <input name="commune" type="text">
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="clearfix"> </div>
+                    <div class="col-md-12 form-group">
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                        <button type="reset" class="btn btn-default">Vider</button>
+                    </div>
+                    <div class="clearfix"> </div>
+                </form>
+            </div>
+            <div class="col-md-12">
+                <div class="gallery">
+                    {% for item in info.medecin %}
+                    <div class="col-md">
+                        <div class="gallery-img">
+                            <a href="../focus/images/doctor.png" class="b-link-stripe b-animate-go  swipebox"  title="Image Title" >
+                                <img class="img-responsive " src="../focus/images/doctor.png" alt="" />
+                                <span class="zoom-icon"> </span> </a>
+                            </a>
+                        </div>
+                        <div class="text-gallery">
+                            <h6>{{ item.name|upper }} </h6>
+                            <p style="font-size: smaller; text-align: center">{{ item.clinic }} {{ item.specialite }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% include 'Include/footer.twig' %}

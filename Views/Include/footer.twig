@@ -7,8 +7,118 @@
 </div>
 </div>
 
+<script src="/socket.io/socket.io.js"></script>
 <script src="../js/jquery.nicescroll.js"></script>
+<script src="../focus/js/jquery.notify.min.js"></script>
+<script src="../focus/js/datatables.min.js"></script>
 <script src="../js/scripts.js"></script>
 <script src="../js/bootstrap.min.js"> </script>
+<script>
+    $(document).ready(function () {
+        var socket = io();
+        $('.table-bordered').DataTable({
+            "dom": '<"toolbar">frtip',
+            "paging": true,
+            "pagingType": "full_numbers"
+        });
+        $('.table').on('click', '.fa.fa-check-circle-o.icon-state-warning', function () {
+            var ident = $(this).parent().parent().attr("data-ident");
+            var code = $(this).parent().parent().attr("data-code");
+            var address = $(this).parent().parent().find(".form-control").val();
+            if(address !== null){
+                socket.emit("assign", {ident:ident, code:code,address:address})
+                $.notify({
+                    position: 8,
+                    type: 'success',
+                    duration: 3000,
+                    message: "un message a été envoyé."
+                });
+                $(this).parent().parent().fadeOut(1000)
+            }
+            else{
+                $.notify({
+                    position: 8,
+                    type: 'error',
+                    duration: 5000,
+                    message: "Erreur Veillez choisir un medecin."
+                });
+            }
+
+        })
+        socket.on('newService', function (data) {
+            $.notify({
+                position: 8,
+                type: 'success',
+                autoClose: false,
+                message: (data.service.serviceName === 'Render-vous' ) ? "un nouveau Rendez-vous vient d'arriver" : "une nouvelle Assistance vient d'être demandé"
+            });
+            console.log(data);
+                if(data.service.serviceName === 'Render-vous' ) {
+                    var meta = "";
+                    for(let i in data.medecin){
+                        meta += "<option value=\""+data.medecin[i].name +"-"+ data.medecin[i].clinic +"\">"+data.medecin[i].name +" - "+ data.medecin[i].clinic +" - "+ data.medecin[i].specialite+"</option>\n"
+                    }
+                    console.log(meta)
+                    $('#tab2').find('tbody').prepend("<tr class=\"table-row\" data-ident=\""+ data.service.ident +"\" data-code=\""+ data.service.code +"\">\n" +
+                        "                            <td class=\"table-text\">\n" +
+                        "                                <h6> "+ data.service.clientName +"</h6>\n" +
+                        "                            </td>\n" +
+                        "                            <td>\n" +
+                        "                                <span class=\"fam\">"+ data.service.Motif +"</span>\n" +
+                        "                            </td>\n" +
+                        "                            <td class=\"march\">\n" +
+                        "                                "+ data.service.date +"\n" +
+                        "                            </td>\n" +
+                        "                            <td class=\"march\">\n" +
+                        "                                "+ data.service.code +"\n" +
+                        "                            </td>\n" +
+                        "                            <td class=\"table-img\">\n" +
+                        "                                <select class=\"form-control\">\n" +
+                        "                                    "+ meta +
+                        "                                </select>\n" +
+                        "                            </td>\n" +
+                        "                            <td>\n" +
+                        "                                <i class=\"fa fa-check-circle-o icon-state-warning\"></i>\n" +
+                        "                            </td>\n" +
+                        "                        </tr>")
+                    var leta = parseInt($('.nav-sidebar .nav tabs li:nth-child(2)').find('span').html(),10)+1
+                    $('.nav-sidebar .nav tabs li:nth-child(2)').find('span').html(leta);
+                    console.log(leta);
+                }
+                else if(data.service.serviceName === "Assistance") {
+                    var deta = "";
+                    for(let i in data.medecin){
+                        deta+= "<option value=\""+data.medecin[i].name +"-"+ data.medecin[i].clinic +"\">"+data.medecin[i].name +" - "+ data.medecin[i].clinic +" - "+ data.medecin[i].specialite+"</option>\n"
+                    }
+                    console.log(deta)
+                    $('#tab1').find('tbody').prepend("<tr class=\"table-row\" data-ident=\""+ data.service.ident +"\" data-code=\""+ data.service.code +"\">\n" +
+                        "                            <td class=\"table-text\">\n" +
+                        "                                <h6> "+ data.service.clientName +"</h6>\n" +
+                        "                            </td>\n" +
+                        "                            <td>\n" +
+                        "                                <span class=\"fam\">"+ data.service.Motif +"</span>\n" +
+                        "                            </td>\n" +
+                        "                            <td class=\"march\">\n" +
+                        "                                "+ data.service.date +"\n" +
+                        "                            </td>\n" +
+                        "                            <td class=\"march\">\n" +
+                        "                                "+ data.service.code +"\n" +
+                        "                            </td>\n" +
+                        "                            <td class=\"table-img\">\n" +
+                        "                                <select class=\"form-control\">\n" +
+                        "                                    "+ deta +
+                        "                                </select>\n" +
+                        "                            </td>\n" +
+                        "                            <td>\n" +
+                        "                                <i class=\"fa fa-check-circle-o icon-state-warning\"></i>\n" +
+                        "                            </td>\n" +
+                        "                        </tr>");
+                    var leta = parseInt($('.nav-sidebar .nav tabs li:first-child').find('span').html(),10)+1
+                    $('.nav-sidebar .nav tabs li:first-child').find('span').html(leta);
+                    console.log(leta);
+                }
+        });
+    })
+</script>
 </body>
 </html>

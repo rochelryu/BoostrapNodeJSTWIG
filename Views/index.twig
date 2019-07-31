@@ -26,21 +26,21 @@
 				<div class="content-top-1">
 				<div class="col-md-12 top-content">
 					<h5>Total Assitance</h5>
-					<label>6295</label>
+					<label>{{ info.assurance|length }}</label>
 				</div>
 				 <div class="clearfix"> </div>
 				</div>
 				<div class="content-top-1">
 				<div class="col-md-12 top-content">
 					<h5>Total Rendez-vous</h5>
-					<label>3401</label>
+					<label>{{ info.rdv|length }}</label>
 				</div>
 				 <div class="clearfix"> </div>
 				</div>
 				<div class="content-top-1">
 					<div class="col-md-12 top-content">
 						<h5>Total Clients</h5>
-						<label>341</label>
+						<label>{{ info.TotalUser }}</label>
 					</div>
 					<div class="clearfix"> </div>
 				</div>
@@ -49,40 +49,9 @@
 				<!---start-chart---->
 				<!----->
 				<div class="content-graph">
-				<div class="content-color">
-					<div class="content-ch"><p><i></i>Assitance </p>
-					<div class="clearfix"> </div>
-					</div>
-					<div class="content-ch1"><p><i></i>Rendez-Vous</p>
-					<div class="clearfix"> </div>
-					</div>
-				</div>
 				<!--graph-->
 				<div class="graph-container">
 
-					<div class="grid-1">
-						<h4>Prevision Hebdomadaire</h4>
-						<canvas id="bar1" height="300" width="500" style="width: 500px; height: 300px;"></canvas>
-						<script>
-							var barChartData = {
-								labels : ["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"],
-								datasets : [
-									{
-										fillColor : "#999",
-										strokeColor : "#999",
-										data : [25,40,50,65,55,30,20]
-									},
-									{
-										fillColor : "#FBB03B",
-										strokeColor : "#FBB03B",
-										data : [30,45,55,70,40,25,15]
-									}
-								]
-
-							};
-							new Chart(document.getElementById("bar1").getContext("2d")).Bar(barChartData);
-						</script>
-					</div>
 					<div class="col-md-12 graph-box1 clearfix">
 						<div class="grid-1">
 							<h4>Vue globale sur les differents types des medecins</h4>
@@ -117,9 +86,51 @@
 							<div class="clearfix"> </div>
 						</div>
 					</div>
+					<div class="row m-5">
+						<div class="col-lg-12 col-md-12">
+							<table class="display table table-hover table-striped table-bordered" style="width:100%">
+								<thead>
+								<tr>
+									<th>N</th>
+									<th>Catégorie</th>
+									<th>Date</th>
+									<th>Medecin</th>
+									<th>Malaise soulévé</th>
+									<th>Code</th>
+								</tr>
+								</thead>
+								<tbody>
+								{% for item in info.assurance %}
+
+                                    <tr class="mtn" id="{{ item._id }}" data-CliendId="{{ item.code }}" data-platId="{{ item.ident }}">
+                                        <td scope="row">A-{{ loop.index }}</td>
+                                        <td>{{ item.serviceName }}</td>
+                                        <td>{{ item.date|date('d/m/Y H:i') }}</td>
+                                        <td>{{item.medecin}}</td>
+                                        <td>{{item.Motif}}</td>
+                                        <td>{{ item.code }}</td>
+                                        <td><a class="btn btn-action fake" data-toggle="modal" data-target="#sideModalTR"><i class="far fa-eye"></i></a></td>
+                                    </tr>
+                                {% endfor %}
+								{% for item in info.rdv %}
+
+									<tr class="mtn" id="{{ item._id }}" data-CliendId="{{ item.code }}" data-platId="{{ item.ident }}">
+										<td scope="row">R-{{ loop.index }}</td>
+										<td>{{ item.serviceName }}</td>
+										<td>{{ item.date|date('d/m/Y H:i') }}</td>
+										<td>{{item.medecin}}</td>
+										<td>{{item.Motif}}</td>
+										<td>{{ item.code }}</td>
+										<td><a class="btn btn-action fake" data-toggle="modal" data-target="#sideModalTR"><i class="far fa-eye"></i></a></td>
+									</tr>
+								{% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</div>
 				</div>
 								</div>
-	
+
 		</div>
 		</div>
 		<div class="clearfix"> </div>
