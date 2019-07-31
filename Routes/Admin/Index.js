@@ -7,7 +7,7 @@
 const express = require('express'); //Je require express afin de creer ce qu'on appel un router (C'est celui qui me permet de decrire quels sont mes routes que j'utilise
 const router = express.Router(); // Je Crée maintenant ici mon routeur tout simplement en Appelant la methode Router() de Express
 const { check, validationResult } = require('express-validator');
-const {AdminQuerie} = require('../../Controller/AdminQuerie');
+const {AdminQuerie} = require('../../Controller/ryuQuerie');
 
 //Première Route
 router.route('/') // afin de decrire mieux une route on utilise la methode route("l'url de la route qu'on veut") ensuite on utilise la methode que nous vpulons utiliser (ex de methode : GET, POST, OPTIONS, PUT, DELETE, etc...)
@@ -40,7 +40,7 @@ router.route('/') // afin de decrire mieux une route on utilise la methode route
         Mais bon ça c'est mon avis personnel, vous pouvez choisir de faire l'autre option. LE code C'est la Factorisation.
          */
         }
-        else res.redirect('/admin/login') //je ne met pas de else parce que une fois qu'un if est ecrit ce qui est en dessous est toujours un else
+        else res.redirect('/ryu/login') //je ne met pas de else parce que une fois qu'un if est ecrit ce qui est en dessous est toujours un else
 
     });
 
@@ -75,7 +75,7 @@ router.route('/login')
         const errors = validationResult(req);
         if(!errors.isEmpty()){//ça veut dire s'il y a erreur exécute mois ça
             console.log(errors)
-            res.redirect('/admin/login')
+            res.redirect('/ryu/login')
         }
         else {//le code viendra ici uniquement si l'utilisateur a bien remplie le formullaire.
             // je tiens à rapeler que depuis là on a pas verfié si l'utilisateur existe dans la bd.
@@ -92,9 +92,9 @@ router.route('/login')
 
                 req.session.alloSante = admin.user;
                 console.log(req.session.alloSante)
-                res.redirect(301,'/admin')
+                res.redirect(301,'/ryu')
             }
-            res.redirect('/admin/login')
+            res.redirect('/ryu/login')
         }
         //Plus d'info sur express-validator ?  --> https://express-validator.github.io/docs/
     });
@@ -120,7 +120,7 @@ router.route('/client')
             Mais bon ça c'est mon avis personnel, vous pouvez choisir de faire l'autre option. LE code C'est la Factorisation.
              */
         }
-        else res.redirect('/admin/login') //je ne met pas de else parce que une fois qu'un if est ecrit ce qui est en dessous est toujours un else
+        else res.redirect('/ryu/login') //je ne met pas de else parce que une fois qu'un if est ecrit ce qui est en dessous est toujours un else
     })
 router.route('/medecin')
     .get(async (req,res)=>{
@@ -138,7 +138,7 @@ router.route('/medecin')
             Mais bon ça c'est mon avis personnel, vous pouvez choisir de faire l'autre option. LE code C'est la Factorisation.
              */
         }
-        else res.redirect('/admin/login') //je ne met pas de else parce que une fois qu'un if est ecrit ce qui est en dessous est toujours un else
+        else res.redirect('/ryu/login') //je ne met pas de else parce que une fois qu'un if est ecrit ce qui est en dessous est toujours un else
     })
     .post([
         check("name","nom Invalide").not().isEmpty(),
@@ -166,7 +166,7 @@ router.route('/medecin')
         const errors = validationResult(req);
         if(!errors.isEmpty()){//ça veut dire s'il y a erreur exécute mois ça
             console.log(errors)
-            res.redirect('/admin/medecin')
+            res.redirect('/ryu/medecin')
         }
         else {//le code viendra ici uniquement si l'utilisateur a bien remplie le formullaire.
             // je tiens à rapeler que depuis là on a pas verfié si l'utilisateur existe dans la bd.
@@ -177,7 +177,7 @@ router.route('/medecin')
             //JE tiens à rapeler que avant pour recuperer ce que l'utilisateur envoie ont installais body-parser mais maintenant plus besoin, Express intègre Body Parser Directement Maintenant.
             const input = req.body;
             const admin = await AdminQuerie.setMedecin(input.name,input.numero,input.clinic,input.address,input.specialite)
-            res.redirect('/admin/medecin')
+            res.redirect('/ryu/medecin')
         }
         //Plus d'info sur express-validator ?  --> https://express-validator.github.io/docs/
     });
@@ -185,7 +185,7 @@ router.route('/logout')
     .get((req,res)=>{
         req.session.destroy(function(err) {
             if(err) res.redirect('back')
-            res.redirect('/admin/login')
+            res.redirect('/ryu/login')
         })
     })
 
