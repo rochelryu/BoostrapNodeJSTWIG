@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61a256f2-f906-4abe-b1e8-69ff29b76c98" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Routes/Admin/Index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Routes/Admin/Index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Include/header.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Include/header.twig" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -58,15 +58,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Setting/config.exemple.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Routes/Admin/Index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="54">
@@ -74,6 +65,18 @@
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Views/Include/header.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="116" column="41" selection-start-line="116" selection-start-column="41" selection-end-line="116" selection-end-column="41" />
+              <caret line="119" column="41" selection-start-line="119" selection-start-column="41" selection-end-line="119" selection-end-column="41" />
+              <caret line="123" column="41" selection-start-line="123" selection-start-column="41" selection-end-line="123" selection-end-column="41" />
+              <caret line="141" column="41" selection-start-line="141" selection-start-column="41" selection-end-line="141" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -190,7 +193,6 @@
         <option value="$PROJECT_DIR$/Schema/UserSchema.js" />
         <option value="$PROJECT_DIR$/Views/css/style.css" />
         <option value="$PROJECT_DIR$/Schema/MedecinSchema.js" />
-        <option value="$PROJECT_DIR$/Views/Include/header.twig" />
         <option value="$PROJECT_DIR$/Setting/config.json" />
         <option value="$PROJECT_DIR$/Schema/ServiceSchema.js" />
         <option value="$PROJECT_DIR$/Views/Include/footer.twig" />
@@ -208,6 +210,7 @@
         <option value="$PROJECT_DIR$/Views/signin.twig" />
         <option value="$PROJECT_DIR$/Model/Databases.js" />
         <option value="$PROJECT_DIR$/Routes/Admin/Index.js" />
+        <option value="$PROJECT_DIR$/Views/Include/header.twig" />
       </list>
     </option>
   </component>
@@ -344,18 +347,18 @@
       <workItem from="1564343384962" duration="11673000" />
       <workItem from="1564357327673" duration="34334000" />
       <workItem from="1564485171766" duration="11919000" />
-      <workItem from="1564501353529" duration="48692000" />
+      <workItem from="1564501353529" duration="48848000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135069000" />
+    <option name="totallyTimeSpent" value="135225000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="142" y="73" width="772" height="736" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.29105473" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29105473" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -370,7 +373,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32931727" />
       <window_info anchor="bottom" id="GraphQL" order="9" weight="0.3294893" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.64744645" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.64744645" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -542,13 +545,6 @@
     <entry file="file://$PROJECT_DIR$/Views/focus/images/doctor.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Views/Include/header.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="124" column="29" lean-forward="true" selection-start-line="124" selection-start-column="29" selection-end-line="124" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Schema/VilleCommuneSchema.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -717,6 +713,16 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/Include/header.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="116" column="41" selection-start-line="116" selection-start-column="41" selection-end-line="116" selection-end-column="41" />
+          <caret line="119" column="41" selection-start-line="119" selection-start-column="41" selection-end-line="119" selection-end-column="41" />
+          <caret line="123" column="41" selection-start-line="123" selection-start-column="41" selection-end-line="123" selection-end-column="41" />
+          <caret line="141" column="41" selection-start-line="141" selection-start-column="41" selection-end-line="141" selection-end-column="41" />
         </state>
       </provider>
     </entry>
