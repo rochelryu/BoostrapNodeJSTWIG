@@ -7,7 +7,7 @@
 const express = require('express'); //Je require express afin de creer ce qu'on appel un router (C'est celui qui me permet de decrire quels sont mes routes que j'utilise
 const router = express.Router(); // Je Crée maintenant ici mon routeur tout simplement en Appelant la methode Router() de Express
 const { check, validationResult } = require('express-validator');
-const {AdminQuerie} = require('../../Controller/ryuQuerie');
+const {AdminQuerie} = require('../../Controller/AdminQuerie');
 
 //Première Route
 router.route('/') // afin de decrire mieux une route on utilise la methode route("l'url de la route qu'on veut") ensuite on utilise la methode que nous vpulons utiliser (ex de methode : GET, POST, OPTIONS, PUT, DELETE, etc...)
