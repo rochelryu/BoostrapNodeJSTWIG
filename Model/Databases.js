@@ -10,12 +10,11 @@ let connect = async ()=>{
             useNewUrlParser: true,
             useFindAndModify: config.db.useFindAndModify
         });
-        /*let admin = new VilleCommuneSchema({name:"Abidjan",commune:[{nameCommune:"Adjamé"},{nameCommune:"Abobo"},{nameCommune:"Yopougon"},{nameCommune:"Rivera"},{nameCommune:"Cocody"},{nameCommune:"II Plateaux"},]});
+        let Ville = new VilleCommuneSchema({name:"Abidjan",commune:[{nameCommune:"Adjamé"},{nameCommune:"Abobo"},{nameCommune:"Yopougon"},{nameCommune:"Rivera"},{nameCommune:"Cocody"},{nameCommune:"II Plateaux"},]});
+        await Ville.save().then(res=>{console.log("admin Default")}).catch(err=>{console.log("admin Eree")})
+        let admin = new AdminSchema({clinicName:"Allô Santé Express",name:"admin",password:"5228fb916ce2bc130f0a8d6fe66f42d98512cfaed4ab8808865f3561e97eac41", ident:"super"+Math.floor(Math.random()*9999), email:"admin@allo.ci", numero:48803377, etat:3});
         await admin.save().then(res=>{console.log("admin Default")}).catch(err=>{console.log("admin Eree")})
-*/
-        /*let admin = new AdminSchema({clinicName:"Allô Santé Express",name:"admin",password:"5228fb916ce2bc130f0a8d6fe66f42d98512cfaed4ab8808865f3561e97eac41", ident:"super"+Math.floor(Math.random()*9999), email:"admin@allo.ci", numero:48803377, etat:3});
-        await admin.save().then(res=>{console.log("admin Default")}).catch(err=>{console.log("admin Eree")})
-        */console.log(">>>> Database Connected");
+        console.log(">>>> Database Connected");
     }
     catch (e) {
         console.log(e.toString())

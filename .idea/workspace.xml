@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61a256f2-f906-4abe-b1e8-69ff29b76c98" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Routes/Admin/Index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Routes/Admin/Index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/client.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Views/client.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/index.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Views/index.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/medecin.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Views/medecin.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/signin.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Views/signin.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/Databases.js" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Databases.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,14 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Serveur.js">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Model/Databases.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
-              <caret line="57" column="12" lean-forward="true" selection-start-line="57" selection-start-column="12" selection-end-line="57" selection-end-column="12" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
+              <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -120,7 +113,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Views/signin.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
@@ -211,7 +204,6 @@
         <option value="$PROJECT_DIR$/node_modules/bulksms/index.js" />
         <option value="$PROJECT_DIR$/Routes/API/Index.js" />
         <option value="$PROJECT_DIR$/Controller/AdminQuerie.js" />
-        <option value="$PROJECT_DIR$/Model/Databases.js" />
         <option value="$PROJECT_DIR$/App.js" />
         <option value="$PROJECT_DIR$/Views/focus/index.twig" />
         <option value="$PROJECT_DIR$/Serveur.js" />
@@ -221,6 +213,7 @@
         <option value="$PROJECT_DIR$/Views/client.twig" />
         <option value="$PROJECT_DIR$/Views/medecin.twig" />
         <option value="$PROJECT_DIR$/Views/signin.twig" />
+        <option value="$PROJECT_DIR$/Model/Databases.js" />
       </list>
     </option>
   </component>
@@ -357,12 +350,12 @@
       <workItem from="1564343384962" duration="11673000" />
       <workItem from="1564357327673" duration="34334000" />
       <workItem from="1564485171766" duration="11919000" />
-      <workItem from="1564501353529" duration="48113000" />
+      <workItem from="1564501353529" duration="48409000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="134490000" />
+    <option name="totallyTimeSpent" value="134786000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="555" y="32" width="772" height="736" extended-state="0" />
@@ -607,13 +600,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Model/Databases.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Views/Include/footer.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -739,6 +725,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/Databases.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
         </state>
       </provider>
     </entry>
