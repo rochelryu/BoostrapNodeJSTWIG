@@ -8,6 +8,7 @@ const express = require('express'); //Je require express afin de creer ce qu'on 
 const router = express.Router(); // Je Crée maintenant ici mon routeur tout simplement en Appelant la methode Router() de Express
 const { check, validationResult } = require('express-validator');
 const {AdminQuerie} = require('../../Controller/AdminQuerie');
+const crypto = require('crypto')
 
 //Première Route
 router.route('/') // afin de decrire mieux une route on utilise la methode route("l'url de la route qu'on veut") ensuite on utilise la methode que nous vpulons utiliser (ex de methode : GET, POST, OPTIONS, PUT, DELETE, etc...)
@@ -54,7 +55,7 @@ router.route('/login')
     })//ICI on a fini de faire notre première route qui etait un get. Regarder Bien ce qui va venir, cette fois ci je vaire un post sur la même route pour dire que si l'utilisateur post quelque chose sur cette route
     .post([
         check("email","email Invalide").not().isEmpty(),
-        check("password","Veillez entrer un Mot de Passe Alphanumerique et d'au moins 8 Charactère").isAlphanumeric().isLength({ min: 8 })
+        check("password","Veillez entrer un Mot de Passe d'au moins 6 Charactère").isLength({ min: 6 })
         ], async (req,res)=>{
 
         /*
@@ -85,6 +86,8 @@ router.route('/login')
              */
             //JE tiens à rapeler que avant pour recuperer ce que l'utilisateur envoie ont installais body-parser mais maintenant plus besoin, Express intègre Body Parser Directement Maintenant.
             const input = req.body;
+            let mtd = crypto.createHmac("SHA256", input.password).update("Yabana, An other NaN").digest('hex')
+            console.log(mtd)
             const admin = await AdminQuerie.getVerifyAdmin(input.email, input.password)
             if(admin.etat){
 
