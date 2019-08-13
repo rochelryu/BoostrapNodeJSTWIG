@@ -28,7 +28,13 @@
                     <div class="vali-form">
                         <div class="col-md-6 form-group1">
                             <label class="control-label">Nom de Clinique</label>
-                            <input name="clinic" type="text" placeholder="Attention à ne pas vous tromper" required="">
+                            <select name="clinic" class="form-control">
+                                <option selected="selected" disabled="disabled">La Commune</option>
+                                {% for err in info.admin %}
+                                        <option value="{{ err.clinicName }}">{{ err.clinicName }} | {{ err.address }}</option>
+                                {% endfor %}
+                                <option value="Autres">Autres</option>
+                            </select>
                         </div>
                         <div class="col-md-6 form-group1 form-last">
                             <label class="control-label">Spécialité</label>

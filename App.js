@@ -23,8 +23,7 @@ io.on('connection', function (socket) {
         const age = (data.age)? data.age:"";
         const name = (data.name)? data.name:"";
         const commande = (data.commande)? data.commande:"";
-        console.log(data);
-        const service = await AdminQuerie.setCommande(data.ident,name,age,code,"Render-vous",data.address,data.motif,data.date,commande);
+        const service = await AdminQuerie.setCommande(data.ident,name,age,code,"Render-vous",data.address,data.motif,data.date,commande, data.autre);
         if(service.etat){
             let info = {}
             const ville = await AdminQuerie.getAllMedecin();
@@ -40,7 +39,7 @@ io.on('connection', function (socket) {
         const commande = (data.commande)? data.commande:"";
         const dates = new Date();
         console.log(data);
-        const service = await AdminQuerie.setCommande(data.ident,name,age,code,"Assistance",data.address,data.motif,dates,commande);
+        const service = await AdminQuerie.setCommande(data.ident,name,age,code,"Assistance",data.address,data.motif,dates,commande, data.autre);
         if(service.etat){
             let info = {}
             const ville = await AdminQuerie.getAllMedecin();

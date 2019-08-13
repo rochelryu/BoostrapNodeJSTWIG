@@ -66,7 +66,21 @@ router.route('/signin')
             res.send({etat:false,err:"enregistrement echoué Veillez recommencé ultérieurement"})
         }
     });
-
+router.route('/autre/:ident')
+    .get(async (req,res)=>{
+        const user = await AdminQuerie.getUserByIdent(req.params.ident);
+        if(user.etat){
+            let info = {};
+            let assistance = await AdminQuerie.getAllAutre(1);
+            let rdv = await AdminQuerie.getAllAutre(2);
+            info.assistance = assistance;
+            info.rdv = rdv;
+            res.send(info);
+        }
+        else{
+            res.send({err:"tu es bête"})
+        }
+    });
 router.route('/account/:ident')
     .get(async (req,res)=>{
         console.log(req.params.ident)

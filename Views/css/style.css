@@ -218,7 +218,8 @@ h1 a.navbar-brand {
     background: #4dbcc7;
     text-align: center;
 	width:248px;
-	height: 60px;
+	height: auto;
+    line-height: 1em;
 	
 }
 .navbar-default .navbar-brand:hover {
@@ -967,6 +968,7 @@ i.fa.fa-twitter {
 }
 
 .text-gallery h6{
+    text-align: center;
 	font-size:1.1em;
 	color:#999;
 }
@@ -1233,7 +1235,13 @@ input#disabledTextInput,select#disabledSelect {
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
 }
+a.b-link-stripe.b-animate-go.swipebox img {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
 .form-control1 {
+    margin-bottom: 15px;
     border: 1px solid #e0e0e0;
     padding: 5px 8px;
     color: #616161;
@@ -1323,7 +1331,7 @@ label.control-label {
     margin: 0;
 }
 .form-group1 input[type="text"],.form-group1 textarea,
-.form-group1 input[type="password"],.form-group1 input[type="date"]{
+.form-group1 input[type="password"],.form-group1 input[type="date"], .form-group1 input[type="email"]{
 	border: 1px solid #E9E9E9;
     font-size: 0.9em;
     width: 100%;
@@ -2837,3 +2845,311 @@ ul.dropdown-menu.dropdown-menu-right {
     font-size: 1.6em;
 }
 }
+
+
+
+/*--inbox--*/
+.inbox-page {
+    width: 95%;
+    margin: 20px auto;
+}
+.inbox-row {
+    padding: 0.5em 1em;
+}
+.inbox-page h4 {
+    font-size: 1.1em;
+    color: #629aa9;
+    margin-bottom: 1em;
+}
+.mail {
+    float: left;
+    margin-right: 1em;
+}
+.mail.mail-name {
+    width: 15%;
+}
+.mail-right {
+    float: right;
+    margin-left: 1.5em;
+}
+li.head i.fa {
+    color: #629aa9;
+    margin-right: 10px;
+}
+.inbox-page h6 {
+    font-size: 1em;
+    color: #555;
+}
+.inbox-page input.checkbox {
+    margin: 13px 0 0;
+}
+.inbox-page img {
+    width: 100%;
+    vertical-align: bottom;
+}
+.inbox-page p {
+    font-size: 1em;
+    color: #000;
+    line-height: 1.8em;
+}
+.inbox-page h6 {
+    font-size: 1em;
+    color: #555;
+    line-height: 2em;
+}
+.inbox-page ul.dropdown-menu {
+    padding: 5px 0;
+    min-width: 105px;
+    top: 0;
+    left: -110px;
+}
+.inbox-page .dropdown-menu > li > a {
+    padding: 4px 15px;
+    font-size: 0.9em;
+}
+.inbox-page .dropdown-menu > li > a:hover, .inbox-page .dropdown-menu > li > a:focus {
+    color: #337ab7;
+}
+.mail-icon {
+    margin-right: 7px;
+}
+.inbox-page.row {
+    margin-top: 2em;
+}
+.inbox-page .checkbox {
+    position: relative;
+    top: -3px;
+    margin: 0 1rem 0 0;
+    cursor: pointer;
+}
+.inbox-page .checkbox:before {
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    content: "";
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #A0A0A0;
+}
+.inbox-page .checkbox:after {
+    content: "";
+    position: absolute;
+    top: -0.125rem;
+    left: 0;
+    width: 1.1rem;
+    height: 1.1rem;
+    background: #fff;
+    cursor: pointer;
+}
+.inbox-page .checkbox:checked:before {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    height: .4rem;
+    width: .8rem;
+    border-color: #4F52BA;
+    border-top-style: none;
+    border-right-style: none;
+    border-width: 2px;
+}
+.mail-body {
+    padding: 1em 2em;
+    border: 1px solid #D4D4D4;
+    margin: 10px 0;
+    transition: .5s all;
+}
+.mail-body p{
+    font-size: 0.9em;
+    line-height: 1.8em;
+}
+.mail-body input[type="text"]{
+    width: 100%;
+    border: none;
+    color: #000;
+    border-bottom: 1px solid #F5F5F5;
+    padding: 1em 0;
+    outline:none;
+    transition:.5s all;
+    -webkit-transition:.5s all;
+    -moz-transition:.5s all;
+    font-size:1em;
+}
+.mail-body input[type="text"]:focus{
+    padding: 2em 0;
+    border-bottom: 1px solid #C7C5C5;
+}
+.mail-body input[type="submit"] {
+    border: none;
+    background: none;
+    font-size: 1em;
+    margin-top: 0.5em;
+    color: #4F52BA;
+    outline:none;
+    font-weight: 600;
+}
+/*--//inbox--*/
+/*--compose mail--*/
+.compose-left{
+    width: 28%;
+    padding: 0;
+}
+.compose-right{
+    width: 70%;
+    margin-left: 2%;
+    padding: 0;
+}
+.compose-left a i.fa {
+    margin-right: 0.7em;
+}
+.compose-left ul li{
+    display:block;
+}
+.compose-left ul li.head {
+    padding: 0.5em 1.5em;
+    border-bottom: 1px solid #DCDCDC;
+    color: #000;
+    font-size: 1.2em;
+    background-color: #F5F5F5;
+}
+.autre{
+    background-color: #fff;
+    margin-top: 20px;
+    margin-right: 20px;
+    padding: 5px;
+}
+.autre h2{
+    margin-bottom: 15px;
+    font-size: 15px;
+}
+.autre ul{
+    max-height: 200px;
+    box-shadow: 0 0 10px rgba(56,56,56,.22);
+    overflow: auto;
+    list-style: none;
+}
+.autre ul li{
+    color:#777;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+.compose-left ul li a, .choiceF li {
+    cursor: pointer;
+    display: block;
+    font-size: 1em;
+    color: #555;
+    border-bottom: 1px solid #DCDCDC;
+    padding: 0.7em 1.5em;
+}
+.compose-left ul li a:hover {
+    background-color: rgb(241, 241, 241);
+}
+.compose-left span {
+    float: right;
+    background-color: #F2B33F;
+    padding: 3px 10px;
+    font-size: .7em;
+    border-radius: 4px;
+    color: #fff;
+}
+.chat-left {
+    position: relative;
+    float: left;
+    width: 25%;
+}
+.chat-right {
+    float: left;
+}
+.small-badge {
+    position: absolute;
+    left: 27px;
+    top: 1px;
+    overflow: hidden;
+    width: 12px;
+    height: 12px;
+    padding: 0;
+    border: 2px solid #fff!important;
+    border-radius: 20px;
+    background-color: red;
+}
+.small-badge.bg-green {
+    background-color: green;
+}
+.chat-grid.widget-shadow {
+    margin-top: 2em;
+}
+.chat-right p {
+    font-size: 1em;
+    color: #000;
+    line-height: 1.2em;
+}
+.chat-right h6 {
+    font-size: 0.8em;
+    color: #999;
+    line-height: 1.4em;
+}
+.compose-right .panel-heading {
+    padding: 0.8em 2em;
+}
+.compose-right .panel-body {
+    padding: 2em;
+}
+.compose-right .alert.alert-info {
+    padding: 10px 20px;
+    font-size: 0.9em;
+    color: #255a87;
+    background-color: #255a8736;
+    border-color: #255a8736;
+    border-radius: inherit;
+}
+.compose-right .form-group {
+    margin: .5em 0;
+}
+.compose-right .btn.btn-file {
+    position: relative;
+    overflow: hidden;
+    border-radius: inherit;
+    background: #f2b33f;
+    color: #fff;
+}
+.compose-right .btn.btn-file>input[type='file'] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: inline-flex;
+    width: 100%;
+    padding: 0.4em;
+}
+.compose-right p.help-block {
+    display: inline-block;
+    margin-left: 0.5em;
+    font-size: 0.9em;
+    color: #6F6F6F;
+}
+.fake{
+    display: none;
+}
+.fake.active{
+    display: block !important;
+}
+#pages-wrappers{
+    padding: 10px;
+    background-color: #fff;
+}
+.compose-right input[type="submit"] {
+    font-size: 0.9em;
+    background-color: #255a87;
+    border: 1px solid #255a87;
+    color: #fff;
+    padding: 0.4em 1em;
+    margin-top: 1em;
+}
+/*--//compose mail--*/

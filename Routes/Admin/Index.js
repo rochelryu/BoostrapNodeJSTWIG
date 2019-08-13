@@ -23,7 +23,7 @@ router.route('/') // afin de decrire mieux une route on utilise la methode route
         Vous verrez aussi res.sendFile, res.renderFile, etc..., ce sont tous des methodes de rendu de page Web Mais res.render reste le meilleur.
         On utilise res.redirect lorsque on veut faire une redirection à l'utilisateur après avoir fini de traiter sa demande(Ex: un Utilisateur cherhce à se connecter sur la route /login. Après avoir finis de verifier son couple email/password et qu'il est vraiment ce qu'il pretend on peut le rediriger vers /accueil pour que la route /accueil prenne le relais afin de lui afficher la page d'accueil).
          */
-        if(req.session.alloSante) {
+        if(req.session.alloSante && req.session.alloSante.etat === 3) {
             let info = {} // je crée une variable info  qui va prendre après les différentes valeur du traitement avec ma base de donnés
             let rdv = await AdminQuerie.getCommandeTotal("Render-vous");
             let assurance = await AdminQuerie.getCommandeTotal("Assistance");
@@ -34,21 +34,46 @@ router.route('/') // afin de decrire mieux une route on utilise la methode route
             console.log(info)
             info.user = req.session.alloSante;
             res.render("index.twig",{info:info})
-
         /*
         ICi je n'ai pas fait directement info.fakeLangage = [{nom:"Rochel", language:"JS", level: "85%"},{nom:"Ryu", language:"TS",...
         parce que le retour de nos different traitement avec la base de Donné peut retourné des fois des tableau ou des objet Simple ou encore d'autre type du coup c'est plus facile d'enregistrer cela dans une variable intermédiaire afin de faire d'autre traitement si on veut puis après venir  l'assigner à notre grand objet contenant tout.
         Mais bon ça c'est mon avis personnel, vous pouvez choisir de faire l'autre option. LE code C'est la Factorisation.
          */
         }
+        else if(req.session.alloSante && req.session.alloSante.etat === 1) {
+            let info = {} // je crée une variable info  qui va prendre après les différentes valeur du traitement avec ma base de donnés
+            let today = await AdminQuerie.getAllServiceInToday(req.session.alloSante.clinicName);
+            let became = await AdminQuerie.getAllServiceInBecame(req.session.alloSante.clinicName);
+            info.user = req.session.alloSante;
+            info.today = today;
+            info.became = became;
+            console.log(JSON.stringify(info.today), JSON.stringify(info.became));
+            res.render("index2.twig",{info:info})
+        }
         else res.redirect('/ryu/login') //je ne met pas de else parce que une fois qu'un if est ecrit ce qui est en dessous est toujours un else
 
     });
 
+router.route('/autre')
+    .post([
+        check("name","nom Invalide").not().isEmpty(),
+    ], async (req,res)=>{
+        const errors = validationResult(req);
+        if(!errors.isEmpty()){//ça veut dire s'il y a erreur exécute mois ça
+            console.log(errors)
+            res.redirect('/ryu/addPharma')
+        }
+        else {
+            const input = req.body;
+            const admin = await AdminQuerie.setAutre(input.name, parseInt(input.level,10));
+            if(admin.etat){
+                res.redirect(301,'/ryu/addPharma')
+            }
+            res.redirect('/ryu/addPharma')
+        }
+        //Plus d'info sur express-validator ?  --> https://express-validator.github.io/docs/
+    });
 //Route vers login Avec Authentification
-
-let user = {email:"admin@allo.ci", pass:"azerty225R"} // J'ai cré un un faux utilisateur qui fera la simulation d'un admin dans ma bd;
-
 router.route('/login')
     .get((req,res)=>{
         res.render('signin.twig')
@@ -101,6 +126,48 @@ router.route('/login')
         }
         //Plus d'info sur express-validator ?  --> https://express-validator.github.io/docs/
     });
+router.route('/addPharma')
+    .get(async (req,res)=>{
+        if(req.session.alloSante) {
+            let info = {};
+            let Admin = await AdminQuerie.getAllAdmin();
+            let ville = await AdminQuerie.getAllVille();
+            let assistance = await AdminQuerie.getAllAutre(1);
+            let rdv = await AdminQuerie.getAllAutre(2);
+            info.assistance = assistance;
+            info.rdv = rdv;
+            info.Admin = Admin;
+            info.ville = ville;
+            info.user = req.session.alloSante;
+            res.render('addPharmacie.twig', {info: info})
+        }
+        else res.redirect('/ryu/login')
+    })
+    .post([
+        check("name","Pseudo Invalide").not().isEmpty(),
+        check("numero","numero Invalide").isLength({max:8}),
+        check("clinic","Nom de Clinique Invalide").not().isEmpty(),
+        check("email","email Invalide").isEmail(),
+        check("password","Mot de passe Invalide").not().isEmpty(),
+    ],async (req,res)=>{
+        if(req.session.alloSante) {
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) {
+                req.session.addClinic = errors;
+                console.log(errors.errors);
+                res.redirect('/ryu/addPharma')
+            } else if (errors.isEmpty() && req.body.password === req.body.confirmpassword) {
+                let admin = await AdminQuerie.setAdmin(req.body.email, req.body.password, req.body.name, req.body.numero, 1, req.body.clinic, req.body.address);
+                if (admin.etat) {
+                    res.redirect('/ryu/addPharma')
+                } else {
+                    console.log('non save');
+                    res.redirect('/ryu/addPharma')
+                }
+            }
+        }
+        res.send({etat:"tu es bête"})
+    })
 router.route('/client')
     .get(async (req,res)=>{
         if(req.session.alloSante) {
@@ -125,14 +192,57 @@ router.route('/client')
         }
         else res.redirect('/ryu/login') //je ne met pas de else parce que une fois qu'un if est ecrit ce qui est en dessous est toujours un else
     })
+router.route('/edit')
+    .get(async (req,res)=>{
+        if(req.session.alloSante){
+            let info ={};
+            info.user = req.session.alloSante;
+            info.err = req.session.errEdit;
+            console.log(info.err);
+            res.render("edit.twig",{info:info});
+        }
+        else res.redirect('/ryu/login')
+    })
+    .post([
+        check("old","Ancien mot de passe Invalide").not().isEmpty(),
+        check("newPass","Nouveau mot de passe Invalide").not().isEmpty(),
+        check("ConfnewPass","Confirmation mot de passe Invalide").not().isEmpty(),
+    ], async (req,res)=>{
+        const errors = validationResult(req);
+        if(!errors.isEmpty()){
+            req.session.errEdit = errors.errors
+            console.log(errors.errors)
+            res.redirect('/ryu/edit')
+        }
+        else if (errors.isEmpty() && req.body.newPass === req.body.ConfnewPass){
+            const input = req.body;
+            console.log(req.session.alloSante.password);
+            const admin = await AdminQuerie.updateAdmin(input.old,input.newPass,req.session.alloSante.ident)
+            if(admin.user !==null){
+                req.session.alloSante = admin.user;
+                req.session.errEdit = [{ value: '', msg: ' Mot de passe changé avec succès', param: 'old', location: 'body' }];
+                res.redirect('/ryu/edit')
+            }
+        else{
+                req.session.errEdit = [{ value: '', msg: ' Erreur, Ancien mot de passe Incorrect', param: 'old', location: 'body' }];
+                res.redirect('/ryu/edit')
+            }
+        }
+        else {
+            req.session.errEdit = [{ value: '', msg: ' le confirmation et le nouveau mot de passe ne coresponde pas', param: 'old', location: 'body' }];
+            res.redirect('/ryu/edit')
+        }
+    });
 router.route('/medecin')
     .get(async (req,res)=>{
         if(req.session.alloSante) {
             let info = {} // je crée une variable info  qui va prendre après les différentes valeur du traitement avec ma base de donnés
             let medecin = await AdminQuerie.getAllMedecin();
             let ville = await AdminQuerie.getAllVille();
+            let admin = await AdminQuerie.getAllAdmin();
             info.medecin = medecin;
             info.ville = ville;
+            info.admin = admin;
             info.user = req.session.alloSante;
             res.render("medecin.twig",{info:info});
             /*
@@ -150,39 +260,16 @@ router.route('/medecin')
         check("specialite","specialite Invalide").not().isEmpty(),
         check("address","address Invalide").not().isEmpty(),
     ], async (req,res)=>{
-
-        /*
-        Si vous remarquez bien je n'ai pas fait router.route('/').post((req,res)=>......
-        tous simplement parce que une fois qu'on ecrit router.route('ma route que je veux') je peux enchainer toutes les methodes que je veux sur cette route de façon cascade
-        Ex:router.route('/').get((req,res)=>{ traitement à faire; res.render('page')}).post((req,res)=>{ traitement à faire; res.redirect('/monCOmpte')}).put((req,res)=>{ traitement à faire; res.redirect('/Rochel')}).......
-        le traitement avec le post en question
-        ici aussi on va simuler un post. supposons que l'utilisateur veux envoyer dans des input som email/motdepasse
-         */
-
-        /*
-        On va verifier si l'eamil respect les norme de email et si le mot de passe est au moins Alphanumeric et depasse 8 Charachtère;
-        Pour cela on a utiliser Express-validator. C'est un module que j'ai installé pour la verification de ce que le user fait envoie aux serveurs
-         */
-        //On utilise req.check pour verifier vous verez d'autre personne utiliser req.checkBody c'est pareil sauf qu'eux ils sont encore derrière la préhistoire.
-        //Donc je continue, req.check(1er Params, 2eme Params).methodeQuonVeutUtiliserPourVErifier()  1er Params = le name de l'input coté frontend 2eme Params = le message d'erreur qu'on veut envoyer à l'utilisateur au cas où notre methode qu'on prend pour verifier dis que l'utilisateur n'as pas respecté ce qu'on lui demande..... Batard d'utilisateur....
-        //Après avoir fais ça on doit passer toutes les erreurs a une variable intermédiaire afin de pouvoir faire des conditions
         const errors = validationResult(req);
         if(!errors.isEmpty()){//ça veut dire s'il y a erreur exécute mois ça
             console.log(errors)
             res.redirect('/ryu/medecin')
         }
-        else {//le code viendra ici uniquement si l'utilisateur a bien remplie le formullaire.
-            // je tiens à rapeler que depuis là on a pas verfié si l'utilisateur existe dans la bd.
-            //On verifie juste s'il a bien fait rentré un email et un mot de passe de niveau moyen.
-            /*
-            tout le traitement peut être fait ici
-             */
-            //JE tiens à rapeler que avant pour recuperer ce que l'utilisateur envoie ont installais body-parser mais maintenant plus besoin, Express intègre Body Parser Directement Maintenant.
+        else {
             const input = req.body;
             const admin = await AdminQuerie.setMedecin(input.name,input.numero,input.clinic,input.address,input.specialite)
             res.redirect('/ryu/medecin')
         }
-        //Plus d'info sur express-validator ?  --> https://express-validator.github.io/docs/
     });
 router.route('/logout')
     .get((req,res)=>{

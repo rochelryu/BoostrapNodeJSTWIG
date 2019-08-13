@@ -1,0 +1,141 @@
+{% include 'Include/header.twig' %}
+
+<div class="content-main">
+
+    <div class="banner">
+        <h2>
+            <a href="/ryu">Accueil</a>
+            <i class="fa fa-angle-right"></i>
+            <span>Clinique</span>
+        </h2>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-7">
+                <form style="background: white" action="/ryu/addPharma" method="post">
+                    <div class="vali-form">
+                        <div class="col-md-6 form-group1">
+                            <label class="control-label">Nom de La clinique</label>
+                            <input name="clinic" type="text" required="">
+                        </div>
+                        <div class="col-md-6 form-group1 form-last">
+                            <label class="control-label">Pseudo de Connexcion</label>
+                            <input name="name" type="text" required="">
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+
+                    <div class="vali-form">
+                        <div class="col-md-6 form-group1">
+                            <label class="control-label">Email</label>
+                            <input name="email" type="email" required="">
+                        </div>
+                        <div class="col-md-6 form-group1 form-last">
+                            <label class="control-label">Numero</label>
+                            <input name="numero" type="text" required="">
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="vali-form">
+                        <div class="col-md-6 form-group1">
+                            <label class="control-label">Mot de passe</label>
+                            <input name="password" type="password" required="">
+                        </div>
+                        <div class="col-md-6 form-group1 form-last">
+                            <label class="control-label">Confirmé Mot de passe</label>
+                            <input name="confirmpassword" type="password" required="">
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="col-md-12 form-group2 group-mail">
+                        <label class="control-label">Adresse</label>
+                        <select name="address" class="form-control">
+                            <option selected="selected" disabled="disabled">La Commune</option>
+                            {% for err in info.ville %}
+                                {% for item in err.commune %}
+                                    <option value="{{ err.name }} - {{ item.nameCommune }}">{{ err.name }} - {{ item.nameCommune }}</option>
+                                {% endfor %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="clearfix"> </div>
+                    <div class="col-md-12 form-group">
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                        <button type="reset" class="btn btn-default">Vider</button>
+                    </div>
+                    <div class="clearfix"> </div>
+                </form>
+            </div>
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form style="background: white" action="/ryu/autre" method="post">
+                            <div class="vali-form">
+                                <div class="col-md-6 form-group1">
+                                    <label class="control-label">Pathologie ou Demande</label>
+                                    <input name="name" type="text" required="">
+                                </div>
+                                <div class="col-md-6 form-group1 form-last">
+                                    <label class="control-label">Service</label>
+                                    <select name="level" class="form-control">
+                                        <option value="1">Pour Assistance</option>
+                                        <option value="2">Pour Rendez-vous</option>
+                                    </select>
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                            <div class="clearfix"> </div>
+                            <div class="col-md-12 form-group">
+                                <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                <button type="reset" class="btn btn-default">Vider</button>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </form>
+                    </div>
+                    <div class="col-md-12 autre">
+                        <h2>Les Pathologies & Demandes</h2>
+                        <ul>
+                            {% for item in info.assistance %}
+                                <li>
+                                    {{ item.name }} || Assistance
+                                </li>
+                            {% endfor %}
+                            {% for item in info.rdv %}
+                                <li>
+                                    {{ item.name }} || Rendez-vous
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-12">
+                <div class="gallery">
+                    {% for item in info.Admin %}
+                        <div class="col-md">
+                            <div class="gallery-img">
+                                <a href="../focus/images/hospital.png" class="b-link-stripe b-animate-go  swipebox"  title="Image Title" >
+                                    <img class="img-responsive " src="../focus/images/hospital.png" alt="" />
+                                    <span class="zoom-icon"> </span> </a>
+                                </a>
+                            </div>
+                            <div class="text-gallery">
+                                {% if item.etat == 3 %}
+                                    <h6>Vous même</h6>
+                                {% else %}
+                                <h6>{{ item.clinicName|upper }} </h6>
+                                <p style="font-size: smaller; text-align: center">{{ item.email }} ||  {{ item.numero }}</p>
+                                    {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% include 'Include/footer.twig' %}

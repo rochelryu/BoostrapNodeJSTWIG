@@ -2,11 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61a256f2-f906-4abe-b1e8-69ff29b76c98" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Schema/AutreSchema.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/addPharmacie.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/client2.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/edit.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/index2.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/AdminQuerie.js" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/AdminQuerie.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Model/Databases.js" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Databases.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Routes/API/Index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Routes/API/Index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Routes/Admin/Index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Routes/Admin/Index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Setting/config.exemple.json" beforeDir="false" afterPath="$PROJECT_DIR$/Setting/config.exemple.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schema/AdminSchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/Schema/AdminSchema.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schema/ServiceSchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/Schema/ServiceSchema.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schema/UserSchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/Schema/UserSchema.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Include/footer.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Include/footer.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Include/header.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Include/header.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Views/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/index.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Views/index.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/medecin.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Views/medecin.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/signin.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Views/signin.twig" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,10 +35,37 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Serveur.js">
+        <entry file="file://$PROJECT_DIR$/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8">
-              <caret line="53" column="36" selection-start-line="53" selection-start-column="36" selection-end-line="53" selection-end-column="36" />
+            <state relative-caret-position="83">
+              <caret line="43" column="21" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Views/index.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="39">
+              <caret line="20" column="50" lean-forward="true" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Views/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="134">
+              <caret line="1240" column="16" lean-forward="true" selection-start-line="1240" selection-start-column="16" selection-end-line="1240" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Routes/API/Index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="21">
+              <caret line="45" column="7" lean-forward="true" selection-start-line="45" selection-start-column="7" selection-end-line="45" selection-end-column="7" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -32,30 +74,43 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App.js">
+        <entry file="file://$PROJECT_DIR$/Views/index2.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="2" column="32" lean-forward="true" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Model/Databases.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="14" column="80" selection-start-line="14" selection-start-column="80" selection-end-line="14" selection-end-column="80" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Routes/Admin/Index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="83">
-              <caret line="88" column="39" selection-start-line="88" selection-start-column="29" selection-end-line="88" selection-end-column="39" />
+            <state>
+              <caret column="22" lean-forward="true" selection-start-column="22" selection-end-column="22" />
               <folding>
-                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#4952#8481#0#HTML" />
+                <element signature="e#5687#7473#0#HTML" />
+                <element signature="e#8449#12148#0#HTML" />
+                <element signature="e#9325#11111#0#HTML" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Views/client2.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="145">
+              <caret line="215" column="35" selection-start-line="215" selection-start-column="35" selection-end-line="215" selection-end-column="35" />
+              <folding>
+                <element signature="e#12768#15612#0#HTML" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Views/addPharmacie.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="84">
+              <caret line="123" column="34" lean-forward="true" selection-start-line="123" selection-start-column="34" selection-end-line="123" selection-end-column="34" />
+              <folding>
+                <element signature="e#319#3420#0#HTML" />
+                <element signature="e#358#3401#0#HTML" />
+                <element signature="e#3433#3491#0#HTML" />
+                <element signature="e#3558#4828#0#HTML" />
+                <element signature="e#3510#4042#0#HTML" />
               </folding>
             </state>
           </provider>
@@ -64,46 +119,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Controller/AdminQuerie.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="71">
-              <caret line="16" column="57" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="57" />
+            <state relative-caret-position="192">
+              <caret line="197" column="27" selection-start-line="197" selection-start-column="27" selection-end-line="197" selection-end-column="27" />
+              <folding>
+                <element signature="e#10363#10892#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Setting/config.json">
+        <entry file="file://$PROJECT_DIR$/Schema/ServiceSchema.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="107">
-              <caret line="12" column="30" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Setting/config.exemple.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="107">
-              <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+            <state relative-caret-position="105">
+              <caret line="5" column="32" lean-forward="true" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Views/medecin.twig">
+        <entry file="file://$PROJECT_DIR$/Schema/UserSchema.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1239">
-              <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
-              <caret line="14" column="60" selection-start-line="14" selection-start-column="60" selection-end-line="14" selection-end-column="60" />
-              <caret line="59" column="60" selection-start-line="59" selection-start-column="60" selection-end-line="59" selection-end-column="60" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Views/signin.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+            <state relative-caret-position="86">
+              <caret line="24" column="209" selection-start-line="24" selection-start-column="209" selection-end-line="24" selection-end-column="209" />
             </state>
           </provider>
         </entry>
@@ -119,36 +157,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>find(</find>
-      <find>id=&quot;F</find>
-      <find>req.session.Client</find>
-      <find>Memo du Jour</find>
-      <find>findOneAndUpdate</find>
-      <find>table-bordered</find>
-      <find>87</find>
-      <find>mede</find>
-      <find>/'</find>
-      <find>date(</find>
-      <find>name</find>
-      <find>.post</find>
-      <find>medecin</find>
-      <find>select</find>
-      <find>/client</find>
-      <find>getUser</find>
-      <find>getCommande</find>
-      <find>console</find>
-      <find>findOneA</find>
-      <find>selec</find>
-      <find>a</find>
-      <find>&quot;Assurance&quot;</find>
-      <find>Assurance</find>
-      <find>&quot;Assistance&quot;</find>
-      <find>login</find>
-      <find>newService</find>
-      <find>signin</find>
-      <find>API</find>
-      <find>/admin</find>
-      <find>crypto</find>
+      <find>email</find>
+      <find>info</find>
+      <find>clini</find>
+      <find>updateUs</find>
+      <find>User</find>
+      <find>User(</find>
+      <find>/medecin</find>
+      <find>tab-pane</find>
+      <find>choice</find>
+      <find>h1 a.navbar-brand</find>
+      <find>date</find>
+      <find>getAllS</find>
+      <find>set</find>
+      <find>getAll</find>
+      <find>index2</find>
+      <find>/</find>
+      <find>/:</find>
+      <find>addPharma</find>
+      <find>/autre</find>
+      <find>.compose-left ul li a</find>
+      <find>Autre</find>
+      <find>/')</find>
+      <find>col-md-5 autre</find>
+      <find>tab1</find>
+      <find>form-control1</find>
+      <find>Mail Page</find>
+      <find>Friends (Online)</find>
+      <find>ISODate</find>
+      <find>setAu</find>
+      <find>876</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -175,39 +213,44 @@
         <option value="$PROJECT_DIR$/Crogs/VilleCommuneSchema.js" />
         <option value="$PROJECT_DIR$/Crogs/AdminSchema.js" />
         <option value="$PROJECT_DIR$/Controller/UserQuerie.js" />
-        <option value="$PROJECT_DIR$/Schema/AdminSchema.js" />
         <option value="$PROJECT_DIR$/Views/focus/css/style.css" />
         <option value="$PROJECT_DIR$/Views/focus/profil.twig" />
         <option value="$PROJECT_DIR$/Routes/Client/Index.js" />
-        <option value="$PROJECT_DIR$/Schema/UserSchema.js" />
-        <option value="$PROJECT_DIR$/Views/css/style.css" />
         <option value="$PROJECT_DIR$/Schema/MedecinSchema.js" />
-        <option value="$PROJECT_DIR$/Setting/config.json" />
-        <option value="$PROJECT_DIR$/Schema/ServiceSchema.js" />
-        <option value="$PROJECT_DIR$/Views/Include/footer.twig" />
         <option value="$PROJECT_DIR$/Controller/Message.js" />
         <option value="$PROJECT_DIR$/node_modules/bulksms/index.js" />
-        <option value="$PROJECT_DIR$/Routes/API/Index.js" />
-        <option value="$PROJECT_DIR$/Controller/AdminQuerie.js" />
-        <option value="$PROJECT_DIR$/App.js" />
         <option value="$PROJECT_DIR$/Views/focus/index.twig" />
         <option value="$PROJECT_DIR$/Serveur.js" />
-        <option value="$PROJECT_DIR$/Views/index.twig" />
         <option value="$PROJECT_DIR$/Views/client.twig" />
-        <option value="$PROJECT_DIR$/Views/medecin.twig" />
-        <option value="$PROJECT_DIR$/Views/signin.twig" />
-        <option value="$PROJECT_DIR$/Views/Include/header.twig" />
-        <option value="$PROJECT_DIR$/Routes/Admin/Index.js" />
-        <option value="$PROJECT_DIR$/Model/Databases.js" />
         <option value="$PROJECT_DIR$/Setting/config.exemple.json" />
+        <option value="$PROJECT_DIR$/Setting/config.json" />
+        <option value="$PROJECT_DIR$/Schema/AdminSchema.js" />
+        <option value="$PROJECT_DIR$/Views/signin.twig" />
+        <option value="$PROJECT_DIR$/Views/medecin.twig" />
+        <option value="$PROJECT_DIR$/Views/edit.twig" />
+        <option value="$PROJECT_DIR$/Model/Databases.js" />
+        <option value="$PROJECT_DIR$/Views/client2.twig" />
+        <option value="$PROJECT_DIR$/Views/Include/footer.twig" />
+        <option value="$PROJECT_DIR$/Schema/ServiceSchema.js" />
+        <option value="$PROJECT_DIR$/Schema/AutreSchema.js" />
+        <option value="$PROJECT_DIR$/Routes/API/Index.js" />
+        <option value="$PROJECT_DIR$/Views/addPharmacie.twig" />
+        <option value="$PROJECT_DIR$/Routes/Admin/Index.js" />
+        <option value="$PROJECT_DIR$/Views/index2.twig" />
+        <option value="$PROJECT_DIR$/Views/Include/header.twig" />
+        <option value="$PROJECT_DIR$/Schema/UserSchema.js" />
+        <option value="$PROJECT_DIR$/Controller/AdminQuerie.js" />
+        <option value="$PROJECT_DIR$/App.js" />
+        <option value="$PROJECT_DIR$/Views/index.twig" />
+        <option value="$PROJECT_DIR$/Views/css/style.css" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="142" />
-    <option name="y" value="32" />
-    <option name="width" value="926" />
-    <option name="height" value="736" />
+    <option name="x" value="119" />
+    <option name="y" value="114" />
+    <option name="width" value="1108" />
+    <option name="height" value="687" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -221,6 +264,11 @@
             <path>
               <item name="BoostrapNodeJSTWIG" type="b2602c69:ProjectViewProjectNode" />
               <item name="BoostrapNodeJSTWIG" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BoostrapNodeJSTWIG" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BoostrapNodeJSTWIG" type="462c0819:PsiDirectoryNode" />
+              <item name="Controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BoostrapNodeJSTWIG" type="b2602c69:ProjectViewProjectNode" />
@@ -241,7 +289,29 @@
             <path>
               <item name="BoostrapNodeJSTWIG" type="b2602c69:ProjectViewProjectNode" />
               <item name="BoostrapNodeJSTWIG" type="462c0819:PsiDirectoryNode" />
+              <item name="Routes" type="462c0819:PsiDirectoryNode" />
+              <item name="API" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BoostrapNodeJSTWIG" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BoostrapNodeJSTWIG" type="462c0819:PsiDirectoryNode" />
+              <item name="Schema" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BoostrapNodeJSTWIG" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BoostrapNodeJSTWIG" type="462c0819:PsiDirectoryNode" />
               <item name="Setting" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BoostrapNodeJSTWIG" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BoostrapNodeJSTWIG" type="462c0819:PsiDirectoryNode" />
+              <item name="Views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BoostrapNodeJSTWIG" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BoostrapNodeJSTWIG" type="462c0819:PsiDirectoryNode" />
+              <item name="Views" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -253,7 +323,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Views" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -263,14 +333,16 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Views/focus/css" />
-      <recent name="$PROJECT_DIR$/Views/focus/js" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Views/focus" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Views" />
+      <recent name="$PROJECT_DIR$/Views/focus/css" />
+      <recent name="$PROJECT_DIR$/Views/focus/js" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -304,21 +376,25 @@
       <workItem from="1564485171766" duration="11919000" />
       <workItem from="1564501353529" duration="48848000" />
       <workItem from="1565446751861" duration="2381000" />
-      <workItem from="1565451627917" duration="4040000" />
+      <workItem from="1565451627917" duration="6413000" />
+      <workItem from="1565569731766" duration="1064000" />
+      <workItem from="1565623457752" duration="2396000" />
+      <workItem from="1565668266993" duration="21032000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="141646000" />
+    <option name="totallyTimeSpent" value="168511000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="142" y="32" width="926" height="736" extended-state="0" />
+    <frame x="119" y="114" width="1108" height="687" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24031007" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2580645" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="TypeScript" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32730925" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -330,7 +406,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32931727" />
       <window_info anchor="bottom" id="GraphQL" order="9" weight="0.3294893" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.5631399" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.48789573" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -363,17 +439,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Views/js/Chart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Views/graphs.html" />
-    <entry file="file://$PROJECT_DIR$/Views/focus/icons/demo-files/demo.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Views/focus/icons/demo-files/demo.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2129">
@@ -429,13 +494,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Schema/AdminSchema.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="14" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Views/focus/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="79">
@@ -459,13 +517,6 @@
     <entry file="file://$PROJECT_DIR$/Controller/UserQuerie.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Views/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="2395" column="12" lean-forward="true" selection-start-line="2395" selection-start-column="12" selection-end-line="2395" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Views/focus/profil.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
@@ -483,20 +534,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="33" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Schema/MedecinSchema.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="20" column="14" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Schema/ServiceSchema.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
@@ -524,51 +561,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Views/Include/footer.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="35" column="54" selection-start-line="35" selection-start-column="54" selection-end-line="35" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Routes/API/Index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="72" column="42" lean-forward="true" selection-start-line="72" selection-start-column="42" selection-end-line="72" selection-end-column="42" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Schema/UserSchema.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="24" column="149" selection-start-line="24" selection-start-column="137" selection-end-line="24" selection-end-column="149" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
           <caret line="37" column="17" lean-forward="true" selection-start-line="37" selection-start-column="17" selection-end-line="37" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Views/client.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Views/Include/header.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2961">
-          <caret line="116" column="41" selection-start-line="116" selection-start-column="41" selection-end-line="116" selection-end-column="41" />
-          <caret line="119" column="41" selection-start-line="119" selection-start-column="41" selection-end-line="119" selection-end-column="41" />
-          <caret line="123" column="41" selection-start-line="123" selection-start-column="41" selection-end-line="123" selection-end-column="41" />
-          <caret line="141" column="41" selection-start-line="141" selection-start-column="41" selection-end-line="141" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -586,46 +582,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Views/index.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Views/medecin.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1239">
-          <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
-          <caret line="14" column="60" selection-start-line="14" selection-start-column="60" selection-end-line="14" selection-end-column="60" />
-          <caret line="59" column="60" selection-start-line="59" selection-start-column="60" selection-end-line="59" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Views/signin.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="32" lean-forward="true" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Serveur.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8">
-          <caret line="53" column="36" selection-start-line="53" selection-start-column="36" selection-end-line="53" selection-end-column="36" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
@@ -633,41 +589,224 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Routes/Admin/Index.js">
+    <entry file="file://$PROJECT_DIR$/Setting/config.exemple.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="88" column="39" selection-start-line="88" selection-start-column="29" selection-end-line="88" selection-end-column="39" />
+        <state relative-caret-position="105">
+          <caret line="6" column="18" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Setting/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/express-validator/src/chain/validators.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/signin.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="24" column="40" lean-forward="true" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Serveur.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="53" column="36" selection-start-line="53" selection-start-column="36" selection-end-line="53" selection-end-column="36" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Controller/AdminQuerie.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="16" column="57" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Model/Databases.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="14" column="80" selection-start-line="14" selection-start-column="80" selection-end-line="14" selection-end-column="80" />
+        <state relative-caret-position="21">
+          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Setting/config.json">
+    <entry file="file://$PROJECT_DIR$/Views/edit.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="12" column="30" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="30" />
+        <state>
+          <caret column="24" lean-forward="true" selection-start-column="24" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Setting/config.exemple.json">
+    <entry file="file://$PROJECT_DIR$/Views/medecin.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+        <state relative-caret-position="102">
+          <caret line="34" column="41" lean-forward="true" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Schema/MedecinSchema.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="17" column="17" lean-forward="true" selection-end-line="24" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Schema/AdminSchema.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-39">
+          <caret line="27" column="14" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/Include/footer.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="27" selection-start-line="26" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/client.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="19" column="110" lean-forward="true" selection-start-line="19" selection-start-column="110" selection-end-line="19" selection-end-column="110" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Routes/Admin/Index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6">
+          <caret line="44" column="56" lean-forward="true" selection-start-line="44" selection-start-column="56" selection-end-line="44" selection-end-column="56" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#4366#4538#0" />
+            <element signature="e#4568#5235#0" />
+            <element signature="e#5245#5543#0" />
+            <element signature="e#5552#5705#0" />
+            <element signature="e#6269#6397#0" />
+            <element signature="e#6412#6492#0" />
+            <element signature="e#6705#6773#0" />
+            <element signature="e#7258#7454#0" />
+            <element signature="e#10909#11216#0" />
+            <element signature="e#12947#13077#0" />
+            <element signature="e#13091#13858#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/mongoose/lib/schema/date.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="298" column="3" lean-forward="true" selection-start-line="298" selection-start-column="3" selection-end-line="298" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/client2.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="215" column="35" selection-start-line="215" selection-start-column="35" selection-end-line="215" selection-end-column="35" />
+          <folding>
+            <element signature="e#12768#15612#0#HTML" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/addPharmacie.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="123" column="34" lean-forward="true" selection-start-line="123" selection-start-column="34" selection-end-line="123" selection-end-column="34" />
+          <folding>
+            <element signature="e#319#3420#0#HTML" />
+            <element signature="e#358#3401#0#HTML" />
+            <element signature="e#3433#3491#0#HTML" />
+            <element signature="e#3558#4828#0#HTML" />
+            <element signature="e#3510#4042#0#HTML" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/index2.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="22" lean-forward="true" selection-start-column="22" selection-end-column="22" />
+          <folding>
+            <element signature="e#4952#8481#0#HTML" />
+            <element signature="e#5687#7473#0#HTML" />
+            <element signature="e#8449#12148#0#HTML" />
+            <element signature="e#9325#11111#0#HTML" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/Include/header.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="142" column="35" selection-start-line="140" selection-start-column="28" selection-end-line="142" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Routes/API/Index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="45" column="7" lean-forward="true" selection-start-line="45" selection-start-column="7" selection-end-line="45" selection-end-column="7" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Schema/AutreSchema.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Schema/UserSchema.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="86">
+          <caret line="24" column="209" selection-start-line="24" selection-start-column="209" selection-end-line="24" selection-end-column="209" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Schema/ServiceSchema.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" column="32" lean-forward="true" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/AdminQuerie.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="197" column="27" selection-start-line="197" selection-start-column="27" selection-end-line="197" selection-end-column="27" />
+          <folding>
+            <element signature="e#10363#10892#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="83">
+          <caret line="43" column="21" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/index.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="39">
+          <caret line="20" column="50" lean-forward="true" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="1240" column="16" lean-forward="true" selection-start-line="1240" selection-start-column="16" selection-end-line="1240" selection-end-column="16" />
         </state>
       </provider>
     </entry>

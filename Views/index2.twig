@@ -1,0 +1,159 @@
+{% include 'Include/header.twig' %}
+
+<div class="content-main">
+
+    <div class="banner">
+        <h2>
+            <a href="/ryu">Accueil</a>
+            <i class="fa fa-angle-right"></i>
+            <span>Tableau de Bord</span>
+        </h2>
+    </div>
+    <div class="container-fluid">
+        <div id="pages-wrappers">
+            <div class="main-page">
+                <div class="col-md-4 compose-left">
+                    <div class="folder widget-shadow">
+                        <ul class="choiceF">
+                            <li class="head"><i class="fa fa-folder" aria-hidden="true"></i>Folders</li>
+                            <li class="intent" data-ryu="tab1">Aujourd'hui</li>
+                            <li class="intent" data-ryu="tab2">Bientôt</li>
+                            <li class="intent" data-ryu="tab4">Envoyé un message</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-8 compose-right widget-shadow">
+                    <div class="panel-default">
+                        <div class="panel-heading">
+                            Inbox
+                        </div>
+                        <div class="fake active text-style inbox-page" id="tab1">
+                            <h4>Aujourd'hui</h4>
+                            {% for item in info.today %}
+                            <div class="inbox-row widget-shadow " data-ryu="{{ item.code }}" id="accordion{{ item.code }}" role="tablist" aria-multiselectable="true">
+                                <div class="mail conteneurCheck"> <input type="checkbox" class="checkbox"> </div>
+                                <div class="mail"><h6>{{ item.clientName }}</h6></div>
+                                <div class="mail mail-name"> <h6>{{ item.posAc }}</h6> </div>
+                                <div class="mail mail-name"> <h6>Medecin : {{ item.medecin }}</h6> </div>
+                                <a role="button" data-toggle="collapse" data-parent="#accordion{{ item.code }}" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <div class="mail"><p>{{ item.Motif }} </p></div>
+                                </a>
+                                <div class="mail-right dots_drop">
+                                    <div class="dropdown">
+                                        <a href="#"  data-toggle="dropdown" aria-expanded="false">
+                                            <p><i class="fa fa-ellipsis-v mail-icon"></i></p>
+                                        </a>
+                                        <ul class="dropdown-menu float-right">
+                                            <li>
+                                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                    <i class="fa fa-reply mail-icon"></i>
+                                                    Reply
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" title="">
+                                                    <i class="fa fa-download mail-icon"></i>
+                                                    Archive
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="font-red" title="">
+                                                    <i class="fa fa-trash-o mail-icon"></i>
+                                                    Delete
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="mail-right"><p>{{ item.date|date('d/m/Y H:i') }}</p></div>
+                                <div class="clearfix"> </div>
+                                {#<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                    <div class="mail-body">
+                                        <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor.</p>
+                                        <form>
+                                            <input type="text" placeholder="Reply to sender" required="">
+                                            <input type="submit" value="Send">
+                                        </form>
+                                    </div>
+                                </div>#}
+                            </div>
+                       {% endfor %}
+                        </div>
+                        <div class="fake text-style inbox-page row" id="tab2">
+                            <h4>Plus tard</h4>
+                            {% for item in info.today %}
+                                <div class="inbox-row widget-shadow " data-ryu="{{ item.code }}" id="accordion{{ item.code }}" role="tablist" aria-multiselectable="true">
+                                    <div class="mail conteneurCheck"> <input type="checkbox" class="checkbox"> </div>
+                                    <div class="mail"><h6>{{ item.clientName }}</h6></div>
+                                    <div class="mail mail-name"> <h6>{{ item.posAc }}</h6> </div>
+                                    <div class="mail mail-name"> <h6>Medecin : {{ item.medecin }}</h6> </div>
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion{{ item.code }}" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        <div class="mail"><p>{{ item.Motif }} </p></div>
+                                    </a>
+                                    <div class="mail-right dots_drop">
+                                        <div class="dropdown">
+                                            <a href="#"  data-toggle="dropdown" aria-expanded="false">
+                                                <p><i class="fa fa-ellipsis-v mail-icon"></i></p>
+                                            </a>
+                                            <ul class="dropdown-menu float-right">
+                                                <li>
+                                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                        <i class="fa fa-reply mail-icon"></i>
+                                                        Reply
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" title="">
+                                                        <i class="fa fa-download mail-icon"></i>
+                                                        Archive
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="font-red" title="">
+                                                        <i class="fa fa-trash-o mail-icon"></i>
+                                                        Delete
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="mail-right"><p>{{ item.date|date('d/m/Y H:i') }}</p></div>
+                                    <div class="clearfix"> </div>
+                                    {#<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                        <div class="mail-body">
+                                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor.</p>
+                                            <form>
+                                                <input type="text" placeholder="Reply to sender" required="">
+                                                <input type="submit" value="Send">
+                                            </form>
+                                        </div>
+                                    </div>#}
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="fake text-style inbox-page row" id="tab4">
+                            <div class="panel-default">
+                                <div class="panel-body">
+                                    <div class="alert alert-info">
+                                        Veillez remplir les champs correctements
+                                    </div>
+                                    <form class="com-mail">
+                                        <input type="text" class="form-control1 control3" placeholder="à :">
+                                        <textarea rows="6" class="form-control1 control2" placeholder="Message :" ></textarea>
+                                        <input type="submit" value="Envoyer le message">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% include 'Include/footer.twig' %}

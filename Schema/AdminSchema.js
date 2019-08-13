@@ -29,6 +29,9 @@ const AdminSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    address:{
+        type:String,
+    },
     recovery:{type:Number, default: Math.floor(Math.random()*9999)},
     register_date: { type: Date, default: Date.now },
     login_date: { type: Date, default: null },

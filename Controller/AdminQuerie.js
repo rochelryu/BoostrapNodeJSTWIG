@@ -1,6 +1,7 @@
 const crypto = require('crypto')
 
 const Admin = require('../Schema/AdminSchema');
+const Autre = require('../Schema/AutreSchema');
 const User = require('../Schema/UserSchema');
 const VilleCommuneSchema = require('../Schema/VilleCommuneSchema');
 const ServiceSchema = require('../Schema/ServiceSchema');
@@ -41,12 +42,17 @@ exports.AdminQuerie = class {
             }).catch(err=>next({etat:false}))
         })
     }
-    static setAdmin(ele, pass, name, number, etat, clinicName){
+    static setAdmin(ele, pass, name, numberss, etat, clinicName, address){
         const newPass = crypto.createHmac("SHA256", pass).update("Yabana, An other NaN").digest('hex')
         return new Promise(async next=>{
-            let admin = new AdminSchema({name:name,password:newPass, ident:name.substring(0,7)+Math.floor(Math.random()*9999), email:ele, numero:number, etat:etat, clinicName:clinicName});
-            await admin.save().then(res=>next({etat:true})).catch(err=>next({etat:false}))
-
+            let admin = new Admin({name:name,password:newPass, ident:name.substring(0,7)+Math.floor(Math.random()*9999), email:ele, numero:numberss, etat:etat, clinicName:clinicName, address:address});
+            await admin.save().then(res=>next({etat:true})).catch(err=>{console.log("erre", err); next({etat:false}) })
+        })
+    }
+    static setAutre(name, level){
+        return new Promise(async next=>{
+            let admin = new Autre({name:name, level:level});
+            await admin.save().then(res=>next({etat:true})).catch(err=>{console.log("erre", err); next({etat:false}) })
         })
     }
     static getAdmin(){
@@ -65,6 +71,16 @@ exports.AdminQuerie = class {
     static getAllVille(){
         return new Promise(async next=>{
             await VilleCommuneSchema.find().sort({name:1}).then(res=>next(res)).catch(err=>next(err))
+        })
+    }
+    static getAllAutre(level){
+        return new Promise(async next=>{
+            await Autre.find({level:level}).sort({name:1}).then(res=>next(res)).catch(err=>next(err))
+        })
+    }
+    static getAllAdmin(){
+        return new Promise(async next=>{
+            await Admin.find().sort({name:1}).then(res=>next(res)).catch(err=>next(err))
         })
     }
     static setVille(name){
@@ -160,7 +176,7 @@ exports.AdminQuerie = class {
             }).catch(err=>next({etat:false}))
         })
     }
-    static setCommande(ident,name,age,code,serviceName,posAc,Motif,date,commande){
+    static setCommande(ident,name,age,code,serviceName,posAc,Motif,date,commande, autre){
         return new Promise(async next=>{
             let client = await User.findOne({ident:ident});
             if(commande[0] !== undefined) {
@@ -168,6 +184,7 @@ exports.AdminQuerie = class {
                     code: code,
                     serviceName: serviceName,
                     posAc: posAc,
+                    autreProbleme:autre,
                     Motif: Motif,
                     date: date,
                     commande: commande
@@ -221,12 +238,43 @@ exports.AdminQuerie = class {
                 }).catch(err=>{next(err)});
         })
     }
+    static getAllServiceInToday(name){
+        var moment = new Date().getFullYear() + "-"+(new Date().getMonth()+1)+ "-"+new Date().getDate();
+        console.log(moment);
+        return new Promise(async next=>{
+            await ServiceSchema.find({$and:[{ClinicName:name,date:{$gte:new Date(moment).toISOString(), $lte:  new Date(moment).toISOString() }}]}).then(res=>{
+                console.log("total",res.length);
+                next(res);
+            }).catch(err=>{console.log("err ",err);next(err)});
+        })
+    }
+    static getAllServiceInBecame(name){
+        var moment = new Date().getFullYear() + "-"+(new Date().getMonth()+1)+ "-"+new Date().getDate();
+        console.log(moment);
+        return new Promise(async next=>{
+            await ServiceSchema.find({$and:[{ClinicName:name,date:{$gte: new Date(moment).toISOString()}}]}).then(res=>{
+                console.log("total",res.length);
+                next(res);
+            }).catch(err=>next(err));
+        })
+    }
     static updateUser(ele, pass, number, address,ident){
         const newPass = crypto.createHmac("SHA256", pass).update("Yabana, An other NaN").digest('hex')
         return new Promise(async next=>{
            await User.findOneAndUpdate({$and:[{ident:ident,password:newPass}]}, {$set:{ "email": ele,"numero":number,"address":address }}, {new: true}).then(ress=>{
                next({etat:true,user:ress})
            }).catch(err=>next({etat:false,err:err}))
+        })
+    }
+    static updateAdmin(pass, newPass,ident){
+        const Pass = crypto.createHmac("SHA256", pass).update("Yabana, An other NaN").digest('hex');
+        const NEWPass = crypto.createHmac("SHA256", newPass).update("Yabana, An other NaN").digest('hex');
+        console.log(Pass);
+        return new Promise(async next=>{
+            await Admin.findOneAndUpdate({$and:[{ident:ident,password:Pass}]}, {$set:{ "password": newPass}}, {new: true}).then(ress=>{
+
+                next({etat:true,user:ress})
+            }).catch(err=>next({etat:false,err:err}))
         })
     }
     static getAllUser(){

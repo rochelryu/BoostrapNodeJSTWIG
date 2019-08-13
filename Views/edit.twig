@@ -1,0 +1,43 @@
+{% include 'Include/header.twig' %}
+
+<div class="content-main">
+
+    <div class="banner">
+        <h2>
+            <a href="/ryu">Accueil</a>
+            <i class="fa fa-angle-right"></i>
+            <span>Changer le mot de passe</span>
+        </h2>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <form style="background: white" action="/ryu/edit" method="post">
+                    <div class="vali-form">
+                        <div class="col-md-4 form-group1">
+                            <label class="control-label">Ancien Mot de passe</label>
+                            <input name="old" type="password" required="">
+                        </div>
+                        <div class="col-md-4 form-group1 form-last">
+                            <label class="control-label">Nouveau Mot de passe</label>
+                            <input name="newPass" type="password" required="">
+                        </div>
+                        <div class="col-md-4 form-group1 form-last">
+                            <label class="control-label">Confirmé Mot de passe</label>
+                            <input name="ConfnewPass" type="password" required="">
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="col-md-12 form-group">
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                        <button type="reset" class="btn btn-default">Vider</button>
+                    </div>
+                    <div class="clearfix"> </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% include 'Include/footer.twig' %}

@@ -16,6 +16,20 @@
 <script>
     $(document).ready(function () {
         var socket = io();
+        {% for item in info.err %}
+        $.notify({
+            position: 3,
+            type: 'error',
+            duration: 7000,
+            message: "{{ item.msg }}"
+        });
+        {% endfor %}
+
+        $('.choiceF').on('click', '.intent', function () {
+            $('.fake').removeClass('active');
+            var meta = "#"+$(this).attr("data-ryu");
+            $(meta).addClass("active");
+        })
         $('.table-bordered').DataTable({
             "dom": '<"toolbar">frtip',
             "paging": true,
@@ -52,7 +66,6 @@
                 autoClose: false,
                 message: (data.service.serviceName === 'Render-vous' ) ? "un nouveau Rendez-vous vient d'arriver" : "une nouvelle Assistance vient d'être demandé"
             });
-            console.log(data);
                 if(data.service.serviceName === 'Render-vous' ) {
                     var meta = "";
                     for(let i in data.medecin){
@@ -118,6 +131,7 @@
                     console.log(leta);
                 }
         });
+
     })
 </script>
 </body>
