@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>{{ info.user.name }}</title>
+    <!-- Favicon-->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap Core Css -->
+    <link href="../plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Waves Effect Css -->
+    <link href="../plugins/node-waves/waves.css" rel="stylesheet" />
+
+    <!-- Animation Css -->
+    <link href="../plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <!-- Morris Chart Css-->
+    <link href="../plugins/morrisjs/morris.css" rel="stylesheet" />
+
+    <!-- Custom Css -->
+    <link href="../css/style.css" rel="stylesheet">
+
+    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+    <link href="../css/themes/all-themes.css" rel="stylesheet" />
+</head>
+
+<body class="theme-cyan">
+<!-- Page Loader -->
+<div class="page-loader-wrapper">
+    <div class="loader">
+        <div class="preloader">
+            <div class="spinner-layer pl-red">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+        <p>Please wait...</p>
+    </div>
+</div>
+<!-- #END# Page Loader -->
+<!-- Overlay For Sidebars -->
+<div class="overlay"></div>
+<nav class="navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+            <a href="javascript:void(0);" class="bars"></a>
+            <a class="navbar-brand" href="index.html">{{ info.user.name }}</a>
+        </div>
+    </div>
+</nav>
+<section>
+    <aside id="leftsidebar" class="sidebar">
+        <!-- User Info -->
+        <div class="user-info">
+            <div class="image">
+                {% if(info.user.etat == 3) %}
+                    <img src="../images/icon.png" width="48" height="48" alt="User" />
+                {% else %}
+                    <img src="../images/hospital.png" width="48" height="48" alt="User" />
+                {% endif %}
+            </div>
+            <div class="info-container">
+                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ info.user.name }}</div>
+                <div class="btn-group user-helper-dropdown">
+                    <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+                    <ul class="dropdown-menu pull-right">
+
+                        <li><a href="/ryu/logout"><i class="material-icons">input</i>Déconnexion</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- #User Info -->
+        <!-- Menu -->
+        <div class="menu">
+            <ul class="list">
+                <li class="header">Menu</li>
+                {% if(info.user.etat == 3) %}
+                    <li class="active">
+                        <a href="/ryu">
+                            <i class="material-icons">home</i>
+                            <span>Tableau de Bord</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/ryu/client">
+                            <i class="material-icons">perm_contact_calendar</i>
+                            <span>Gestion Client</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/">
+                            <i class="material-icons">inbox</i>
+                            <span>Gestion Medecin</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">widgets</i>
+                            <span>Gestion de Stock</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="#">Pharmacie</a>
+                            </li>
+                            <li>
+                                <a href="#">Parametique</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">settings</i>
+                            <span>Paramêtre</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="/ryu/edit">Compte Personnel</a>
+                            </li>
+                            <li>
+                                <a href="/ryu/addPharma">Ajouter Un Compte</a>
+                            </li>
+                        </ul>
+                    </li>
+                {% else %}
+                    <li class="active">
+                        <a href="/ryu">
+                            <i class="material-icons">home</i>
+                            <span>Gestion Client</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">settings</i>
+                            <span>Paramêtre</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="/ryu/edit">Compte Personnel</a>
+                            </li>
+                        </ul>
+                    </li>
+                {% endif %}
+
+            </ul>
+        </div>
+        <!-- #Menu -->
+        <!-- Footer -->
+        <div class="legal">
+            <div class="copyright">
+                &copy;
+                <script>document.write(new Date().getFullYear() + " - " + new Date().getFullYear()+1)</script> <a href="javascript:void(0);">Allo Santé Express</a>.
+            </div>
+            <div class="version">
+                <b>Version: </b> 1.0.0
+            </div>
+        </div>
+        <!-- #Footer -->
+    </aside>
+</section>
+
+<section class="content">
+    <div class="container-fluid">

@@ -8,7 +8,7 @@ const MedecinSchema = new mongoose.Schema({
     },
     clinic:{
         type:String,
-        required: true,
+        default: "Allô Santé Express"
     },
     address:{
         type:String,

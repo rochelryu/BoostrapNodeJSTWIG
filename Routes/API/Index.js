@@ -25,7 +25,7 @@ router.route('/ville') // afin de decrire mieux une route on utilise la methode 
 
 router.route('/login')
     .post([
-        check("email","email Invalide").isEmail(),
+        check("email","email Invalide").isLength({max:8}),
         check("password","Veillez entrer un Mot de Passe Alphanumerique et d'au moins 8 Charactère").not().isEmpty()
     ],async (req,res)=>{
 
@@ -46,7 +46,6 @@ router.route('/login')
     });
 router.route('/signin')
     .post([
-        check("email","email Invalide").isEmail(),
         check("name","Nom & prénom invalide").not().isEmpty(),
         check("numero","numero Invalide").isLength({ max: 8 }).not().isEmpty(),
         check("address","numero Invalide").not().isEmpty(),
@@ -59,7 +58,7 @@ router.route('/signin')
             res.send({etat:false,err:errors})
         }
         else {const input = req.body;
-            const admin = await AdminQuerie.setUser(input.email,input.password,input.name,input.numero,input.address,input.date)
+            const admin = await AdminQuerie.setUser(input.password,input.name,input.numero,input.prefix,input.address,input.date)
             if(admin.etat){
                 res.send({etat:true,user:admin.user})
             }

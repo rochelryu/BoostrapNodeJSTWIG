@@ -28,7 +28,7 @@ exports.AdminQuerie = class {
     static getVerifyUser(ele, pass){
         const moment = new Date();
         return new Promise(async next=>{
-            await User.findOneAndUpdate({email:ele}, {$set:{ "login_date": moment }}, {new: true}).then( res=>{
+            await User.findOneAndUpdate({numero:ele}, {$set:{ "login_date": moment }}, {new: true}).then( res=>{
                 if(res === null){
                     next({etat:false});
                 }else {
@@ -60,10 +60,10 @@ exports.AdminQuerie = class {
             await Admin.find({etat:2}).sort({name:1}).then(res=>next(res)).catch(err=>next(err))
         })
     }
-    static setUser(ele, pass, name, number, address,date){
+    static setUser(pass, name, number,prefix, address,date){
         const newPass = crypto.createHmac("SHA256", pass).update("Yabana, An other NaN").digest('hex')
         return new Promise(async next=>{
-            let admin = new User({date:date,name:name,password:newPass, ident:name.substring(0,7)+Math.floor(Math.random()*9999), email:ele, numero:number, address:address});
+            let admin = new User({date:date,name:name,password:newPass, ident:name.substring(0,7)+Math.floor(Math.random()*9999), numero:number, address:address, prefix:prefix});
             await admin.save().then(res=>{next({etat:true,user:res})}).catch(err=>{console.log(err);next({etat:false})})
 
         })
@@ -71,6 +71,12 @@ exports.AdminQuerie = class {
     static getAllVille(){
         return new Promise(async next=>{
             await VilleCommuneSchema.find().sort({name:1}).then(res=>next(res)).catch(err=>next(err))
+        })
+    }
+    static setVille(name,prefix){
+        return new Promise(async next=>{
+            let pays = new VilleCommuneSchema({name:name,prefix:prefix});
+            await pays.save().then(res=>next(res)).catch(err=>next(err))
         })
     }
     static getAllAutre(level){

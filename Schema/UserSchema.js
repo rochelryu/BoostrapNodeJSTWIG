@@ -13,14 +13,11 @@ const UserSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    email:{
-        type:String,
-        required:true,
-    },
     numero:{
         type:String,
         required:true,
     },
+    prefix:{type:String, required:true},
     date:{type:String},
     services:[{code:String,serviceName:String,posAc:String,Motif:String,date:Date,commande:[{nameDoc:String, qty:Number, price:Number}], registerDate:{ type: Date, default: Date.now }, medecin:String, ClinicName:String, autreProbleme:{type:String}, etat:{type:Number, default:1}}],
     address:{type:String},

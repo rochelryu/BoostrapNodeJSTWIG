@@ -1,0 +1,158 @@
+{% include 'Include/header.twig' %}
+       <div class="content-main">
+ 
+  		<!--banner-->	
+		    <div class="banner">
+		   
+				<h2>
+					<a href="/ryu">Accueil</a>
+				<i class="fa fa-angle-right"></i>
+				<span>Tableau de Bord</span>
+				</h2>
+		    </div>
+		<!--//banner-->
+		<!--content-->
+		<div class="content-top">
+			
+			
+			<div class="col-md-2 ">
+				<div class="content-top-1">
+				<div class="col-md-12 top-content">
+					<h5>Produits En Pharmacie</h5>
+					<label>0</label>
+				</div>
+				 <div class="clearfix"> </div>
+				</div>
+				<div class="content-top-1">
+				<div class="col-md-12 top-content">
+					<h5>Total Assitance</h5>
+					<label>{{ info.assurance|length }}</label>
+				</div>
+				 <div class="clearfix"> </div>
+				</div>
+				<div class="content-top-1">
+				<div class="col-md-12 top-content">
+					<h5>Total Rendez-vous</h5>
+					<label>{{ info.rdv|length }}</label>
+				</div>
+				 <div class="clearfix"> </div>
+				</div>
+				<div class="content-top-1">
+					<div class="col-md-12 top-content">
+						<h5>Total Clients</h5>
+						<label>{{ info.TotalUser }}</label>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+			<div class="col-md-10 content-top-2">
+				<!---start-chart---->
+				<!----->
+				<div class="content-graph">
+				<!--graph-->
+				<div class="graph-container">
+
+					<div class="col-md-12 graph-box1 clearfix">
+						<div class="grid-1">
+							<h4>Vue globale sur les differents types des medecins</h4>
+							<div class="grid-graph">
+								<div class="grid-graph1">
+									<div id="os-Win-lbl">Pediatre <span>30%</span></div>
+									<div id="os-Mac-lbl">Churigien <span> 50%</span></div>
+									<div id="os-Other-lbl">Medecin General<span>20%</span></div>
+								</div>
+							</div>
+							<div class="grid-2">
+								<canvas id="pie" height="315" width="470" style="width: 470px; height: 315px;"></canvas>
+								<script>
+									var pieData = [
+										{
+											value: 30,
+											color:"#D95459"
+										},
+										{
+											value : 50,
+											color : "#1ABC9C"
+										},
+										{
+											value : 100,
+											color : "#3BB2D0"
+										}
+
+									];
+									new Chart(document.getElementById("pie").getContext("2d")).Pie(pieData);
+								</script>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+					</div>
+					<div class="row m-5">
+						<div class="col-lg-12 col-md-12">
+							<table class="display table table-hover table-striped table-bordered" style="width:100%">
+								<thead>
+								<tr>
+									<th>N</th>
+									<th>Catégorie</th>
+									<th>Date</th>
+									<th>Medecin</th>
+									<th>Malaise soulévé</th>
+									<th>Code</th>
+								</tr>
+								</thead>
+								<tbody>
+								{% for item in info.assurance %}
+
+                                    <tr class="mtn" id="{{ item._id }}" data-CliendId="{{ item.code }}" data-platId="{{ item.ident }}">
+                                        <td scope="row">A-{{ loop.index }}</td>
+                                        <td>{{ item.serviceName }}</td>
+                                        <td>{{ item.date|date('d/m/Y H:i') }}</td>
+                                        <td>{{item.medecin}}</td>
+                                        <td>{{item.Motif}}</td>
+                                        <td>{{ item.code }}</td>
+                                        <td><a class="btn btn-action fake" data-toggle="modal" data-target="#sideModalTR"><i class="far fa-eye"></i></a></td>
+                                    </tr>
+                                {% endfor %}
+								{% for item in info.rdv %}
+
+									<tr class="mtn" id="{{ item._id }}" data-CliendId="{{ item.code }}" data-platId="{{ item.ident }}">
+										<td scope="row">R-{{ loop.index }}</td>
+										<td>{{ item.serviceName }}</td>
+										<td>{{ item.date|date('d/m/Y H:i') }}</td>
+										<td>{{item.medecin}}</td>
+										<td>{{item.Motif}}</td>
+										<td>{{ item.code }}</td>
+										<td><a class="btn btn-action fake" data-toggle="modal" data-target="#sideModalTR"><i class="far fa-eye"></i></a></td>
+									</tr>
+								{% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+								</div>
+
+		</div>
+		</div>
+		<div class="clearfix"> </div>
+		</div>
+		{#<div class="content-bottom">
+			<div class="col-md-6 post-top">
+			<div class="post-bottom">
+				<div class="post-bottom-1">
+					<a href="#"><i class="fa fa-facebook"></i></a>
+					<p>15k <label>Likes</label></p>
+				</div>
+				<div class="post-bottom-2">
+					<a href="#"><i class="fa fa-twitter"></i></a>
+					<p>20M <label>Followers</label></p>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+				
+			</div>
+			<div class="col-md-6">
+
+			</div>
+			<div class="clearfix"> </div>
+		</div>#}
+{% include 'Include/footer.twig' %}

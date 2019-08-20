@@ -6,7 +6,10 @@ const VilleCommuneSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    commune:[{nameCommune:String}],
+    prefix:{
+        type: String,
+        required: true,
+    }
 });
 const VilleCommune = mongoose.model('VilleCommune', VilleCommuneSchema);
 module.exports = VilleCommune;
