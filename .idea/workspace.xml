@@ -2,229 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61a256f2-f906-4abe-b1e8-69ff29b76c98" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Views/Include/footer2.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Views/Include/header2.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/AdminQuerie.js" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/AdminQuerie.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/Message.js" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Message.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/UserQuerie.js" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/UserQuerie.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/Databases.js" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Databases.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Routes/API/Index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Routes/API/Index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Routes/Admin/Index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Routes/Admin/Index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Routes/Client/Index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Routes/Client/Index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schema/AdminSchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/Schema/AdminSchema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schema/AutreSchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/Schema/AutreSchema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schema/MedecinSchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/Schema/MedecinSchema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schema/ServiceSchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/Schema/ServiceSchema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schema/SpecialiteSchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/Schema/SpecialiteSchema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schema/UserSchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/Schema/UserSchema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schema/VilleCommuneSchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/Schema/VilleCommuneSchema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serveur.js" beforeDir="false" afterPath="$PROJECT_DIR$/Serveur.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Setting/config.exemple.json" beforeDir="false" afterPath="$PROJECT_DIR$/Setting/config.exemple.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/Views/404.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Include/footer.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Include/footer.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Include/header.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Include/header.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/addPharmacie.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Views/addPharmacie.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/client.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Views/client.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/client2.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Views/client2.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/css/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/css/calendar.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/css/clndr.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/css/custom.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/css/custom_1.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/css/examples.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/css/font-awesome.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/css/graph.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/css/main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/css/owl.carousel.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Views/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/css/swipebox.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/edit.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Views/edit.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/css/jquery.notify.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/css/jquery.notify.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/css/simpletab.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/css/simpletab.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/css/style-color-1.css" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/css/style-color-1.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/css/style-color-2.css" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/css/style-color-2.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/css/style-color-3.css" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/css/style-color-3.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/css/style-color-4.css" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/css/style-color-4.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/css/style-color-5.css" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/css/style-color-5.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/form/forms.js" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/form/forms.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/form/process-booking.php" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/form/process-booking.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/form/process-contact.php" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/form/process-contact.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/form/process-question.php" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/form/process-question.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/form/process-request.php" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/form/process-request.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/icons/Read Me.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/icons/Read Me.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/icons/demo-files/demo.css" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/icons/demo-files/demo.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/icons/demo-files/demo.js" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/icons/demo-files/demo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/icons/demo.html" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/icons/demo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/icons/fonts/dentco.eot" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/icons/fonts/dentco.eot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/icons/fonts/dentco.svg" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/icons/fonts/dentco.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/icons/fonts/dentco.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/icons/fonts/dentco.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/icons/fonts/dentco.woff" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/icons/fonts/dentco.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/icons/fonts/password.svg" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/icons/fonts/password.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/icons/selection.json" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/icons/selection.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/icons/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/icons/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/Logo fond noir.png" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/Logo fond noir.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/Prise de RDV.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/Prise de RDV.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/ajax-loader.gif" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/ajax-loader.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/ambulance.png" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/ambulance.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/application.png" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/application.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/bg-grey-dark.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/bg-grey-dark.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/bg-grey.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/bg-grey.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/bg.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/bg.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/calendar.png" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/calendar.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/content/banner-callus.png" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/content/banner-callus.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/content/banner-left.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/content/banner-left.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/content/contact-bg.png" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/content/contact-bg.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/content/doctor-01.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/content/doctor-01.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/content/doctor-02.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/content/doctor-02.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/content/doctor-03.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/content/doctor-03.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/content/doctor-04.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/content/doctor-04.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/content/doctor-05.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/content/doctor-05.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/content/doctor-06.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/content/doctor-06.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/content/footer-post-author-01.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/content/footer-post-author-01.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/content/footer-post-author-02.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/content/footer-post-author-02.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/content/footer-post-author-03.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/content/footer-post-author-03.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/content/news-01.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/content/news-01.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/content/news-02.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/content/news-02.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/content/news-03.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/content/news-03.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/content/online-appointment-bg.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/content/online-appointment-bg.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/content/reviews-bg.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/content/reviews-bg.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/content/slider/slide-01.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/content/slider/slide-01.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/content/slider/slide-02.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/content/slider/slide-02.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/content/slider/slide-03.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/content/slider/slide-03.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/content/testimonials-left.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/content/testimonials-left.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/content/video-poster-bg.png" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/content/video-poster-bg.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/content/video-poster.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/content/video-poster.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/content/why-choose-us.png" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/content/why-choose-us.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/customer.png" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/customer.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/doctor.png" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/doctor.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/favicon.png" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/favicon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/footer-logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/footer-logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/heartbeat.png" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/heartbeat.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/hospital.png" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/hospital.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/map-marker.png" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/map-marker.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/medical-app.png" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/medical-app.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/online-payment.png" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/online-payment.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/population.png" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/population.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/qa.png" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/qa.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/images/responsive.png" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/images/responsive.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/index.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/index.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/js/app-shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/js/app-shop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/js/jquery.notify.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/js/jquery.notify.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/js/simpletab.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/js/simpletab.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/profil.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/profil.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/vendor/animate/animate.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/vendor/animate/animate.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.css" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/vendor/bootstrap-datetimepicker/moment.js" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/vendor/bootstrap-datetimepicker/moment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/vendor/bootstrap/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/vendor/bootstrap/bootstrap.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/vendor/bootstrap/bootstrap.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/vendor/bootstrap/bootstrap.min.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/vendor/bootstrap/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/vendor/bootstrap/bootstrap.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/vendor/cookie/jquery.cookie.js" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/vendor/cookie/jquery.cookie.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/vendor/countTo/jquery.countTo.js" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/vendor/countTo/jquery.countTo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/vendor/form-validation/jquery.form.js" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/vendor/form-validation/jquery.form.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/vendor/form-validation/jquery.validate.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/vendor/form-validation/jquery.validate.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/vendor/imagesloaded/imagesloaded.pkgd.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/vendor/imagesloaded/imagesloaded.pkgd.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/vendor/isotope/isotope.pkgd.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/vendor/isotope/isotope.pkgd.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/vendor/jquery-migrate/jquery-migrate-3.0.1.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/vendor/jquery-migrate/jquery-migrate-3.0.1.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/vendor/jquery-ui/jquery-ui-1.12.1.custom (1).zip" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/vendor/jquery-ui/jquery-ui-1.12.1.custom (1).zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/vendor/jquery-ui/jquery-ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/vendor/jquery-ui/jquery-ui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/vendor/jquery-ui/jquery-ui.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/vendor/jquery-ui/jquery-ui.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/vendor/jquery.elevateZoom/jquery.elevateZoom-3.0.8.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/vendor/jquery.elevateZoom/jquery.elevateZoom-3.0.8.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/vendor/jquery/jquery-3.2.1.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/vendor/jquery/jquery-3.2.1.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/vendor/modernizr/modernizr.js" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/vendor/modernizr/modernizr.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/vendor/nouislider/nouislider.css" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/vendor/nouislider/nouislider.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/vendor/nouislider/nouislider.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/vendor/nouislider/nouislider.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/vendor/parallax_background/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/vendor/parallax_background/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/vendor/parallax_background/parallax_background.js" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/vendor/parallax_background/parallax_background.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/vendor/popper/popper.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/vendor/popper/popper.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/vendor/schedule/schedule.js" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/vendor/schedule/schedule.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/vendor/scroll-with-ease/jquery.scroll-with-ease.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/vendor/scroll-with-ease/jquery.scroll-with-ease.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/vendor/slick/slick.css" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/vendor/slick/slick.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/vendor/slick/slick.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/vendor/slick/slick.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/vendor/twentytwenty/jquery.event.move.js" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/vendor/twentytwenty/jquery.event.move.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/vendor/twentytwenty/jquery.twentytwenty.js" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/vendor/twentytwenty/jquery.twentytwenty.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/vendor/twentytwenty/twentytwenty.css" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/vendor/twentytwenty/twentytwenty.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/vendor/waypoints/jquery.waypoints.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/vendor/waypoints/jquery.waypoints.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/focus/vendor/waypoints/sticky.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/Views/focus/vendor/waypoints/sticky.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/fonts/FontAwesome.otf" beforeDir="false" afterPath="$PROJECT_DIR$/Views/fonts/FontAwesome.otf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/fonts/Montserrat-Regular.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/Views/fonts/Montserrat-Regular.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/fonts/Muli-Regular.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/Views/fonts/Muli-Regular.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/fonts/fontawesome-webfont.eot" beforeDir="false" afterPath="$PROJECT_DIR$/Views/fonts/fontawesome-webfont.eot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/fonts/fontawesome-webfont.svg" beforeDir="false" afterPath="$PROJECT_DIR$/Views/fonts/fontawesome-webfont.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/fonts/fontawesome-webfont.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/Views/fonts/fontawesome-webfont.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/fonts/fontawesome-webfont.woff" beforeDir="false" afterPath="$PROJECT_DIR$/Views/fonts/fontawesome-webfont.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/fonts/fontawesome-webfont.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/Views/fonts/fontawesome-webfont.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/404.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/arr.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/dark.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/ga.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/ga1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/ga2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/ga3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/ga4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/ga5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/ga6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/ga7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/ga8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/icons.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/in.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/in1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/in10.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/in11.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/in2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/in3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/in4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/in5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/in6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/in7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/in8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/in9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/link.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/lo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/na.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/na1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/na2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/pic3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/pr.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/search.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/tick1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/images/wo.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/index.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Views/index.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/index2.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Views/index2.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/js/Chart.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/js/bootstrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/js/clndr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/js/custom.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/js/data.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/js/gmaps.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/js/jquery.calendario.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/js/jquery.flot.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/js/jquery.flot.pie.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/js/jquery.flot.selection.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/js/jquery.flot.stack.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/js/jquery.metisMenu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/js/jquery.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/js/jquery.nicescroll.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/js/jquery.slimscroll.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/js/jquery.swipebox.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/js/moment-2.2.1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/js/owl.carousel.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/js/pie-chart.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/js/screenfull.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/js/scripts.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/js/site.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/js/skycons.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/js/underscore-min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/medecin.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Views/medecin.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/signin.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Views/signin.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -281,8 +60,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Routes/API/Index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="61" column="97" selection-start-line="61" selection-start-column="97" selection-end-line="61" selection-end-column="97" />
+            <state relative-caret-position="21">
+              <caret line="58" column="9" lean-forward="true" selection-start-line="58" selection-start-column="9" selection-end-line="58" selection-end-column="9" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -290,18 +69,22 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Controller/AdminQuerie.js">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="65" column="31" selection-start-line="65" selection-start-column="31" selection-end-line="65" selection-end-column="31" />
+            <state relative-caret-position="111">
+              <caret line="36" column="14" selection-start-line="36" selection-start-column="14" selection-end-line="36" selection-end-column="14" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Views/js/demo.js">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/Controller/AdminQuerie.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="30" column="47" selection-start-line="30" selection-start-column="41" selection-end-line="30" selection-end-column="47" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -337,11 +120,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Schema/UserSchema.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="73">
-              <caret line="20" column="22" lean-forward="true" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+            <state relative-caret-position="52">
+              <caret line="19" column="10" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -357,7 +140,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getAllS</find>
       <find>set</find>
       <find>getAll</find>
       <find>index2</find>
@@ -386,6 +168,7 @@
       <find>Total</find>
       <find>Stat Assu</find>
       <find>===</find>
+      <find>verifyU</find>
       <find>signi</find>
     </findStrings>
   </component>
@@ -400,7 +183,6 @@
         <option value="$PROJECT_DIR$/Views/signin.html" />
         <option value="$PROJECT_DIR$/Routes/Client/index.js" />
         <option value="$PROJECT_DIR$/Views/inbox.html" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/Views/focus/index.html" />
         <option value="$PROJECT_DIR$/Views/focus/icons/fonts/dentco.svg" />
         <option value="$PROJECT_DIR$/Views/focus/icons/fonts/password.svg" />
@@ -446,6 +228,7 @@
         <option value="$PROJECT_DIR$/Views/index.twig" />
         <option value="$PROJECT_DIR$/Views/Include/header2.twig" />
         <option value="$PROJECT_DIR$/Routes/API/Index.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -597,20 +380,20 @@
       <workItem from="1565668266993" duration="23174000" />
       <workItem from="1565771665292" duration="586000" />
       <workItem from="1565791596391" duration="707000" />
-      <workItem from="1566297596989" duration="8090000" />
+      <workItem from="1566297596989" duration="8551000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="180036000" />
+    <option name="totallyTimeSpent" value="180497000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="243" y="83" width="1108" height="687" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.71929824" visible="true" weight="0.31981567" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7205543" visible="true" weight="0.31981567" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="npm" order="2" sideWeight="0.28070176" side_tool="true" visible="true" weight="0.31981567" />
+      <window_info id="npm" order="2" sideWeight="0.27944574" side_tool="true" visible="true" weight="0.31981567" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32730925" />
@@ -623,7 +406,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32931727" />
       <window_info anchor="bottom" id="GraphQL" order="9" weight="0.3294893" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.46927375" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.19366853" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -746,13 +529,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="19" column="21" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="37" column="17" lean-forward="true" selection-start-line="37" selection-start-column="17" selection-end-line="37" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -1002,27 +778,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Schema/UserSchema.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="19" column="10" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/AdminQuerie.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="30" column="47" selection-start-line="30" selection-start-column="41" selection-end-line="30" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Routes/API/Index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="61" column="97" selection-start-line="61" selection-start-column="97" selection-end-line="61" selection-end-column="97" />
+        <state relative-caret-position="21">
+          <caret line="58" column="9" lean-forward="true" selection-start-line="58" selection-start-column="9" selection-end-line="58" selection-end-column="9" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Controller/AdminQuerie.js">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="65" column="31" selection-start-line="65" selection-start-column="31" selection-end-line="65" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Schema/UserSchema.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="20" column="22" lean-forward="true" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+        <state relative-caret-position="111">
+          <caret line="36" column="14" selection-start-line="36" selection-start-column="14" selection-end-line="36" selection-end-column="14" />
         </state>
       </provider>
     </entry>
