@@ -13,7 +13,6 @@ const request = require('request');
 const axios = require('axios');
 const Twilio = require('twilio');
 const config = require('../../Setting/config');
-var twilio = new Twilio(config.sms.accountSid, config.sms.token);
 //Première Route
 router.route('/') // afin de decrire mieux une route on utilise la methode route("l'url de la route qu'on veut") ensuite on utilise la methode que nous vpulons utiliser (ex de methode : GET, POST, OPTIONS, PUT, DELETE, etc...)
 // Dans mon cas ici je suis venu à la ligne parce que mon code Soit plus lisible sinon j'aurais pu tout faire en un ligne (ex: router.route('/').get()
