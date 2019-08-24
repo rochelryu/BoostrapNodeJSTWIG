@@ -27,7 +27,7 @@ io.on('connection', function (socket) {
         const commande = (data.commande)? data.commande:[];
         console.log(data.ident,name,age,code,"Render-vous",data.address,typeof data.date,commande, data.autre, data.choice);
         console.log("/******BEGIN******/");
-        const service = await AdminQuerie.setCommande(data.ident,name,age,code,"Render-vous",data.address,data.date,new Array(), data.autre, data.choice);
+        const service = await AdminQuerie.setCommande(data.ident,name,age,code,"Render-vous",data.address,data.date,commande, data.autre, data.choice);
         if(service.etat){
             let info = {}
             const ville = await AdminQuerie.getAllMedecin();
