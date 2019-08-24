@@ -3,11 +3,39 @@ const crypto = require('crypto')
 const Admin = require('../Schema/AdminSchema');
 const Autre = require('../Schema/AutreSchema');
 const User = require('../Schema/UserSchema');
+const scrapeIt = require('scrape-it');
+let request = require('request');
 const VilleCommuneSchema = require('../Schema/VilleCommuneSchema');
 const ServiceSchema = require('../Schema/ServiceSchema');
 const MedecinSchema = require('../Schema/MedecinSchema');
 
 exports.AdminQuerie = class {
+    medical = [
+        {
+            commune:"Abobo",
+            link:"http://www.pagesjaunes.ci/pharmacies-de-garde-abobo/",
+        },
+        {
+            commune:"Adjamé",
+            link:"http://www.pagesjaunes.ci/pharmacies-de-garde-adjame/",
+        },
+        {
+            commune:"Anyaba",
+            link:"http://www.pagesjaunes.ci/pharmacies-de-garde-abobo/",
+        },
+        {
+            commune:"Abobo",
+            link:"http://www.pagesjaunes.ci/pharmacies-de-garde-abobo/",
+        },
+        {
+            commune:"Abobo",
+            link:"http://www.pagesjaunes.ci/pharmacies-de-garde-abobo/",
+        },
+        {
+            commune:"Abobo",
+            link:"http://www.pagesjaunes.ci/pharmacies-de-garde-abobo/",
+        },
+    ]
     static getVerifyAdmin(ele, pass){
         const moment = new Date();
         return new Promise(async next=>{
@@ -60,10 +88,86 @@ exports.AdminQuerie = class {
             await Admin.find({etat:2}).sort({name:1}).then(res=>next(res)).catch(err=>next(err))
         })
     }
-    static setUser(pass, name, number,prefix, address,date){
+    static ikeaDetails(){
+        let base = "https://abidjan.net/inc/abidjan/inc_pharmacie.js";
+        return new Promise(async next=>{
+            /*scrapeIt(base, {
+                title: ".wpb_text_column.wpb_content_element h6 strong",
+                pharmacie: {
+                    listItem: ".lp-section-content-container.lp-list-page-grid.row .col-md-12.lp-grid-box-contianer.list_view.card1.lp-grid-box-contianer1 "
+                    , data: {
+
+                        title: ".lp-grid-box-description .lp-h4"
+                        , lien: {
+                            selector: ".lp-h4 a"
+                            , attr: "href"
+                        },
+                        address:".text.gaddress"
+                    }
+                }
+            }).then((meta) => {
+                console.log(meta)
+                base = meta.data;
+                next(base);
+            }).catch(err=>{
+                console.log("err de beta", err);
+                next(err);
+            });*/
+            request({
+                uri: base,
+                "Content-Type": "charset=utf-8",
+            }, function (error, response, body) {
+                const bod = body.replace(/(\r\n|\n|\r)/g,"<br />");
+                let equal = bod.split('<br />');
+                let ind = -1;
+                let ant = 0;
+                let block = new Array();
+                let item = {};
+                let inWait = {};
+                item.block = new Array();
+                for(let i in equal){
+                    if(equal[i].indexOf("boxTitre") !== -1){
+                        if(block.length === 0 && ind === -1){
+                            ind = i;
+                            item.name = equal[i].substring(equal[i].indexOf("&nbsp;")+6,equal[i].length-10)
+                            item.block = new Array();
+                        }
+                        else{
+                            ant = 0;
+                            block.push(item);
+                            item = {};
+                            item.name = equal[i].substring(equal[i].indexOf("&nbsp;")+6,equal[i].length-10)
+                            item.block = new Array();
+                        }
+                    }
+                    else if (equal[i].indexOf("boxTpharm") !== -1){
+                        inWait.title = equal[i].substring(equal[i].indexOf("boxTpharm")+11,equal[i].length-14);
+                        inWait.lien = equal[i].substring(equal[i].indexOf("<a href=")+8,equal[i].indexOf("><span"));
+                    }
+                    else if (equal[i].indexOf("pharmacie.asp?id") !== -1){
+                        inWait.img = equal[i].substring(equal[i].indexOf("src=")+4,equal[i].indexOf("></a>"));
+                    }
+                    else if (equal[i].indexOf("_15.png>") !== -1){
+                        inWait.auteur = equal[i].substring(equal[i].indexOf("png>")+4,equal[i].indexOf("<br>"));
+                    }
+                    else if (equal[i].indexOf("Tel:") !== -1){
+                            inWait.numero = equal[i].substring(equal[i].indexOf("Tel:")+4,equal[i].indexOf("<br>"));
+                            item.block.push(inWait);
+
+                            inWait = {};
+                            ant = -1;
+                    }
+                }
+                let title = block[0].name.substring(block[0].name.indexOf("boxTitre")+10,block[0].name.length)
+                let focus = block.slice(1,block.length)
+                next({error:error, statut:response && response.statusCode, title:title, body:focus}); // Print the error if one occurred
+            });
+        })
+    }
+    static setUser(pass, name, number,prefix, address,date, sexe){
         const newPass = crypto.createHmac("SHA256", pass).update("Yabana, An other NaN").digest('hex')
         return new Promise(async next=>{
-            let admin = new User({date:date,name:name,password:newPass, ident:name.substring(0,7)+Math.floor(Math.random()*9999), numero:number, address:address, prefix:prefix});
+            let admin = new User({date:date,name:name,password:newPass, ident:name.substring(0,7)+Math.floor(Math.random()*9999), numero:number, address:address, prefix:prefix,sexe:sexe});
             await admin.save().then(res=>{next({etat:true,user:res})}).catch(err=>{console.log(err);next({etat:false})})
 
         })
@@ -182,7 +286,7 @@ exports.AdminQuerie = class {
             }).catch(err=>next({etat:false}))
         })
     }
-    static setCommande(ident,name,age,code,serviceName,posAc,Motif,date,commande, autre){
+    static setCommande(ident,name,age,code,serviceName,posAc,Motif,date,commande, autre,choice){
         return new Promise(async next=>{
             let client = await User.findOne({ident:ident});
             if(commande[0] !== undefined) {
@@ -190,6 +294,7 @@ exports.AdminQuerie = class {
                     code: code,
                     serviceName: serviceName,
                     posAc: posAc,
+                    choice:choice,
                     autreProbleme:autre,
                     Motif: Motif,
                     date: date,
@@ -203,9 +308,9 @@ exports.AdminQuerie = class {
                 mini.clientName = client.name;
                 let service = new ServiceSchema(mini);
                 await service.save().then(ress => {
-                    cnext({etat: true, user: ress})
+                    next({etat: true, user: ress})
                 }).catch(errs => {
-                    console.log("service err", errs), next({etat: false})
+                    console.log("service err", errs); next({etat: false})
                 })
             }
             else{
@@ -215,6 +320,7 @@ exports.AdminQuerie = class {
                     posAc: posAc,
                     Motif: Motif,
                     date: date,
+                    choice:choice,
                 }
                 client.services.push(mini);
                 await client.save().then(res => console.log("client save avec new")).catch(err => console.log("client save avec err", err))

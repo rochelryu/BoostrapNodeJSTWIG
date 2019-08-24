@@ -8,6 +8,7 @@ const express = require('express'); //Je require express afin de creer ce qu'on 
 const router = express.Router(); // Je Crée maintenant ici mon routeur tout simplement en Appelant la methode Router() de Express
 const { check, validationResult } = require('express-validator');
 const {AdminQuerie} = require('../../Controller/AdminQuerie');
+const scrap = require('scrape-it')
 
 //Première Route
 router.route('/ville') // afin de decrire mieux une route on utilise la methode route("l'url de la route qu'on veut") ensuite on utilise la methode que nous vpulons utiliser (ex de methode : GET, POST, OPTIONS, PUT, DELETE, etc...)
@@ -25,10 +26,9 @@ router.route('/ville') // afin de decrire mieux une route on utilise la methode 
 
 router.route('/login')
     .post([
-        check("email","email Invalide").isLength({max:8}),
+        check("numero","numero Invalide").not().isEmpty(),
         check("password","Veillez entrer un Mot de Passe Alphanumerique et d'au moins 8 Charactère").not().isEmpty()
     ],async (req,res)=>{
-
         const errors = validationResult(req);
         if(!errors.isEmpty()){//ça veut dire s'il y a erreur exécute mois ça
             res.send({etat:false,err:errors})
@@ -47,9 +47,10 @@ router.route('/login')
 router.route('/signin')
     .post([
         check("name","Nom & prénom invalide").not().isEmpty(),
-        check("numero","numero Invalide").isLength({ max: 8 }).not().isEmpty(),
-        check("address","numero Invalide").not().isEmpty(),
+        check("numero","numero Invalide").not().isEmpty(),
+        check("address","address Invalide").not().isEmpty(),
         check("date","date Invalide").not().isEmpty(),
+        check("sexe","date Invalide").not().isEmpty(),
         check("password","Veillez entrer un Mot de Passe Alphanumerique et d'au moins 8 Charactère").not().isEmpty()
     ],async (req,res)=>{
 
@@ -58,7 +59,7 @@ router.route('/signin')
             res.send({etat:false,err:errors})
         }
         else {const input = req.body;
-            const admin = await AdminQuerie.setUser(input.password,input.name,input.numero,input.prefix,input.address,input.date)
+            const admin = await AdminQuerie.setUser(input.password,input.name,input.numero,input.prefix,input.address,input.date,input.sexe)
             if(admin.etat){
                 res.send({etat:true,user:admin.user})
             }
@@ -79,6 +80,11 @@ router.route('/autre/:ident')
         else{
             res.send({err:"tu es bête"})
         }
+    });
+router.route('/pharma')
+    .get(async (req,res)=>{
+       const user = await AdminQuerie.ikeaDetails();
+       res.send(user);
     });
 router.route('/account/:ident')
     .get(async (req,res)=>{

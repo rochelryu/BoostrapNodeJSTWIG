@@ -1,5 +1,6 @@
 const Serveur = require('./Serveur');
 let config = require('./Setting/config');
+let fs = require('fs');
 let db = require('./Model/Databases');
 //ICION VA INITIALISER NOTRE BASE DE DONNée Car c'est ici le plus grand niveau
 /*
@@ -13,7 +14,10 @@ const serveur = new Serveur(config.port);
 const {AdminQuerie} = require('./Controller/AdminQuerie');
 const {Messagerie} = require('./Controller/Message');
 /*serveur.start()*/
-let app = require('http').Server(serveur.getApp());
+let app = require('https').createServer({
+    key: fs.readFileSync('server.key'),
+    cert: fs.readFileSync('server.cert')
+}, serveur.getApp());
 let io = require( 'socket.io' )(app);
 
 io.on('connection', function (socket) {
@@ -23,7 +27,7 @@ io.on('connection', function (socket) {
         const age = (data.age)? data.age:"";
         const name = (data.name)? data.name:"";
         const commande = (data.commande)? data.commande:"";
-        const service = await AdminQuerie.setCommande(data.ident,name,age,code,"Render-vous",data.address,data.motif,data.date,commande, data.autre);
+        const service = await AdminQuerie.setCommande(data.ident,name,age,code,"Render-vous",data.address,data.date,commande, data.autre, data.choice,);
         if(service.etat){
             let info = {}
             const ville = await AdminQuerie.getAllMedecin();
@@ -38,8 +42,7 @@ io.on('connection', function (socket) {
         const name = (data.name)? data.name:"";
         const commande = (data.commande)? data.commande:"";
         const dates = new Date();
-        console.log(data);
-        const service = await AdminQuerie.setCommande(data.ident,name,age,code,"Assistance",data.address,data.motif,dates,commande, data.autre);
+        const service = await AdminQuerie.setCommande(data.ident,name,age,code,"Assistance",data.address,data.motif,dates,commande, data.autre, "Aucun");
         if(service.etat){
             let info = {}
             const ville = await AdminQuerie.getAllMedecin();
