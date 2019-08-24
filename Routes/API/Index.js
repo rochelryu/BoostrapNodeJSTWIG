@@ -51,6 +51,7 @@ router.route('/signin')
         check("address","address Invalide").not().isEmpty(),
         check("date","date Invalide").not().isEmpty(),
         check("sexe","date Invalide").not().isEmpty(),
+        check("email","Email Invalide").isEmail(),
         check("password","Veillez entrer un Mot de Passe Alphanumerique et d'au moins 8 Charactère").not().isEmpty()
     ],async (req,res)=>{
 

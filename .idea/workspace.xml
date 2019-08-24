@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61a256f2-f906-4abe-b1e8-69ff29b76c98" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/Databases.js" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Databases.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Routes/API/Index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Routes/API/Index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -18,8 +20,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Routes/API/Index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="37" column="49" selection-start-line="37" selection-start-column="49" selection-end-line="37" selection-end-column="49" />
+            <state relative-caret-position="167">
+              <caret line="62" column="49" lean-forward="true" selection-start-line="62" selection-start-column="49" selection-end-line="62" selection-end-column="49" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -30,11 +32,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Controller/AdminQuerie.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
-              <caret line="337" column="14" selection-start-line="337" selection-start-column="14" selection-end-line="337" selection-end-column="14" />
+            <state relative-caret-position="83">
+              <caret line="166" column="44" selection-start-line="166" selection-start-column="38" selection-end-line="166" selection-end-column="44" />
               <folding>
                 <element signature="e#12935#13245#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Model/Databases.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="21">
+              <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -48,11 +59,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
+            <state relative-caret-position="76">
+              <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
               <folding>
                 <element signature="e#1080#1292#0" />
               </folding>
@@ -116,7 +127,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>/</find>
       <find>/:</find>
       <find>addPharma</find>
       <find>/autre</find>
@@ -142,10 +152,11 @@
       <find>signi</find>
       <find>scrapeIt</find>
       <find>encoding</find>
-      <find>ville</find>
       <find>signin</find>
-      <find>setU</find>
       <find>login</find>
+      <find>ville</find>
+      <find>/sign</find>
+      <find>setU</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -193,24 +204,24 @@
         <option value="$PROJECT_DIR$/Views/css/style.css" />
         <option value="$PROJECT_DIR$/Schema/MedecinSchema.js" />
         <option value="$PROJECT_DIR$/Schema/VilleCommuneSchema.js" />
-        <option value="$PROJECT_DIR$/Model/Databases.js" />
         <option value="$PROJECT_DIR$/Views/js/script.js" />
         <option value="$PROJECT_DIR$/Views/Include/footer.twig" />
         <option value="$PROJECT_DIR$/Views/Include/footer2.twig" />
         <option value="$PROJECT_DIR$/Views/index.twig" />
         <option value="$PROJECT_DIR$/Views/Include/header2.twig" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/Routes/API/Index.js" />
         <option value="$PROJECT_DIR$/Schema/UserSchema.js" />
         <option value="$PROJECT_DIR$/Schema/ServiceSchema.js" />
         <option value="$PROJECT_DIR$/Controller/AdminQuerie.js" />
         <option value="$PROJECT_DIR$/App.js" />
+        <option value="$PROJECT_DIR$/Routes/API/Index.js" />
+        <option value="$PROJECT_DIR$/Model/Databases.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="24" />
-    <option name="y" value="27" />
+    <option name="x" value="159" />
+    <option name="y" value="56" />
     <option name="width" value="1048" />
     <option name="height" value="741" />
   </component>
@@ -230,7 +241,18 @@
             <path>
               <item name="BoostrapNodeJSTWIG" type="b2602c69:ProjectViewProjectNode" />
               <item name="BoostrapNodeJSTWIG" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BoostrapNodeJSTWIG" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BoostrapNodeJSTWIG" type="462c0819:PsiDirectoryNode" />
               <item name="Routes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BoostrapNodeJSTWIG" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BoostrapNodeJSTWIG" type="462c0819:PsiDirectoryNode" />
+              <item name="Routes" type="462c0819:PsiDirectoryNode" />
+              <item name="Admin" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BoostrapNodeJSTWIG" type="b2602c69:ProjectViewProjectNode" />
@@ -345,18 +367,18 @@
       <workItem from="1566464647768" duration="25000" />
       <workItem from="1566559686765" duration="835000" />
       <workItem from="1566563991124" duration="17997000" />
-      <workItem from="1566600547316" duration="7896000" />
+      <workItem from="1566600547316" duration="9286000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="209818000" />
+    <option name="totallyTimeSpent" value="211208000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="24" y="27" width="1048" height="741" extended-state="0" />
+    <frame x="159" y="56" width="1048" height="741" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.83815026" visible="true" weight="0.3385366" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.83815026" visible="true" weight="0.3385366" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" sideWeight="0.1618497" side_tool="true" visible="true" weight="0.3385366" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -371,7 +393,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32931727" />
       <window_info anchor="bottom" id="GraphQL" order="9" weight="0.3294893" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.41455162" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.41455162" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -556,27 +578,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Model/Databases.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="27" column="26" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
           <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Routes/Admin/Index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="34" column="21" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="21" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -665,16 +670,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Routes/API/Index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="37" column="49" selection-start-line="37" selection-start-column="49" selection-end-line="37" selection-end-column="49" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Schema/VilleCommuneSchema.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -693,16 +688,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controller/AdminQuerie.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="337" column="14" selection-start-line="337" selection-start-column="14" selection-end-line="337" selection-end-column="14" />
-          <folding>
-            <element signature="e#12935#13245#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -746,11 +731,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        <state relative-caret-position="76">
+          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
           <folding>
             <element signature="e#1080#1292#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Routes/Admin/Index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="48" column="26" lean-forward="true" selection-start-line="48" selection-start-column="26" selection-end-line="48" selection-end-column="26" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Routes/API/Index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="62" column="49" lean-forward="true" selection-start-line="62" selection-start-column="49" selection-end-line="62" selection-end-column="49" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/AdminQuerie.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="83">
+          <caret line="166" column="44" selection-start-line="166" selection-start-column="38" selection-end-line="166" selection-end-column="44" />
+          <folding>
+            <element signature="e#12935#13245#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/Databases.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
         </state>
       </provider>
     </entry>
