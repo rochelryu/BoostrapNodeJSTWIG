@@ -8,8 +8,12 @@ const express = require('express'); //Je require express afin de creer ce qu'on 
 const router = express.Router(); // Je Crée maintenant ici mon routeur tout simplement en Appelant la methode Router() de Express
 const { check, validationResult } = require('express-validator');
 const {AdminQuerie} = require('../../Controller/AdminQuerie');
-const crypto = require('crypto')
-
+const crypto = require('crypto');
+const request = require('request');
+const axios = require('axios');
+const Twilio = require('twilio');
+const config = require('../../Setting/config');
+var twilio = new Twilio(config.sms.accountSid, config.sms.token);
 //Première Route
 router.route('/') // afin de decrire mieux une route on utilise la methode route("l'url de la route qu'on veut") ensuite on utilise la methode que nous vpulons utiliser (ex de methode : GET, POST, OPTIONS, PUT, DELETE, etc...)
 // Dans mon cas ici je suis venu à la ligne parce que mon code Soit plus lisible sinon j'aurais pu tout faire en un ligne (ex: router.route('/').get()
@@ -168,6 +172,35 @@ router.route('/addPharma')
         }
         res.send({etat:"tu es bête"})
     })
+router.route('/test')
+    .get(async (req,res)=>{
+        /*await axios.post('https://bulksms.vsms.net/eapi/submission/send_sms/2/2.0',{
+            username: 'dsanders31',
+            password: 'pacers31',
+            dca:"16bit",
+        msisdn:"+22548803377",
+        message:"Salut la faéme",
+        })
+            .then(function (response) {
+               res.send(response)
+            }).catch(err=>{
+                console.log("err de ouf", err)
+                res.send(err);
+            });*/
+       /* await twilio.messages.create({
+            body: 'Hello Wrold ééé ?',
+            from: '+13852173081',
+            to: '+22548803377'
+        })
+            .then(message => {console.log(message.sid);res.send(message)})
+            .catch(err=>{
+            console.log("err", err);
+            res.send(err);
+        });*/
+
+        res.send({focus:"beta"})
+       //?username=john&password=xxxxxxxxx&dca=16bit&msisdn=441231234&message=004200430044
+    });
 router.route('/client')
     .get(async (req,res)=>{
         if(req.session.alloSante) {

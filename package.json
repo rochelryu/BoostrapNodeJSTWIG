@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.19.0",
     "bulksms": "0.0.3",
     "cookieparser": "^0.1.0",
     "express": "^4.17.1",
@@ -23,6 +24,7 @@
     "request": "^2.88.0",
     "scrape-it": "^5.1.4",
     "socket.io": "^2.2.0",
-    "twig": "^1.13.3"
+    "twig": "^1.13.3",
+    "twilio": "^3.33.4"
   }
 }
