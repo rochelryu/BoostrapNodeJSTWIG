@@ -60,6 +60,9 @@ io.on('connection', function (socket) {
         if(modif.etat){
             const message = await Messagerie.sendMessage(modif.user.numero,modif.provider.medecin,modif.provider.ClinicName,modif.provider.clientName,modif.provider.date,modif.provider.code,modif.provider.serviceName)
         }
+    });
+    socket.on('send', async (data)=>{
+        const message = await Messagerie.sendMessageClinic(data.me,data.numero,data.message)
     })
 });
 app.listen(config.port);

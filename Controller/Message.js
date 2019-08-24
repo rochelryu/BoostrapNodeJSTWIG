@@ -23,5 +23,11 @@ exports.Messagerie = class{
         });*/
 
     }
+    static sendMessageClinic(clinicName,num,message){
+        request({url:'https://api.1s2u.io/bulksms?username=smssandersn019&password=web46802&mt=1&fl=Flash/None Flash Message &sid='+clinicName+'&mno='+ num +'&msg='+message,"Content-Type": "charset=utf-8"}, function(err,httpResponse,body){
+            console.log("err ",err, "Status",httpResponse, " body", body);
+        })
+
+    }
 
 }

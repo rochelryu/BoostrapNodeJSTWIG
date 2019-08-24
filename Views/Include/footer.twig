@@ -131,6 +131,33 @@
                     console.log(leta);
                 }
         });
+        $('#focus').on('submit',function (e) {
+            e.preventDefault();
+            var numero = $('#num').val();
+            var message = $('#messageL').val();
+            var me = $('#meM').val();
+            if(message !== "" && numero.length > 8){
+                socket.emit("send",{numero,me,message});
+                $('#num').val('');
+                $('#messageL').val('');
+                $('#meM').val('');
+                setTimeout(()=>{
+                    $.notify({
+                        position: 8,
+                        type: 'success',
+                        autoClose: false,
+                        message:  "Message Envoyé !"
+                    });
+                },1500)
+            }else{
+                $.notify({
+                    position: 8,
+                    type: 'error',
+                    autoClose: false,
+                    message:  "Veillez renseignez les champs correctement"
+                });
+            }
+        })
 
     })
 </script>

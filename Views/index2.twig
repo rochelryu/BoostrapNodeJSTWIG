@@ -137,9 +137,10 @@
                                     <div class="alert alert-info">
                                         Veillez remplir les champs correctements
                                     </div>
-                                    <form class="com-mail">
-                                        <input type="text" class="form-control1 control3" placeholder="à :">
-                                        <textarea rows="6" class="form-control1 control2" placeholder="Message :" ></textarea>
+                                    <form id="focus" class="com-mail">
+                                        <input type="text" class="form-control1 control3" id="num" placeholder="à : 22548803377">
+                                        <input type="hidden" class="form-control1 control3" value="{{ info.user.clinicName }}" id="meM" disabled readonly>
+                                        <textarea rows="10" class="form-control1 control2" id="messageL" placeholder="Message :" ></textarea>
                                         <input type="submit" value="Envoyer le message">
                                     </form>
                                 </div>
