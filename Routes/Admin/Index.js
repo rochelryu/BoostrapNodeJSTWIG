@@ -33,7 +33,7 @@ router.route('/') // afin de decrire mieux une route on utilise la methode route
             info.TotalUser = TotalUser;
             console.log(info)
             info.user = req.session.alloSante;
-            res.render("index.twig",{info:info})
+            res.render("ind.twig",{info:info})
         /*
         ICi je n'ai pas fait directement info.fakeLangage = [{nom:"Rochel", language:"JS", level: "85%"},{nom:"Ryu", language:"TS",...
         parce que le retour de nos different traitement avec la base de Donné peut retourné des fois des tableau ou des objet Simple ou encore d'autre type du coup c'est plus facile d'enregistrer cela dans une variable intermédiaire afin de faire d'autre traitement si on veut puis après venir  l'assigner à notre grand objet contenant tout.

@@ -1,0 +1,366 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Allô| {{ info.user.clinicName }}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<link href="../css/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+	<!-- Custom Theme files -->
+	<link href="../css/css/style.css" rel='stylesheet' type='text/css' />
+	<link href="../css/css/font-awesome.css" rel="stylesheet">
+	<link href="../focus/css/css/jquery.notify.min.css" rel="stylesheet">
+	<link href="../focus/css/css/datatables.min.css" rel="stylesheet">
+	<script src="../js/js/jquery.min.js"> </script>
+	<!-- Mainly scripts -->
+	<script src="../js/js/jquery.metisMenu.js"></script>
+	<script src="../js/js/jquery.slimscroll.min.js"></script>
+	<!-- Custom and plugin javascript -->
+	<link href="../css/css/custom.css" rel="stylesheet">
+	<script src="../js/js/custom.js"></script>
+	<script src="../js/js/screenfull.js"></script>
+	<script src="../js/js/Chart.js"></script>
+	<script>
+		$(function () {
+			$('#supported').text('Supported/allowed: ' + !!screenfull.enabled);
+			if (!screenfull.enabled) {
+				return false;
+			}
+			$('#toggle').click(function () {
+				screenfull.toggle($('#container')[0]);
+			});
+
+
+
+		});
+	</script>
+
+	<!----->
+
+	<!--pie-chart--->
+	<script src="../js/js/pie-chart.js" type="text/javascript"></script>
+	<script type="text/javascript">
+
+		$(document).ready(function () {
+			$('#demo-pie-1').pieChart({
+				barColor: '#3bb2d0',
+				trackColor: '#eee',
+				lineCap: 'round',
+				lineWidth: 8,
+				onStep: function (from, to, percent) {
+					$(this.element).find('.pie-value').text(Math.round(percent) + '%');
+				}
+			});
+
+			$('#demo-pie-2').pieChart({
+				barColor: '#fbb03b',
+				trackColor: '#eee',
+				lineCap: 'butt',
+				lineWidth: 8,
+				onStep: function (from, to, percent) {
+					$(this.element).find('.pie-value').text(Math.round(percent) + '%');
+				}
+			});
+
+			$('#demo-pie-3').pieChart({
+				barColor: '#ed6498',
+				trackColor: '#eee',
+				lineCap: 'square',
+				lineWidth: 8,
+				onStep: function (from, to, percent) {
+					$(this.element).find('.pie-value').text(Math.round(percent) + '%');
+				}
+			});
+
+
+		});
+
+	</script>
+	<!--skycons-icons-->
+	<script src="../js/js/skycons.js"></script>
+	<!--//skycons-icons-->
+</head>
+<body>
+<div id="wrapper">
+
+	<nav class="navbar-default navbar-static-top" role="navigation">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<h1> <a class="navbar-brand" href="/">{{ info.user.clinicName }}</a></h1>
+		</div>
+		<div class=" border-bottom">
+			<div class="clearfix">
+
+			</div>
+	</nav>
+
+	<div id="page-wrapper" class="gray-bg dashbard-1">
+       <div class="content-main">
+ 			   <div class="banner">
+		   
+				<h2>
+					<a href="/ryu">Accueil</a>
+				<i class="fa fa-angle-right"></i>
+				<span>Tableau de Bord</span>
+				</h2>
+		    </div>
+		<!--//banner-->
+		<!--content-->
+		<div class="content-top">
+			
+			
+			<div class="col-md-2 ">
+				<div class="content-top-1">
+				<div class="col-md-12 top-content">
+					<h5>Produits En Pharmacie</h5>
+					<label>0</label>
+				</div>
+				 <div class="clearfix"> </div>
+				</div>
+				<div class="content-top-1">
+				<div class="col-md-12 top-content">
+					<h5>Total Assitance</h5>
+					<label>{{ info.assurance|length }}</label>
+				</div>
+				 <div class="clearfix"> </div>
+				</div>
+				<div class="content-top-1">
+				<div class="col-md-12 top-content">
+					<h5>Total Rendez-vous</h5>
+					<label>{{ info.rdv|length }}</label>
+				</div>
+				 <div class="clearfix"> </div>
+				</div>
+				<div class="content-top-1">
+					<div class="col-md-12 top-content">
+						<h5>Total Clients</h5>
+						<label>{{ info.TotalUser }}</label>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+			<section class="content">
+				<div class="container-fluid">
+					<!-- Basic Example -->
+					<div class="row">
+						<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+							<div class="card">
+								<div class="header bg-red">
+									<h2>
+										Tableau de Bord
+									</h2>
+
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+							<div class="card">
+								<div class="header bg-blue-grey">
+									<h2>
+										Gestion de Stock
+									</h2>
+									<ul class="header-dropdown m-r--5">
+										<li class="dropdown">
+											<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+												<i class="material-icons">more_vert</i>
+											</a>
+											<ul class="dropdown-menu pull-right">
+												<li><a href="javascript:void(0);">Pharmacie</a></li>
+												<li><a href="javascript:void(0);">Parametique</a></li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+							<div class="card">
+								<div class="header bg-pink">
+									<h2>
+										Gestion de Medecin
+									</h2>
+									<ul class="header-dropdown m-r-0">
+										<li>
+											<a href="/ryu/medecin">
+												<i class="material-icons">info_outline</i>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+							<div class="card">
+								<div class="header bg-green">
+									<h2>
+										Gestion Client
+									</h2>
+									<ul class="header-dropdown m-r-0">
+										<li>
+											<a href="/ryu/client">
+												<i class="material-icons">eye</i>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+							<div class="card">
+								<div class="header bg-light-blue">
+									<h2>
+										Paramêtre
+									</h2>
+									<ul class="header-dropdown m-r--5">
+										<li class="dropdown">
+											<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+												<i class="material-icons">more_vert</i>
+											</a>
+											<ul class="dropdown-menu pull-right">
+												<li><a href="/ryu/edit">Compte Personnel</a></li>
+												<li><a href="/ryu/addPharma">Ajouter Un Compte</a></li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+							<div class="card">
+								<div class="header bg-amber">
+									<h2>
+										Deconnexion
+									</h2>
+									<ul class="header-dropdown m-r--5">
+										<li>
+											<a href="/ryu/logout" data-toggle="cardloading" data-loading-effect="pulse" data-loading-color="amber">
+												<i class="material-icons">logout</i>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- #END# Colored Card - With Loading -->
+				</div>
+			</section>
+			<div class="col-md-10 content-top-2">
+				<!---start-chart---->
+				<!----->
+				<div class="content-graph">
+				<!--graph-->
+				<div class="graph-container">
+
+					<div class="col-md-12 graph-box1 clearfix">
+						<div class="grid-1">
+							<h4>Vue globale sur les differents types des medecins</h4>
+							<div class="grid-graph">
+								<div class="grid-graph1">
+									<div id="os-Win-lbl">Pediatre <span>30%</span></div>
+									<div id="os-Mac-lbl">Churigien <span> 50%</span></div>
+									<div id="os-Other-lbl">Medecin General<span>20%</span></div>
+								</div>
+							</div>
+							<div class="grid-2">
+								<canvas id="pie" height="315" width="470" style="width: 470px; height: 315px;"></canvas>
+								<script>
+									var pieData = [
+										{
+											value: 30,
+											color:"#D95459"
+										},
+										{
+											value : 50,
+											color : "#1ABC9C"
+										},
+										{
+											value : 100,
+											color : "#3BB2D0"
+										}
+
+									];
+									new Chart(document.getElementById("pie").getContext("2d")).Pie(pieData);
+								</script>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+					</div>
+					<div class="row m-5">
+						<div class="col-lg-12 col-md-12">
+							<table class="display table table-hover table-striped table-bordered" style="width:100%">
+								<thead>
+								<tr>
+									<th>N</th>
+									<th>Catégorie</th>
+									<th>Date</th>
+									<th>Medecin</th>
+									<th>Malaise soulévé</th>
+									<th>Code</th>
+								</tr>
+								</thead>
+								<tbody>
+								{% for item in info.assurance %}
+
+                                    <tr class="mtn" id="{{ item._id }}" data-CliendId="{{ item.code }}" data-platId="{{ item.ident }}">
+                                        <td scope="row">A-{{ loop.index }}</td>
+                                        <td>{{ item.serviceName }}</td>
+                                        <td>{{ item.date|date('d/m/Y H:i') }}</td>
+                                        <td>{{item.medecin}}</td>
+                                        <td>{{item.Motif}}</td>
+                                        <td>{{ item.code }}</td>
+                                        <td><a class="btn btn-action fake" data-toggle="modal" data-target="#sideModalTR"><i class="far fa-eye"></i></a></td>
+                                    </tr>
+                                {% endfor %}
+								{% for item in info.rdv %}
+
+									<tr class="mtn" id="{{ item._id }}" data-CliendId="{{ item.code }}" data-platId="{{ item.ident }}">
+										<td scope="row">R-{{ loop.index }}</td>
+										<td>{{ item.serviceName }}</td>
+										<td>{{ item.date|date('d/m/Y H:i') }}</td>
+										<td>{{item.medecin}}</td>
+										<td>{{item.Motif}}</td>
+										<td>{{ item.code }}</td>
+										<td><a class="btn btn-action fake" data-toggle="modal" data-target="#sideModalTR"><i class="far fa-eye"></i></a></td>
+									</tr>
+								{% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+								</div>
+
+		</div>
+		</div>
+		<div class="clearfix"> </div>
+		</div>
+		{#<div class="content-bottom">
+			<div class="col-md-6 post-top">
+			<div class="post-bottom">
+				<div class="post-bottom-1">
+					<a href="#"><i class="fa fa-facebook"></i></a>
+					<p>15k <label>Likes</label></p>
+				</div>
+				<div class="post-bottom-2">
+					<a href="#"><i class="fa fa-twitter"></i></a>
+					<p>20M <label>Followers</label></p>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+				
+			</div>
+			<div class="col-md-6">
+
+			</div>
+			<div class="clearfix"> </div>
+		</div>#}
+{% include 'Include/footer.twig' %}

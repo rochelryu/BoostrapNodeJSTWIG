@@ -28,24 +28,19 @@
 <!-- ChartJs -->
 <script src="../plugins/chartjs/Chart.bundle.js"></script>
 
-<!-- Flot Charts Plugin Js -->
-<script src="../plugins/flot-charts/jquery.flot.js"></script>
-<script src="../plugins/flot-charts/jquery.flot.resize.js"></script>
-<script src="../plugins/flot-charts/jquery.flot.pie.js"></script>
-<script src="../plugins/flot-charts/jquery.flot.categories.js"></script>
-<script src="../plugins/flot-charts/jquery.flot.time.js"></script>
 
 <!-- Sparkline Chart Plugin Js -->
 <script src="../plugins/jquery-sparkline/jquery.sparkline.js"></script>
 
+{#
 <!-- Custom Js -->
-<script src="../js/admin.js"></script>
-<script src="../js/pages/index.js"></script>
+<script src="../js/js/pages/index.js"></script>
+#}
 
 <!-- Demo Js -->
-<script src="../js/demo.js"></script>
+<script src="../js/js/demo.js"></script>
 <script src="../focus/js/jquery.notify.min.js"></script>
-
+{#<script src="../js/js/admin.js"></script>#}
 <script>
     $(document).ready(function () {
         var socket = io();
@@ -63,11 +58,11 @@
             var meta = "#"+$(this).attr("data-ryu");
             $(meta).addClass("active");
         })
-        $('.table-bordered').DataTable({
+        /*$('.table-bordered').DataTable({
             "dom": '<"toolbar">frtip',
             "paging": true,
             "pagingType": "full_numbers"
-        });
+        });*/
         $('.table').on('click', '.fa.fa-check-circle-o.icon-state-warning', function () {
             var ident = $(this).parent().parent().attr("data-ident");
             var code = $(this).parent().parent().attr("data-code");
@@ -164,7 +159,9 @@
                 console.log(leta);
             }
         });
-
+        $('.page-loader-wrapper').fadeOut(1000, function () {
+            console.log("ici de ouf")
+        });
     })
 </script>
 </body>
