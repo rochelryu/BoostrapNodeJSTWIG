@@ -290,6 +290,7 @@ exports.AdminQuerie = class {
         return new Promise(async next=>{
             let client = await User.findOne({ident:ident});
             if(commande[0] !== undefined) {
+                console.log("avec Comande")
                 let mini = {
                     code: code,
                     serviceName: serviceName,
@@ -314,6 +315,8 @@ exports.AdminQuerie = class {
                 })
             }
             else{
+                console.log("sans Comande")
+
                 let mini = {
                     code: code,
                     serviceName: serviceName,
@@ -321,6 +324,7 @@ exports.AdminQuerie = class {
                     Motif: Motif,
                     date: date,
                     choice:choice,
+                    autreProbleme:autre,
                 }
                 client.services.push(mini);
                 await client.save().then(res => console.log("client save avec new")).catch(err => console.log("client save avec err", err))
