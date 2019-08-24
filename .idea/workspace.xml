@@ -70,8 +70,9 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
+            <state relative-caret-position="48">
               <caret line="44" column="37" lean-forward="true" selection-start-line="44" selection-start-column="37" selection-end-line="44" selection-end-column="37" />
+              <caret line="48" column="26" selection-start-line="48" selection-start-column="26" selection-end-line="48" selection-end-column="26" />
               <folding>
                 <element signature="e#1080#1292#0" />
               </folding>
@@ -341,20 +342,19 @@
       <workItem from="1566464647768" duration="25000" />
       <workItem from="1566559686765" duration="835000" />
       <workItem from="1566563991124" duration="17997000" />
-      <workItem from="1566600547316" duration="5203000" />
+      <workItem from="1566600547316" duration="5669000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="207125000" />
+    <option name="totallyTimeSpent" value="207591000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="24" y="27" width="1048" height="741" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.82200646" visible="true" weight="0.3385366" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.83815026" visible="true" weight="0.3385366" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="npm" order="2" sideWeight="0.17799352" side_tool="true" visible="true" weight="0.3385366" />
+      <window_info id="npm" order="2" sideWeight="0.1618497" side_tool="true" visible="true" weight="0.3385366" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32730925" />
@@ -367,7 +367,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32931727" />
       <window_info anchor="bottom" id="GraphQL" order="9" weight="0.3294893" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.47715735" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.41455162" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -746,8 +746,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
+        <state relative-caret-position="48">
           <caret line="44" column="37" lean-forward="true" selection-start-line="44" selection-start-column="37" selection-end-line="44" selection-end-column="37" />
+          <caret line="48" column="26" selection-start-line="48" selection-start-column="26" selection-end-line="48" selection-end-column="26" />
           <folding>
             <element signature="e#1080#1292#0" />
           </folding>
