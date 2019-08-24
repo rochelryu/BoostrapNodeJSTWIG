@@ -14,10 +14,8 @@ const serveur = new Serveur(config.port);
 const {AdminQuerie} = require('./Controller/AdminQuerie');
 const {Messagerie} = require('./Controller/Message');
 /*serveur.start()*/
-let app = require('https').createServer({
-    key: fs.readFileSync('server.key'),
-    cert: fs.readFileSync('server.cert')
-}, serveur.getApp());
+let app = require('http').Server(serveur.getApp());
+
 let io = require( 'socket.io' )(app);
 
 io.on('connection', function (socket) {
