@@ -8,7 +8,7 @@ let request = require('request');
 const VilleCommuneSchema = require('../Schema/VilleCommuneSchema');
 const ServiceSchema = require('../Schema/ServiceSchema');
 const MedecinSchema = require('../Schema/MedecinSchema');
-
+//https://fr.wikipedia.org/api/rest_v1/page/summary/Abidjan
 exports.AdminQuerie = class {
     medical = [
         {
@@ -70,10 +70,10 @@ exports.AdminQuerie = class {
             }).catch(err=>next({etat:false}))
         })
     }
-    static setAdmin(ele, pass, name, numberss, etat, clinicName, address){
+    static setAdmin(ele, pass, name, numberss, etat, clinicName, address, pays){
         const newPass = crypto.createHmac("SHA256", pass).update("Yabana, An other NaN").digest('hex')
         return new Promise(async next=>{
-            let admin = new Admin({name:name,password:newPass, ident:name.substring(0,7)+Math.floor(Math.random()*9999), email:ele, numero:numberss, etat:etat, clinicName:clinicName, address:address});
+            let admin = new Admin({name:name,password:newPass, ident:name.substring(0,7)+Math.floor(Math.random()*9999), email:ele, numero:numberss, etat:etat, clinicName:clinicName, address:address, pays:pays});
             await admin.save().then(res=>next({etat:true})).catch(err=>{console.log("erre", err); next({etat:false}) })
         })
     }
@@ -115,15 +115,16 @@ exports.AdminQuerie = class {
             });*/
             request({
                 uri: base,
-                "Content-Type": "charset=utf-8",
+                encoding: "latin1",
             }, function (error, response, body) {
-                const bod = body.replace(/(\r\n|\n|\r)/g,"<br />");
+                const bod = body.replace(/(\r\n|\n|\r)/gi,"<br />");
                 let equal = bod.split('<br />');
+                equal.push("finiderochel");
                 let ind = -1;
                 let ant = 0;
                 let block = new Array();
-                let item = {};
                 let inWait = {};
+                let item = {};
                 item.block = new Array();
                 for(let i in equal){
                     if(equal[i].indexOf("boxTitre") !== -1){
@@ -157,6 +158,10 @@ exports.AdminQuerie = class {
                             inWait = {};
                             ant = -1;
                     }
+                    else if(equal[i].indexOf("finiderochel") !== -1){
+                        block.push(item);
+                            item = {};
+                    }
                 }
                 let title = block[0].name.substring(block[0].name.indexOf("boxTitre")+10,block[0].name.length)
                 let focus = block.slice(1,block.length)
@@ -179,7 +184,7 @@ exports.AdminQuerie = class {
     }
     static setVille(name,prefix){
         return new Promise(async next=>{
-            let pays = new VilleCommuneSchema({name:name,prefix:prefix});
+            let pays = new VilleCommuneSchema({name:name, prefix:prefix});
             await pays.save().then(res=>next(res)).catch(err=>next(err))
         })
     }
@@ -191,13 +196,6 @@ exports.AdminQuerie = class {
     static getAllAdmin(){
         return new Promise(async next=>{
             await Admin.find().sort({name:1}).then(res=>next(res)).catch(err=>next(err))
-        })
-    }
-    static setVille(name){
-        return new Promise(async next=>{
-            let ville = new VilleCommuneSchema({name:name});
-            await ville.save().then(res=>next({etat:true,ville:res})).catch(err=>next({etat:false,error:err}))
-
         })
     }
     static AddCommune(nameVile, nameCommune){
@@ -409,9 +407,18 @@ exports.AdminQuerie = class {
                 }).catch(err=>{next(err)});
         })
     }
-    static setMedecin(name, numero,clinic,address,specialite){
+
+    static getMedecinByCountrie(pays, specialite){
         return new Promise(async next=>{
-            let medecin = new MedecinSchema({name:name,numero:numero,clinic:clinic,address:address,specialite:specialite})
+            await MedecinSchema.find($and[{pays:pays}, {specialite:specialite}])
+                .then(res=>{
+                    next(res)
+                }).catch(err=>{next(err)});
+        })
+    }
+    static setMedecin(name, numero,clinic,address,specialite, pays){
+        return new Promise(async next=>{
+            let medecin = new MedecinSchema({name:name,numero:numero,clinic:clinic,address:address,specialite:specialite, pays})
             await medecin.save().then(res=>next(res)).catch(err=>next(err))
         })
     }

@@ -15,7 +15,7 @@
                 <form style="background: white" action="/ryu/medecin" method="post">
                     <div class="vali-form">
                         <div class="col-md-6 form-group1">
-                            <label class="control-label">Nom</label>
+                            <label class="control-label">Nom & Prénoms</label>
                             <input name="name" type="text" placeholder="nom" required="">
                         </div>
                         <div class="col-md-6 form-group1 form-last">
@@ -27,14 +27,8 @@
 
                     <div class="vali-form">
                         <div class="col-md-6 form-group1">
-                            <label class="control-label">Nom de Clinique</label>
-                            <select name="clinic" class="form-control">
-                                <option selected="selected" disabled="disabled">La Commune</option>
-                                {% for err in info.admin %}
-                                        <option value="{{ err.clinicName }}">{{ err.clinicName }} | {{ err.address }}</option>
-                                {% endfor %}
-                                <option value="Autres">Autres</option>
-                            </select>
+                            <label class="control-label">Etablissement medicale</label>
+                            <input name="clinic" type="text" placeholder="Etablissement medicale" required="">
                         </div>
                         <div class="col-md-6 form-group1 form-last">
                             <label class="control-label">Spécialité</label>
@@ -42,17 +36,18 @@
                         </div>
                         <div class="clearfix"> </div>
                     </div>
-                    <div class="col-md-12 form-group2 group-mail">
+                    <div class="col-md-6 form-group2 group-mail">
                         <label class="control-label">Adresse</label>
-                        <select name="address" class="form-control">
-                            <option selected="selected" disabled="disabled">La Commune</option>
+                        <select name="pays" class="form-control">
+                            <option selected="selected" disabled="disabled">Le pays</option>
                             {% for err in info.ville %}
-                                {% for item in err.commune %}
-                                    <option value="{{ err.name }} - {{ item.nameCommune }}">{{ err.name }} - {{ item.nameCommune }}</option>
-                                {% endfor %}
+                                <option value="{{ err.name }}">{{ err.name }}</option>
                             {% endfor %}
-                            <option value="Autres">Autres</option>
                         </select>
+                    </div>
+                    <div class="col-md-6 form-group1 form-last">
+                            <label class="control-label">Ville & Commune</label>
+                            <input name="address" type="text" placeholder="Abidjan/Cocody" required="">
                     </div>
                     <div class="clearfix"> </div>
                     <div class="col-md-12 form-group">
@@ -64,38 +59,17 @@
             </div>
             <div class="col-md-5">
                 <form style="background: white" action="/ryu/ville" method="post">
-                    <div class="col-md-12 form-group2 group-mail">
-                        <label class="control-label">Adresse</label>
-                        <select name="address" class="form-control">
-                            <option selected="selected" disabled="disabled">La Commune</option>
-                            {% for err in info.ville %}
-                                <option value="{{ err.name }}">{{ err.name }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
                     <div class="vali-form">
                         <div class="col-md-6 form-group1">
-                            <label class="control-label">Commune 1</label>
-                            <input name="commune" multiple type="text" required="">
+                            <label class="control-label">Pays</label>
+                            <input name="pays" type="text" placeholder="Côte d'Ivoire" required="">
                         </div>
                         <div class="col-md-6 form-group1 form-last">
-                            <label class="control-label">Commune 2</label>
-                            <input name="commune" type="text">
+                            <label class="control-label">Prefix</label>
+                            <input name="prefix" type="text" placeholder="+225" required="">
                         </div>
                         <div class="clearfix"> </div>
                     </div>
-                    <div class="vali-form">
-                        <div class="col-md-6 form-group1">
-                            <label class="control-label">Commune 1</label>
-                            <input name="commune" multiple type="text" required="">
-                        </div>
-                        <div class="col-md-6 form-group1 form-last">
-                            <label class="control-label">Commune 2</label>
-                            <input name="commune" type="text">
-                        </div>
-                        <div class="clearfix"> </div>
-                    </div>
-                    <div class="clearfix"> </div>
                     <div class="col-md-12 form-group">
                         <button type="submit" class="btn btn-primary">Enregistrer</button>
                         <button type="reset" class="btn btn-default">Vider</button>
@@ -115,7 +89,7 @@
                         </div>
                         <div class="text-gallery">
                             <h6>{{ item.name|upper }} </h6>
-                            <p style="font-size: smaller; text-align: center">{{ item.clinic }} {{ item.specialite }}</p>
+                            <p style="font-size: smaller; text-align: center">{{ item.clinic }} {{ item.specialite }} <br>{{ item.numero }} <br> {{ item.pays }} <br> {{item.address}}  </p>
                         </div>
                     </div>
                     {% endfor %}

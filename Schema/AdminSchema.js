@@ -29,6 +29,10 @@ const AdminSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    pays:{
+        type:String,
+        required:true,
+    },
     address:{
         type:String,
     },

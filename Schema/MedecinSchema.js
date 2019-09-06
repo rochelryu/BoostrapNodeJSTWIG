@@ -18,6 +18,10 @@ const MedecinSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
+    pays:{
+        type:String,
+        required:true,
+    },
     specialite:{type:String},
     register_date: { type: Date, default: Date.now },
 });

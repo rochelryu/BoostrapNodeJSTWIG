@@ -35,7 +35,7 @@ router.route('/login')
         }
         else {const input = req.body;
         console.log(input)
-            const admin = await AdminQuerie.getVerifyUser(input.email, input.password)
+            const admin = await AdminQuerie.getVerifyUser(input.numero, input.password)
             if(admin.etat){
                 console.log("ici")
                 res.send({etat:true,user:admin.user})
@@ -93,6 +93,22 @@ router.route('/account/:ident')
         const user = await AdminQuerie.getUserByIdent(req.params.ident);
             res.send(user);
         });
+
+router.route('/search')
+        .post([
+        check("specialite","specialite invalide").not().isEmpty(),
+        check("pays","Adresse Invalide").not().isEmpty()
+        ], async (req,res)=>{
+            const errors = validationResult(req);
+            if(!errors.isEmpty()){//ça veut dire s'il y a erreur exécute mois ça
+                res.send({etat:false,err:errors})
+            }
+            else {const input = req.body;
+                const admin = await AdminQuerie.getMedecinByCountrie(input.pays,input.specialite);
+                res.send({etat:true,info:admin})
+                }
+            }
+        );
 router.route('/edit/')
     .post([
         check("email","email Invalide").isEmail(),

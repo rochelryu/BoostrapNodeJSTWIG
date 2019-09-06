@@ -1,6 +1,5 @@
 let config = require('../Setting/config');
-let VilleCommuneSchema = require('../Schema/VilleCommuneSchema');
-let AdminSchema = require('../Schema/AdminSchema');
+const {AdminQuerie} = require('../Controller/AdminQuerie');
 let mongoose = require('mongoose');
 
 //Connextion avec mongo
@@ -10,6 +9,8 @@ let connect = async ()=>{
             useNewUrlParser: true,
             useFindAndModify: config.db.useFindAndModify
         });
+        //let admin = await AdminQuerie.setAdmin("admin@allo.ci", "0123456", "admin", "+22548803377", 3, "Allô Santé Express", "Abidjan/Cocody", "Côte d'Ivoire");
+
         console.log(">>>> Database Connected");
     }
     catch (e) {

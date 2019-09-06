@@ -3,6 +3,11 @@
 .contents{
   margin: 50px 115px;
 }
+.card .header h2 a, .card .header h2{
+  color: #fff !important;
+  text-decoration: none !important;
+  text-transform: capitalize !important;
+} 
 .betas{
   position: absolute; top: 45px; right: 10px;
 }

@@ -151,6 +151,7 @@ router.route('/addPharma')
         check("numero","numero Invalide").isLength({max:8}),
         check("clinic","Nom de Clinique Invalide").not().isEmpty(),
         check("email","email Invalide").isEmail(),
+        check("address","email Invalide").not().isEmpty(),
         check("password","Mot de passe Invalide").not().isEmpty(),
     ],async (req,res)=>{
         if(req.session.alloSante) {
@@ -160,7 +161,7 @@ router.route('/addPharma')
                 console.log(errors.errors);
                 res.redirect('/ryu/addPharma')
             } else if (errors.isEmpty() && req.body.password === req.body.confirmpassword) {
-                let admin = await AdminQuerie.setAdmin(req.body.email, req.body.password, req.body.name, req.body.numero, 1, req.body.clinic, req.body.address);
+                let admin = await AdminQuerie.setAdmin(req.body.email, req.body.password, req.body.name, req.body.numero, 1, req.body.clinic, req.body.address, req.body.pays);
                 if (admin.etat) {
                     res.redirect('/ryu/addPharma')
                 } else {
@@ -265,6 +266,22 @@ router.route('/edit')
             res.redirect('/ryu/edit')
         }
     });
+router.route('/ville')
+.post([
+    check("pays","pays Invalide").not().isEmpty(),
+    check("prefix","specialite Invalide").not().isEmpty(),
+], async (req,res)=>{
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){//ça veut dire s'il y a erreur exécute mois ça
+        console.log(errors)
+        res.redirect('/ryu/medecin')
+    }
+    else {
+        const input = req.body;
+        const admin = await AdminQuerie.setVille(input.pays,input.prefix);
+        res.redirect('/ryu/medecin')
+    }
+});
 router.route('/medecin')
     .get(async (req,res)=>{
         if(req.session.alloSante) {
@@ -289,6 +306,7 @@ router.route('/medecin')
         check("name","nom Invalide").not().isEmpty(),
         check("numero","numero Invalide").not().isEmpty(),
         check("clinic","clinic Invalide").not().isEmpty(),
+        check("pays","pays Invalide").not().isEmpty(),
         check("specialite","specialite Invalide").not().isEmpty(),
         check("address","address Invalide").not().isEmpty(),
     ], async (req,res)=>{
@@ -299,7 +317,7 @@ router.route('/medecin')
         }
         else {
             const input = req.body;
-            const admin = await AdminQuerie.setMedecin(input.name,input.numero,input.clinic,input.address,input.specialite)
+            const admin = await AdminQuerie.setMedecin(input.name,input.numero,input.clinic,input.address,input.specialite, input.pays)
             res.redirect('/ryu/medecin')
         }
     });

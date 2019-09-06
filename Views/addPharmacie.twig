@@ -47,16 +47,18 @@
                         </div>
                         <div class="clearfix"> </div>
                     </div>
-                    <div class="col-md-12 form-group2 group-mail">
+                    <div class="col-md-6 form-group2 group-mail">
                         <label class="control-label">Adresse</label>
-                        <select name="address" class="form-control">
-                            <option selected="selected" disabled="disabled">La Commune</option>
+                        <select name="pays" class="form-control">
+                            <option selected="selected" disabled="disabled">Le pays</option>
                             {% for err in info.ville %}
-                                {% for item in err.commune %}
-                                    <option value="{{ err.name }} - {{ item.nameCommune }}">{{ err.name }} - {{ item.nameCommune }}</option>
-                                {% endfor %}
+                                <option value="{{ err.name }}">{{ err.name }}</option>
                             {% endfor %}
                         </select>
+                    </div>
+                    <div class="col-md-6 form-group1 form-last">
+                            <label class="control-label">Ville & Commune</label>
+                            <input name="address" type="text" placeholder="Abidjan/Cocody" required="">
                     </div>
                     <div class="clearfix"> </div>
                     <div class="col-md-12 form-group">
@@ -113,6 +115,8 @@
             <div class="col-md-12">
                 <div class="gallery">
                     {% for item in info.Admin %}
+                                                    {% if item.etat != 3 %}
+
                         <div class="col-md">
                             <div class="gallery-img">
                                 <a href="../focus/images/hospital.png" class="b-link-stripe b-animate-go  swipebox"  title="Image Title" >
@@ -121,14 +125,12 @@
                                 </a>
                             </div>
                             <div class="text-gallery">
-                                {% if item.etat == 3 %}
-                                    <h6>Vous même</h6>
-                                {% else %}
                                 <h6>{{ item.clinicName|upper }} </h6>
-                                <p style="font-size: smaller; text-align: center">{{ item.email }} ||  {{ item.numero }}</p>
-                                    {% endif %}
+                                <p style="font-size: smaller; text-align: center">{{ item.email }}<br>{{ item.numero }}<br>{{ item.pays }}<br>{{ item.address }}</p>
+                                    
                             </div>
                         </div>
+                        {% endif %}
                     {% endfor %}
                     <div class="clearfix"> </div>
                 </div>
