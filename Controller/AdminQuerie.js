@@ -410,7 +410,7 @@ exports.AdminQuerie = class {
 
     static getMedecinByCountrie(pays, specialite){
         return new Promise(async next=>{
-            await MedecinSchema.find($and[{pays:pays}, {specialite:specialite}])
+            await MedecinSchema.find({$and:[{pays:pays}, {specialite:specialite}]})
                 .then(res=>{
                     next(res)
                 }).catch(err=>{next(err)});
