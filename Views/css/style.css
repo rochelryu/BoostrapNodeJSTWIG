@@ -6,7 +6,17 @@ p {margin: 0;}
 .card .header h2 a{
     color: #fff !important;
     text-decoration: none !important;
-} 
+}
+.bg-blank{
+    padding-top: 25px;
+    background-color: #fff !important;
+}
+.content-main{
+    min-height: 70vh;
+}
+.bg-blank .col-md-6{
+    margin-bottom: 50px;
+}
 html, body{
   	font-family:'Montserrat-Regular';
     font-size: 100%;

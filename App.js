@@ -53,7 +53,22 @@ io.on('connection', function (socket) {
             info.service = service.user
             io.emit("newService", info)
         }
-    })
+    });
+
+    socket.on('ass', async (data)=>{
+        const code = "assistance"+Math.floor(Math.random()*9999)
+        const numeroS = (data.numeroS)? data.numeroS:"N/A";
+        const dates = new Date();
+        console.log("/******BEGIN******/");
+        const service = await AdminQuerie.setAssuranceSante(data.name,data.numero,data.nameUsage,data.address, data.birthDate,data.firstname,data.sexe,data.email,data.numeroS)
+        if(service.etat){
+    
+            io.emit("newAssUV", service.resultat)
+        }
+        else{
+            console.log(service);
+        }
+    });
     socket.on('assign', async (data)=>{
         data.decompose = data.address.split('-')
         const modif = await AdminQuerie.setCommandeAddFirstLevel(data.code,data.decompose[0],data.decompose[1],data.ident);

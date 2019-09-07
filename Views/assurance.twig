@@ -1,0 +1,149 @@
+{% include 'Include/header.twig' %}
+
+<div class="content-main">
+
+    <div class="banner">
+        <h2>
+            <a href="/ryu">Accueil</a>
+            <i class="fa fa-angle-right"></i>
+            <span>Assurance</span>
+        </h2>
+    </div>
+    <div class="container-fluid">
+        <div class="row bg-blank">
+            <div class="col-md-6 sante">
+                <h2> Sante </h2>
+
+                <table id="sante" class="table table-hover dashboard-task-infos table-bordered">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>nom</th>
+                            <th>prenoms</th>
+                            <th>état</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in info.sante %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.firstname}}</td>
+                            <td>
+                            {% if condition %}
+                                <span class="label bg-green">Déjà Fait</span>
+                            {% else %}
+                                <span class="label bg-red">Pas encore</span>
+                            {% endif %}
+                             </td>
+                            <td>
+                            <a href="/ryu/details/{{item.recovery}}">
+                            Voir Plus  
+                            </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+        
+            </div>
+            <div class="col-md-6 voyage">
+                <h2> Voyage </h2>
+
+                <table class="table table-hover dashboard-task-infos table-bordered">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>nom</th>
+                            <th>prenoms</th>
+                            <th>état</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in info.voyage %}
+                            <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.firstname}}</td>
+                            <td>
+                            {% if condition %}
+                                <span class="label bg-green">Déjà Fait</span>
+                            {% else %}
+                                <span class="label bg-red">Pas encore</span>
+                            {% endif %}
+                             </td>
+                            <td>
+                            <a href="/ryu/details/{{item.recovery}}">
+                            Voir Plus  
+                            </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+        
+            </div>
+        </div>
+        <div class="row bg-blank">
+            <div class="col-md-6 habitat">
+                <h2> Habitation </h2>
+
+                <table class="table table-hover dashboard-task-infos table-bordered">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>nom du fichier</th>
+                            <th>état</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in info.habitat %}
+                            <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ item.nameFile }}</td>
+                            <td>
+                            {% if item.etat == 2 %}
+                                <span class="label bg-green">Déjà Fait</span>
+                            {% else %}
+                                <span class="label bg-red">Pas encore</span>
+                            {% endif %}
+                             </td>
+                            <td>
+                            <a href="/ryu/details/{{item.recovery}}">
+                            Voir Plus  
+                            </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+        
+            </div>
+            <div class="col-md-6 auto">
+                <h2> Auto-Moto </h2>
+
+                <table class="table table-hover dashboard-task-infos table-bordered">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>nom</th>
+                            <th>prenoms</th>
+                            <th>état</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+        
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+{% include 'Include/footer.twig' %}

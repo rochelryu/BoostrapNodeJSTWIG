@@ -8,6 +8,9 @@ let request = require('request');
 const VilleCommuneSchema = require('../Schema/VilleCommuneSchema');
 const ServiceSchema = require('../Schema/ServiceSchema');
 const MedecinSchema = require('../Schema/MedecinSchema');
+const Sante = require('../Schema/AssuranceSchema');
+const Voyage = require('../Schema/VoyageSchema');
+const Habitat = require('../Schema/HabitatSchema');
 //https://fr.wikipedia.org/api/rest_v1/page/summary/Abidjan
 exports.AdminQuerie = class {
     medical = [
@@ -420,6 +423,45 @@ exports.AdminQuerie = class {
         return new Promise(async next=>{
             let medecin = new MedecinSchema({name:name,numero:numero,clinic:clinic,address:address,specialite:specialite, pays})
             await medecin.save().then(res=>next(res)).catch(err=>next(err))
+        })
+    }
+
+
+
+
+    static getAssuranceHabitat(){
+        return new Promise(async next=>{
+            await Habitat.find()
+                .then(res=>{
+                    next(res)
+                }).catch(err=>{next(err)});
+        })
+    }
+
+    static getAssuranceVoyage(){
+        return new Promise(async next=>{
+            await Voyage.find()
+                .then(res=>{
+                    next(res)
+                }).catch(err=>{next(err)});
+        })
+    }
+
+
+
+    static getAssuranceSante(){
+        return new Promise(async next=>{
+            await Sante.find()
+                .then(res=>{
+                    next(res)
+                }).catch(err=>{next(err)});
+        })
+    }
+
+    static setAssuranceSante(name, numero, nameUsage, address, birthDate, firstname, sexe, email, numeroS){
+        return new Promise(async next=>{
+            let medecin = new Sante({name:name,numero:numero,nameUsage:nameUsage,address:address,birthDate:birthDate, firstname:firstname, sexe:sexe, email:email, numeroS:numeroS})
+            await medecin.save().then(res=>next({etat:true, resultat:res})).catch(err=>next({etat:false, err:err}))
         })
     }
 }

@@ -58,7 +58,7 @@
                 });
             }
 
-        })
+        });
         socket.on('newService', function (data) {
             $.notify({
                 position: 8,
@@ -130,6 +130,15 @@
                     $('.nav-sidebar .nav tabs li:first-child').find('span').html(leta);
                     console.log(leta);
                 }
+        });
+        socket.on('newAssUV', function (data) {
+            $.notify({
+                position: 8,
+                type: 'success',
+                autoClose: false,
+                message: "une nouvelle Assurance Santé vient d'être prise"
+            });
+                $('#sante').find('tbody').prepend("<tr><td></td><td>"+data.name+"</td><td>"+data.firstname+"</td><span class='label bg-red'>Pas encore</span></td><td><a href='/ryu/details/"+data.recovery+"'>Voir Plus </a></td></tr>");
         });
         $('#focus').on('submit',function (e) {
             e.preventDefault();

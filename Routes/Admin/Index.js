@@ -282,6 +282,45 @@ router.route('/ville')
         res.redirect('/ryu/medecin')
     }
 });
+router.route('/assurance')
+    .get(async (req,res)=>{
+        if(req.session.alloSante) {
+            let info = {} // je crée une variable info  qui va prendre après les différentes valeur du traitement avec ma base de donnés
+            let sante = await AdminQuerie.getAssuranceSante();
+            let voyage = await AdminQuerie.getAssuranceVoyage();
+            let habitat = await AdminQuerie.getAssuranceHabitat();
+            info.sante = sante;
+            info.voyage = voyage;
+            info.habitat = habitat;
+            info.user = req.session.alloSante;
+            res.render("assurance.twig",{info:info});
+            /*
+            ICi je n'ai pas fait directement info.fakeLangage = [{nom:"Rochel", language:"JS", level: "85%"},{nom:"Ryu", language:"TS",...
+            parce que le retour de nos different traitement avec la base de Donné peut retourné des fois des tableau ou des objet Simple ou encore d'autre type du coup c'est plus facile d'enregistrer cela dans une variable intermédiaire afin de faire d'autre traitement si on veut puis après venir  l'assigner à notre grand objet contenant tout.
+            Mais bon ça c'est mon avis personnel, vous pouvez choisir de faire l'autre option. LE code C'est la Factorisation.
+             */
+        }
+        else res.redirect('/ryu/login') //je ne met pas de else parce que une fois qu'un if est ecrit ce qui est en dessous est toujours un else
+    })
+    .post([
+        check("name","nom Invalide").not().isEmpty(),
+        check("numero","numero Invalide").not().isEmpty(),
+        check("clinic","clinic Invalide").not().isEmpty(),
+        check("pays","pays Invalide").not().isEmpty(),
+        check("specialite","specialite Invalide").not().isEmpty(),
+        check("address","address Invalide").not().isEmpty(),
+    ], async (req,res)=>{
+        const errors = validationResult(req);
+        if(!errors.isEmpty()){//ça veut dire s'il y a erreur exécute mois ça
+            console.log(errors)
+            res.redirect('/ryu/medecin')
+        }
+        else {
+            const input = req.body;
+            const admin = await AdminQuerie.setMedecin(input.name,input.numero,input.clinic,input.address,input.specialite, input.pays)
+            res.redirect('/ryu/medecin')
+        }
+    });
 router.route('/medecin')
     .get(async (req,res)=>{
         if(req.session.alloSante) {
