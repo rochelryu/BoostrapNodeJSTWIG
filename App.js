@@ -60,9 +60,8 @@ io.on('connection', function (socket) {
         const numeroS = (data.numeroS)? data.numeroS:"N/A";
         const dates = new Date();
         console.log("/******BEGIN******/");
-        const service = await AdminQuerie.setAssuranceSante(data.name,data.numero,data.nameUsage,data.address, data.birthDate,data.firstname,data.sexe,data.email,data.numeroS)
+        const service = await AdminQuerie.setAssuranceSante(data.name,data.numero,data.nameUsage,data.address, data.birthDate,data.firstname,data.sexe,data.email,data.numeroS);
         if(service.etat){
-    
             io.emit("newAssUV", service.resultat)
         }
         else{
