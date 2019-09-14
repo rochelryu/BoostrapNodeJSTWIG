@@ -419,9 +419,9 @@ exports.AdminQuerie = class {
                 }).catch(err=>{next(err)});
         })
     }
-    static setMedecin(name, numero,clinic,address,specialite, pays){
+    static setMedecin(name, numero,clinic,address,specialite, pays, level){
         return new Promise(async next=>{
-            let medecin = new MedecinSchema({name:name,numero:numero,clinic:clinic,address:address,specialite:specialite, pays})
+            let medecin = new MedecinSchema({name:name,numero:numero,clinic:clinic,address:address,specialite:specialite, pays, level})
             await medecin.save().then(res=>next(res)).catch(err=>next(err))
         })
     }
@@ -461,6 +461,12 @@ exports.AdminQuerie = class {
     static setAssuranceSante(name, numero, nameUsage, address, birthDate, firstname, sexe, email, numeroS){
         return new Promise(async next=>{
             let medecin = new Sante({name:name,numero:numero,nameUsage:nameUsage,address:address,birthDate:birthDate, firstname:firstname, sexe:sexe, email:email, numeroS:numeroS})
+            await medecin.save().then(res=>next({etat:true, resultat:res})).catch(err=>next({etat:false, err:err}))
+        })
+    }
+    static setAssuranceVoyage(name, numero,origine,destination, birthDate, firstname, sexe, changeNumberDeJours){
+        return new Promise(async next=>{
+            let medecin = new Voyage({name:name,address:numero,paysOr:origine,paysDest:destination,birthDate:birthDate, firstname:firstname, sexe:sexe, changeNumberDeJours:changeNumberDeJours})
             await medecin.save().then(res=>next({etat:true, resultat:res})).catch(err=>next({etat:false, err:err}))
         })
     }

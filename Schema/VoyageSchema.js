@@ -26,6 +26,9 @@ const VoyageSchema = new mongoose.Schema({
     etat:{
         type:Number, default: 1,
     },
+    changeNumberDeJours:{
+        type:Number,
+    },
     recovery:{type:Number, default: Math.floor(Math.random()*9999)},
     register_date: { type: Date, default: Date.now },
     birthDate: { type: Date, default: null },

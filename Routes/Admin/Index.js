@@ -317,7 +317,7 @@ router.route('/assurance')
         }
         else {
             const input = req.body;
-            const admin = await AdminQuerie.setMedecin(input.name,input.numero,input.clinic,input.address,input.specialite, input.pays)
+            const admin = await AdminQuerie.setMedecin(input.name,input.numero,input.clinic,input.address,input.specialite, input.pays, 1)
             res.redirect('/ryu/medecin')
         }
     });

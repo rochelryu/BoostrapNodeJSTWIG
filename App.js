@@ -56,13 +56,20 @@ io.on('connection', function (socket) {
     });
 
     socket.on('ass', async (data)=>{
-        const code = "assistance"+Math.floor(Math.random()*9999)
         const numeroS = (data.numeroS)? data.numeroS:"N/A";
         const dates = new Date();
-        console.log("/******BEGIN******/");
         const service = await AdminQuerie.setAssuranceSante(data.name,data.numero,data.nameUsage,data.address, data.birthDate,data.firstname,data.sexe,data.email,data.numeroS);
         if(service.etat){
             io.emit("newAssUV", service.resultat)
+        }
+        else{
+            console.log(service);
+        }
+    });
+    socket.on('assVoyage', async (data)=>{
+        const service = await AdminQuerie.setAssuranceVoyage(data.name,data.numero,data.origine,data.destination,data.birthDate,data.firstname,data.sexe,data.changeNumberDeJours)
+        if(service.etat){
+            io.emit("newAssUVV", service.resultat);
         }
         else{
             console.log(service);

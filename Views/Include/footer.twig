@@ -138,7 +138,16 @@
                 autoClose: false,
                 message: "une nouvelle Assurance Santé vient d'être prise"
             });
-                $('#sante').find('tbody').prepend("<tr><td></td><td>"+data.name+"</td><td>"+data.firstname+"</td><span class='label bg-red'>Pas encore</span></td><td><a href='/ryu/details/"+data.recovery+"'>Voir Plus </a></td></tr>");
+                $('#sante').find('tbody').prepend("<tr><td></td><td>"+data.name+"</td><td>"+data.firstname+"</td><td><span class='label bg-red'>Pas encore</span></td><td><a href='/ryu/details/"+data.recovery+"'>Voir Plus </a></td></tr>");
+        });
+        socket.on('newAssUVV', function (data) {
+            $.notify({
+                position: 8,
+                type: 'success',
+                autoClose: false,
+                message: "une nouvelle Assurance Voyage vient d'être prise"
+            });
+                $('#voyage').find('tbody').prepend("<tr><td></td><td>"+data.name+"</td><td>"+data.firstname+"</td><td><span class='label bg-red'>Pas encore</span></td><td><a href='/ryu/details/"+data.recovery+"'>Voir Plus </a></td></tr>");
         });
         $('#focus').on('submit',function (e) {
             e.preventDefault();

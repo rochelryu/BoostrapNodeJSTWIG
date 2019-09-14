@@ -22,6 +22,9 @@ const MedecinSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
+    level:{
+        type:Number,
+    },
     specialite:{type:String},
     register_date: { type: Date, default: Date.now },
 });
