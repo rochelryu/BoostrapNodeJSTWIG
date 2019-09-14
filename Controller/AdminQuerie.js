@@ -172,6 +172,31 @@ exports.AdminQuerie = class {
             });
         })
     }
+
+    static ikeaDetailsBrzaz(){
+        let base = "http://www.brazzaville.cg/fr/pharmacies";
+        return new Promise(async next=>{
+            scrapeIt(base, {
+                pharmacie: {
+                    listItem: '.field-item.even > div'
+                    , data: {
+
+                        title: " > div:first-child",
+                        address: "div:last-child div:first-child",
+                        autor:"div:last-child div:nth-child(2) a",
+                        numero:"div:last-child div:last-child",
+                    }
+                }
+            }).then((meta) => {
+                console.log(meta)
+                base = meta.data;
+                next(base);
+            }).catch(err=>{
+                console.log("err de beta", err);
+                next(err);
+            });
+        }
+    )}
     static setUser(pass, name, number,prefix, address,date, sexe){
         const newPass = crypto.createHmac("SHA256", pass).update("Yabana, An other NaN").digest('hex')
         return new Promise(async next=>{

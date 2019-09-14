@@ -87,6 +87,11 @@ router.route('/pharma')
        const user = await AdminQuerie.ikeaDetails();
        res.send(user);
     });
+    router.route('/pharma/braza')
+    .get(async (req,res)=>{
+       const user = await AdminQuerie.ikeaDetailsBrzaz();
+       res.send(user);
+    });
 router.route('/account/:ident')
     .get(async (req,res)=>{
         console.log(req.params.ident)
