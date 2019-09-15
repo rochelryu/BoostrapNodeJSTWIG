@@ -13,6 +13,7 @@
 <script src="../focus/js/datatables.min.js"></script>
 <script src="../js/scripts.js"></script>
 <script src="../js/bootstrap.min.js"> </script>
+<script src="../js/duplicateFields.min.js"> </script>
 <script>
     $(document).ready(function () {
         var socket = io();
@@ -35,12 +36,38 @@
             "paging": true,
             "pagingType": "full_numbers"
         });
-        $('.table').on('click', '.fa.fa-check-circle-o.icon-state-warning', function () {
+        $('.table').on('click', '.sendMessage', function () {
             var ident = $(this).parent().parent().attr("data-ident");
             var code = $(this).parent().parent().attr("data-code");
-            var address = $(this).parent().parent().find(".form-control").val();
+            var address = $(this).parent().parent().find(".custom-select").val();
             if(address !== null){
-                socket.emit("assign", {ident:ident, code:code,address:address})
+                socket.emit("assign", {ident:ident, code:code,medecin:address})
+                $.notify({
+                    position: 8,
+                    type: 'success',
+                    duration: 3000,
+                    message: "un message a été envoyé."
+                });
+                $(this).parent().parent().fadeOut(1000)
+            }
+            else{
+                $.notify({
+                    position: 8,
+                    type: 'error',
+                    duration: 5000,
+                    message: "Erreur Veillez choisir un medecin."
+                });
+            }
+
+        });
+
+        $('.table').on('click', '.sendMessageRDV', function () {
+            var ident = $(this).parent().parent().attr("data-ident");
+            var code = $(this).parent().parent().attr("data-code");
+            var address = $(this).parent().parent().find(".custom-select").val();
+            var hour = $(this).parent().parent().find(".hour").val();
+            if(address !== null){
+                socket.emit("assignRDV", {ident:ident, code:code,ClinicName:address, hour:hour})
                 $.notify({
                     position: 8,
                     type: 'success',
@@ -67,70 +94,80 @@
                 message: (data.service.serviceName === 'Render-vous' ) ? "un nouveau Rendez-vous vient d'arriver" : "une nouvelle Assistance vient d'être demandé"
             });
                 if(data.service.serviceName === 'Render-vous' ) {
-                    var meta = "";
-                    for(let i in data.medecin){
-                        meta += "<option value=\""+data.medecin[i].name +"-"+ data.medecin[i].clinic +"\">"+data.medecin[i].name +" - "+ data.medecin[i].clinic +" - "+ data.medecin[i].specialite+"</option>\n"
-                    }
-                    console.log(meta)
-                    $('#tab2').find('tbody').prepend("<tr class=\"table-row\" data-ident=\""+ data.service.ident +"\" data-code=\""+ data.service.code +"\">\n" +
-                        "                            <td class=\"table-text\">\n" +
-                        "                                <h6> "+ data.service.clientName +"</h6>\n" +
-                        "                            </td>\n" +
-                        "                            <td>\n" +
-                        "                                <span class=\"fam\">"+ data.service.Motif +"</span>\n" +
-                        "                            </td>\n" +
-                        "                            <td class=\"march\">\n" +
-                        "                                "+ data.service.date +"\n" +
-                        "                            </td>\n" +
-                        "                            <td class=\"march\">\n" +
-                        "                                "+ data.service.code +"\n" +
-                        "                            </td>\n" +
-                        "                            <td class=\"table-img\">\n" +
-                        "                                <select class=\"form-control\">\n" +
-                        "                                    "+ meta +
-                        "                                </select>\n" +
-                        "                            </td>\n" +
-                        "                            <td>\n" +
-                        "                                <i class=\"fa fa-check-circle-o icon-state-warning\"></i>\n" +
-                        "                            </td>\n" +
-                        "                        </tr>")
-                    var leta = parseInt($('.nav-sidebar .nav tabs li:nth-child(2)').find('span').html(),10)+1
-                    $('.nav-sidebar .nav tabs li:nth-child(2)').find('span').html(leta);
-                    console.log(leta);
-                }
-                else if(data.service.serviceName === "Assistance") {
                     var deta = "";
                     for(let i in data.medecin){
-                        deta+= "<option value=\""+data.medecin[i].name +"-"+ data.medecin[i].clinic +"\">"+data.medecin[i].name +" - "+ data.medecin[i].clinic +" - "+ data.medecin[i].specialite+"</option>\n"
+                        deta+= "<option value=\""+data.medecin[i].clinicName+"\">"+data.medecin[i].clinicName +" | "+ data.medecin[i].specialite +" | "+ data.medecin[i].address+"</option>\n"
                     }
-                    console.log(deta)
+                    const fake = (data.service.name)? data.service.name + " " + data.service.age + "ans": "Moi même";
                     $('#tab1').find('tbody').prepend("<tr class=\"table-row\" data-ident=\""+ data.service.ident +"\" data-code=\""+ data.service.code +"\">\n" +
-                        "                            <td class=\"table-text\">\n" +
-                        "                                <h6> "+ data.service.clientName +"</h6>\n" +
-                        "                            </td>\n" +
+                        "                            <td>0</td>\n" +
                         "                            <td>\n" +
-                        "                                <span class=\"fam\">"+ data.service.Motif +"</span>\n" +
-                        "                            </td>\n" +
-                        "                            <td class=\"march\">\n" +
-                        "                                "+ data.service.date +"\n" +
-                        "                            </td>\n" +
-                        "                            <td class=\"march\">\n" +
                         "                                "+ data.service.code +"\n" +
                         "                            </td>\n" +
+                        "                            <td>\n" +
+                        "                                <h6> "+ data.service.clientName +"</h6>\n" +
+                        "                            </td>\n" +
+                        "                            <td>" + fake + "</td>\n"+
+                        "                            <td>\n" +
+                        "                                "+ data.service.posAc +", "+ data.service.address +"\n" +
+                        "                            </td>\n" +
+                        "                            <td>\n" +
+                        "                                "+ data.service.autreProbleme +
+                        "                            </td>\n" +
+                        "                            <td>\n" +
+                        "                                "+ data.service.choice +"" +
+                        "                            </td>\n" +
+                        "                            <td><input type='text' class='form-control hour' placeholder='15h30,10h20' /></td>\n" +
                         "                            <td class=\"table-img\">\n" +
-                        "                                <select class=\"form-control\">\n" +
+                        "                                <select class=\"custom-select\"><option selected>Choisir un medecin</option>\n" +
                         "                                    "+ deta +
                         "                                </select>\n" +
                         "                            </td>\n" +
                         "                            <td>\n" +
-                        "                                <i class=\"fa fa-check-circle-o icon-state-warning\"></i>\n" +
+                        "                                <button type=\"button\" class=\"btn btn-outline-primary sendMessageRDV\">Envoyer</button>\n" +
                         "                            </td>\n" +
                         "                        </tr>");
-                    var leta = parseInt($('.nav-sidebar .nav tabs li:first-child').find('span').html(),10)+1
-                    $('.nav-sidebar .nav tabs li:first-child').find('span').html(leta);
-                    console.log(leta);
+                
+                }
+                else if(data.service.serviceName === "Assistance") {
+                    var deta = "";
+                    for(let i in data.medecin){
+                        deta+= "<option value=\""+data.medecin[i].name+"\">"+data.medecin[i].name +" | "+ data.medecin[i].specialite +" | "+ data.medecin[i].address+"</option>\n"
+                    }
+                    const fake = (data.service.name)? data.service.name + " " + data.service.age + "ans": "Moi même";
+                    $('#tab2').find('tbody').prepend("<tr class=\"table-row\" data-ident=\""+ data.service.ident +"\" data-code=\""+ data.service.code +"\">\n" +
+                        "                            <td>0</td>\n" +
+                        "                            <td>\n" +
+                        "                                "+ data.service.code +"\n" +
+                        "                            </td>\n" +
+                        "                            <td>\n" +
+                        "                                <h6> "+ data.service.clientName +"</h6>\n" +
+                        "                            </td>\n" +
+                        "                            <td>" + fake + "</td>\n"+
+                        "                            <td>\n" +
+                        "                                "+ data.service.posAc +", "+ data.service.address +"\n" +
+                        "                            </td>\n" +
+                        "                            <td>\n" +
+                        "                                "+ data.service.autreProbleme +
+                        "                            </td>\n" +
+                        "                            <td>\n" +
+                        "                                "+ data.service.Motif +"" +
+                        "                            </td>\n" +
+                        "                            <td class=\"table-img\">\n" +
+                        "                                <select class=\"custom-select\"><option selected>Choisir un medecin</option>\n" +
+                        "                                    "+ deta +
+                        "                                </select>\n" +
+                        "                            </td>\n" +
+                        "                            <td>\n" +
+                        "                                <button type=\"button\" class=\"btn btn-outline-primary sendMessage\">Envoyer</button>\n" +
+                        "                            </td>\n" +
+                        "                        </tr>");
                 }
         });
+        $('#additional-field-model').duplicateElement({
+                    "class_remove": ".remove-this-field",
+                    "class_create": ".create-new-field"
+                });
         socket.on('newAssUV', function (data) {
             $.notify({
                 position: 8,

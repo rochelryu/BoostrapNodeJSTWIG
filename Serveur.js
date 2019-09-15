@@ -9,6 +9,7 @@ const express = require('express');
 var twig = require("twig");
 const morgan = require('morgan');
 const session = require('express-session');
+const bodyParser = require('body-parser')
 const cookie = require('cookieparser');
 const config = require('./Setting/config');
 const AdminRoute = require('./Routes/Admin/Index')
@@ -35,8 +36,8 @@ class Serveur {
              allow_async: true, // Allow asynchronous compiling
              strict_variables: false
          });
-         this.app.use(express.json()) // pour formatter tout ce qui est envoyé en post en application/json
-         this.app.use(express.urlencoded({ extended: true })) // pour crypter tout ce qui est post en application/x-www-form-urlencoded
+         this.app.use(bodyParser.json()); // pour formatter tout ce qui est envoyé en post en application/json
+         this.app.use(bodyParser.urlencoded({ extended: false })) // pour crypter tout ce qui est post en application/x-www-form-urlencoded
      }
 
 

@@ -6,13 +6,13 @@
         <h2>
             <a href="/ryu">Accueil</a>
             <i class="fa fa-angle-right"></i>
-            <span>Gestion Medecin Pour l'Assistance medicale</span>
+            <span>Gestion Medecin Pour Référencement</span>
         </h2>
     </div>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-7">
-                <form style="background: white" action="/ryu/medecin" method="post">
+                <form style="background: white" action="/ryu/refmedecin" method="post" enctype="multipart/form-data">
                     <div class="vali-form">
                         <div class="col-md-6 form-group1">
                             <label class="control-label">Nom & Prénoms</label>
@@ -51,6 +51,10 @@
                     </div>
                     <div class="clearfix"> </div>
                     <div class="col-md-12 form-group">
+                        <label class="control-label">Image Profil</label>
+                        <input type="file" style="display: inline-block" id="fixeInput" name="fixeInput">
+                        <div class="clearfix"></div>
+                        <br>
                         <button type="submit" class="btn btn-primary">Enregistrer</button>
                         <button type="reset" class="btn btn-default">Vider</button>
                     </div>
@@ -58,22 +62,6 @@
                 </form>
             </div>
             <div class="col-md-5">
-            <div class="col-md-12">
-                        <form style="background: white" action="/ryu/autreAS" method="post">
-                            <div class="vali-form">
-                                <div class="col-md-6 form-group1">
-                                    <label class="control-label">Pathologie</label>
-                                    <input name="name" type="text" required="">
-                                </div>
-                                <div class="col-md-6 form-group1 form-last" style="margin-top: 27px;">
-                                    <button type="submit" class="btn btn-primary">Enregistrer</button>
-                                    <button type="reset" class="btn btn-default">Vider</button>
-                                </div>
-                                <div class="clearfix"> </div>
-                            </div>
-                        
-                        </form>
-                    </div>
                 <form style="background: white" action="/ryu/ville" method="post">
                     <div class="vali-form">
                         <div class="col-md-6 form-group1">
@@ -92,25 +80,12 @@
                     </div>
                     <div class="clearfix"> </div>
                 </form>
-                <div class="container-fluid" style="background:#fff">
-                <div class="col-md-6">
-                <h5>Pays et Prefix</h5>
-                    <ul class="listVilles">
+                <div class="container-fluid">
+                    <ul class="listVille">
                     {% for item in info.ville %}
                         <li>{{item.name}} | {{item.prefix}} </li>
                     {% endfor %}
                     </ul>
-                </div>
-                <div class="col-md-6">
-                <h5>Pathologie</h5>
-                    <ul class="listVilles">
-                    {% for item in info.pathologie %}
-                                <li>
-                                    {{ item.name }}
-                                </li>
-                            {% endfor %}
-                    </ul>
-                </div>
                 </div>
             </div>
             <div class="col-md-12">

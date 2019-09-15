@@ -4,8 +4,11 @@
     "useFindAndModify": false
   },
   "sms":{
-    "user": "xxxxx",
-    "pass" : "xxxxx"
+    "user": "ALCALL",
+    "pass" : "Nan2018#",
+    "accountSid": "AC2230703c07cca27f0a297f007a613d2f",
+    "token": "f4134e50019a98847403da72a7ef6572",
+    "tokenOrange": "g71ARtPKSfNMw5PE9axov6MKZ1Np"
   },
   "port": 8080,
   "resave": false,

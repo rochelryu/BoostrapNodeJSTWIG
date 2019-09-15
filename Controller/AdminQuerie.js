@@ -6,6 +6,7 @@ const User = require('../Schema/UserSchema');
 const scrapeIt = require('scrape-it');
 let request = require('request');
 const VilleCommuneSchema = require('../Schema/VilleCommuneSchema');
+const EtablissementSchema = require('../Schema/EtablissementSchema');
 const ServiceSchema = require('../Schema/ServiceSchema');
 const MedecinSchema = require('../Schema/MedecinSchema');
 const Sante = require('../Schema/AssuranceSchema');
@@ -216,6 +217,18 @@ exports.AdminQuerie = class {
             await pays.save().then(res=>next(res)).catch(err=>next(err))
         })
     }
+    static delHisorique(ident, code){
+        return new Promise(async next=>{
+
+        let ville = await User.findOne({ident:ident});
+            for(let i in ville.services){
+                if(code === ville.services[i].code){
+                    ville.services[i].del = 2;
+                }
+            }
+            await ville.save().then(res=>next({etat:true,ville:res})).catch(err=>next({etat:false,error:err}))
+    })
+}
     static getAllAutre(level){
         return new Promise(async next=>{
             await Autre.find({level:level}).sort({name:1}).then(res=>next(res)).catch(err=>next(err))
@@ -224,6 +237,12 @@ exports.AdminQuerie = class {
     static getAllAdmin(){
         return new Promise(async next=>{
             await Admin.find().sort({name:1}).then(res=>next(res)).catch(err=>next(err))
+        })
+    }
+
+    static getAllEtablissement(){
+        return new Promise(async next=>{
+            await EtablissementSchema.find().sort({name:1}).then(res=>next(res)).catch(err=>next(err))
         })
     }
     static AddCommune(nameVile, nameCommune){
@@ -249,18 +268,18 @@ exports.AdminQuerie = class {
                 }).catch(err=>{next(err)});
         })
     }
-    static getCommandewithEtat(level){
+    static getCommandewithEtat(level, ServiceName){
         return new Promise(async next=>{
-            await ServiceSchema.find({etat:level})
+            await ServiceSchema.find({etat:level, serviceName:ServiceName})
                 .then(res=>{
                     next(res)
                 }).catch(err=>{next(err)});
         })
     }
-    static setCommandeAddFirstLevel(code,medecinName,clinicName, ident){
+    static setCommandeAddFirstLevel(code,medecinName, ident){
         let index = 0;
         return new Promise(async next=>{
-            await ServiceSchema.findOneAndUpdate({code:code}, {$set:{ "medecin": medecinName, ClinicName:clinicName, etat:2}}, {new: true}).then( async res=>{
+            await ServiceSchema.findOneAndUpdate({code:code}, {$set:{ "medecin": medecinName, etat:2}}, {new: true}).then( async res=>{
                 if(res === null){
                     next({etat:false});
                 }else {
@@ -269,7 +288,34 @@ exports.AdminQuerie = class {
                        if(updateUser.services[i].code === code){
                            index = i;
                            updateUser.services[i].medecin = medecinName;
-                           updateUser.services[i].ClinicName = clinicName;
+                           updateUser.services[i].etat = 2;
+                           break;
+                       }
+                   }
+                   updateUser.save().then(ress=>{next({etat:true,user:ress, index:index,provider:res})}).catch(errr=>{console.log(errr); next({etat:false})})
+                    /*if(res.password === crypto.createHmac("SHA256", pass).update("Yabana, An other NaN").digest('hex')){
+                        next({etat:true, user:res});
+                    }
+                    else {
+                        next({etat:false});
+                    }*/
+                }
+            }).catch(err=>next({etat:false}))
+        })
+    }
+    static setCommandeAddFirstLevelForRDV(code,ClinicName, ident, hour){
+        let index = 0;
+        return new Promise(async next=>{
+            await ServiceSchema.findOneAndUpdate({code:code}, {$set:{ "ClinicName": ClinicName, heure:hour, etat:2}}, {new: true}).then( async res=>{
+                if(res === null){
+                    next({etat:false});
+                }else {
+                   let updateUser = await User.findOne({ident:ident});
+                   for(let i in updateUser.services){
+                       if(updateUser.services[i].code === code){
+                           index = i;
+                           updateUser.services[i].ClinicName = ClinicName;
+                           updateUser.services[i].heure = hour;
                            updateUser.services[i].etat = 2;
                            break;
                        }
@@ -380,6 +426,15 @@ exports.AdminQuerie = class {
                 }).catch(err=>{next(err)});
         })
     }
+
+    static getPaysByPrefix(prefix){
+        return new Promise(async next=>{
+            await VilleCommuneSchema.findOne({prefix})
+                .then(res=>{
+                    next(res);
+                }).catch(err=>{next(err)});
+        })
+    }
     static getAllServiceInToday(name){
         var moment = new Date().getFullYear() + "-"+(new Date().getMonth()+1)+ "-"+new Date().getDate();
         console.log(moment);
@@ -427,9 +482,17 @@ exports.AdminQuerie = class {
                 }).catch(err=>{next(err)});
         })
     }
-    static getAllMedecin(){
+    static getAllUsersWithServices(){
         return new Promise(async next=>{
-            await MedecinSchema.find()
+            await User.find()
+                .then(res=>{
+                    next(res);
+                }).catch(err=>{next(err)});
+        })
+    }
+    static getAllMedecin(level){
+        return new Promise(async next=>{
+            await MedecinSchema.find({level})
                 .then(res=>{
                     next(res)
                 }).catch(err=>{next(err)});
@@ -437,16 +500,50 @@ exports.AdminQuerie = class {
     }
 
     static getMedecinByCountrie(pays, specialite){
+        const search = '.*'+specialite+'.*';
+
         return new Promise(async next=>{
-            await MedecinSchema.find({$and:[{pays:pays}, {specialite:specialite}]})
+            await MedecinSchema.find({$and:[{pays:pays},{"specialite":{'$regex': search}}]})
                 .then(res=>{
                     next(res)
                 }).catch(err=>{next(err)});
         })
     }
-    static setMedecin(name, numero,clinic,address,specialite, pays, level){
+
+    static getEtablissementByCountrie(pays, specialite){
+        let block = [];
         return new Promise(async next=>{
-            let medecin = new MedecinSchema({name:name,numero:numero,clinic:clinic,address:address,specialite:specialite, pays, level})
+            await EtablissementSchema.find({pays:pays})
+                .then(res=>{
+                    for(let i in res){
+                        for(let j in res[i].specialite){
+                            if(specialite === res[i].specialite[j].name){
+                                block.push(res[i]);
+                            }
+                            continue;
+                        }
+                        continue;
+                    }
+                    next(block);
+                }).catch(err=>{next(err)});
+        })
+    }
+    static setMedecin(name, numero,clinic,address,specialite, pays, level,image){
+        return new Promise(async next=>{
+            let medecin = new MedecinSchema({name:name,numero:numero,clinic:clinic,address:address,specialite:specialite, pays, level,image})
+            await medecin.save().then(res=>next(res)).catch(err=>next(err))
+        })
+    }
+
+    static setEtablissementRef(name, nameRespo,fonction,email,numero, numeroSecond, localisation,complementaire, pays, address, field, file){
+        
+        let spec = [];
+        for (let i in field){
+            spec.push({name:field[i]});
+            continue;
+        }
+        return new Promise(async next=>{
+            let medecin = new EtablissementSchema({name:name,nameResponsable:nameRespo,fonctionResponsable:fonction,contactUn:numero,contactDeux:numeroSecond,situationGeographique:localisation,ville:address,email:email,pays:pays,complementaire:complementaire,image:file,specialite:spec})
             await medecin.save().then(res=>next(res)).catch(err=>next(err))
         })
     }

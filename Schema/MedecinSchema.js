@@ -26,6 +26,7 @@ const MedecinSchema = new mongoose.Schema({
         type:Number,
     },
     specialite:{type:String},
+    image:{type:String, default:"doctor.png"},
     register_date: { type: Date, default: Date.now },
 });
 const Medecin = mongoose.model('Medecin', MedecinSchema);

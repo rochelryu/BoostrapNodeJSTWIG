@@ -1,0 +1,103 @@
+{% include 'Include/header.twig' %}
+
+<div class="content-main">
+
+		     <div class="banner">
+		    	<h2>
+				<a href="/ryu">Accueil</a>
+				<i class="fa fa-angle-right"></i>
+				<span>Liste des clients ayant démandée un Rendez-vous</span>
+				</h2>
+		    </div>
+		<!--//banner-->
+<div class="container-fluid">
+<h2> Tableau des demande non traité</h2>
+<table class="display table table-hover table-striped table-bordered" id="tab1" border="1"  style="width:100%">
+																	<thead>
+																	<tr>
+																		<th>N</th>
+																		<th>Code</th>
+																		<th>nom & prénom</th>
+																		<th>Pour </th>
+																		<th>Position</th>
+																		<th>Pathologie</th>
+																		<th>Pasage demandé</th>
+																		<th>Heure choisi</th>
+																		<th>Attribué Une Clinique</th>
+																		<th>Action</th>
+																	</tr>
+																	</thead>
+																	<tbody>
+																	{% for item in info.assistance %}
+
+																		<tr class="mtn" id="{{ item._id }}" data-code="{{item.code}}" data-ident="{{item.ident}}">
+																			<td scope="row">{{ loop.index }}</td>
+																			<td>{{ item.code }}</td>
+																			<td>{{ item.clientName }} </td>
+																			<td>{{ (item.name) ? item.name + " " + item.age + "ans": "moi même" }}</td>
+																			<td>{{ item.posAc }}, {{item.address}}</td>
+																			<td>{{item.autreProbleme}}</td>
+																			<td>{{item.choice}}</td>
+																			<td><input type='text' class='form-control hour' placeholder='15h30,10h20' /></td>
+																			<td>
+																			<select class="custom-select">
+																				<option selected>Choisir une clinique</option>
+																				{% for items in info.medecinAss %}
+																				<option value="{{items.clinicName}}">{{items.clinicName}} | {{items.address}} | {{items.numero}}</option>
+																			{% endfor %}
+																			</select>
+																			
+																			</td>
+																			<td>
+																			<div class="flex-center">
+																			<button type="button" class="btn btn-outline-primary sendMessageRDV">Envoyer</button>
+																			</div>
+																			</td>
+																		</tr>
+																	{% endfor %}
+																	</tbody>
+																</table>
+               
+<div class="clearfix"> </div>
+   </div>
+    
+</div>
+
+<div class="container-fluid">
+<h2> Tableau des demande traité</h2>
+<table class="display table table-hover table-striped table-bordered" id="listClient2" border="1"  style="width:100%">
+																	<thead>
+																	<tr>
+																		<th>N</th>
+																		<th>Code</th>
+																		<th>nom & prénom</th>
+																		<th>Pour </th>
+																		<th>Position</th>
+																		<th>Pathologie</th>
+																		<th>Heure choisi</th>																		<th>Motif de l'assistance Medicale</th>
+																		<th>Clinic Choisi</th>																	</tr>
+																	</thead>
+																	<tbody>
+																	{% for item in info.total %}
+
+																		<tr class="mtn" id="{{ item._id }}" data-code="{{item.code}}" data-ident="{{item.ident}}">
+																			<td scope="row">{{ loop.index }}</td>
+																			<td>{{ item.code }}</td>
+																			<td>{{ item.clientName }} </td>
+																			<td>{{ (item.name) ? item.name + " " + item.age + "ans": "moi même" }}</td>
+																			<td>{{ item.posAc }}, {{item.address}}</td>
+																			<td>{{item.autreProbleme}}</td>
+																			<td>{{item.heure}}</td>
+																			<td><input type='text' class='form-control hour' value="{{item.ClinicName}}" /></td>
+																			
+																		</tr>
+																	{% endfor %}
+																	</tbody>
+																</table>
+               
+<div class="clearfix"> </div>
+   </div>
+    
+</div>
+
+{% include 'Include/footer.twig' %}

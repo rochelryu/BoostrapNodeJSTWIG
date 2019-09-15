@@ -24,6 +24,27 @@ router.route('/ville') // afin de decrire mieux une route on utilise la methode 
 
 //Route vers login Avec Authentification
 
+router.route('/changeSer')
+    .post([
+        check("token","token Invalide").not().isEmpty(),
+        check("code", "code Invalide").not().isEmpty()
+    ],async (req,res)=>{
+        const errors = validationResult(req);
+        if(!errors.isEmpty()){//ça veut dire s'il y a erreur exécute mois ça
+            res.send({etat:false,err:errors})
+        }
+        else {const input = req.body;
+        console.log(input)
+            const admin = await AdminQuerie.delHisorique(input.token, input.code)
+            if(admin.etat){
+                console.log("ici")
+                res.send({etat:true})
+            }
+        console.log("la")
+            res.send({etat:false,err:"Identifiant incorrect"})
+        }
+    });
+
 router.route('/login')
     .post([
         check("numero","numero Invalide").not().isEmpty(),
@@ -110,7 +131,8 @@ router.route('/search')
             }
             else {const input = req.body;
                 const admin = await AdminQuerie.getMedecinByCountrie(input.pays,input.specialite);
-                res.send({etat:true,info:admin})
+                const second = await AdminQuerie.getEtablissementByCountrie(input.pays,input.specialite);
+                res.send({etat:true,info:admin, eta:second})
                 }
             }
         );

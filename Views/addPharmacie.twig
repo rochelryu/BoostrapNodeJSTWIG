@@ -6,7 +6,7 @@
         <h2>
             <a href="/ryu">Accueil</a>
             <i class="fa fa-angle-right"></i>
-            <span>Clinique</span>
+            <span>Gestion Etablissement Pour le Rendez-vous</span>
         </h2>
     </div>
     <div class="container-fluid">
@@ -72,39 +72,25 @@
                 <div class="row">
                     <div class="col-md-12">
                         <form style="background: white" action="/ryu/autre" method="post">
-                            <div class="vali-form">
+                           <div class="vali-form">
                                 <div class="col-md-6 form-group1">
-                                    <label class="control-label">Pathologie ou Demande</label>
+                                    <label class="control-label">Demande</label>
                                     <input name="name" type="text" required="">
                                 </div>
-                                <div class="col-md-6 form-group1 form-last">
-                                    <label class="control-label">Service</label>
-                                    <select name="level" class="form-control">
-                                        <option value="1">Pour Assistance</option>
-                                        <option value="2">Pour Rendez-vous</option>
-                                    </select>
+                                <div class="col-md-6 form-group1 form-last" style="margin-top: 27px;">
+                                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                    <button type="reset" class="btn btn-default">Vider</button>
                                 </div>
                                 <div class="clearfix"> </div>
                             </div>
-                            <div class="clearfix"> </div>
-                            <div class="col-md-12 form-group">
-                                <button type="submit" class="btn btn-primary">Enregistrer</button>
-                                <button type="reset" class="btn btn-default">Vider</button>
-                            </div>
-                            <div class="clearfix"> </div>
-                        </form>
+                           </form>
                     </div>
                     <div class="col-md-12 autre">
-                        <h2>Les Pathologies & Demandes</h2>
+                        <h2>Demandes</h2>
                         <ul>
-                            {% for item in info.assistance %}
-                                <li>
-                                    {{ item.name }} || Assistance
-                                </li>
-                            {% endfor %}
                             {% for item in info.rdv %}
                                 <li>
-                                    {{ item.name }} || Rendez-vous
+                                    {{ item.name }}
                                 </li>
                             {% endfor %}
                         </ul>
