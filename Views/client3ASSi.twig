@@ -11,92 +11,88 @@
 		    </div>
 		<!--//banner-->
 <div class="container-fluid">
-<h2> Tableau des demande non traité</h2>
-<table class="display table table-hover table-striped table-bordered" id="tab2" border="1"  style="width:100%">
-																	<thead>
-																	<tr>
-																		<th>N</th>
-																		<th>Code</th>
-																		<th>nom & prénom</th>
-																		<th>Pour </th>
-																		<th>Position</th>
-																		<th>Demande</th>
-																		<th>Motif de l'assistance Medicale</th>
-																		<th>Attribué Medecin</th>
-																		<th>Action</th>
-																	</tr>
-																	</thead>
-																	<tbody>
-																	{% for item in info.assistance %}
-
-																		<tr class="mtn" id="{{ item._id }}" data-code="{{item.code}}" data-ident="{{item.ident}}">
-																			<td scope="row">{{ loop.index }}</td>
-																			<td>{{ item.code }}</td>
-																			<td>{{ item.clientName }} </td>
-																			<td>{{ (item.name) ? item.name + " " + item.age + "ans": "moi même" }}</td>
-																			<td>{{ item.posAc }}, {{item.address}}</td>
-																			<td>{{item.autreProbleme}}</td>
-																			<td>{{item.Motif}}</td>
-																			<td>
-																			<select class="custom-select">
-																				<option selected>Choisir un medecin</option>
-																				{% for items in info.medecinAss %}
-																				<option value="{{items.name}}">{{items.name}} | {{items.specialite}} | {{items.address}} |</option>
-																			{% endfor %}
-																			</select>
-																			
-																			</td>
-																			<td>
-																			<div class="flex-center">
-																			<button type="button" class="btn btn-outline-primary sendMessage">Envoyer</button>
-																			</div>
-																			</td>
+	<h2> Demande non traitées</h2>
+	<table class="display table table-hover table-striped table-bordered" id="tab2" border="1"  style="width:100%">
+																		<thead>
+																		<tr>
+																			<th>N</th>
+																			<th>Code</th>
+																			<th>nom & prénom</th>
+																			<th>Pour </th>
+																			<th>Position</th>
+																			<th>Demande</th>
+																			<th>Motif de l'assistance Medicale</th>
+																			<th>Attribué Medecin</th>
+																			<th>Action</th>
 																		</tr>
-																	{% endfor %}
-																	</tbody>
-																</table>
-               
-<div class="clearfix"> </div>
-   </div>
-    
-</div>
+																		</thead>
+																		<tbody>
+																		{% for item in info.assistance %}
 
+																			<tr class="mtn" id="{{ item._id }}" data-code="{{item.code}}" data-ident="{{item.ident}}">
+																				<td scope="row">{{ loop.index }}</td>
+																				<td>{{ item.code }}</td>
+																				<td>{{ item.clientName }} </td>
+																				<td>{{ (item.name) ? item.name + " " + item.age + "ans": "moi même" }}</td>
+																				<td>{{ item.posAc }}, {{item.address}}</td>
+																				<td>{{item.autreProbleme}}</td>
+																				<td>{{item.Motif}}</td>
+																				<td>
+																				<select class="custom-select">
+																					<option selected>Choisir un medecin</option>
+																					{% for items in info.medecinAss %}
+																					<option value="{{items.name}}">{{items.name}} | {{items.specialite}} | {{items.address}} |</option>
+																				{% endfor %}
+																				</select>
+																				
+																				</td>
+																				<td>
+																				<div class="flex-center">
+																				<button type="button" class="btn btn-outline-primary sendMessage">Envoyer</button>
+																				</div>
+																				</td>
+																			</tr>
+																		{% endfor %}
+																		</tbody>
+																	</table>
+				
+	<div class="clearfix"> </div>
+</div>
+    
 <div class="container-fluid">
-<h2> Tableau des demande traité</h2>
-<table class="display table table-hover table-striped table-bordered" id="listClient2" border="1"  style="width:100%">
-																	<thead>
-																	<tr>
-																		<th>N</th>
-																		<th>Code</th>
-																		<th>nom & prénom</th>
-																		<th>Pour </th>
-																		<th>Position</th>
-																		<th>Demande</th>
-																		<th>Motif de l'assistance Medicale</th>
-																		<th>Medecin</th>																	</tr>
-																	</thead>
-																	<tbody>
-																	{% for item in info.total %}
+	<h2> Demande traitées</h2>
+	<table class="display table table-hover table-striped table-bordered" id="listClient2" border="1"  style="width:100%">
+																		<thead>
+																		<tr>
+																			<th>N</th>
+																			<th>Code</th>
+																			<th>nom & prénom</th>
+																			<th>Pour </th>
+																			<th>Position</th>
+																			<th>Demande</th>
+																			<th>Motif de l'assistance Medicale</th>
+																			<th>Medecin</th>																	</tr>
+																		</thead>
+																		<tbody>
+																		{% for item in info.total %}
 
-																		<tr class="mtn" id="{{ item._id }}" data-ryu="{{item.code}}" data-ident="{{item.ident}}">
-																			<td scope="row">{{ loop.index }}</td>
-																			<td>{{ item.code }}</td>
-																			<td>{{ item.clientName }} </td>
-																			<td>{{ (item.name) ? item.name + " " + item.age + "ans": "moi même" }}</td>
-																			<td>{{ item.posAc }}, {{item.address}}</td>
-																			<td>{{item.autreProbleme}}</td>
-																			<td>{{item.Motif}}</td>
-																			<td>
-																			{{item.medecin}}
-																			</td>
-																		</tr>
-																	{% endfor %}
-																	</tbody>
-																</table>
-               
-<div class="clearfix"> </div>
-   </div>
-    
+																			<tr class="mtn" id="{{ item._id }}" data-ryu="{{item.code}}" data-ident="{{item.ident}}">
+																				<td scope="row">{{ loop.index }}</td>
+																				<td>{{ item.code }}</td>
+																				<td>{{ item.clientName }} </td>
+																				<td>{{ (item.name) ? item.name + " " + item.age + "ans": "moi même" }}</td>
+																				<td>{{ item.posAc }}, {{item.address}}</td>
+																				<td>{{item.autreProbleme}}</td>
+																				<td>{{item.Motif}}</td>
+																				<td>
+																				{{item.medecin}}
+																				</td>
+																			</tr>
+																		{% endfor %}
+																		</tbody>
+																	</table>
+				
+	<div class="clearfix"> </div>
 </div>
-
+    
 {% include 'Include/footer.twig' %}

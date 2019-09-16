@@ -10,7 +10,43 @@
         </h2>
     </div>
     <div class="container-fluid">
-        <div id="pages-wrappers">
+    <div class="row">
+        <form id="focusSearch" class="form-wrapper cf">
+  	    <input type="text" id="code" placeholder="Entrer le code ici..." required>
+	  <button type="submit" id="searchBeta" >Rechercher</button>
+    </form>
+    </div>
+    <div class="row p-t-30">
+        <div class="progressBar">
+        <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+   <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+</svg>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12" id="global">
+            <article class="material-card Red">
+                <h2>
+                    <span></span>
+                    <strong>
+                    </strong>
+                </h2>
+                <div class="mc-content">
+                    <div class="img-container">
+                        <img class="img-responsive" src="./images/patient.jpg">
+                    </div>
+                    <div class="mc-description">
+
+                    </div>
+                </div>
+                <a class="mc-btn-action">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <div class="mc-footer">
+                    <button class="isValidate">Valider</button>
+                </div>
+            </article>
+        </div>
+    </div>
+        {#<div id="pages-wrappers">
             <div class="main-page">
                 <div class="col-md-4 compose-left">
                     <div class="folder widget-shadow">
@@ -67,15 +103,7 @@
                                 </div>
                                 <div class="mail-right"><p>{{ item.date|date('d/m/Y H:i') }}</p></div>
                                 <div class="clearfix"> </div>
-                                {#<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                                    <div class="mail-body">
-                                        <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor.</p>
-                                        <form>
-                                            <input type="text" placeholder="Reply to sender" required="">
-                                            <input type="submit" value="Send">
-                                        </form>
-                                    </div>
-                                </div>#}
+                                
                             </div>
                        {% endfor %}
                         </div>
@@ -119,15 +147,7 @@
                                     </div>
                                     <div class="mail-right"><p>{{ item.date|date('d/m/Y H:i') }}</p></div>
                                     <div class="clearfix"> </div>
-                                    {#<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                                        <div class="mail-body">
-                                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor.</p>
-                                            <form>
-                                                <input type="text" placeholder="Reply to sender" required="">
-                                                <input type="submit" value="Send">
-                                            </form>
-                                        </div>
-                                    </div>#}
+                                    
                                 </div>
                             {% endfor %}
                         </div>
@@ -152,9 +172,9 @@
                 <div class="clearfix"> </div>
             </div>
 
-        </div>
+        </div>#}
     </div>
 </div>
 
 
-{% include 'Include/footer.twig' %}
+{% include 'Include/footer3.twig' %}

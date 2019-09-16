@@ -252,6 +252,13 @@ exports.AdminQuerie = class {
             await ville.save().then(res=>next({etat:true,ville:res})).catch(err=>next({etat:false,error:err}))
         })
     }
+
+    static getServiceByClinicNameAndCode(clinicName, code){
+        return new Promise(async next=>{
+            await ServiceSchema.findOne({ClinicName:clinicName, code:code, etat:2})
+            .then(res=>next(res)).catch(err=>next(err))
+        })
+    }
     static getCommandeInWait(text){
         return new Promise(async next=>{
             await ServiceSchema.find({$and:[{etat:1}, {serviceName:text}]})
@@ -300,6 +307,13 @@ exports.AdminQuerie = class {
                         next({etat:false});
                     }*/
                 }
+            }).catch(err=>next({etat:false}))
+        })
+    }
+    static setServiceFinale(code){
+        return new Promise(async next=>{
+            await ServiceSchema.findOneAndUpdate({code:code}, {$set:{etat:3}}, {new: true}).then( res=>{
+                next({etat:true, user:res})
             }).catch(err=>next({etat:false}))
         })
     }

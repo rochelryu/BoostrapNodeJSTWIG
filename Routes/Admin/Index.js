@@ -356,7 +356,8 @@ router.route('/client')
             let info = {}
             let medecinAss = await AdminQuerie.getAllAdmin();
             let rdv = await AdminQuerie.getCommandeInWait("Render-vous");
-            let total = await AdminQuerie.getCommandewithEtat(2,"Render-vous");
+            let total = await AdminQuerie.getCommandewithEtat(3,"Render-vous");
+            let enAttent = await AdminQuerie.getCommandewithEtat(2,"Render-vous");
             /*for (let i in assurance){
                 let clientComplet = await AdminQuerie.getUserByIdent(assurance[i].ident);
                 clients[i].clientComplet = clientComplet;
@@ -377,6 +378,7 @@ router.route('/client')
             console.log(rdv);
             info.assistance = rdv;
             info.total = total;
+            info.enAttent = enAttent;
             info.medecinAss = medecinAss;
             info.user = req.session.alloSante;
             res.render("client3Rdv.twig",{info:info});

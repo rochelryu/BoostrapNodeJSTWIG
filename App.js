@@ -56,6 +56,10 @@ io.on('connection', async (socket) => {
             io.emit("newService", info)
         }
     });
+    socket.on('finish', async(data)=>{
+        const valider = await AdminQuerie.setServiceFinale(data.code);
+        io.emit('final', valider);
+    })
 
     socket.on('ass', async (data)=>{
         const numeroS = (data.numeroS)? data.numeroS:"N/A";
@@ -89,6 +93,16 @@ io.on('connection', async (socket) => {
             const message = await Messagerie.sendOrangeRdv(modif.user.numero, modif.provider.ClinicName,modif.user.prefix,modif.provider.code,modif.user.name,modif.provider.date,modif.provider.heure) //.sendMessage(modif.user.numero,modif.provider.medecin,modif.provider.ClinicName,modif.provider.clientName,modif.provider.date,modif.provider.code,modif.provider.serviceName)
         }
     });
+    socket.on('sendValidation', async (data)=>{
+        const demande = await AdminQuerie.getServiceByClinicNameAndCode(data.me,data.numero);
+        if(demande){
+            socket.emit("result", demande);
+        }
+        else{
+            socket.emit('aucunResult')
+        }
+        //const message = await Messagerie.sendMessageClinic(data.me,data.numero,data.message)
+    })
     socket.on('send', async (data)=>{
         const message = await Messagerie.sendMessageClinic(data.me,data.numero,data.message)
     })

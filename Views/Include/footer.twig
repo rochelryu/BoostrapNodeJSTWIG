@@ -86,6 +86,14 @@
             }
 
         });
+        socket.on('final', (data)=>{
+            $.notify({
+                position: 8,
+                type: 'success',
+                autoClose: false,
+                message: "Une Validation a été faite";
+            });
+        })
         socket.on('newService', function (data) {
             $.notify({
                 position: 8,
