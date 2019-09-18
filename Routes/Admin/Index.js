@@ -67,6 +67,26 @@ router.route('/') // afin de decrire mieux une route on utilise la methode route
     });
 
 
+    router.route('/details/:id')
+    .get(async (req,res)=>{
+        if(req.session.alloSante){
+            const ass = await AdminQuerie.getAssuranceByRecovery(req.params.id);
+            res.render('details.twig', {info:ass});
+
+        }
+        else res.redirect('/ryu/login');
+    })
+
+
+    router.route('/prof/:id')
+    .get(async (req,res)=>{
+        if(req.session.alloSante){
+            const ass = await AdminQuerie.getAssuranceProfByRecovery(req.params.id);
+            res.render('prof.twig', {info:ass});
+
+        }
+        else res.redirect('/ryu/login');
+    })
     router.route('/compose') // afin de decrire mieux une route on utilise la methode route("l'url de la route qu'on veut") ensuite on utilise la methode que nous vpulons utiliser (ex de methode : GET, POST, OPTIONS, PUT, DELETE, etc...)
 // Dans mon cas ici je suis venu à la ligne parce que mon code Soit plus lisible sinon j'aurais pu tout faire en un ligne (ex: router.route('/').get()
     .get(async (req,res)=>{

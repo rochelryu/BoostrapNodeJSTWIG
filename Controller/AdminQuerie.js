@@ -2,6 +2,7 @@ const crypto = require('crypto')
 
 const Admin = require('../Schema/AdminSchema');
 const Autre = require('../Schema/AutreSchema');
+const AsprofSchema = require('../Schema/AsprofSchema');
 const User = require('../Schema/UserSchema');
 const scrapeIt = require('scrape-it');
 let request = require('request');
@@ -277,6 +278,20 @@ exports.AdminQuerie = class {
             let ville = await VilleCommuneSchema.findOne({name:nameVile});
             ville.commune.push({nameCommune:nameCommune})
             await ville.save().then(res=>next({etat:true,ville:res})).catch(err=>next({etat:false,error:err}))
+        })
+    }
+
+    static getAssuranceByRecovery(recovery){
+        return new Promise(async next=>{
+            await Sante.findOne({recovery:parseInt(recovery,10)})
+            .then(res=>next(res)).catch(err=>next(err))
+        })
+    }
+    getAssuranceProfByRecovery
+    static getAssuranceProfByRecovery(recovery){
+        return new Promise(async next=>{
+            await AsprofSchema.findOne({recovery:parseInt(recovery,10)})
+            .then(res=>next(res)).catch(err=>next(err))
         })
     }
 
@@ -625,6 +640,19 @@ exports.AdminQuerie = class {
         return new Promise(async next=>{
             let medecin = new Sante({name:name,numero:numero,nameUsage:nameUsage,address:address,birthDate:birthDate, firstname:firstname, sexe:sexe, email:email, numeroS:numeroS})
             await medecin.save().then(res=>next({etat:true, resultat:res})).catch(err=>next({etat:false, err:err}))
+        })
+    }
+
+    static setAssurancePro(name, numero, address, email, genre){
+        return new Promise(async next=>{
+            let medecin = new AsprofSchema({name:name,numero:numero,address:address,email:email, genre:genre})
+            await medecin.save().then(res=>next({etat:true, resultat:res})).catch(err=>next({etat:false, err:err}))
+        })
+    }
+
+    static getAssurancePro(){
+        return new Promise(async next=>{
+            await AsprofSchema.find().sort({name:1}).then(res=>next(res)).catch(err=>next(err))
         })
     }
     static setAssuranceVoyage(name, numero,origine,destination, birthDate, firstname, sexe, changeNumberDeJours){

@@ -76,8 +76,19 @@ io.on('connection', async (socket) => {
         const numeroS = (data.numeroS)? data.numeroS:"N/A";
         const dates = new Date();
         const service = await AdminQuerie.setAssuranceSante(data.name,data.numero,data.nameUsage,data.address, data.birthDate,data.firstname,data.sexe,data.email,data.numeroS);
+        console.log(service);
         if(service.etat){
             io.emit("newAssUV", service.resultat)
+        }
+        else{
+            console.log(service);
+        }
+    });
+    socket.on('assProfessionnelle', async (data)=>{
+        const service = await AdminQuerie.setAssurancePro(data.name,data.numero,data.ville + ' / ' + data.commune,data.email);
+        console.log(service);
+        if(service.etat){
+            io.emit("newAssUVPro", service.resultat)
         }
         else{
             console.log(service);
