@@ -24,12 +24,35 @@ exports.Messagerie = class{
         });*/
 
     }
-    static sendMessageClinic(clinicName,num,message){
-        request({url:'https://api.1s2u.io/bulksms?username=smssandersn019&password=web46802&mt=1&fl=Flash/None Flash Message &sid='+clinicName+'&mno='+ num +'&msg='+message,"Content-Type": "charset=utf-8"}, function(err,httpResponse,body){
-            console.log("err ",err, "Status",httpResponse, " body", body);
-        })
+    static sendSmsClinique(receiver, message){
+        var receveirr = "tel:"+ receiver;
+           var headers = {
+               'Authorization': "Bearer "+config.sms.tokenOrange,
+               'Content-Type': 'application/json'};
+       var body = {
+               outboundSMSMessageRequest: {
+           address : receveirr, 
+               senderAddress : "tel:+22548803377",
+           outboundSMSTextMessage: {
+               message : message  
+       }}};   
+        var options = {
+               uri: 'https://api.orange.com/smsmessaging/v1/outbound/tel:+22548803377/requests',
+               method: 'POST',
+               headers: headers,
+               body: JSON.stringify(body)};
+           request(options, function (error, response, body) {
+            if (!error) {
+               console.log(JSON.stringify(response));
+            }        
+            else {
+                console.log('contractsB', error);
+            }
+            
+           })
+        }
 
-    }
+
     static sendOrangeAssistance(receiver, medecin, prefix, code, name){
         const salutation = (new Date().getHours() >= 13) ? "Bonsoir "+name+", ": "Bonjour "+name+", "
         let mes = salutation + 'votre assistance est confirmée. Dr '+ medecin+' sera là pour vous suivre au service ' + code+'. \n POUR INFO OU ANNULATION (00 00 00 00)';
@@ -56,11 +79,12 @@ exports.Messagerie = class{
                else {
                 console.log('contractsB', error);
                }
-           })}
+           })
+        }
 
            static sendOrangeRdv(receiver, clinic, prefix, code, name, date, hour){
             const salutation = (new Date().getHours() >= 13) ? "Bonsoir "+name+", ": "Bonjour "+name+", "
-            let mes = salutation + 'votre rendez-vous est pour '+ date +' à '+ hour +' à la clinique '+ clinic+' au service ' + code+'. \n POUR INFO OU ANNULATION (00 00 00 00)';
+            let mes = salutation + 'votre rendez-vous est pour '+ date.getDate() +'/'+ (parseInt(date.getMonth(),10)+1) +'/'+ date.getFullYear()+ ' à '+ hour +' à la clinique '+ clinic+' au service ' + code+'. \n POUR INFO OU ANNULATION (00 00 00 00)';
             var receveirr = "tel:"+ prefix + receiver;
                var headers = {
                    'Authorization': "Bearer "+config.sms.tokenOrange,

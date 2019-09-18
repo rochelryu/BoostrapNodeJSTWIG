@@ -40,8 +40,11 @@ router.route('/changeSer')
                 console.log("ici")
                 res.send({etat:true})
             }
-        console.log("la")
-            res.send({etat:false,err:"Identifiant incorrect"})
+            else{
+                console.log("la")
+                res.send({etat:false,err:"Identifiant incorrect"})
+            }
+
         }
     });
 

@@ -103,7 +103,7 @@
                     {% for item in info.Admin %}
                                                     {% if item.etat != 3 %}
 
-                        <div class="col-md">
+                        <div class="col-md-3">
                             <div class="gallery-img">
                                 <a href="../focus/images/hospital.png" class="b-link-stripe b-animate-go  swipebox"  title="Image Title" >
                                     <img class="img-responsive " src="../focus/images/hospital.png" alt="" />
@@ -113,7 +113,9 @@
                             <div class="text-gallery">
                                 <h6>{{ item.clinicName|upper }} </h6>
                                 <p style="font-size: smaller; text-align: center">{{ item.email }}<br>{{ item.numero }}<br>{{ item.pays }}<br>{{ item.address }}</p>
-                                    
+                                                            <div class="actionFull">
+                            <button class="btn btn-outline-danger btn-rounded delAdmin" data-del="{{item.ident}}"> Supprimer </button>
+                            </div>                                    
                             </div>
                         </div>
                         {% endif %}

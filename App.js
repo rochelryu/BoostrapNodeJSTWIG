@@ -27,13 +27,10 @@ io.on('connection', async (socket) => {
         const age = (data.age)? data.age:"";
         const name = (data.name)? data.name:"";
         const commande = (data.commande)? data.commande:[];
-        console.log(data.ident,name,age,code,"Render-vous",data.address, data.date,commande, data.autre, data.choice);
-        console.log("/******BEGIN******/");
         const service = await AdminQuerie.setCommande(data.ident,name,age,code,"Render-vous",data.address,'',data.date, commande, data.autre, data.choice);
         if(service.etat){
-            console.log("Etat avec succès");
             let info = {}
-            const ville = await AdminQuerie.getAllMedecin(2);
+            const ville = await AdminQuerie.getAllAdmin();
             info.medecin = ville;
             info.service = service.user;
             io.emit("newService", info)
@@ -45,8 +42,6 @@ io.on('connection', async (socket) => {
         const name = (data.name)? data.name:"";
         const commande = (data.commande)? data.commande:"";
         const dates = new Date();
-        console.log(data.ident,name,age,code,"Assistance",data.address,data.motif,dates,commande, data.autre, "Aucun");
-        console.log("/******BEGIN******/");
         const service = await AdminQuerie.setCommande(data.ident,name,age,code,"Assistance",data.address,data.motif,dates,commande, data.autre, "Aucun");
         if(service.etat){
             let info = {}
@@ -57,8 +52,24 @@ io.on('connection', async (socket) => {
         }
     });
     socket.on('finish', async(data)=>{
-        const valider = await AdminQuerie.setServiceFinale(data.code);
+        const valider = await AdminQuerie.setServiceFinale(data.ele);
+        console.log(valider);
         io.emit('final', valider);
+    })
+    socket.on("delMedecin", async(data)=>{
+        const code = parseInt(data,10);
+        const del = await AdminQuerie.delMedecin(code);
+        console.log(del);
+    
+    })
+
+
+    socket.on("delEtablissement", async(data)=>{
+        const del = await AdminQuerie.delEtablissement(data);
+    })
+
+    socket.on("delAdmin", async(data)=>{
+        const del = await AdminQuerie.delAdmin(data);
     })
 
     socket.on('ass', async (data)=>{
@@ -83,18 +94,21 @@ io.on('connection', async (socket) => {
     });
     socket.on('assign', async (data)=>{
         const modif = await AdminQuerie.setCommandeAddFirstLevel(data.code,data.medecin,data.ident);
+        console.log(modif.etat);
         if(modif.etat){
             const message = await Messagerie.sendOrangeAssistance(modif.user.numero,modif.provider.medecin,modif.user.prefix,modif.provider.code,modif.user.name) //.sendMessage(modif.user.numero,modif.provider.medecin,modif.provider.ClinicName,modif.provider.clientName,modif.provider.date,modif.provider.code,modif.provider.serviceName)
         }
     });
     socket.on('assignRDV', async (data)=>{
         const modif = await AdminQuerie.setCommandeAddFirstLevelForRDV(data.code,data.ClinicName,data.ident, data.hour);
+        console.log(modif.etat);
         if(modif.etat){
             const message = await Messagerie.sendOrangeRdv(modif.user.numero, modif.provider.ClinicName,modif.user.prefix,modif.provider.code,modif.user.name,modif.provider.date,modif.provider.heure) //.sendMessage(modif.user.numero,modif.provider.medecin,modif.provider.ClinicName,modif.provider.clientName,modif.provider.date,modif.provider.code,modif.provider.serviceName)
         }
     });
     socket.on('sendValidation', async (data)=>{
         const demande = await AdminQuerie.getServiceByClinicNameAndCode(data.me,data.numero);
+        console.log(demande);
         if(demande){
             socket.emit("result", demande);
         }
@@ -104,7 +118,7 @@ io.on('connection', async (socket) => {
         //const message = await Messagerie.sendMessageClinic(data.me,data.numero,data.message)
     })
     socket.on('send', async (data)=>{
-        const message = await Messagerie.sendMessageClinic(data.me,data.numero,data.message)
+        const message = await Messagerie.sendSmsClinique(data.numero,data.message)
     })
 });
 app.listen(config.port);

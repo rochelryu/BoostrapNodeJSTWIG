@@ -6,6 +6,10 @@ const MedecinSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    code:{
+        type:Number,
+        default:Math.floor(Math.random()*99999)
+    },
     clinic:{
         type:String,
         default: "Allô Santé Express"
@@ -13,6 +17,12 @@ const MedecinSchema = new mongoose.Schema({
     address:{
         type:String,
         required:true,
+    },
+    email:{
+        type:String,
+    },
+    numeroSe:{
+        type:String,
     },
     numero:{
         type:String,

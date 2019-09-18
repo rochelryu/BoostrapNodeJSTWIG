@@ -33,8 +33,14 @@
 																				<td scope="row">{{ loop.index }}</td>
 																				<td>{{ item.code }}</td>
 																				<td>{{ item.clientName }} </td>
-																				<td>{{ (item.name) ? item.name + " " + item.age + "ans": "moi même" }}</td>
-																				<td>{{ item.posAc }}, {{item.address}}</td>
+																				<td>
+																				{% if item.name != "" %}
+																					<p>{{item.name}}  {{item.age}} ans</p>
+																				{% else %}
+																					<p>Moi même</p>
+																				{% endif %}
+																				</td>
+																				<td>{{ item.posAc }}</td>
 																				<td>{{item.autreProbleme}}</td>
 																				<td>{{item.Motif}}</td>
 																				<td>
@@ -80,8 +86,14 @@
 																				<td scope="row">{{ loop.index }}</td>
 																				<td>{{ item.code }}</td>
 																				<td>{{ item.clientName }} </td>
-																				<td>{{ (item.name) ? item.name + " " + item.age + "ans": "moi même" }}</td>
-																				<td>{{ item.posAc }}, {{item.address}}</td>
+																				<td>
+																				{% if item.name != "" %}
+																					<p>{{item.name}}  {{item.age}} ans</p>
+																				{% else %}
+																					<p>Moi même</p>
+																				{% endif %}
+																				</td>
+																				<td>{{ item.posAc }}</td>
 																				<td>{{item.autreProbleme}}</td>
 																				<td>{{item.Motif}}</td>
 																				<td>

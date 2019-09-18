@@ -40,6 +40,34 @@ exports.AdminQuerie = class {
             link:"http://www.pagesjaunes.ci/pharmacies-de-garde-abobo/",
         },
     ]
+
+    static delMedecin(code){
+        return new Promise(async (next)=>{
+            await MedecinSchema.findOneAndDelete({code:code})
+                .then(async res=>{
+                    next(res)
+                }).catch(err=>{console.log("mauvais del", err); next(err)});
+        })
+    }
+
+    static delAdmin(ident){
+        return new Promise(async (next)=>{
+            await Admin.findOneAndDelete({ident:ident})
+                .then(async res=>{
+                    next(res)
+                }).catch(err=>{console.log("mauvais del", err); next(err)});
+        })
+    }
+
+    static delEtablissement(name){
+        return new Promise(async (next)=>{
+            await EtablissementSchema.findOneAndDelete({name:name})
+                .then(async res=>{
+                    next(res)
+                }).catch(err=>{console.log("mauvais del", err); next(err)});
+        })
+    }
+
     static getVerifyAdmin(ele, pass){
         const moment = new Date();
         return new Promise(async next=>{
@@ -189,7 +217,6 @@ exports.AdminQuerie = class {
                     }
                 }
             }).then((meta) => {
-                console.log(meta)
                 base = meta.data;
                 next(base);
             }).catch(err=>{
@@ -236,7 +263,7 @@ exports.AdminQuerie = class {
     }
     static getAllAdmin(){
         return new Promise(async next=>{
-            await Admin.find().sort({name:1}).then(res=>next(res)).catch(err=>next(err))
+            await Admin.find({etat:1}).sort({name:1}).then(res=>next(res)).catch(err=>next(err))
         })
     }
 
@@ -542,9 +569,9 @@ exports.AdminQuerie = class {
                 }).catch(err=>{next(err)});
         })
     }
-    static setMedecin(name, numero,clinic,address,specialite, pays, level,image){
+    static setMedecin(name, numero,clinic,address,specialite, pays, level,image, email, numeroSe){
         return new Promise(async next=>{
-            let medecin = new MedecinSchema({name:name,numero:numero,clinic:clinic,address:address,specialite:specialite, pays, level,image})
+            let medecin = new MedecinSchema({name:name,numero:numero,clinic:clinic,address:address,specialite:specialite, pays, level,image,email,numeroSe:numeroSe})
             await medecin.save().then(res=>next(res)).catch(err=>next(err))
         })
     }

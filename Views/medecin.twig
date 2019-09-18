@@ -86,6 +86,17 @@
                         </div>
                         <div class="clearfix"> </div>
                     </div>
+                                        <div class="vali-form">
+                        <div class="col-md-6 form-group1">
+                            <label class="control-label">Email</label>
+                            <input name="email" type="email" required="">
+                        </div>
+                        <div class="col-md-6 form-group1 form-last">
+                            <label class="control-label">Second Contact</label>
+                            <input name="numeroSecond" type="text" placeholder="" required="">
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
                     <div class="col-md-12 form-group">
                         <button type="submit" class="btn btn-primary">Enregistrer</button>
                         <button type="reset" class="btn btn-default">Vider</button>
@@ -116,7 +127,7 @@
             <div class="col-md-12">
                 <div class="gallery">
                     {% for item in info.medecin %}
-                    <div class="col-md">
+                    <div class="col-md-3">
                         <div class="gallery-img">
                             <a href="../images/tools/{{item.image}}" class="b-link-stripe b-animate-go  swipebox"  title="Image Title" >
                                 <img class="img-responsive " src="../images/tools/{{item.image}}" alt="" />
@@ -125,7 +136,11 @@
                         </div>
                         <div class="text-gallery">
                             <h6>{{ item.name|upper }} </h6>
-                            <p style="font-size: smaller; text-align: center">{{ item.clinic }} {{ item.specialite }} <br>{{ item.numero }} <br> {{ item.pays }} <br> {{item.address}}  </p>
+                            <p style="font-size: smaller; text-align: center">{{ item.clinic }} {{ item.specialite }} <br>{{ item.numero }} <br>{{ (item.numeroSe != "")? item.numeroSe : "" }} <br> {{ item.pays }} <br> {{item.address}} <br> {{ item.email}} </p>
+
+                            <div class="actionFull">
+                            <button class="btn btn-outline-danger btn-rounded del" data-del="{{item.code}}"> Supprimer </button>
+                            </div>
                         </div>
                     </div>
                     {% endfor %}

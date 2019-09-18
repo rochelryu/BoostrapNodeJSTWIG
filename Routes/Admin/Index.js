@@ -66,6 +66,33 @@ router.route('/') // afin de decrire mieux une route on utilise la methode route
 
     });
 
+
+    router.route('/compose') // afin de decrire mieux une route on utilise la methode route("l'url de la route qu'on veut") ensuite on utilise la methode que nous vpulons utiliser (ex de methode : GET, POST, OPTIONS, PUT, DELETE, etc...)
+// Dans mon cas ici je suis venu à la ligne parce que mon code Soit plus lisible sinon j'aurais pu tout faire en un ligne (ex: router.route('/').get()
+    .get(async (req,res)=>{
+        /*
+        ICI je tiens à notifié que le paramettre req = requête de client, donc je peux recuperer son addresse ip, le nom de sa machine, son type de navigateur, ses cookies, ses en tête etc....
+        le paramettre res = response du serveur, generalement c'est la reponse qu'on envoie au client après le traitement de sa demande req.
+        On utilise res.send lorsque on veut envoyer juste des variable(Utile pour les Dev Backend de logiciel Desktop).
+        On utilise res.json lorsque on veut envoyer juste des donné formaté en JSON NAtif Adons(Utile pour les Dev Backend de logiciel Mobile).
+        On utilise res.render lorsque on veut envoyer une page Web comme par exemple HTML, Pug, TWIG, HBS, etc...(Utile pour les Dev Backend de Web App).
+        Vous verrez aussi res.sendFile, res.renderFile, etc..., ce sont tous des methodes de rendu de page Web Mais res.render reste le meilleur.
+        On utilise res.redirect lorsque on veut faire une redirection à l'utilisateur après avoir fini de traiter sa demande(Ex: un Utilisateur cherhce à se connecter sur la route /login. Après avoir finis de verifier son couple email/password et qu'il est vraiment ce qu'il pretend on peut le rediriger vers /accueil pour que la route /accueil prenne le relais afin de lui afficher la page d'accueil).
+         */
+
+        if(req.session.alloSante && req.session.alloSante.etat === 1) {
+            let info = {} // je crée une variable info  qui va prendre après les différentes valeur du traitement avec ma base de donnés
+            let today = await AdminQuerie.getAllServiceInToday(req.session.alloSante.clinicName);
+            let became = await AdminQuerie.getAllServiceInBecame(req.session.alloSante.clinicName);
+            info.user = req.session.alloSante;
+            info.today = today;
+            info.became = became;
+            res.render("sendMail.twig",{info:info})
+        }
+        else res.redirect('/ryu/login') //je ne met pas de else parce que une fois qu'un if est ecrit ce qui est en dessous est toujours un else
+
+    });
+
 router.route('/autreAS')
     .post([
         check("name","nom Invalide").not().isEmpty(),
@@ -311,6 +338,7 @@ router.route('/client')
         else res.redirect('/ryu/login') //je ne met pas de else parce que une fois qu'un if est ecrit ce qui est en dessous est toujours un else
     })
 
+
     router.route('/listAssistance')
     .get(async (req,res)=>{
         if(req.session.alloSante) {
@@ -504,7 +532,9 @@ router.route('/medecin')
         }
         else {
             const input = req.body;
-            const admin = await AdminQuerie.setMedecin(input.name,input.numero,input.clinic,input.address,input.specialite, input.pays,2,"doctor.png")
+            console.log(input.numeroSecond)
+            const numeroSecond = (input.numeroSecond !== "") ? input.numeroSecond : "";
+            const admin = await AdminQuerie.setMedecin(input.name,input.numero,input.clinic,input.address,input.specialite, input.pays,2,"doctor.png", input.email, numeroSecond)
             res.redirect('/ryu/medecin')
         }
     });
@@ -545,8 +575,10 @@ router.route('/refmedecin')
         else {
             const input = req.body;
             const file = req.file.filename;
+            console.log(input.numeroSecond)
+            const numeroSecond = (input.numeroSecond !== "") ? input.numeroSecond : "";
             console.log(file, "je suis file");
-            const admin = await AdminQuerie.setMedecin(input.name,input.numero,input.clinic,input.address,input.specialite, input.pays, 1, file)
+            const admin = await AdminQuerie.setMedecin(input.name,input.numero,input.clinic,input.address,input.specialite, input.pays, 1, file, input.email, numeroSecond)
             res.redirect('/ryu/refmedecin')
         }
     });
