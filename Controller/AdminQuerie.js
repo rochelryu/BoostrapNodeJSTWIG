@@ -287,7 +287,6 @@ exports.AdminQuerie = class {
             .then(res=>next(res)).catch(err=>next(err))
         })
     }
-    getAssuranceProfByRecovery
     static getAssuranceProfByRecovery(recovery){
         return new Promise(async next=>{
             await AsprofSchema.findOne({recovery:parseInt(recovery,10)})

@@ -85,7 +85,7 @@ io.on('connection', async (socket) => {
         }
     });
     socket.on('assProfessionnelle', async (data)=>{
-        const service = await AdminQuerie.setAssurancePro(data.name,data.numero,data.ville + ' / ' + data.commune,data.email);
+        const service = await AdminQuerie.setAssurancePro(data.name,data.numero,data.ville + ' / ' + data.commune,data.email, data.genre);
         console.log(service);
         if(service.etat){
             io.emit("newAssUVPro", service.resultat)
