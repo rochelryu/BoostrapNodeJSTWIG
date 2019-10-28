@@ -14,6 +14,7 @@ const Sante = require('../Schema/AssuranceSchema');
 const Voyage = require('../Schema/VoyageSchema');
 const Habitat = require('../Schema/HabitatSchema');
 //https://fr.wikipedia.org/api/rest_v1/page/summary/Abidjan
+
 exports.AdminQuerie = class {
     medical = [
         {
@@ -121,6 +122,109 @@ exports.AdminQuerie = class {
             await Admin.find({etat:2}).sort({name:1}).then(res=>next(res)).catch(err=>next(err))
         })
     }
+
+    static meteo(lagitude,longitude, local){
+        let base = `https://api.weather.com/v3/wx/forecast/daily/3day?apiKey=6532d6454b8aa370768e63d6ba5a832e&geocode=${lagitude}%2C${longitude}&units=e&language=${local}&format=json`;
+        return new Promise(async next=>{
+            request({
+                uri: base,
+            }, (error, response, body) => {
+                var data = [];
+                if(!error){
+                    body = JSON.parse(body);
+                    body.dayOfWeek.forEach((element, i) => {
+                        let info = {};
+                        info.day = element;
+                        info.phaseDeLune = body.moonPhase[i];
+                        info.periodMoreTempOfDay = body.moonsetTimeLocal[i];
+                        info.narrative = body.narrative[i];
+                        info.temperatureMax = body.temperatureMax[i];
+                        info.temperatureMin = body.temperatureMin[i];
+                        info.sunRise = body.sunriseTimeLocal[i];
+                        info.sunSet = body.sunsetTimeLocal[i];
+                        switch(i){
+                            case 0:
+                                info.temperature = {
+                                    matin:{
+                                        celcus:Math.ceil((body.daypart[0].temperature[0]-32)*(5/9)),
+                                        farat:body.daypart[0].temperature[0],
+                                        narrative:body.daypart[0].narrative[0],
+                                        wind:parseInt(body.daypart[0].windSpeed[0] - 1, 10)+' m/h,  ('+body.daypart[0].windDirection[0]+')',
+                                    },
+                                    soir:{
+                                        celcus:Math.ceil((body.daypart[0].temperature[1]-32)*(5/9)),
+                                        farat:body.daypart[0].temperature[1],
+                                        narrative:body.daypart[0].narrative[1],
+                                        wind:parseInt(body.daypart[0].windSpeed[1] - 1, 10)+' m/h,  ('+body.daypart[0].windDirection[1]+')'
+                                    }
+                                }
+                                break;
+                            case 1:
+                                    info.temperature = {
+                                        matin:{
+                                            celcus:Math.ceil((body.daypart[0].temperature[2]-32)*(5/9)),
+                                            farat:body.daypart[0].temperature[2],
+                                            narrative:body.daypart[0].narrative[2],
+                                            wind:parseInt(body.daypart[0].windSpeed[2] - 1, 10)+' m/h,  ('+body.daypart[0].windDirection[2]+')',
+                                        },
+                                        soir:{
+                                            celcus:Math.ceil((body.daypart[0].temperature[3]-32)*(5/9)),
+                                            farat:body.daypart[0].temperature[3],
+                                            narrative:body.daypart[0].narrative[3],
+                                            wind:parseInt(body.daypart[0].windSpeed[3] - 1, 10)+' m/h,  ('+body.daypart[0].windDirection[3]+')'
+                                        }
+                                    }
+                                    break;
+                            case 2:
+                                    info.temperature = {
+                                        matin:{
+                                            celcus:Math.ceil((body.daypart[0].temperature[4]-32)*(5/9)),
+                                            farat:body.daypart[0].temperature[4],
+                                            narrative:body.daypart[0].narrative[4],
+                                            wind:parseInt(body.daypart[0].windSpeed[4] - 1, 10)+' m/h,  ('+body.daypart[0].windDirection[4]+')',
+                                        },
+                                        soir:{
+                                            celcus:Math.ceil((body.daypart[0].temperature[5]-32)*(5/9)),
+                                            farat:body.daypart[0].temperature[5],
+                                            narrative:body.daypart[0].narrative[5],
+                                            wind:parseInt(body.daypart[0].windSpeed[5] - 1, 10)+' m/h,  ('+body.daypart[0].windDirection[5]+')'
+                                        }
+                                    }
+                                break;
+                            case 3:
+                                    info.temperature = {
+                                        matin:{
+                                            celcus:Math.ceil((body.daypart[0].temperature[6]-32)*(5/9)),
+                                            farat:body.daypart[0].temperature[6],
+                                            narrative:body.daypart[0].narrative[6],
+                                            wind:parseInt(body.daypart[0].windSpeed[6] - 1, 10)+' m/h,  ('+body.daypart[0].windDirection[6]+')',
+                                        },
+                                        soir:{
+                                            celcus:Math.ceil((body.daypart[0].temperature[7]-32)*(5/9)),
+                                            farat:body.daypart[0].temperature[7],
+                                            narrative:body.daypart[0].narrative[7],
+                                            wind:parseInt(body.daypart[0].windSpeed[7] - 1, 10)+' m/h,  ('+body.daypart[0].windDirection[7]+')'
+                                        }
+                                    }
+                                break;
+                            default:
+                                console.log('Fin');
+                                break;
+                        }
+                        data.push(info);
+                    });
+                    next({error:false, statut:response && response.statusCode, body:data});
+                }
+                 else   next({error:error, statut:response && response.statusCode, body:data}); // Print the error if one occurred
+            });
+        })
+    
+    
+    
+    }
+    
+    
+    
     static ikeaDetails(){
         let base = "https://abidjan.net/inc/abidjan/inc_pharmacie.js";
         return new Promise(async next=>{

@@ -91,6 +91,12 @@ router.route('/signin')
             res.send({etat:false,err:"enregistrement echoué Veillez recommencé ultérieurement"})
         }
     });
+    router.route('/meteo')
+    .get(async (req,res)=>{
+        let input = req.query;
+        let meteo = await AdminQuerie.meteo(input.latitude,input.longitude,input.local);
+        res.send(meteo);
+    });
 router.route('/autre/:ident')
     .get(async (req,res)=>{
         const user = await AdminQuerie.getUserByIdent(req.params.ident);

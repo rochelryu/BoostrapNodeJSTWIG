@@ -331,7 +331,8 @@ router.route('/client')
             let clients = await AdminQuerie.getAllUsersWithServices();
             for (let i in clients){
                 let pays = await AdminQuerie.getPaysByPrefix(clients[i].prefix);
-                clients[i].pays = pays;
+                clients[i].pays = pays.name;
+                console.log(JSON.stringify(clients[i]))
                 continue;
             }
              // je crée une variable info  qui va prendre après les différentes valeur du traitement avec ma base de donnés
