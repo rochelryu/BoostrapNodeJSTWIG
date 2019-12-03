@@ -1,0 +1,17 @@
+{
+  "db": {
+    "url": "mongodb://localhost/sante",
+    "useFindAndModify": false
+  },
+  "sms":{
+    "user": "xxxxx",
+    "pass" : "xxxx",
+    "accountSid": "xxxxxxxxx",
+    "token": "xxxxxxxxx",
+    "tokenOrange": "xxxxxxxxxx"
+  },
+  "port": 8080,
+  "resave": false,
+  "saveUninitialized": false,
+  "secret": "xxxxxxx"
+}

@@ -1,0 +1,158 @@
+{% include 'Include/header.twig' %}
+
+<div class="content-main">
+
+    <div class="banner">
+        <h2>
+            <a href="/ryu">Accueil</a>
+            <i class="fa fa-angle-right"></i>
+            <span>Tableau de Bord</span>
+        </h2>
+    </div>
+    <div class="container-fluid">
+    <div class="row">
+        <form id="focusSearch" class="form-wrapper cf">
+  	    <input type="text" id="code" placeholder="Entrer le code ici..." required>
+	  <button type="submit" id="searchBeta" >Rechercher</button>
+    </form>
+    </div>
+    <div class="row p-t-30">
+        <div class="progressBar">
+        <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+   <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+</svg>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12" id="global">
+            <article class="material-card Red">
+                <h2>
+                    <span></span>
+                    <strong>
+                    </strong>
+                </h2>
+                <div class="mc-content">
+                    <div class="img-container">
+                        <img class="img-responsive" src="./images/patient.jpg">
+                    </div>
+                    <div class="mc-description">
+
+                    </div>
+                </div>
+                <a class="mc-btn-action">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <div class="mc-footer">
+                    <button class="isValidate">Valider</button>
+                </div>
+            </article>
+        </div>
+    </div>
+        <div id="pages-wrappers">
+            <div class="main-page">
+                <div class="col-md-4 compose-left">
+                    <div class="folder widget-shadow">
+                        <ul class="choiceF">
+                            <li class="head"><i class="fa fa-folder" aria-hidden="true"></i>Période</li>
+                            <li class="intent" data-ryu="tab1">Aujourd'hui</li>
+                            <li class="intent" data-ryu="tab2">Bientôt</li>
+                            <li class="intent" data-ryu="tab4">Envoyé un message</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-8 compose-right widget-shadow">
+                    <div class="panel-default">
+                        <div class="panel-heading">
+                            Activité
+                        </div>
+                        <div class="fake active text-style inbox-page" id="tab1">
+                            <h4>Aujourd'hui</h4>
+                            <table class="display table table-hover table-striped table-bordered" id="tab1" border="1"  style="width:100%">
+																	<thead>
+																	<tr>
+																		<th>N</th>
+																		<th>Demande</th>
+																		<th>Position</th>
+																		<th>Heure</th>
+																		<th>Client</th>
+																	</tr>
+																	</thead>
+																	<tbody>
+                            {% for item in info.today %}
+                                                                        <tr class="mtn">
+																			<td scope="row">{{ loop.index }}</td>
+																			<td>{{ item.autreProbleme }}</td>
+																			<td>{{ item.posAc }} </td>
+																			<td>{{ item.heure }} </td>
+																			<td>{{ item.clientName }} </td>
+																			
+																		</tr>
+
+                            {% endfor %}
+                            </tbody>
+						</table>
+                        </div>
+                        <div class="fake text-style inbox-page row" id="tab2">
+                            <h4>Plus tard</h4>
+                        <table class="display table table-hover table-striped table-bordered" id="listClient2" border="1"  style="width:100%">
+																	<thead>
+																	<tr>
+																		<th>N</th>
+																		<th>Demande</th>
+																		<th>Position</th>
+																		<th>Heure</th>
+																		<th>Client</th>
+																	</tr>
+																	</thead>
+																	<tbody>
+                            {% for item in info.became %}
+                                                                        <tr class="mtn">
+																			<td scope="row">{{ loop.index }}</td>
+																			<td>{{ item.autreProbleme }}</td>
+																			<td>{{ item.posAc }} </td>
+																			<td>{{ item.heure }} </td>
+																			<td>{{ item.clientName }} </td>
+																			
+																		</tr>
+
+                            {% endfor %}
+                            </tbody>
+						</table>
+                        </div>
+                        <div class="fake text-style inbox-page row" id="tab4">
+                           <h4>Déjà Traité</h4>
+                            <table class="display table table-hover table-striped table-bordered" id="listClient3" border="1"  style="width:100%">
+																	<thead>
+																	<tr>
+																		<th>N</th>
+																		<th>Demande</th>
+																		<th>Position</th>
+																		<th>Heure</th>
+																		<th>Client</th>
+																	</tr>
+																	</thead>
+																	<tbody>
+                            {% for item in info.old %}
+                                                                        <tr class="mtn">
+																			<td scope="row">{{ loop.index }}</td>
+																			<td>{{ item.autreProbleme }}</td>
+																			<td>{{ item.posAc }} </td>
+																			<td>{{ item.heure }} </td>
+																			<td>{{ item.clientName }} </td>
+																			
+																		</tr>
+
+                            {% endfor %}
+                            </tbody>
+						</table>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% include 'Include/footer3.twig' %}

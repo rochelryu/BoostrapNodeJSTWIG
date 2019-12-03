@@ -1,0 +1,282 @@
+{% include 'Include/header.twig' %}
+
+<div class="content-main">
+
+    <div class="banner">
+        <h2>
+            <a href="/ryu">Accueil</a>
+            <i class="fa fa-angle-right"></i>
+            <span>Gestion Medecin Pour Référencement</span>
+        </h2>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-7">
+                <form style="background: white" action="/ryu/refmedecin" method="post" enctype="multipart/form-data">
+                    <div class="vali-form">
+                        <div class="col-md-6 form-group1">
+                            <label class="control-label">Nom & Prénoms</label>
+                            <input name="name" type="text" placeholder="nom" />
+                        </div>
+                        <div class="col-md-6 form-group1 form-last">
+                            <label class="control-label">Numero</label>
+                            <input name="numero" type="text" placeholder="+225XXXXXXXX" />
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+
+                    <div class="vali-form">
+                        <div class="col-md-6 form-group1">
+                            <label class="control-label">Etablissement medicale</label>
+                            <input name="clinic" type="text" placeholder="Etablissement medicale" />
+                        </div>
+                        <div class="col-md-6 form-group1 form-last">
+                            <label class="control-label">Spécialité</label>
+                            <input name="specialite" type="text" placeholder="Pediatrie, Génecologie" />
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="col-md-6 form-group2 group-mail">
+                        <label class="control-label">Adresse</label>
+                        <select name="pays" class="form-control">
+                            <option selected="selected" disabled="disabled">Le pays</option>
+                            {% for err in info.ville %}
+                                <option value="{{ err.name }}">{{ err.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-6 form-group1 form-last">
+                            <label class="control-label">Ville, Commune & Quartier</label>
+                            <input name="address" type="text" placeholder="Abidjan/Cocody" />
+                    </div>
+                    <div class="clearfix"> </div>
+                    <div class="vali-form">
+                        <div class="col-md-6 form-group1">
+                            <label class="control-label">Email</label>
+                            <input name="email" type="email" />
+                        </div>
+                        <div class="col-md-6 form-group1 form-last">
+                            <label class="control-label">Second Contact</label>
+                            <input name="numeroSecond" type="text" placeholder="" />
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="clearfix"> </div>
+                    <div class="vali-form">
+                        <div class="col-md-4 form-group1">
+                            <label class="control-label">ONM</label>
+                            <input name="onm" type="text" placeholder="ONM" />
+                        </div>
+                        <div class="col-md-4 form-group1 form-last">
+                            <label class="control-label">Horaire de Debut</label>
+                            <input name="debut" type="text" placeholder="ex: 08h00" />
+                        </div>
+                        <div class="col-md-4 form-group1 form-last">
+                            <label class="control-label">Horaire de Fin</label>
+                            <input name="fin" type="text" placeholder="ex: 18h00" />
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="clearfix"> </div>
+                    <div class="vali-form">
+                        <div class="col-md-4 form-group1">
+                            <label class="control-label">Moyen de Paiement</label>
+                            <input name="moyendepaiement" type="text" placeholder="ex: Mobile Money, Cash, Virement Bancaire" />
+                        </div>
+                        <div class="col-md-4 form-group1 form-last">
+                            <label class="control-label">Tarif</label>
+                            <input name="tarif" type="text" placeholder="ex: 5000, 7000, 15000" />
+                        </div>
+                        <div class="col-md-4 form-group1 form-last">
+                            <label class="control-label">Remboursement</label>
+                            <input name="remboursement" type="text" placeholder="ex: AXA, Mutuel Santé" />
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="col-md-12 form-group">
+                        <label class="control-label">Image Profil</label>
+                        <input type="file" style="display: inline-block" id="fixeInput" name="fixeInput">
+                        <div class="clearfix"></div>
+                        <br>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                        <button type="reset" class="btn btn-default">Vider</button>
+                    </div>
+                    <div class="clearfix"> </div>
+                </form>
+            </div>
+            <div class="col-md-5">
+                <form style="background: white" action="/ryu/ville" method="post">
+                    <div class="vali-form">
+                        <div class="col-md-6 form-group1">
+                            <label class="control-label">Pays</label>
+                            <input name="pays" type="text" placeholder="Côte d'Ivoire" />
+                        </div>
+                        <div class="col-md-6 form-group1 form-last">
+                            <label class="control-label">Prefix</label>
+                            <input name="prefix" type="text" placeholder="+225" />
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="col-md-12 form-group">
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                        <button type="reset" class="btn btn-default">Vider</button>
+                    </div>
+                    <div class="clearfix"> </div>
+                </form>
+                <div class="container-fluid">
+                    <ul class="listVille">
+                    {% for item in info.ville %}
+                        <li>{{item.name}} | {{item.prefix}}   <i class="fa fa-close delVill" data-ryu="{{item.prefix}}"></i> </li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="gallery">
+                    {% for item in info.medecin %}
+                    <div class="col-md-3">
+                        <div class="gallery-img">
+                            <a href="../images/tools/{{item.image}}" class="b-link-stripe b-animate-go  swipebox"  title="Image Title" >
+                                <img class="img-responsive " src="../images/tools/{{item.image}}" alt="" />
+                                <span class="zoom-icon"> </span> </a>
+                            </a>
+                        </div>
+                        <div class="text-gallery">
+                            <h6>{{ item.name|upper }} </h6>
+                            <p style="font-size: smaller; text-align: center">{{ item.onm }} <br>{{ item.clinic }} <br>{{ item.numero }} <br>{{ (item.numeroSe != "")? item.numeroSe : "" }} <br> {{ item.pays }} <br> {{item.address}} <br> {{ item.email}} <br> {{ item.specialite[0] }} <br> {{ item.tarif}} <br> {{ item.moyenDePayement }} <br> {{ item.remboursement}} <br> {{ item.ouverture}} - {{ item.fermerture}}  </p>
+                            <div class="actionFull">
+                            <button type="button" data-toggle="modal" data-target="#basicExampleModal{{loop.index}}" class="btn btn-outline-info btn-rounded"> Modifier </button>
+                            <button class="btn btn-outline-danger btn-rounded del" data-del="{{item.code}}"> Supprimer </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Central Modal Small -->
+<div class="modal fade" id="basicExampleModal{{loop.index}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel{{loop.index}}"
+  aria-hidden="true">
+
+  <!-- Change class .modal-sm to change the size of the modal -->
+  <div class="modal-dialog modal-lg" role="document">
+
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title w-100" id="myModalLabel{{loop.index}}">{{ item.name|upper }}</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form style="background: white" action="/ryu/refmedecinEdit" method="post" enctype="multipart/form-data">
+                    <div class="vali-form">
+                        <div class="col-md-6 form-group1">
+                            <label class="control-label">Nom & Prénoms</label>
+                            <input name="name" type="text" placeholder="nom" value="{{item.name}}" />
+                                                        <input name="code" type="hidden" value="{{ item.code }}"/>
+                        </div>
+                        <div class="col-md-6 form-group1 form-last">
+                            <label class="control-label">Numero</label>
+                            <input name="numero" type="text" placeholder="+225XXXXXXXX" value="{{ item.numero }}"  />
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+
+                    <div class="vali-form">
+                        <div class="col-md-6 form-group1">
+                            <label class="control-label">Etablissement medicale</label>
+                            <input name="clinic" type="text" placeholder="Etablissement medicale" value="{{ item.clinic }}" />
+                        </div>
+                        <div class="col-md-6 form-group1 form-last">
+                            <label class="control-label">Spécialité</label>
+                            <input name="specialite" type="text" placeholder="Pediatrie, Génecologie" value="{{ item.specialite }}" />
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="col-md-6 form-group2 group-mail">
+                        <label class="control-label">Adresse</label>
+                        <select name="pays" class="form-control">
+                            <option selected="selected" disabled="disabled">Le pays</option>
+                            {% for err in info.ville %}
+                                <option value="{{ err.name }}" {{(err.name == item.pays)? "selected": ""}}>{{ err.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-6 form-group1 form-last">
+                            <label class="control-label">Ville, Commune & Quartier</label>
+                            <input name="address" type="text" placeholder="ex: Abidjan/Cocody Angré 7ème Tranche" value="{{ item.address }}" />
+                    </div>
+                    <div class="clearfix"> </div>
+                    <div class="vali-form">
+                        <div class="col-md-6 form-group1">
+                            <label class="control-label">Email</label>
+                            <input name="email" type="email" value="{{ item.email }}"/>
+                        </div>
+                        <div class="col-md-6 form-group1 form-last">
+                            <label class="control-label">Second Contact</label>
+                            <input name="numeroSecond" type="text" placeholder="+225XXXXXXXX" value="{{ item.numeroSe }}" />
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="clearfix"> </div>
+                    <div class="vali-form">
+                        <div class="col-md-4 form-group1">
+                            <label class="control-label">ONM</label>
+                            <input name="onm" type="text" placeholder="ONM" value="{{ item.onm }}" />
+                        </div>
+                        <div class="col-md-4 form-group1 form-last">
+                            <label class="control-label">Horaire de Debut</label>
+                            <input name="debut" type="text" placeholder="ex: 08h00" value="{{ item.ouverture }}" />
+                        </div>
+                        <div class="col-md-4 form-group1 form-last">
+                            <label class="control-label">Horaire de Fin</label>
+                            <input name="fin" type="text" placeholder="ex: 18h00" value="{{ item.fermerture }}" />
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="clearfix"> </div>
+                    <div class="vali-form">
+                        <div class="col-md-4 form-group1">
+                            <label class="control-label">Moyen de Paiement</label>
+                            <input name="moyendepaiement" type="text" placeholder="ex: Mobile Money, Cash, Virement Bancaire" value="{{ item.moyenDePayement }}" />
+                        </div>
+                        <div class="col-md-4 form-group1 form-last">
+                            <label class="control-label">Tarif</label>
+                            <input name="tarif" type="text" placeholder="ex: 5000, 7000, 15000" value="{{ item.tarif }}" />
+                        </div>
+                        <div class="col-md-4 form-group1 form-last">
+                            <label class="control-label">Remboursement</label>
+                            <input name="remboursement" type="text" placeholder="ex: AXA, Mutuel Santé" value="{{ item.remboursement }}"/>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="col-md-12 form-group">
+                        <img class="img-responsive " src="../images/tools/{{item.image}}" alt="" style="
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+" />
+                        <label class="control-label">Image Profil</label>
+                        <input type="file" style="display: inline-block" id="fixeInput" name="fixeInput">
+                        <input name="hideFile" type="hidden" value="{{item.image}}">
+                        <div class="clearfix"></div>
+                        <br>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                        <button type="reset" class="btn btn-default">Vider</button>
+                    </div>
+                    <div class="clearfix"> </div>
+                </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<!-- Central Modal Small -->
+                    {% endfor %}
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% include 'Include/footer.twig' %}

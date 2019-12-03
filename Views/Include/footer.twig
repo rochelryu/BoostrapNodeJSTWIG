@@ -1,0 +1,293 @@
+
+<div class="copy">
+    <p> &copy; 2019 Allô Santé Express. Tout droit reservé </p>
+</div>
+</div>
+<div class="clearfix"> </div>
+</div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="../js/popper.min.js"></script>
+<script src="../js/bootstrap.min.js"> </script>
+<script src="../js/mdb.min.js"> </script>
+<script src="../js/jquery.nicescroll.js"></script>
+<script src="../focus/js/jquery.notify.min.js"></script>
+<script src="../focus/js/datatables.min.js"></script>
+<script src="../js/scripts.js"></script>
+<script src="../js/duplicateFields.min.js"> </script>
+<script>
+    $(document).ready(function () {
+        var socket = io();
+        {% for item in info.err %}
+        $.notify({
+            position: 3,
+            type: 'error',
+            duration: 7000,
+            message: "{{ item.msg }}"
+        });
+        {% endfor %}
+
+        $('.choiceF').on('click', '.intent', function () {
+            $('.fake').removeClass('active');
+            var meta = "#"+$(this).attr("data-ryu");
+            $(meta).addClass("active");
+        })
+        $('.table-bordered').DataTable({
+            "dom": '<"toolbar">frtip',
+            "paging": true,
+            "pagingType": "full_numbers"
+        });
+        $('.table').on('click', '.sendMessage', function () {
+            var ident = $(this).parent().parent().parent().attr("data-ident");
+            var code = $(this).parent().parent().parent().attr("data-code");
+            var address = $(this).parent().parent().parent().find(".custom-select").val();
+            if(address !== "Choisir un medecin"){
+                socket.emit("assign", {ident:ident, code:code,medecin:address})
+                $.notify({
+                    position: 8,
+                    type: 'success',
+                    duration: 3000,
+                    message: "un message a été envoyé."
+                });
+                $(this).parent().parent().parent().fadeOut(1000)
+            }
+            else{
+                $.notify({
+                    position: 8,
+                    type: 'error',
+                    duration: 5000,
+                    message: "Erreur Veillez choisir un medecin."
+                });
+            }
+
+        });
+
+        $('.delVill').on('click', function(){
+            var prefix = $(this).attr('data-ryu');
+            socket.emit('delVill',prefix);
+            $(this).parent().fadeOut(1000);
+        });
+        
+        $('.delAutre').on('click', function(){
+            var prefix = $(this).attr('data-ryu');
+            socket.emit('delAutre',prefix);
+            $(this).parent().fadeOut(1000);
+        });
+
+        $('.table').on('click', '.sendMessageRDV', function () {
+            var ident = $(this).parent().parent().parent().attr("data-ident");
+            var code = $(this).parent().parent().parent().attr("data-code");
+            var address = $(this).parent().parent().parent().find(".custom-select").val();
+            var hour = $(this).parent().parent().parent().find(".hour").val();
+            if(address !== "Choisir une clinique"){
+                socket.emit("assignRDV", {ident:ident, code:code,ClinicName:address, hour:hour})
+                $.notify({
+                    position: 8,
+                    type: 'success',
+                    duration: 3000,
+                    message: "un message a été envoyé."
+                });
+                $(this).parent().parent().parent().fadeOut(1000)
+            }
+            else{
+                $.notify({
+                    position: 8,
+                    type: 'error',
+                    duration: 5000,
+                    message: "Erreur Veillez choisir une clinique."
+                });
+            }
+
+        });
+        socket.on('final', (data)=>{
+            $.notify({
+                position: 8,
+                type: 'success',
+                duration: 5000,
+                message: "Une Validation a été faite"
+            });
+        })
+
+        $('.del').on("click", function(){
+            const deta = $(this).attr('data-del');
+            socket.emit('delMedecin', deta);
+            $(this).parent().parent().parent().fadeOut();
+        });
+
+         $('.dels').on("click", function(){
+            const deta = $(this).attr('data-del');
+            socket.emit('delEtablissement', deta);
+            $(this).parent().parent().fadeOut();
+        });
+
+        $('.delEtablissement').on("click", function(){
+            const deta = $(this).attr('data-del');
+            socket.emit('delEtablissement', deta);
+            $(this).parent().parent().parent().fadeOut();
+        })
+
+        $('.delAdmin').on("click", function(){
+            const deta = $(this).attr('data-del');
+            socket.emit('delAdmin', deta);
+            $(this).parent().parent().parent().fadeOut();
+        })
+        socket.on('newService', function (data) {
+            $.notify({
+                position: 8,
+                type: 'success',
+                duration: 5000,
+                message: (data.service.serviceName === 'Render-vous' ) ? "un nouveau Rendez-vous vient d'arriver" : "une nouvelle Assistance vient d'être demandé"
+            });
+                if(data.service.serviceName === 'Render-vous' ) {
+                    var deta = "";
+                    for(let i in data.medecin){
+                        deta+= "<option value=\""+data.medecin[i].clinicName+"\">"+data.medecin[i].clinicName +" | "+ data.medecin[i].address+" | "+ data.medecin[i].numero +"</option>\n"
+                    }
+                    const fake = (data.service.name)? data.service.name + " " + data.service.age + "ans": "Moi même";
+                    $('#tab1').find('tbody').prepend("<tr class=\"table-row\" data-ident=\""+ data.service.ident +"\" data-code=\""+ data.service.code +"\">\n" +
+                        "                            <td>0</td>\n" +
+                        "                            <td>\n" +
+                        "                                "+ data.service.code +"\n" +
+                        "                            </td>\n" +
+                        "                            <td>\n" +
+                        "                                <h6> "+ data.service.clientName +"</h6>\n" +
+                        "                            </td>\n" +
+                        "                            <td>" + fake + "</td>\n"+
+                        "                            <td>\n" +
+                        "                                "+ data.service.posAc +
+                        "                            </td>\n" +
+                        "                            <td>\n" +
+                        "                                "+ data.service.autreProbleme +
+                        "                            </td>\n" +
+                        "                            <td>\n" +
+                        "                                "+ data.service.choice +"" +
+                        "                            </td>\n" +
+                        "                            <td><input type='text' class='form-control hour' placeholder='15h30,10h20' /></td>\n" +
+                        "                            <td class=\"table-img\">\n" +
+                        "                                <select class=\"custom-select\"><option selected>Choisir une clinique</option>\n" +
+                        "                                    "+ deta +
+                        "                                </select>\n" +
+                        "                            </td>\n" +
+                        "                            <td><div class=\"flex-center\">\n" +
+                        "                                <button type=\"button\" class=\"btn btn-xs btn-outline-primary sendMessageRDV\">Envoyer</button>\n" +
+                        "                            </div></td>\n" +
+                        "                        </tr>");
+                
+                }
+                else if(data.service.serviceName === "Assistance") {
+                    var deta = "";
+                    for(let i in data.medecin){
+                        deta+= "<option value=\""+data.medecin[i].name+"\">"+data.medecin[i].name +" | "+ data.medecin[i].specialite +" | "+ data.medecin[i].address+"</option>\n"
+                    }
+                    const fake = (data.service.name)? data.service.name + " " + data.service.age + "ans": "Moi même";
+                    $('#tab2').find('tbody').prepend("<tr class=\"table-row\" data-ident=\""+ data.service.ident +"\" data-code=\""+ data.service.code +"\">\n" +
+                        "                            <td>0</td>\n" +
+                        "                            <td>\n" +
+                        "                                "+ data.service.code +"\n" +
+                        "                            </td>\n" +
+                        "                            <td>\n" +
+                        "                                <h6> "+ data.service.clientName +"</h6>\n" +
+                        "                            </td>\n" +
+                        "                            <td>" + fake + "</td>\n"+
+                        "                            <td>\n" +
+                        "                                "+ data.service.posAc +
+                        "                            </td>\n" +
+                        "                            <td>\n" +
+                        "                                "+ data.service.autreProbleme +
+                        "                            </td>\n" +
+                        "                            <td>\n" +
+                        "                                "+ data.service.Motif +"" +
+                        "                            </td>\n" +
+                        "                            <td class=\"table-img\">\n" +
+                        "                                <select class=\"custom-select\"><option selected>Choisir un medecin</option>\n" +
+                        "                                    "+ deta +
+                        "                                </select>\n" +
+                        "                            </td>\n" +
+                        "                            <td> <div class=\"flex-center\">\n" +
+                        "                                <button type=\"button\" class=\"btn btn-xs btn-outline-primary sendMessage\">Envoyer</button>\n" +
+                        "                            </div></td>\n" +
+                        "                        </tr>");
+                }
+        });
+        $('#additional-field-model').duplicateElement({
+                    "class_remove": ".remove-this-field",
+                    "class_create": ".create-new-field"
+                });
+        socket.on('newAssUV', function (data) {
+            $.notify({
+                position: 8,
+                type: 'success',
+                duration: 4000,
+                message: "une nouvelle Assurance Santé vient d'être prise"
+            });
+                $('#sante').find('tbody').prepend("<tr><td></td><td>"+data.name+"</td><td>"+data.firstname+"</td><td><span class='label bg-red'>Pas encore</span></td><td><a target='_blank' href='/ryu/details/"+data.recovery+"?l=1'>Voir Plus </a></td></tr>");
+        });
+        socket.on('newAssUVPro', function (data) {
+            $.notify({
+                position: 8,
+                type: 'success',
+                duration: 4000,
+                message: "une nouvelle Assurance Professionelle vient d'être prise"
+            });
+                $('#prof').find('tbody').prepend("<tr><td></td><td>"+data.name+"</td><td>"+data.genre+"</td><td><span class='label bg-red'>Pas encore</span></td><td><a target='_blank' href='/ryu/details/"+data.recovery+"?l=4'>Voir Plus </a></td></tr>");
+        });
+        socket.on('newAssAuto', function (data) {
+            $.notify({
+                position: 8,
+                type: 'success',
+                duration: 4000,
+                message: "une nouvelle Assurance Auto vient d'être prise"
+            });
+                $('#auto_moto').find('tbody').prepend("<tr><td></td><td>"+data.name+"</td><td>"+data.firstname+"</td><td>Auto</td><td><span class='label bg-red'>Pas encore</span></td><td><a target='_blank' href='/ryu/details/"+data.recovery+"?l=5'>Voir Plus </a></td></tr>");
+        });
+        socket.on('newAssMoto', function (data) {
+            $.notify({
+                position: 8,
+                type: 'success',
+                duration: 4000,
+                message: "une nouvelle Assurance Moto vient d'être prise"
+            });
+                $('#auto_moto').find('tbody').prepend("<tr><td></td><td>"+data.name+"</td><td>"+data.firstname+"</td><td>Moto</td><td><span class='label bg-red'>Pas encore</span></td><td><a target='_blank' href='/ryu/details/"+data.recovery+"?l=6'>Voir Plus </a></td></tr>");
+        });
+        socket.on('newAssUVV', function (data) {
+            $.notify({
+                position: 8,
+                type: 'success',
+                duration: 4000,
+                message: "une nouvelle Assurance Voyage vient d'être prise"
+            });
+                $('#voyage').find('tbody').prepend("<tr><td></td><td>"+data.name+"</td><td>"+data.firstname+"</td><td><span class='label bg-red'>Pas encore</span></td><td><a target='_blank' href='/ryu/details/"+data.recovery+"?l=2'>Voir Plus </a></td></tr>");
+        });
+        $('#focus').on('submit',function (e) {
+            e.preventDefault();
+            var numero = $('#num').val();
+            var message = $('#messageL').val();
+            var me = $('#meM').val();
+            if(message !== "" && numero.length > 8){
+                socket.emit("send",{numero,me,message});
+                $('#num').val('');
+                $('#messageL').val('');
+                $('#meM').val('');
+                setTimeout(()=>{
+                    $.notify({
+                        position: 8,
+                        type: 'success',
+                        duration: 5000,
+                        message:  "Message Envoyé !"
+                    });
+                },1500)
+            }else{
+                $.notify({
+                    position: 8,
+                    type: 'error',
+                    duration: 5000,
+                    message:  "Veillez renseignez les champs correctement"
+                });
+            }
+        })
+
+    })
+</script>
+</body>
+</html>

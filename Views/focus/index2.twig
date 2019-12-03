@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="description" content="">
+	<meta name="author" content="websmirno.site">
+	<meta name="format-detection" content="telephone=no">
+	<title>Allô Santé Express</title>
+	<!-- Stylesheets -->
+	<link href="focus/vendor/slick/slick.css" rel="stylesheet">
+	<link href="focus/vendor/animate/animate.min.css" rel="stylesheet">
+	<link href="focus/icons/style.css" rel="stylesheet">
+	<link href="focus/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.css" rel="stylesheet">
+	<link href="focus/css/style.css" rel="stylesheet">
+	<link href="focus/css/jquery.notify.min.css" rel="stylesheet">
+
+	<!--Favicon-->
+	<link rel="icon" href="focus/images/logo.png" type="image/x-icon">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+	<!-- Google map -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiFdr5Z0WRIXKUOqoRRvzRQ5SkzhkUVjk"></script>
+</head>
+
+<body class="shop-page layout-landing">
+<!--header-->
+<header class="header">
+	<div class="header-quickLinks js-header-quickLinks d-lg-none">
+		<div class="quickLinks-top js-quickLinks-top"></div>
+		<div class="js-quickLinks-wrap-m">
+		</div>
+	</div>
+	<div class="header-topline d-none d-lg-flex">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-auto d-flex align-items-center">
+					<div class="header-info"><i class="icon-placeholder2"></i>Cocody Nouveau CHU, Abidjan, Côte d'Ivoire</div>
+					<div class="header-phone"><i class="icon-telephone"></i><a href="tel:+225-48-80-33-77">+225-48-80-33-77</a></div>
+					<div class="header-info"><i class="icon-black-envelope"></i><a href="mailto:info@dentco.net">info@allo.ci</a></div>
+				</div>
+				<div class="col-auto ml-auto d-flex align-items-center">
+						<span class="header-social">
+							<a href="#" class="hovicon"><i class="icon-facebook-logo-circle"></i></a>
+							<a href="#" class="hovicon"><i class="icon-twitter-logo-circle"></i></a>
+							<a href="#" class="hovicon"><i class="icon-google-plus-circle"></i></a>
+						</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="header-content">
+		<div class="container">
+			<div class="row align-items-lg-center">
+				<button class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarNavDropdown">
+					<span class="icon-menu"></span>
+				</button>
+				<div class="col-lg-auto col-lg-2 d-flex align-items-lg-center">
+					<a href="/" class="header-logo"><img src="focus/images/logo.png" alt="" class="img-fluid"></a>
+				</div>
+				<div class="col-lg ml-auto header-nav-wrap">
+					<div class="header-nav js-header-nav">
+						<nav class="navbar navbar-expand-lg btco-hover-menu">
+							<div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+								<ul class="navbar-nav">
+									<li class="nav-item">
+										<a class="nav-link link-inside" href="mainSliderWrapper">Accueil</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link link-inside" href="#departmentsSection">Départements</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link link-inside" href="#faqSection">FAQ</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link link-inside" href="#eventsSection">PARTENAIRES</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link link-inside" href="#contactSection">Contacts</a>
+									</li>
+								</ul>
+							</div>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+<!--//header-->
+<div class="page-content">
+	<!--section slider-->
+	<div class="section mt-0">
+		<div class="quickLinks-wrap js-quickLinks-wrap-d d-none d-lg-flex">
+			<div class="quickLinks js-quickLinks closed">
+				<div class="container">
+					<div class="row no-gutters">
+						{% if info.user == "nil" %}
+						<div class="col">
+							<a href="#" class="link">
+								<i class="icon-user2"></i><span>Connexion</span>
+							</a>
+							<div class="link-drop">
+								<h5 class="link-drop-title"><i class="icon-user2"></i>Connexion</h5>
+								<form action="/login" id="" method="post" novalidate>
+									<div class="successform">
+										<p>Votre instcription à été faites avec succès</p>
+									</div>
+									<div class="errorform">
+										<p>Une Erreur avec la connexion au serveur veillez ressayer ultérieurement.</p>
+									</div>
+									<div class="input-group">
+											<span>
+											<i class="icon-user"></i>
+										</span>
+										<input name="email" type="text" class="form-control" placeholder="Email ou Numero"/>
+									</div>
+									<div class="row row-sm-space mt-1">
+										<div class="col">
+											<div class="input-group">
+													<span>
+													<img src="focus/icons/fonts/password.svg" class="minim" alt="Kiwi standing on oval">
+												</span>
+												<input name="password" type="password" class="form-control" placeholder="Votre Mot de passe"/>
+											</div>
+										</div>
+									</div>
+									<div class="text-right mt-2">
+										<button type="submit" class="btn btn-sm btn-hover-fill">SE CONNECTER</button>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="col">
+							<a href="#" class="link">
+								<i class="icon-pencil-writing"></i><span>Inscription</span>
+							</a>
+							<div class="link-drop">
+								<h5 class="link-drop-title"><i class="icon-pencil-writing"></i>Inscription</h5>
+								<form action="/signin" method="post" novalidate>
+									<div class="successform">
+										<p>Votre instcription à été faites avec succès</p>
+									</div>
+									<div class="errorform">
+										<p>Une Erreur avec la connexion au serveur veillez ressayer ultérieurement.</p>
+									</div>
+									<div class="input-group">
+											<span>
+											<i class="icon-user"></i>
+										</span>
+										<input name="name" type="text" class="form-control" placeholder="Votre nom & prénom"/>
+									</div>
+									<div class="row row-sm-space mt-1">
+										<div class="col">
+											<div class="input-group">
+													<span>
+													<i class="icon-email2"></i>
+												</span>
+												<input name="email" type="text" class="form-control" placeholder="Votre Email"/>
+											</div>
+										</div>
+										<div class="col">
+											<div class="input-group">
+													<span>
+													<i class="icon-smartphone"></i>
+												</span>
+												<input name="numero" type="text" class="form-control" placeholder="48803377"/>
+											</div>
+										</div>
+									</div>
+									<div class="selectWrapper input-group mt-1">
+											<span>
+											<i class="icon-placeholder"></i>
+										</span>
+										<select name="address" class="form-control">
+											<option selected="selected" disabled="disabled">Votre Commune</option>
+											{% for err in info.ville %}
+												{% for item in err.commune %}
+											<option value="{{ err.name }} - {{ item.nameCommune }}">{{ err.name }} - {{ item.nameCommune }}</option>
+												{% endfor %}
+											{% endfor %}
+											<option value="Autres">Autres</option>
+										</select>
+									</div>
+									<div class="row row-sm-space mt-1">
+										<div class="col-sm-6">
+											<div class="input-group flex-nowrap">
+													<span>
+														<i class="icon-calendar2"></i>
+													</span>
+												<div class="datepicker-wrap">
+													<input name="date" type="text" class="form-control datetimepicker" placeholder="Date" readonly>
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-6 mt-1 mt-sm-0">
+											<div class="input-group flex-nowrap">
+													<span>
+															<i class="icon-password"></i>
+													</span>
+													<input name="password" type="password" class="form-control" placeholder="Mot de passe">
+											</div>
+										</div>
+									</div>
+									<div class="text-right mt-2">
+										<button type="submit" class="btn btn-sm btn-hover-fill">S'INSCRIRE</button>
+									</div>
+								</form>
+							</div>
+						</div>
+							{% else %}
+								<div class="col">
+									<a class="link testt">
+										<i class="icon-user"></i><span>{{ info.user.name|upper }}</span>
+									</a>
+								</div>
+						{% endif %}
+						<div class="col">
+							<a href="#" class="link">
+								<i class="icon-calendar"></i><span>Rendez-Vous</span>
+							</a>
+							<div class="link-drop">
+								{% if info.user == "nil" %}
+								<p>Vous devez vous inscrire ou vous connectez afin d'avoir accès à ce service.</p>
+								{% else %}
+									<h5 class="link-drop-title"><i class="icon-pencil-writing"></i>Prenez Un rendez-vous</h5>
+									<form id="FocuRV">
+										<div class="successform">
+											<p>Votre instcription à été faites avec succès</p>
+										</div>
+										<div class="errorform">
+											<p>Une Erreur avec la connexion au serveur veillez ressayer ultérieurement.</p>
+										</div>
+										<div class="input-group">
+											<span>
+											<i class="icon-user"></i>
+										</span>
+											<input id="motif" type="text" class="form-control" placeholder="Le motif"/>
+										</div>
+										<div class="row row-sm-space mt-1">
+											<div class="col" style="display: none">
+												<div class="input-group">
+													<span>
+													<i class="icon-email2"></i>
+												</span>
+													<input id="ident" type="hidden" class="form-control" value="{{ info.user.ident }}"/>
+												</div>
+											</div>
+											<div class="col">
+												<div class="input-group">
+													<span>
+													<i class="icon-calendar"></i>
+												</span>
+													<input id="heure" type="text" class="form-control" placeholder="10:30"/>
+												</div>
+											</div>
+										</div>
+										<div class="selectWrapper input-group mt-1">
+											<span>
+											<i class="icon-placeholder"></i>
+										</span>
+											<select id="address" class="form-control">
+												<option selected="selected" disabled="disabled">Votre Commune</option>
+												{% for err in info.ville %}
+													{% for item in err.commune %}
+														<option value="{{ err.name }} - {{ item.nameCommune }}">{{ err.name }} - {{ item.nameCommune }}</option>
+													{% endfor %}
+												{% endfor %}
+												<option value="Autres">Autres</option>
+											</select>
+										</div>
+										<div class="row row-sm-space mt-1">
+											<div class="col">
+												<div class="input-group flex-nowrap">
+													<span>
+														<i class="icon-calendar2"></i>
+													</span>
+													<div class="datepicker-wrap">
+														<input id="date" type="text" class="form-control datetimepicker" placeholder="Date" readonly>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="text-right mt-2">
+											<button type="submit" class="btn btn-sm btn-hover-fill">Enregistrer</button>
+										</div>
+									</form>
+								{% endif %}
+							</div>
+						</div>
+						<div class="col">
+							<a href="#" class="link">
+								<i class="icon-doctor"></i><span>Assistance Medical</span>
+							</a>
+							<div class="link-drop">
+								{% if info.user == "nil" %}
+									<p>Vous devez vous inscrire ou vous connectez afin d'avoir accès à ce service.</p>
+								{% else %}
+									<h5 class="link-drop-title"><i class="icon-pencil-writing"></i>Inscription</h5>
+									<form id="FocuR">
+										<div class="successform">
+											<p>Votre instcription à été faites avec succès</p>
+										</div>
+										<div class="errorform">
+											<p>Une Erreur avec la connexion au serveur veillez ressayer ultérieurement.</p>
+										</div>
+										<div class="input-group">
+											<span>
+											<i class="icon-user"></i>
+										</span>
+											<input id="motif2" type="text" class="form-control" placeholder="Le motif"/>
+										</div>
+										<div class="row row-sm-space mt-1">
+											<div class="col" style="display: none">
+												<div class="input-group">
+													<span>
+													<i class="icon-email2"></i>
+												</span>
+													<input id="ident2" type="hidden" class="form-control" value="{{ info.user.ident }}"/>
+												</div>
+											</div>
+										</div>
+										<div class="selectWrapper input-group mt-1">
+											<span>
+											<i class="icon-placeholder"></i>
+										</span>
+											<select id="address2" class="form-control">
+												<option selected="selected" disabled="disabled">Votre Commune</option>
+												{% for err in info.ville %}
+													{% for item in err.commune %}
+														<option value="{{ err.name }} - {{ item.nameCommune }}">{{ err.name }} - {{ item.nameCommune }}</option>
+													{% endfor %}
+												{% endfor %}
+												<option value="Autres">Autres</option>
+											</select>
+										</div>
+										<div class="text-right mt-2">
+											<button type="submit" class="btn btn-sm btn-hover-fill">Enregistrer</button>
+										</div>
+									</form>
+								{% endif %}
+							</div>
+						</div>
+						<div class="col">
+							<a href="#" class="link">
+								<i class="icon-first-aid-kit"></i><span>Livraison Médicament</span></a>
+							<div class="link-drop">
+								{% if info.user == "nil" %}
+									<p>Vous devez vous inscrire ou vous connectez afin d'avoir accès à ce service.</p>
+								{% else %}
+									<h5 class="link-drop-title"><i class="icon-pencil-writing"></i>Inscription</h5>
+									<form id="requestForm" method="post" novalidate>
+										<div class="successform">
+											<p>Votre instcription à été faites avec succès</p>
+										</div>
+										<div class="errorform">
+											<p>Une Erreur avec la connexion au serveur veillez ressayer ultérieurement.</p>
+										</div>
+										<div class="input-group">
+											<span>
+											<i class="icon-user"></i>
+										</span>
+											<input name="requestname" type="text" class="form-control" placeholder="Votre nom & prénom"/>
+										</div>
+										<div class="row row-sm-space mt-1">
+											<div class="col">
+												<div class="input-group">
+													<span>
+													<i class="icon-email2"></i>
+												</span>
+													<input name="requestemail" type="text" class="form-control" placeholder="Votre Email"/>
+												</div>
+											</div>
+											<div class="col">
+												<div class="input-group">
+													<span>
+													<i class="icon-smartphone"></i>
+												</span>
+													<input name="requestphone" type="text" class="form-control" placeholder="Your Phone"/>
+												</div>
+											</div>
+										</div>
+										<div class="selectWrapper input-group mt-1">
+											<span>
+											<i class="icon-placeholder"></i>
+										</span>
+											<select name="requestservice" class="form-control">
+												<option selected="selected" disabled="disabled">Votre Commune</option>
+												<option value="Yopougon">Yopougon</option>
+												<option value="Rivera">Rivera</option>
+												<option value="Orthodontics">Adjamé</option>
+												<option value="Orthodontics">Abobo</option>
+												<option value="Orthodontics">Koumassi</option>
+												<option value="Orthodontics">Port-Bouet</option>
+												<option value="Orthodontics">Marcory</option>
+												<option value="Orthodontics">Treichville</option>
+												<option value="Orthodontics">Attekoube</option>
+												<option value="Orthodontics">Locodjoro</option>
+												<option value="Children`s Dentistry">Cocody</option>
+												<option value="Dental Implants">II Plateaux</option>
+												<option value="Dental Emergency">Plateaux</option>
+												<option value="Dental Emergency">Autres</option>
+											</select>
+										</div>
+										<div class="selectWrapper input-group mt-1">
+											<span>
+											<i class="icon-placeholder"></i>
+										</span>
+											<select name="requestservice" class="form-control">
+												<option selected="selected" disabled="disabled">Votre Ville</option>
+												<option value="Abidjan">Abidjan</option>
+											</select>
+										</div>
+										<div class="row row-sm-space mt-1">
+											<div class="col-sm-6">
+												<div class="input-group flex-nowrap">
+													<span>
+														<i class="icon-calendar2"></i>
+													</span>
+													<div class="datepicker-wrap">
+														<input name="requestdate" type="text" class="form-control datetimepicker" placeholder="Date" readonly>
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-6 mt-1 mt-sm-0">
+												<div class="input-group flex-nowrap">
+													<span>
+															<i class="icon-password"></i>
+													</span>
+													<input name="password" type="password" class="form-control" placeholder="Mot de passe">
+												</div>
+											</div>
+										</div>
+										<div class="text-right mt-2">
+											<button type="submit" class="btn btn-sm btn-hover-fill">S'INSCRIRE</button>
+										</div>
+									</form>
+								{% endif %}
+							</div>
+						</div>
+						<div class="col">
+							<a href="#" class="link">
+								<i class="icon-pharmacy"></i><span>RECONDUIRE ASSURANCE</span></a>
+							<div class="link-drop">
+								{% if info.user == "nil" %}
+									<p>Vous devez vous inscrire ou vous connectez afin d'avoir accès à ce service.</p>
+								{% else %}
+									<h5 class="link-drop-title"><i class="icon-pencil-writing"></i>Inscription</h5>
+									<form id="requestForm" method="post" novalidate>
+										<div class="successform">
+											<p>Votre instcription à été faites avec succès</p>
+										</div>
+										<div class="errorform">
+											<p>Une Erreur avec la connexion au serveur veillez ressayer ultérieurement.</p>
+										</div>
+										<div class="input-group">
+											<span>
+											<i class="icon-user"></i>
+										</span>
+											<input name="requestname" type="text" class="form-control" placeholder="Votre nom & prénom"/>
+										</div>
+										<div class="row row-sm-space mt-1">
+											<div class="col">
+												<div class="input-group">
+													<span>
+													<i class="icon-email2"></i>
+												</span>
+													<input name="requestemail" type="text" class="form-control" placeholder="Votre Email"/>
+												</div>
+											</div>
+											<div class="col">
+												<div class="input-group">
+													<span>
+													<i class="icon-smartphone"></i>
+												</span>
+													<input name="requestphone" type="text" class="form-control" placeholder="Your Phone"/>
+												</div>
+											</div>
+										</div>
+										<div class="selectWrapper input-group mt-1">
+											<span>
+											<i class="icon-placeholder"></i>
+										</span>
+											<select name="requestservice" class="form-control">
+												<option selected="selected" disabled="disabled">Votre Commune</option>
+												<option value="Yopougon">Yopougon</option>
+												<option value="Rivera">Rivera</option>
+												<option value="Orthodontics">Adjamé</option>
+												<option value="Orthodontics">Abobo</option>
+												<option value="Orthodontics">Koumassi</option>
+												<option value="Orthodontics">Port-Bouet</option>
+												<option value="Orthodontics">Marcory</option>
+												<option value="Orthodontics">Treichville</option>
+												<option value="Orthodontics">Attekoube</option>
+												<option value="Orthodontics">Locodjoro</option>
+												<option value="Children`s Dentistry">Cocody</option>
+												<option value="Dental Implants">II Plateaux</option>
+												<option value="Dental Emergency">Plateaux</option>
+												<option value="Dental Emergency">Autres</option>
+											</select>
+										</div>
+										<div class="selectWrapper input-group mt-1">
+											<span>
+											<i class="icon-placeholder"></i>
+										</span>
+											<select name="requestservice" class="form-control">
+												<option selected="selected" disabled="disabled">Votre Ville</option>
+												<option value="Abidjan">Abidjan</option>
+											</select>
+										</div>
+										<div class="row row-sm-space mt-1">
+											<div class="col-sm-6">
+												<div class="input-group flex-nowrap">
+													<span>
+														<i class="icon-calendar2"></i>
+													</span>
+													<div class="datepicker-wrap">
+														<input name="requestdate" type="text" class="form-control datetimepicker" placeholder="Date" readonly>
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-6 mt-1 mt-sm-0">
+												<div class="input-group flex-nowrap">
+													<span>
+															<i class="icon-password"></i>
+													</span>
+													<input name="password" type="password" class="form-control" placeholder="Mot de passe">
+												</div>
+											</div>
+										</div>
+										<div class="text-right mt-2">
+											<button type="submit" class="btn btn-sm btn-hover-fill">S'INSCRIRE</button>
+										</div>
+									</form>
+								{% endif %}
+							</div>
+						</div>
+						<div class="col col-close"><a href="#" class="js-quickLinks-close"><i class="icon-top" data-toggle="tooltip" data-placement="top" title="Close panel"></i></a></div>
+					</div>
+				</div>
+				<div class="quickLinks-open js-quickLinks-open"><span data-toggle="tooltip" data-placement="left" title="Open panel">+</span></div>
+			</div>
+		</div>
+		<div id="mainSliderWrapper">
+			<div class="loading-content">
+				<div class="inner-circles-loader"></div>
+			</div>
+			<div class="main-slider mb-0 arrows-white arrows-bottom" id="mainSlider" data-slick='{"arrows": false, "dots": true}'>
+				<div class="slide">
+					<div class="img--holder" data-bg="focus/images/bg.jpg"></div>
+					<div class="slide-content center">
+						<div class="vert-wrap container">
+							<div class="vert">
+								<div class="container">
+									<div class="slide-txt1" data-animation="fadeInDown" data-animation-delay="1s">Allô Santé Express.<br>
+										<b>PROCESSUS</b></div>
+									<div class="slide-txt2" data-animation="fadeInUp" data-animation-delay="1.5s">Incription par l'application mobile ou le site internet, remplissez correctement les champs puis choisissez un service</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="slide">
+					<div class="img--holder" data-bg="focus/images/bg.jpg"></div>
+					<div class="slide-content center">
+						<div class="vert-wrap container">
+							<div class="vert">
+								<div class="container">
+									<div class="slide-txt1" data-animation="fadeInDown" data-animation-delay="1s">
+										<br><b>LIVRAISON MEDICAMENT</b></div>
+									<div class="slide-txt2" data-animation="fadeInUp" data-animation-delay="1.5s">Passer la commande de medicament avec ou sans ordonnance, confirmé votre commande par notre assistance téléphonique et nous vous livrons</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="slide">
+					<div class="img--holder" data-bg="focus/images/bg.jpg"></div>
+					<div class="slide-content center">
+						<div class="vert-wrap container">
+							<div class="vert">
+								<div class="container">
+									<div class="slide-txt1" data-animation="fadeInDown" data-animation-delay="1s">
+										<br><b>ASSISTANCE MEDICALE</b></div>
+									<div class="slide-txt2" data-animation="fadeInUp" data-animation-delay="1.5s">Un medecin prend contact avec vous et dépêche par la suite une equipe médicale dans les meilleurs délais pour un suivie santé</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="slide">
+					<div class="img--holder" data-bg="focus/images/bg.jpg"></div>
+					<div class="slide-content center">
+						<div class="vert-wrap container">
+							<div class="vert">
+								<div class="container">
+									<div class="slide-txt1" data-animation="fadeInDown" data-animation-delay="1s">
+										<br><b>RENDEZ-VOUS</b></div>
+									<div class="slide-txt2" data-animation="fadeInUp" data-animation-delay="1.5s">Un ensemble de spécialiste vous ai proposé, faites votre choix et précisé la date à laquelle vous êtes disponibles</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="slide">
+					<div class="img--holder" data-bg="focus/images/bg.jpg"></div>
+					<div class="slide-content center">
+						<div class="vert-wrap container">
+							<div class="vert">
+								<div class="container">
+									<div class="slide-txt1" data-animation="fadeInDown" data-animation-delay="1s">
+										<br><b>MON ASSURANCE</b></div>
+									<div class="slide-txt2" data-animation="fadeInUp" data-animation-delay="1.5s">Enregistrer Vous à une assurance et gagnez max privillège</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--//section slider-->
+	<!--section-->
+	<div class="section mt-0 shadow-bot pt-2 pb-0 py-sm-4 mb-2">
+		<div class="container">
+			<div class="row js-icn-text-alt-carousel">
+				<div class="col-md-6 col-lg-4">
+					<div class="icn-text-alt">
+						<div class="icn-text-alt-icn"><img src="focus/images/customer.png" alt=""></div>
+						<div>
+							<h4 class="icn-text-alt-title">PRESENTATION D'ACTIVITES</h4>
+							<p>Innovant, Flexible et adapté à votre mode de vie</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4">
+					<div class="icn-text-alt">
+						<div class="icn-text-alt-icn"><img src="focus/images/population.png" alt=""></div>
+						<div>
+							<h4 class="icn-text-alt-title">AVANTAGES</h4>
+							<p>Proximité, confort, économie, qualité de service, simple d'utilisation et déonyologie dans votre main</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4">
+					<div class="icn-text-alt">
+						<div class="icn-text-alt-icn"><img src="focus/images/calendar.png" alt=""></div>
+						<div>
+							<h4 class="icn-text-alt-title">Où et quand vous voulez ?</h4>
+							<p>De jour comme de nuit, partout en tout temps et en tout lieu, vous pouvez bénéficier de nos services</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4">
+					<div class="icn-text-alt">
+						<div class="icn-text-alt-icn"><img src="focus/images/doctor.png" alt=""></div>
+						<div>
+							<h4 class="icn-text-alt-title">NOTRE EQUIPE</h4>
+							<p>Nous sommes composés de professionnels de santé expérimentés, d'une équipe de livraison compétente.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--//section-->
+	<!--section about-->
+	{#<div class="section" id="aboutSection">
+		<div class="container pt-lg-2">
+			<div class="row mt-2 mt-md-3 mt-lg-0">
+				<div class="col-md-6">
+					<div class="title-wrap text-center text-md-left">
+						<div class="h-sub">25 Years of Medical Excellence</div>
+						<h2 class="h1">The Heart and Science <span class="theme-color">of Medicine</span></h2>
+					</div>
+					<div class="pr-xl-1">
+						<p>We help your body restore itself by harnessing your own healing potential with a variety of techniques to combat areas of disease, injury or inflammation. This process involves a variety of techniques including a minimally invasive procedure conducted right in our clinic.</p>
+						<ul class="marker-list-md">
+							<li>Equipped for all stages of care, from prevention to rehabilitation</li>
+							<li>Quality assessment program helps ensure smooth, effective operation</li>
+							<li>Prepared to treat a high volume of trauma patients 24/7</li>
+						</ul>
+					</div>
+					<div class="text-center text-md-left mt-2 mt-md-3">
+						<a href="#" class="btn-link" data-toggle="modal" data-target="#modalBookingForm">Booking a visit<i class="icon-right-arrow"></i></a>
+					</div>
+				</div>
+				<div class="col-md-6 mt-4 mt-md-0">
+					<div class="video-box">
+						<div class="video-box-poster">
+							<img src="focus/images/content/video-poster.jpg" alt="" class="img-fluid">
+						</div>
+						<a href="#" class="video-btn js-video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/uyWt48mWmz0" data-target="#videoModal">
+							<span>Watch Video</span>
+							<span><i class="icon-play"></i></span>
+						</a>
+						<div class="video-box-bg"><img src="focus/images/content/video-poster-bg.png" alt=""></div>
+					</div>
+					<!-- Video Modal -->
+					<div class="modal fade" id="videoModal">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-body">
+									<div class="embed-responsive embed-responsive-16by9">
+										<iframe class="embed-responsive-item video" src="" allowscriptaccess="always" allow="autoplay"></iframe>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>#}
+	<!--//section about-->
+	<!--section departments-->
+	<div class="section" id="departmentsSection">
+		<div class="container">
+			<div class="title-wrap text-center">
+				<h2 class="h1">Nos Départements</h2>
+				<div class="h-decor"></div>
+			</div>
+			<p class="text-center max-500">Nous vous proposons une muiltitude departement disponible dans l'insertion de vos rendez-vous et assistance médicale:</p>
+			<div class="row mt-lg-4">
+				<div class="col-lg-8 col-xl-9">
+					<div class="department-tabs js-department-tabs d-none d-sm-flex">
+						<div class="department-tab active">
+							<div class="department-tab-icon"><i class="icon-brain"></i></div>
+							<div class="department-tab-text">Psychiatrie</div>
+						</div>
+						<div class="department-tab">
+							<div class="department-tab-icon"><i class="icon-lab"></i></div>
+							<div class="department-tab-text">Consultation</div>
+						</div>
+						<div class="department-tab">
+							<div class="department-tab-icon"><i class="icon-dental"></i></div>
+							<div class="department-tab-text">Medicine Dentaire</div>
+						</div>
+						<div class="department-tab">
+							<div class="department-tab-icon"><i class="icon-cardiology"></i></div>
+							<div class="department-tab-text">Cardiologie</div>
+						</div>
+						<div class="department-tab">
+							<div class="department-tab-icon"><i class="icon-gynecology"></i></div>
+							<div class="department-tab-text">Gynecologie</div>
+						</div>
+						<div class="department-tab">
+							<div class="department-tab-icon"><i class="icon-medicine"></i></div>
+							<div class="department-tab-text">Medicine Génerale</div>
+						</div>
+						<div class="department-tab">
+							<div class="department-tab-icon"><i class="icon-traumatology"></i></div>
+							<div class="department-tab-text">Traumatologie</div>
+						</div>
+						<div class="department-tab">
+							<div class="department-tab-icon"><i class="icon-pediatrics"></i></div>
+							<div class="department-tab-text">Pediatrie</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-xl-3">
+					<div class="department-carousel js-department-carousel">
+						<div class="department-item">
+							<h3 data-title="Psychiatry"><span>Psychiatrie</span></h3>
+							<div class="department-tab">
+								<div class="department-tab-icon"><i class="icon-brain"></i></div>
+								<div class="department-tab-text">Psychiatrie</div>
+							</div>
+							<p>Nos pédiatres vous je ne sais pas quoi là.</p>
+						</div>
+						<div class="department-item">
+							<h3 data-title="Laboratory"><span>Consultation</span></h3>
+							<div class="department-tab">
+								<div class="department-tab-icon"><i class="icon-lab"></i></div>
+								<div class="department-tab-text">Consultation</div>
+							</div>
+							<p>Aucune Idée. </p>
+						</div>
+						<div class="department-item">
+							<h3 data-title="Dental Medicine"><span>Medicine Dentaire</span></h3>
+							<div class="department-tab">
+								<div class="department-tab-icon"><i class="icon-dental"></i></div>
+								<div class="department-tab-text">Dentaire</div>
+							</div>
+							<p>Le dentiste est zo. </p>
+						</div>
+						<div class="department-item">
+							<h3 data-title="Cardiology"><span>Cardiologie</span></h3>
+							<div class="department-tab">
+								<div class="department-tab-icon"><i class="icon-cardiology"></i></div>
+								<div class="department-tab-text">Cardiologie</div>
+							</div>
+							<p>Vient on va prendre ta tension.</p>
+						</div>
+						<div class="department-item">
+							<h3 data-title="Gynecology"><span>Gynecologie</span></h3>
+							<div class="department-tab">
+								<div class="department-tab-icon"><i class="icon-gynecology"></i></div>
+								<div class="department-tab-text">Gynecologie</div>
+							</div>
+							<p>Djoh on est déjà née on est obligé de se tah. </p>
+						</div>
+						<div class="department-item">
+							<h3 data-title="Medicine"><span>Medicine</span></h3>
+							<div class="department-tab">
+								<div class="department-tab-icon"><i class="icon-medicine"></i></div>
+								<div class="department-tab-text">Medicine</div>
+							</div>
+							<p>The Department has a large Internal Medicine residency program and sub-specialty whose Residents and Fellows under the close supervision of our skilled Attending Physicians work together to provide comprehensive, up to date, and effective patient care based on the physicians' extensive medical knowledge and clinical experience.</p>
+						</div>
+						<div class="department-item">
+							<h3 data-title="Traumatology"><span>Traumatologie</span></h3>
+							<div class="department-tab">
+								<div class="department-tab-icon"><i class="icon-traumatology"></i></div>
+								<div class="department-tab-text">Traumatologie</div>
+							</div>
+							<p>Je suis traumatisé Djoh.</p>
+						</div>
+						<div class="department-item">
+							<h3 data-title="Pediatrics"><span>Pediatrie</span></h3>
+							<div class="department-tab">
+								<div class="department-tab-icon"><i class="icon-pediatrics"></i></div>
+								<div class="department-tab-text">Pediatrie</div>
+							</div>
+							<p>Ma fille va très mal. Je crois qu'elle est enceinte</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--//section  departments-->
+	<!--section-->
+	<div class="section">
+		<div class="container-fluid px-0 text-image-block">
+			<div class="row no-gutters">
+				<div class="col-md-6 image-col"><img src="focus/images/content/why-choose-us.png" alt=""></div>
+				<div class="col-md-6 text-col">
+					<div class="title-wrap">
+						<div class="h-sub theme-color">Voir la Difference</div>
+						<h2 class="h1" data-title="Why Choose Us?"><span>Pourquoi nous choisir?</span></h2>
+					</div>
+					<div class="mt-2 mt-lg-4"></div>
+					<ul class="numbered-list-xl">
+						<li data-num='01.'>
+							<h5>Disponibilité 24h/24 7j/7</h5>
+						</li>
+						<li data-num='02.'>
+							<h5>Rapide</h5>
+						</li>
+						<li data-num='03.'>
+							<h5>Moderne</h5>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--//section-->
+	<!--section faq-->
+	<div class="section bg-grey py-0" id="faqSection">
+		<div class="container-fluid px-0">
+			<div class="row no-gutters">
+				<div class="col-xl-6 order-2 order-xl-1">
+					<div class="faq-wrap px-15 px-lg-8">
+						<div class="title-wrap">
+							<h2 class="h1">Foire aux questions</h2>
+						</div>
+						<div class="mt-2 mt-lg-4"></div>
+						<div class="faq-item">
+							<a data-toggle="collapse" data-parent="#faqAccordion1" href="#faqItem1" aria-expanded="true"><span>1.</span><span>Question numero ?</span></a>
+							<div id="faqItem1" class="collapse show faq-item-content" role="tabpanel">
+								<div>
+									<p>La reponse de je ne sais pas quoi. </p>
+								</div>
+							</div>
+						</div>
+						<div class="faq-item">
+							<a data-toggle="collapse" data-parent="#faqAccordion1" href="#faqItem2" aria-expanded="false" class="collapsed"><span>2.</span><span>Question numero ? </span></a>
+							<div id="faqItem2" class="collapse faq-item-content" role="tabpanel">
+								<div>
+									<p>
+										La reponse.
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="faq-item">
+							<a data-toggle="collapse" data-parent="#faqAccordion1" href="#faqItem3" aria-expanded="false" class="collapsed"><span>3.</span><span>Question numero ? </span></a>
+							<div id="faqItem3" class="collapse faq-item-content" role="tabpanel">
+								<div>
+									<p>
+										La reponse
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="faq-item">
+							<a data-toggle="collapse" data-parent="#faqAccordion1" href="#faqItem4" aria-expanded="false" class="collapsed"><span>4.</span><span>Question numero ? </span></a>
+							<div id="faqItem4" class="collapse faq-item-content" role="tabpanel">
+								<div>
+									<p>
+										La reponse.
+									</p>
+								</div>
+							</div>
+						</div>
+						<a href="#" class="btn mt-15 mt-sm-3" data-toggle="modal" data-target="#modalQuestionForm"><i class="icon-right-arrow"></i><span>Posez une question</span><i class="icon-right-arrow"></i></a>
+					</div>
+				</div>
+				<div class="col-xl-6 banner-left bg-cover order-1 order-xl-2" style="background-image: url(focus/images/bg.jpg)"></div>
+			</div>
+		</div>
+	</div>
+	<!--//section faq-->
+</div>
+<!--section events-->
+<div class="section" id="eventsSection">
+	<div class="container">
+		<div class="title-wrap text-center">
+			<h2 class="h1">Nos Partenaires</h2>
+			<div class="h-decor"></div>
+		</div>
+		<div class="row blog-grid-full blog-grid-carousel-full js-blog-grid-carousel-full mt-lg-3">
+			<div class="col-md-6 col-lg-4">
+				<div class="blog-post blog-post-style2">
+					<div class="post-image">
+						<img src="images/content/news-01.jpg" alt="">
+					</div>
+					<h2 class="post-title">Pharmacie Farouk</h2>
+					<div class="post-date-inline">17 janvier, 2019</div>
+				</div>
+			</div>
+			<div class="col-md-6 col-lg-4">
+				<div class="blog-post blog-post-style2">
+					<div class="post-image">
+						<img src="images/content/news-02.jpg" alt="">
+					</div>
+					<h2 class="post-title">Ministère de la santé</h2>
+					<div class="post-date-inline">22 fevrier, 2019</div>
+				</div>
+			</div>
+			<div class="col-md-6 col-lg-4">
+				<div class="blog-post blog-post-style2">
+					<div class="post-image">
+						<img src="images/content/news-03.jpg" alt="">
+					</div>
+					<h2 class="post-title">ICORE</h2>
+					<div class="post-date-inline">19 Mars, 2019</div>
+				</div>
+			</div>
+			<div class="col-md-6 col-lg-4">
+				<div class="blog-post blog-post-style2">
+					<div class="post-image">
+						<img src="images/content/news-01.jpg" alt="">
+					</div>
+					<h2 class="post-title">UNICEF</h2>
+					<div class="post-date-inline">25 Mars, 2019</div>
+				</div>
+			</div>
+			<div class="col-md-6 col-lg-4">
+				<div class="blog-post blog-post-style2">
+					<div class="post-image">
+						<img src="images/content/news-02.jpg" alt="">
+					</div>
+					<h2 class="post-title">DEPARTEMENT SUISSE MEDICAL</h2>
+					<div class="post-date-inline">22 Avril, 2019</div>
+				</div>
+			</div>
+			<div class="col-md-6 col-lg-4">
+				<div class="blog-post blog-post-style2">
+					<div class="post-image">
+						<img src="images/content/news-03.jpg" alt="">
+					</div>
+					<h2 class="post-title">NaN</h2>
+					<div class="post-date-inline">27 Juin, 2019</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--//section events-->
+
+<!--footer-->
+<div class="footer mt-0" id="contactSection">
+	<div class="container">
+		<div class="row py-1 py-md-2 px-lg-0">
+			<div class="col-sm-6 col-lg-6 footer-col1">
+				<div class="row flex-column flex-md-row flex-lg-column">
+					<div class="col-md col-lg-auto">
+						<div class="footer-logo">
+							<img src="focus/images/logo.png" alt="" class="img-fluid">
+						</div>
+						<div class="mt-2 mt-lg-0"></div>
+						<div class="footer-social d-none d-md-block d-lg-none">
+							<a href="https://www.facebook.com/" target="blank" class="hovicon"><i class="icon-facebook-logo"></i></a>
+							<a href="https://www.twitter.com/" target="blank" class="hovicon"><i class="icon-twitter-logo"></i></a>
+							<a href="https://plus.google.com/" target="blank" class="hovicon"><i class="icon-google-logo"></i></a>
+							<a href="https://www.instagram.com/" target="blank" class="hovicon"><i class="icon-instagram"></i></a>
+						</div>
+					</div>
+					<div class="col-md">
+						<div class="footer-text mt-1 mt-lg-2">
+							<p>Ne ratez plus rien de nos nouveaus service et/ou privillège
+								<br>Inscrivez-vous à notre newsletter</p>
+							<form action="#" class="footer-subscribe">
+								<div class="input-group">
+									<input name="subscribe_mail" type="text" class="form-control" placeholder="Votre Email"/>
+									<span><i class="icon-black-envelope"></i></span>
+								</div>
+							</form>
+						</div>
+						<div class="footer-social d-md-none d-lg-block">
+							<a href="https://www.facebook.com/" target="blank" class="hovicon"><i class="icon-facebook-logo"></i></a>
+							<a href="https://www.twitter.com/" target="blank" class="hovicon"><i class="icon-twitter-logo"></i></a>
+							<a href="https://plus.google.com/" target="blank" class="hovicon"><i class="icon-google-logo"></i></a>
+							<a href="https://www.instagram.com/" target="blank" class="hovicon"><i class="icon-instagram"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 col-lg-6">
+				<h3>Our Contacts</h3>
+				<div class="h-decor"></div>
+				<ul class="icn-list">
+					<li><i class="icon-placeholder2"></i>Cocody Nouveau CHU, Abidjan, Côte d'Ivoire
+						<br>
+						<a href="#" class="btn btn-xs btn-gradient"><i class="icon-placeholder2"></i><span>Voir sur la carte de localisation</span><i class="icon-right-arrow"></i></a>
+					</li>
+					<li><i class="icon-telephone"></i><b><span class="phone"><span class="text-nowrap">+225 48-80-33-77</span>, <span class="text-nowrap">+225 21-23-27-27</span></span></b>
+						<br>(24/7 disponible)
+					</li>
+					<li><i class="icon-black-envelope"></i><a href="mailto:info@dentco.net">info@allo.ci</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="footer-bottom">
+		<div class="container">
+			<div class="row text-center text-md-left">
+				<div class="col-sm">Copyright © 2019 <a href="#">Allô Santé Express</a><span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
+					<a href="#">Politique Privé</a></div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--//footer-->
+
+<div class="backToTop js-backToTop">
+	<i class="icon icon-up-arrow"></i>
+</div>
+<div class="modal modal-form modal-form-sm fade" id="modalQuestionForm">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<button aria-label='Close' class='close' data-dismiss='modal'>
+				<i class="icon-error"></i>
+			</button>
+			<div class="modal-body">
+				<div class="modal-form">
+					<h3>Nous vous écoutons</h3>
+					<form class="mt-15" id="questionForm" method="post" novalidate>
+						<div class="successform">
+							<p>Votre message à été envoyé avec succèss!</p>
+						</div>
+						<div class="errorform">
+							<p>Erreur de connexion avec le serveur.</p>
+						</div>
+						<div class="input-group">
+								<span>
+								<i class="icon-user"></i>
+							</span>
+							<input type="text" name="name" class="form-control" autocomplete="off" placeholder="Your Name*"/>
+						</div>
+						<div class="input-group">
+								<span>
+									<i class="icon-email2"></i>
+								</span>
+							<input type="text" name="email" class="form-control" autocomplete="off" placeholder="Your Email*"/>
+						</div>
+						<div class="input-group">
+								<span>
+									<i class="icon-smartphone"></i>
+								</span>
+							<input type="text" name="phone" class="form-control" autocomplete="off" placeholder="Your Phone"/>
+						</div>
+						<textarea name="message" class="form-control" placeholder="Your comment*"></textarea>
+						<div class="text-right mt-2">
+							<button type="submit" class="btn btn-sm btn-hover-fill">Ask Now</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal modal-form fade" id="modalBookingForm">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<button aria-label='Close' class='close' data-dismiss='modal'>
+				<i class="icon-error"></i>
+			</button>
+			<div class="modal-body">
+				<div class="modal-form">
+					<h3>Book an Appointment</h3>
+					<form class="mt-15" id="bookingForm" method="post" novalidate>
+						<div class="successform">
+							<p>Your message was sent successfully!</p>
+						</div>
+						<div class="errorform">
+							<p>Something went wrong, try refreshing and submitting the form again.</p>
+						</div>
+						<div class="input-group">
+								<span>
+								<i class="icon-user"></i>
+							</span>
+							<input type="text" name="bookingname" class="form-control" autocomplete="off" placeholder="Your Name*"/>
+						</div>
+						<div class="row row-xs-space mt-1">
+							<div class="col-sm-6">
+								<div class="input-group">
+										<span>
+											<i class="icon-email2"></i>
+										</span>
+									<input type="text" name="bookingemail" class="form-control" autocomplete="off" placeholder="Your Email*"/>
+								</div>
+							</div>
+							<div class="col-sm-6 mt-1 mt-sm-0">
+								<div class="input-group">
+										<span>
+											<i class="icon-smartphone"></i>
+										</span>
+									<input type="text" name="bookingphone" class="form-control" autocomplete="off" placeholder="Your Phone"/>
+								</div>
+							</div>
+						</div>
+						<div class="row row-xs-space mt-1">
+							<div class="col-sm-6">
+								<div class="input-group">
+										<span>
+											<i class="icon-birthday"></i>
+										</span>
+									<input type="text" name="bookingage" class="form-control" autocomplete="off" placeholder="Your age"/>
+								</div>
+							</div>
+						</div>
+						<div class="selectWrapper input-group mt-1">
+								<span>
+									<i class="icon-tooth"></i>
+								</span>
+							<select name="bookingservice" class="form-control">
+								<option selected="selected" disabled="disabled">Select Service</option>
+								<option value="Cosmetic Dentistry">Cosmetic Dentistry</option>
+								<option value="General Dentistry">General Dentistry</option>
+								<option value="Orthodontics">Orthodontics</option>
+								<option value="Children`s Dentistry">Children`s Dentistry</option>
+								<option value="Dental Implants">Dental Implants</option>
+								<option value="Dental Emergency">Dental Emergency</option>
+							</select>
+						</div>
+						<div class="input-group flex-nowrap mt-1">
+								<span>
+									<i class="icon-calendar2"></i>
+								</span>
+							<div class="datepicker-wrap">
+								<input name="bookingdate" type="text" class="form-control datetimepicker" placeholder="Date" readonly>
+							</div>
+						</div>
+						<div class="input-group flex-nowrap mt-1">
+								<span>
+									<i class="icon-clock"></i>
+								</span>
+							<div class="datepicker-wrap">
+								<input name="bookingtime" type="text" class="form-control timepicker" placeholder="Time">
+							</div>
+						</div>
+						<textarea name="bookingmessage" class="form-control" placeholder="Your comment"></textarea>
+						<div class="text-right mt-2">
+							<button type="submit" class="btn btn-sm btn-hover-fill">Book now</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Vendors -->
+<script src="/socket.io/socket.io.js"></script>
+<script src="focus/vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="focus/js/jquery.notify.min.js"></script>
+<script src="focus/vendor/jquery-migrate/jquery-migrate-3.0.1.min.js"></script>
+<script src="focus/vendor/cookie/jquery.cookie.js"></script>
+<script src="focus/vendor/bootstrap-datetimepicker/moment.js"></script>
+<script src="focus/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
+<script src="focus/vendor/popper/popper.min.js"></script>
+<script src="focus/vendor/bootstrap/bootstrap.min.js"></script>
+<script src="focus/vendor/waypoints/jquery.waypoints.min.js"></script>
+<script src="focus/vendor/waypoints/sticky.min.js"></script>
+<script src="focus/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+<script src="focus/vendor/slick/slick.min.js"></script>
+<script src="focus/vendor/scroll-with-ease/jquery.scroll-with-ease.min.js"></script>
+<script src="focus/vendor/countTo/jquery.countTo.js"></script>
+<script src="focus/vendor/form-validation/jquery.form.js"></script>
+<script src="focus/vendor/form-validation/jquery.validate.min.js"></script>
+<script src="focus/vendor/isotope/isotope.pkgd.min.js"></script>
+<!-- Custom Scripts -->
+<script src="focus/js/app.js"></script>
+<script src="focus/js/app-shop.js"></script>
+<script src="focus/form/forms.js"></script>
+<script>
+	$(document).ready(function () {
+		var socket = io();
+		$('.testt').click(function () {
+			window.location.href = "/account"
+		})
+
+
+		$("#FocuRV").on('submit', function (e) {
+			e.preventDefault();
+			var info = {}
+			var ident = $('#ident').val();
+			var motif = $('#motif').val();
+			var heure = $('#heure').val();
+			var address = $('#address').val();
+			var date = $('#date').val();
+			if(motif === "" || heure ==="" || address === "" || date === ""){
+				$.notify({
+					position: 8,
+					type: 'error',
+					autoClose: false,
+					message: "Veillez remplir coorectement"
+				});
+				return false;
+			}
+			else{
+				info.ident = ident;
+				heure = heure.split(':')
+				date = date.split('/')
+				info.date = new Date(parseInt(date[2],10),parseInt(date[1],10)-1,parseInt(date[0],10),parseInt(heure[0],10),parseInt(heure[1],10));
+				info.motif = motif;
+				info.address = address;
+				socket.emit("rdv", info)
+				$.notify({
+					position: 8,
+					type: 'success',
+					autoClose: false,
+					message: "Rendez-vous enregistré nous vous tenons informé pour la suite"
+				});
+				$('#motif').val('');
+				$('#heure').val('');
+				$('#address').val('');
+				$('#date').val('');
+				return false
+			}
+
+		})
+		$("#FocuR").on('submit', function (e) {
+			e.preventDefault();
+			var info = {}
+			var ident = $('#ident2').val();
+			var motif = $('#motif2').val();
+			var address = $('#address2').val();
+			if(motif === "" || address === ""){
+				$.notify({
+					position: 8,
+					type: 'error',
+					autoClose: false,
+					message: "Veillez remplir coorectement"
+				});
+				return false;
+			}
+			else{
+				info.ident = ident;
+				info.motif = motif;
+				info.address = address;
+				socket.emit("assurance", info)
+				$.notify({
+					position: 8,
+					type: 'success',
+					autoClose: false,
+					message: "Assistance enregistrée nous vous tenons informé pour la suite"
+				});
+				$('#motif2').val('');
+
+				$('#address2').val('');
+				return false
+			}
+
+		})
+	})
+</script>
+
+</body>
+
+</html>

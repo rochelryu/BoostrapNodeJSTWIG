@@ -1,0 +1,143 @@
+
+<div class="copy">
+<input type="hidden" id="meM" value="{{info.user.clinicName}}"/>
+    <p> &copy; 2019 Allô Santé Express. Tout droit reservé </p>
+</div>
+</div>
+<div class="clearfix"> </div>
+</div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="../js/jquery.nicescroll.js"></script>
+<script src="../focus/js/jquery.notify.min.js"></script>
+<script src="../focus/js/datatables.min.js"></script>
+<script src="../js/scripts.js"></script>
+<script src="../js/bootstrap.min.js"> </script>
+<script src="../js/duplicateFields.min.js"> </script>
+<script>
+    $(document).ready(function () {
+        let ele = "";
+        var socket = io();
+        {% for item in info.err %}
+        $.notify({
+            position: 3,
+            type: 'error',
+            duration: 7000,
+            message: "{{ item.msg }}"
+        });
+        {% endfor %}
+
+$('.choiceF').on('click', '.intent', function () {
+            $('.fake').removeClass('active');
+            var meta = "#"+$(this).attr("data-ryu");
+            $(meta).addClass("active");
+        })
+        $('.table-bordered').DataTable({
+            "dom": '<"toolbar">frtip',
+            "paging": true,
+            "pagingType": "full_numbers"
+        });
+        $('#form1').on('submit',function (e) {
+            e.preventDefault();
+            var numero = $('#name').val();
+            var message = $('#comment').val();
+            if(message !== "" && numero.length > 8){
+                socket.emit("send",{numero,message});
+                $('#name').val('');
+                $('#comment').val('');
+                    $.notify({
+                        position: 8,
+                        type: 'success',
+                        autoClose: false,
+                        message:  "Message Envoyé !"
+                    });
+            }else{
+                $.notify({
+                    position: 8,
+                    type: 'error',
+                    autoClose: false,
+                    message:  "Veillez renseignez les champs correctement"
+                });
+            }
+        })
+
+        $('#focusSearch').on('submit',function (e) {
+            e.preventDefault();
+            var numero = $('#code').val();
+            var me = $('#meM').val();
+            if(numero !== "" && numero.length > 4){
+                socket.emit("sendValidation",{numero,me});
+               $('.progressBar').fadeIn();
+            }else{
+                $.notify({
+                    position: 8,
+                    type: 'error',
+                    autoClose: false,
+                    message:  "Veillez renseignez le champ correctement"
+                });
+            }
+        })
+        socket.on('result', (data)=>{
+            ele = data.code;
+            console.log(data);
+            const content = "Prise pour le " +data.date.substring(8,10) +"/"+ data.date.substring(5,7) +"/"+ data.date.substring(0,4) + " à "+data.heure+". Demande pour "+ data.autreProbleme;
+            const mini = (data.age != "") ? "Pour " + data.name + " : " + data.age +" ans": "Pour mui même"; 
+            $("#global .material-card h2 span").html(data.clientName);
+            $("#global .material-card h2 strong").html("<i class=\"fa fa-fw fa-person\"></i>  " + mini);
+            $("#global .material-card .mc-description").html(content);
+            $('.progressBar').fadeOut();
+            $('#global').fadeIn();
+        })
+        $('.isValidate').on('click', function(){
+            socket.emit('finish', {ele:ele});
+                        $('#global').fadeOut();
+            $.notify({
+                    position: 8,
+                    type: 'success',
+                    autoClose: false,
+                    message:  "Demande Valider"
+                });
+        })
+        socket.on('aucunResult', ()=>{
+            $('.progressBar').fadeOut();
+            $.notify({
+                    position: 8,
+                    type: 'error',
+                    autoClose: false,
+                    message:  "Aucun patient vous a été attribué avec ce code"
+                });
+        })
+
+        $('.material-card > .mc-btn-action').click(function () {
+            var card = $(this).parent('.material-card');
+            var icon = $(this).children('i');
+            icon.addClass('fa-spin-fast');
+
+            if (card.hasClass('mc-active')) {
+                card.removeClass('mc-active');
+
+                window.setTimeout(function() {
+                    icon
+                        .removeClass('fa-arrow-left')
+                        .removeClass('fa-spin-fast')
+                        .addClass('fa-bars');
+
+                }, 800);
+            } else {
+                card.addClass('mc-active');
+
+                window.setTimeout(function() {
+                    icon
+                        .removeClass('fa-bars')
+                        .removeClass('fa-spin-fast')
+                        .addClass('fa-arrow-left');
+
+                }, 800);
+            }
+        });
+
+    })
+</script>
+</body>
+</html>

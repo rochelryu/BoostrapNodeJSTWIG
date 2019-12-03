@@ -1,0 +1,417 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Allô| {{ info.user.clinicName }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Minimal Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    	<link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="../../css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+    <link href="../../css/mdb.min.css" rel='stylesheet' type='text/css' />
+    <!-- Custom Theme files -->
+    <link href="../../css/style.css" rel='stylesheet' type='text/css' />
+    <link href="../../css/font-awesome.css" rel="stylesheet">
+    <link href="../../focus/css/jquery.notify.min.css" rel="stylesheet">
+    <link href="../focus/css/datatables.min.css" rel="stylesheet">
+    <script src="../../js/jquery.min.js"> </script>
+    <!-- Mainly scripts -->
+    <script src="../../js/jquery.metisMenu.js"></script>
+    <script src="../../js/jquery.slimscroll.min.js"></script>
+    <!-- Custom and plugin javascript -->
+    <link href="../../css/custom.css" rel="stylesheet">
+    <script src="../../js/custom.js"></script>
+    <script src="../../js/screenfull.js"></script>
+    <script src="../../js/Chart.js"></script>
+    <script>function horo(){
+        document.write((new Date().getHours() < 12) ? "Bonjour":"Bonsoir")
+        };
+        </script>
+    <style>
+    *{
+        font-family:Raleway !important;
+        margin:10px;
+    }
+    p{
+        margin:10px 20px;
+    }
+    button{
+        display: flex;
+    align-items: center;
+    justify-content: center;
+        border: none;
+        outline: none !important;
+        background-color: #6dc36d;
+        height: 70px;
+        color:#fff;
+        width: 70px;
+        
+        position: fixed;
+        bottom: 10%;
+        right: 3%;
+        border-radius: 50%;
+        box-shadow: 0 0 10px rgba(56,56,56,.22);
+    }
+    button i{
+          font-size: 20px;
+          color:#fff;
+    }
+    @media print{
+        button{
+            display:none;
+        }
+    }
+    .blocc{
+        display:flex;
+        align-items: center;
+  justify-content: space-between;
+    flex-direction: column;
+    position:relative;
+    }
+    .Intent {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.headAssurance {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+    .ligne{
+        width:100%;
+        display:flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+    }
+    ul{
+        list-style:none;
+    }
+    </style>
+    </head>
+
+    <body>
+    <div class="container">
+    <button onclick="myFunction()"> OK </button>
+        <div class="blocc">
+            <div class="Intent">
+                <img class="img-responsive " src="../../images/allo.png" style="width:100px; margin-bottom:20px" alt="Logo" />
+                <br>
+                <h2 style="color:#6dc36d; text-decoration:underline;">DEMANDE D’ASSURANCE {{type|upper}}</h2>
+            </div>
+            <div class="headAssurance">
+                <div class="ele1">
+                    <div class="custom-control-inline">
+                        <input type="checkbox"  id="defaultInline1" {{(etape != "Professionnels") ? "checked": ""}}>
+                        <label  for="defaultInline1">Particuliers</label>
+                    </div>
+
+                    <div class="custom-control-inline">
+                        <input type="checkbox"  id="defaultInline2" {{(etape == "Professionnels") ? "checked": ""}}>
+                        <label  for="defaultInline2">Professionnels</label>
+                    </div>
+                </div>
+                <div class="ele1">
+                    <h5 style="color:#6dc36d; text-decoration:underline">réf commande : {{info.recovery}}</h5>
+                    <input id="code" type="hidden" value={{info.recovery}} />
+                    
+                </div>
+            </div>
+            <div class="bodyLevel">
+                <p style="color:#228caf"><script>horo();</script></p>
+                <p style="color:#228caf">Madame, Monsieur</p>
+                <p style="color:#228caf">Veuillez recevoir les informations et documents justificatifs relatives à une demande de souscription à une police d’assurance effectuée sur nos différentes plateformes ALLO SANTE EXPRESS ;</p>
+                <p style="color:#228caf"><span>Type d’assurance : {{type}}</span> </p>
+                {% if type == "Santé" and  etape != "Professionnels" %}
+                <input id="typee" type="hidden" value={{type}} />
+                <ul>
+                    <li>
+                    <p>Nom : {{info.name}}</p>
+                    </li>
+                    
+                    <li>
+                    <p>Prénom : {{info.firstname}}</p>
+                    </li>
+
+                    <li>
+                    <p>Nom d'usage : {{info.nameUsage}}</p>
+                    </li>
+                    <li>
+                    <p>Sexe : {{info.sexe}}</p>
+                    </li>
+                    <li>
+                    <p>Email : {{info.email}}</p>
+                    </li>
+                    <li>
+                    <p>Numero : {{info.numero}}</p>
+                    </li>
+                    <li>
+                    <p>Second Numéro : {{info.numeroS}}</p>
+                    </li>
+
+                    <li>
+                    <p>Lieu de Naissance : {{info.address}}</p>
+                    </li>
+
+                    <li>
+                    <p>Date de Naissance : {{info.birthDate|date('d/m/Y')}}</p>
+                    </li>
+
+                </ul>
+                {% elseif type == "Voyage" and  etape != "Professionnels" %}
+                <input id="typee" type="hidden" value={{type}} />
+
+                <div class="ligne">
+                    <div>
+                        <ul>
+                            <li>
+                            <p>Nom : {{info.name}}</p>
+                            </li>
+                            
+                            <li>
+                            <p>Prénom : {{info.firstname}}</p>
+                            </li>
+                            <li>
+                            <p>Sexe : {{info.sexe}}</p>
+                            </li>
+                            <li>
+                            <p>Numero : {{info.address}}</p>
+                            </li>
+                            <li>
+                            <p>Pays d'origine : {{info.paysOr}}</p>
+                            </li>
+
+                            <li>
+                            <p>Pays de destination : {{info.paysDest}}</p>
+                            </li>
+
+                            <li>
+                            <p>Nombre de jours: {{info.changeNumberDeJours}}</p>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div>
+                        <img src="{{ info.passport }}" class="individus" />
+                    </div>
+                </div>
+                {% elseif type == "Auto" and  etape != "Professionnels" %}
+                                <input id="typee" type="hidden" value={{type}} />
+                                <div class="ligne">
+                    <div>
+                        <ul>
+                            <li>
+                            <p>Nom : {{info.name}}</p>
+                            </li>
+                            
+                            <li>
+                            <p>Prénom : {{info.firstname}}</p>
+                            </li>
+                            <li>
+                            <p>Sexe : {{info.sexe}}</p>
+                            </li>
+                            <li>
+                            <p>Numero de téléphone : {{info.numero}}</p>
+                            </li>
+                            <li>
+                            <p>Immatriculation : {{info.immatriculation}}</p>
+                            </li>
+
+                            <li>
+                            <p>Type de carte : {{info.typeCarte}}</p>
+                            </li>
+
+                            <li>
+                            <p>Ville/Commune : {{info.address}}</p>
+                            </li>
+
+
+                            <li>
+                            <p>Profession : {{info.profession}}</p>
+                            </li>
+                            <li>
+                            <p>Nationnalité : {{info.nationnalite}}</p>
+                            </li>
+                            <li>
+                            <p>Date effet  du contrat d’assurance : {{info.effetContrat}}</p>
+                            </li>
+                            <li>
+                            <p>Marque : {{info.marque}}</p>
+                            </li>
+                           
+                            
+                        </ul>
+                    </div>
+                    <div>
+                    <ul>
+                     <li>
+                            <p>Genre : {{info.genre}}</p>
+                            </li>
+                            <li>
+                            <p>Numero de chasis : {{info.chasis}}</p>
+                            </li>
+                            <li>
+                            <p>Puissance du vehicule : {{info.puissanceVehicule}}</p>
+                            </li>
+                            <li>
+                            <p>Energie : {{info.energie}}</p>
+                            </li>
+                            <li>
+                            <p>Nombre de place : {{info.nombreDePlace}}</p>
+                            </li>
+                            <li>
+                            <p>Nombre de passager : {{info.nombreDePassager}}</p>
+                            </li>
+                            <li>
+                            <p>Cassorie : {{info.cassorie}}</p>
+                            </li>
+                            <li>
+                            <p>PV : {{info.pv}}</p>
+                            </li>
+                            <li>
+                            <p>PTAC : {{info.ptac}}</p>
+                            </li>
+                            <li>
+                            <p>CU : {{info.cu}}</p>
+                            </li>
+                            <li>
+                            <p>Garantie : {{info.garantie}}</p>
+                            </li>
+
+                    </ul>
+                    </div>
+                    <div>
+                        <img src="{{ info.profil }}" class="individus" />
+                    </div>
+                </div>
+                {% elseif type == "Moto" and  etape != "Professionnels" %}
+                <input id="typee" type="hidden" value={{type}} />
+                                <div class="ligne">
+                    <div>
+                        <ul>
+                            <li>
+                            <p>Nom : {{info.name}}</p>
+                            </li>
+                            
+                            <li>
+                            <p>Prénom : {{info.firstname}}</p>
+                            </li>
+                            <li>
+                            <p>Sexe : {{info.sexe}}</p>
+                            </li>
+                            <li>
+                            <p>Numero de téléphone : {{info.numero}}</p>
+                            </li>
+                            <li>
+                            <p>Second Numero de téléphone : {{info.numeroSe}}</p>
+                            </li>
+
+
+                            <li>
+                            <p>Type de carte : {{info.typeCarte}}</p>
+                            </li>
+                            <li>
+                            <p>Marque : {{info.marque}}</p>
+                            </li>
+                            <li>
+                            <p>Ville/Commune : {{info.address}}</p>
+                            </li>
+
+
+                            <li>
+                            <p>Profession : {{info.profession}}</p>
+                            </li>
+                            <li>
+                            <p>Nationnalité : {{info.nationnalite}}</p>
+                            </li>
+                            
+                           
+                            
+                        </ul>
+                    </div>
+                    <div>
+                    <ul>
+                     <li>
+                            <p>Genre : {{info.genre}}</p>
+                            </li>
+                            <li>
+                            <p>Numero de chasis : {{info.chasis}}</p>
+                            </li>
+                            <li>
+                            <p>Puissance du vehicule : {{info.puissanceVehicule}}</p>
+                            </li>
+                            <li>
+                            <p>Energie : {{info.energie}}</p>
+                            </li>
+                            <li>
+                            <p>Nombre de place : {{info.nombreDePlace}}</p>
+                            </li>
+                            <li>
+                            <p>Immatriculation : {{info.immatriculation}}</p>
+                            </li>
+                            <li>
+                            <p>Date effet  du contrat d’assurance : {{info.effetContrat}}</p>
+                            </li>
+                            <li>
+                            <p>Date de 1ère immatriculation ou date d’achat : {{info.premierImmatriculation}}</p>
+                            </li>
+                            <li>
+                            <p>Garantie : {{info.garantie}}</p>
+                            </li>
+                            
+
+                    </ul>
+                    </div>
+                    <div>
+                        <img src="{{ info.profil }}" class="individus" />
+                    </div>
+                </div>
+
+                {% else %}
+                    <input id="typee" type="hidden" value={{etape}} />
+                    <ul>
+                    <li>
+                    <p>Nom de la société : {{info.name}}</p>
+                    </li>
+                    <li>
+                    <p>Email : {{info.email}}</p>
+                    </li>
+                    <li>
+                    <p>Numero : {{info.numero}}</p>
+                    </li>
+                    <li>
+                    <p>Adresse : {{info.address}}</p>
+                    </li>
+                </ul>
+                {% endif %}
+
+                <p style="margin-top:30px;color:#228caf">Veuillez recevoir nos salutations les plus distinguées de la part de toute l’équipe d’Allô santé express.</p>
+                <p style="margin-top:10px;color:#228caf; text-align:right">LA DIRECTION</p>
+                <p style="margin-top:10px;color:#228caf; text-align:right">ATALIA SARL - ALLO SANTE EXPRESS</p>
+            </div>
+            <div class="fot">
+                <hr size="10" style="border-top: 5px solid #6dc36d;">
+                <p style="color:#6dc36d">ATALIA.SARL-RCCM : CI-ABJ-2019-B-00810-CC N° : 1903151-Abidjan-Côte D’ivoire-Koumassi-résidence halama villa 87-Tel :+(225) 66 000 700- ataliasarl.ase@gmail.com</p>
+            </div>
+            <script src="/socket.io/socket.io.js"></script>
+
+        <script>
+
+			window.print();
+			
+
+            function myFunction() {
+                var socket = io();
+                const fake = {type:document.getElementById("typee").value, code:document.getElementById("code").value};
+                socket.emit("AssuranceValidate", fake);
+                setTimeout(()=>{
+                    window.close();
+                },500)
+}
+	</script>
+    </body>
+
+    </html>

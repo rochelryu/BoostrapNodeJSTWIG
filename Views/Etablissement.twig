@@ -1,0 +1,310 @@
+{% include 'Include/header.twig' %}
+
+<div class="content-main">
+
+    <div class="banner">
+        <h2>
+            <a href="/ryu">Accueil</a>
+            <i class="fa fa-angle-right"></i>
+            <span>Gestion Etablissement Pour le réferencement</span>
+        </h2>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <form style="background: white" action="/ryu/refetablissements" method="post" enctype="multipart/form-data">
+                    <div class="vali-form">
+                        <div class="col-md-4 form-group1">
+                            <label class="control-label">Nom de L'établissement</label>
+                            <input type="text" name="name" />
+                        </div>
+                        <div class="col-md-4 form-group1 form-last">
+                            <label class="control-label">nom du Responsable</label>
+                            <input type="text" name="nameRespo" />
+                        </div>
+                        <div class="col-md-4 form-group1 form-last">
+                            <label class="control-label">fonction du Responsable</label>
+                            <input type="text" name="fonction" />
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+
+                    <div class="vali-form">
+                        <div class="col-md-4 form-group1">
+                            <label class="control-label">Email</label>
+                            <input type="email" name="email" />
+                        </div>
+                        <div class="col-md-4 form-group1 form-last">
+                            <label class="control-label">Numero</label>
+                            <input type="text" name="numero" />
+                        </div>
+                        <div class="col-md-4 form-group1 form-last">
+                            <label class="control-label">Second Numero</label>
+                            <input type="text" name="numeroSecond" >
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="vali-form">
+                        <div class="col-md-4 form-group1">
+                            <label class="control-label">Situation Gégraphique</label>
+                            <textarea name="localisation" /></textarea>
+                        </div>
+                        <div class="col-md-8 form-group1 form-last">
+                            <label class="control-label">complementaire</label>
+                            <textarea name="complementaire"></textarea>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="col-md-6 form-group2 group-mail">
+                        <label class="control-label">Pays</label>
+                        <select name="pays" class="form-control">
+                            <option selected="selected" disabled="disabled">Le pays</option>
+                            {% for err in info.ville %}
+                                <option value="{{ err.name }}">{{ err.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-6 form-group1 form-last">
+                            <label class="control-label">Ville & Commune</label>
+                            <input type="text" name="address" placeholder="Abidjan/Cocody" />
+                    </div>
+                    <div class="clearfix"> </div>
+                    <div class="vali-form">
+                        <div class="col-md-6 form-group1 form-last">
+                            <label class="control-label">Horaire de Debut</label>
+                            <input name="debut" type="text" placeholder="ex: 08h00" />
+                        </div>
+                        <div class="col-md-6 form-group1 form-last">
+                            <label class="control-label">Horaire de Fin</label>
+                            <input name="fin" type="text" placeholder="ex: 18h00" />
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="col-md-12 form-group">
+        
+                    <fieldset id="additional-field-model">
+                        <div class="form-group">
+                            <div class="col-md-4 col-xs-5">
+                                <label class="col-md-12 control-label" for="field">Nom de la spécialité</label>
+                                <div class="input-group">
+                                    <input type="text" name="field" placeholder="Pédiatrie" class="form-control input-md" multiple>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-xs-5">
+                                <label class="col-md-12 control-label" for="field">Tarif</label>
+                                <div class="input-group">
+                                    <input type="text" name="tarif" placeholder="Thérapie" class="form-control input-md" value="" multiple>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-xs-7 text-right">
+                                <label class="col-xs-12 control-label" for="field-c"><br /></label>
+                                <a href="javascript:void(0);"  class="btn btn-warning remove-this-field">
+                                    <i class="fa fa-remove"></i>
+                                    <span class="hidden-xs"> Supprimer </span>
+                                </a>
+                                <a href="javascript:void(0);"  class="btn btn-success create-new-field">
+                                    <i class="fa fa-plus"></i>
+                                    <span class="hidden-xs"> Ajouter Spécialité </span>
+                                </a>
+                            </div>
+                        </div>
+                    </fieldset>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="vali-form">
+                        
+                        <div class="col-md-12 form-group1 form-last">
+                            <label class="control-label">Remboursement</label>
+                            <input name="remboursement" type="text" placeholder="ex: AXA, Mutuel Santé" />
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="col-md-6 form-group2 group-mail">
+                    <label class="control-label">Image Profil</label>
+                        <input type="file" style="display: inline-block" id="fixeInput" name="fixeInput">
+                        <div class="clearfix"></div>
+                        <br>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                        <button type="reset" class="btn btn-default">Vider</button>
+                    </div>
+                    <div class="clearfix"> </div>
+                </form>
+            </div>
+            
+            <div class="col-md-12">
+                <h2> Tableau des Etablissements</h2>
+                <table class="display table table-hover table-striped table-bordered" id="listClient" border="1"  style="width:100%">
+																	<thead>
+																	<tr>
+																		<th>Profil</th>
+																		<th>Nom de L'établissement</th>
+																		<th>Responsable</th>
+																		<th>Contact</th>
+																		<th>Adresse</th>
+																		<th>Spécialité & Tarif</th>
+																		<th>Action</th>
+																	</tr>
+																	</thead>
+																	<tbody>
+																	{% for item in info.Admin %}
+
+																		<tr class="mtn" id="{{ item._id }}">
+																			<td scope="row"><img class="img-responsive blockImage" src="../images/tools/{{item.image}}"/></td>
+																			<td>{{ item.name }}</td>
+																			<td>{{ item.nameResponsable }}<br>Fonction: {{ item.fonctionResponsable }}</td>
+																			<td>{{item.email}}<br>{{ item.contactUn }} <br> {{item.contactDeux}}</td>
+																			<td>{{item.pays}}, {{item.ville}} : {{item.situationGeographique}}</td>
+																			<td>
+																			</td>
+																			<td><p>
+																			{% for items in item.specialite %}
+                                                                                <span>{{items.name}} : {{item.tarif[loop.index - 1 ].name }}</span> 
+                                                                            {% endfor %}
+                                                                            </p>
+																			</td>
+                                                                            <td>
+                                                                             <button type="button" data-toggle="modal" data-target="#basicExampleModal{{loop.index}}" class="btn btn-outline-info btn-rounded" data-del="{{item.code}}"> Modifier </button>
+                            <button class="btn btn-outline-danger btn-rounded dels" data-del="{{item.email}}"> Supprimer </button>
+                                                                            </td>
+																		</tr>
+<div class="modal fade" id="basicExampleModal{{loop.index}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel{{loop.index}}"
+  aria-hidden="true">
+
+  <!-- Change class .modal-sm to change the size of the modal -->
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title w-100" id="myModalLabel{{loop.index}}">{{ item.name|upper }}</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            <div class="col-md-12">
+                <form style="background: white" action="/ryu/refetablissementsEdit" method="post" enctype="multipart/form-data">
+                    <div class="vali-form">
+                        <div class="col-md-4 form-group1">
+                            <label class="control-label">Nom de L'établissement</label>
+                            <input type="text" name="name" value="{{item.name}}" />
+                            <input type="text" name="ident" value="{{item.ident}}" />
+                            <input type="hidden" name="code" value="{{item.email}}" />
+                        </div>
+                        <div class="col-md-4 form-group1 form-last">
+                            <label class="control-label">nom du Responsable</label>
+                            <input type="text" name="nameRespo" value="{{item.nameResponsable}}"/>
+                        </div>
+                        <div class="col-md-4 form-group1 form-last">
+                            <label class="control-label">fonction du Responsable</label>
+                            <input type="text" name="fonction" value="{{ item.fonctionResponsable }}"/>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+
+                    <div class="vali-form">
+                        <div class="col-md-4 form-group1">
+                            <label class="control-label">Email</label>
+                            <input type="email" name="email" value="{{ item.email }}"/>
+                        </div>
+                        <div class="col-md-4 form-group1 form-last">
+                            <label class="control-label">Numero</label>
+                            <input type="text" name="numero" value="{{item.contactUn}}" />
+                        </div>
+                        <div class="col-md-4 form-group1 form-last">
+                            <label class="control-label">Second Numero</label>
+                            <input type="text" name="numeroSecond" value="{{item.contactDeux}}">
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="vali-form">
+                        <div class="col-md-4 form-group1">
+                            <label class="control-label">Situation Gégraphique</label>
+                            <textarea name="localisation"/>{{item.situationGeographique}}</textarea>
+                        </div>
+                        <div class="col-md-8 form-group1 form-last">
+                            <label class="control-label">complementaire</label>
+                            <textarea name="complementaire">{{item.complementaire}} {{item.spec}}</textarea>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="col-md-6 form-group2 group-mail">
+                        <label class="control-label">Pays</label>
+                        <select name="pays" class="form-control">
+                            <option selected="selected" disabled="disabled">Le pays</option>
+                            {% for err in info.ville %}
+                                <option value="{{ err.name }}" {{(item.pays == err.name) ? "selected":"" }}>{{ err.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-6 form-group1 form-last">
+                            <label class="control-label">Ville & Commune</label>
+                            <input type="text" name="address" placeholder="Abidjan/Cocody" value="{{item.ville}}" />
+                    </div>
+                    <div class="clearfix"> </div>
+                    <div class="vali-form">
+                        <div class="col-md-6 form-group1 form-last">
+                            <label class="control-label">Horaire de Debut</label>
+                            <input name="debut" type="text" placeholder="ex: 08h00" value="{{item.ouverture}}" />
+                        </div>
+                        <div class="col-md-6 form-group1 form-last">
+                            <label class="control-label">Horaire de Fin</label>
+                            <input name="fin" type="text" placeholder="ex: 18h00" value="{{item.fermerture}}" />
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    
+                    <div class="clearfix"></div>
+                    <div class="vali-form">
+                        <div class="col-md-6 form-group1 form-last">
+                            <label class="control-label">Spécialités</label>
+                            <input name="field" type="text" placeholder="ex: Pédiatrie, Ophtamologie" 
+                            value="{% for items in item.specialite %}{{items.name}},{% endfor %}" />
+                        </div>
+                        <div class="col-md-6 form-group1 form-last">
+                            <label class="control-label">Tarif</label>
+                            <input name="tarif" type="text" placeholder="ex: 8000, 9000"  value="{% for items in item.tarif %}{{items.name}},{% endfor %}" />
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    
+                    <div class="clearfix"></div>
+                    <div class="vali-form">
+                    
+                        <div class="col-md-12 form-group1 form-last">
+                            <label class="control-label">Remboursement</label>
+                            <input name="remboursement" type="text" placeholder="ex: AXA, Mutuel Santé" value="{{item.remboursement}}" />
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="col-md-6 form-group2 group-mail">
+                    <img class="img-responsive " src="../images/tools/{{item.image}}" alt="" style="
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+" />
+                    <label class="control-label">Image Profil</label>
+                        <input type="file" style="display: inline-block" id="fixeInput" name="fixeInput">
+                                                <input name="hideFile" type="hidden" value="{{item.image}}">
+                        <div class="clearfix"></div>
+                        <br>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                        <button type="reset" class="btn btn-default">Vider</button>
+                    </div>
+                    <div class="clearfix"> </div>
+                </form>
+            </div>
+      </div>
+    </div>
+  </div>
+</div>
+																	{% endfor %}
+																	</tbody>
+																</table>
+               
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% include 'Include/footer.twig' %}

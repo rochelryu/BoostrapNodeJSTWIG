@@ -1,0 +1,39 @@
+{% include 'Include/header.twig' %}
+<div class="content-main">
+
+    <div class="banner">
+        <h2>
+            <a href="/ryu">Accueil</a>
+            <i class="fa fa-angle-right"></i>
+            <span>Tableau de Bord</span>
+        </h2>
+    </div>
+    <div class="container-fluid">
+
+    <div id="form-main">
+  <div id="form-div">
+    <form class="form" id="form1">
+      
+      <p class="name">
+        <input name="name" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Numero du patient (+225XXXXXXXX)" id="name" />
+      </p>
+      
+      <p class="text">
+        <textarea name="text" class="validate[required,length[6,300]] feedback-input" id="comment" placeholder="Comment"></textarea>
+      </p>
+      
+      
+      <div class="submit">
+        <input type="submit" value="ENVOYER" id="button-blue"/>
+        <div class="ease"></div>
+      </div>
+    </form>
+  </div>
+
+
+    </div>
+</div> 
+
+
+
+{% include 'Include/footer3.twig' %}

@@ -1,0 +1,128 @@
+{% include 'Include/header.twig' %}
+
+<div class="content-main">
+
+		     <div class="banner">
+		    	<h2>
+				<a href="/ryu">Accueil</a>
+				<i class="fa fa-angle-right"></i>
+				<span>Base de Donné Allô Santé Express</span>
+				</h2>
+		    </div>
+		<!--//banner-->
+<div class="container-fluid">
+
+<table class="display table table-hover table-striped table-bordered" id="listClient" border="1"  style="width:100%">
+																	<thead>
+																	<tr>
+																		<th>N</th>
+																		<th>Code</th>
+																		<th>nom & prénom</th>
+																		<th>numero</th>
+																		<th>addresse</th>
+																		<th>nbre Services</th>
+																		<th>Email</th>
+																		<th>Date d'enregistrement</th>
+																		<th>Action</th>
+																	</tr>
+																	</thead>
+																	<tbody>
+																	{% for item in info.clients %}
+
+																		<tr class="mtn" id="{{ item._id }}">
+																			<td scope="row">{{ loop.index }}</td>
+																			<td>{{ item.ident }}</td>
+																			<td>{{ item.name }} </td>
+																			<td>{{ item.prefix }} {{ item.numero }}</td>
+																			<td>{{ item.pays }}, {{item.address}}</td>
+																			<td>{{item.services|length}}</td>
+																			<td>{{item.email}}</td>
+																			<td>{{item.register_date|date('d/m/Y H:i')}}</td>
+																			<td>
+																			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicExampleModal{{loop.index}}">
+																				Voir
+																				</button>
+																			</td>
+																		</tr>
+																		<!-- Side Modal Top Right -->
+
+<!-- To change the direction of the modal animation change .right class -->
+<div class="modal fade right" id="basicExampleModal{{loop.index}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel{{loop.index}}"
+  aria-hidden="true">
+
+  <!-- Add class .modal-side and then add class .modal-top-right (or other classes from list above) to set a position to the modal -->
+  <div class="modal-dialog modal-side modal-top-right" role="document">
+
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title w-100" id="myModalLabel{{loop.index}}">{{ item.name }}</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+		<div class="col-sm-12 padT">
+		<!--Accordion wrapper-->
+<div class="accordion md-accordion accordion-3 z-depth-1-half" id="accordionEx194" role="tablist"
+  aria-multiselectable="true">
+  <center><img src="{{ (item.profil != '') ? item.profil: '../images/userBoy11.jpg' }}" class="individu" /></center>
+  <hr class="mb-0">
+
+	{% for items in item.services %}
+	
+  <div class="card">
+
+    <!-- Card header -->
+    <div class="card-header" role="tab" id="heading{{loop.index}}">
+      <a data-toggle="collapse" data-parent="#accordionEx194" href="#collapse{{loop.index}}" aria-expanded="true"
+        aria-controls="collapse{{loop.index}}">
+        <h3 class="mb-0 mt-3 red-text">
+          {{(items.serviceName == "Render-vous") ? "Rendez-vous": items.serviceName}} <i class="fa fa-angle-down rotate-icon fa-2x"></i>
+        </h3>
+      </a>
+    </div>
+
+    <!-- Card body -->
+    <div id="collapse{{loop.index}}" class="collapse {{(loop.index == 1)? 'show': ''}}" role="tabpanel" aria-labelledby="heading{{loop.index}}"
+      data-parent="#accordionEx194">
+      <div class="card-body pt-0">
+	  <ul class="info-all">
+	  <li>Code: {{items.code}}</li>
+	  <li>Position: {{(items.posAc == "") ? "N/A": items.posAc}}</li>
+	  <li>Motif: {{(items.Motif == "") ? "N/A": items.Motif}}</li>
+	  <li>Date: {{(items.date == "") ? "N/A": items.date|date('d/m/Y H:i')}}</li>
+	  <li>Heure: {{(items.heure == "") ? "N/A": items.heure}}</li>
+	  <li>Medecin: {{(items.medecin == "") ? "N/A": items.medecin}}</li>
+	  <li>Clinique: {{(items.ClinicName == "") ? "N/A": items.ClinicName}}</li>
+	  <li>Plus d'info: {{(items.autreProbleme == "") ? "N/A": items.autreProbleme}}</li>
+	  <li>Choix: {{(items.choice == "") ? "N/A": items.choice}}</li>
+	  </ul>
+       </div>
+    </div>
+  </div>
+  {% endfor %}
+  <!-- Accordion card -->
+</div>
+		</div>
+<!--/.Accordion wrapper-->
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Side Modal Top Right -->
+																	{% endfor %}
+																	</tbody>
+																</table>
+               
+<div class="clearfix"> </div>
+   </div>
+    
+</div>
+
+{% include 'Include/footer.twig' %}
