@@ -112,12 +112,14 @@
         $('.del').on("click", function(){
             const deta = $(this).attr('data-del');
             socket.emit('delMedecin', deta);
+            console.log('fake', deta)
             $(this).parent().parent().parent().fadeOut();
         });
 
          $('.dels').on("click", function(){
             const deta = $(this).attr('data-del');
             socket.emit('delEtablissement', deta);
+            console.log('fake', deta)
             $(this).parent().parent().fadeOut();
         });
 

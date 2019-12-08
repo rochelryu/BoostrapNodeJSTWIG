@@ -49,6 +49,9 @@ const EtablissementSchema = new mongoose.Schema({
     spec:{
         type:String,
     },
+    code:{
+        type:Number,
+    },
     tarif:[{name:String}],
     register_date: { type: Date, default: Date.now },
 });

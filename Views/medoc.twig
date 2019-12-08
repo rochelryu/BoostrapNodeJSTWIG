@@ -67,10 +67,62 @@
 																			<td>{{ item.price }} </td>
 																			<td>
 																			<div class="flex-center">
-																			<a type="button" class="btn btn-outline-primary" href="/ryu/medocDele/{{item.recovery}}">Supprimer</a>
+                                                                                <button type="button" data-toggle="modal" data-target="#basicExampleModal{{loop.index}}" class="btn btn-outline-info btn-rounded"> Modifier </button>
+																				<a type="button" class="btn btn-outline-primary" href="/ryu/medocDele/{{item.recovery}}">Supprimer</a>
 																			</div>
 																			</td>
 																		</tr>
+																		<div class="modal fade" id="basicExampleModal{{loop.index}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel{{loop.index}}" aria-hidden="true">
+
+                                                                                <div class="modal-dialog modal-lg" role="document">
+                                                                                    <div class="modal-content">
+                                                                                        <div class="modal-header">
+                                                                                            <h4 class="modal-title w-100" id="myModalLabel{{loop.index}}">{{ item.name|upper }}</h4>
+                                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                            <span aria-hidden="true">&times;</span>
+                                                                                            </button>
+                                                                                        </div>
+                                                                                        <div class="modal-body">
+                                                                                                <div class="col-md-12">
+                                                                                                    <form style="background: white" action="/ryu/medocEdit" method="post" >
+																									<div class="vali-form">
+																										<div class="col-md-6 form-group1">
+																											<label class="control-label">Nom du Médicament</label>
+																											<input name="name" type="text" required="" value="{{ item.name }}">
+																										</div>
+																										<div class="col-md-6 form-group1 form-last">
+																											<label class="control-label">Prix</label>
+																											<input name="price" type="text" required="" value="{{ item.price }}">
+																										</div>
+																										<div class="clearfix"> </div>
+																									</div>
+																									<div class="vali-form">
+																										<div class="col-md-6 form-group1">
+																											<label class="control-label">Famille</label>
+																											<input name="familie" type="text" value="{{ item.familie }}">
+																										</div>
+																										<div class="col-md-6 form-group1 form-last">
+																											<div class="custom-control custom-checkbox">
+																												<input type="checkbox" name="ordon" id="Check2{{loop.index}}" class="custom-control-input" {{ (item.ordonnance) ? "checked":"" }}>
+																												<label class="custom-control-label" for="Check2{{loop.index}}">Avec Ordornance</label>
+																											</div>
+																										</div>
+																										<div class="clearfix"> </div>
+																									</div>
+                                                                                                        <div class="col-md-6 form-group2 group-mail">
+                                                                                                            <input name="nameOld" type="hidden" value="{{item.recovery}}">
+                                                                                                            <div class="clearfix"></div>
+                                                                                                            <br>
+                                                                                                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                                                                                            <button type="reset" class="btn btn-default">Vider</button>
+                                                                                                        </div>
+                                                                                                        <div class="clearfix"> </div>
+                                                                                                    </form>
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
 																	{% endfor %}
 																	</tbody>
 																</table>

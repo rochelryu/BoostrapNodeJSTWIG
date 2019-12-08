@@ -84,6 +84,10 @@ io.on('connection', async (socket) => {
             console.log(service);
         }
     });
+    socket.on('change photo', async (data)=>{
+
+        const service = await AdminQuerie.updateUserPhotoOnly(data.profil,data.ident);
+    });
 
     socket.on("assAutoV", async(data)=>{
         const service = await AdminQuerie.setAssuranceAuto(data);

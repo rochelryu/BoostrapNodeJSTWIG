@@ -53,6 +53,37 @@ exports.Messagerie = class{
         }
 
 
+
+        static sendSmsForForgetPass(receiver, recovery){
+            let receveirr = "tel:"+ receiver;
+            let message = "Code de verification : " +recovery;
+               let headers = {
+                   'Authorization': "Bearer "+config.sms.tokenOrange,
+                   'Content-Type': 'application/json'};
+           let body = {
+                   outboundSMSMessageRequest: {
+               address : receveirr, 
+                   senderAddress : "tel:+22548803377",
+               outboundSMSTextMessage: {
+                   message : message  
+           }}};   
+            let options = {
+                   uri: 'https://api.orange.com/smsmessaging/v1/outbound/tel:+22548803377/requests',
+                   method: 'POST',
+                   headers: headers,
+                   body: JSON.stringify(body)};
+               request(options, function (error, response, body) {
+                if (!error) {
+                   console.log(JSON.stringify(response));
+                }        
+                else {
+                    console.log('contractsB', error);
+                }
+                
+               })
+            }
+
+
     static sendOrangeAssistance(receiver, medecin, prefix, code, name){
         const salutation = (new Date().getHours() >= 13) ? "Bonsoir Mr/Mme"+name+", ": "Bonjour Mr/Mme"+name+", "
         let mes = salutation + "votre demande d'assistance médicale est en cours de traitement, vous allez être mis en contact avec un médecin (Dr "+ medecin+") veuillez communiquer votre numéro de demande d'assistance en présence du médecin. Numéro d'assistance : " + code+". \n Infos et Annulation : +225 66 000 700";

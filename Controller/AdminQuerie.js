@@ -49,7 +49,7 @@ exports.AdminQuerie = class {
 
     static delEtablissement(name){
         return new Promise(async (next)=>{
-            await EtablissementSchema.findOneAndDelete({email:name})
+            await EtablissementSchema.findOneAndDelete({code:parseInt(name,10)})
                 .then(async res=>{
                     next(res)
                 }).catch(err=>{ next(err)});
@@ -86,6 +86,19 @@ exports.AdminQuerie = class {
                     else {
                         next({etat:false});
                     }
+                }
+            }).catch(err=>next({etat:false}))
+        })
+    }
+
+    static updatePasswordUser(ident, pass, code){
+        const pas = crypto.createHmac("SHA256", pass).update("Yabana, An other NaN").digest('hex')
+        return new Promise(async next=>{
+            await User.findOneAndUpdate({$and:[{ident:ident}, {recovery:parseInt(code,10)}]}, {$set:{ "password": pas, recovery:Math.floor(Math.random()*9999) }}, {new: true}).then( res=>{
+                if(res === null){
+                    next({etat:false});
+                }else {
+                    next({etat:true, user:res});
                 }
             }).catch(err=>next({etat:false}))
         })
@@ -442,7 +455,7 @@ exports.AdminQuerie = class {
     static setUser(pass, name, number,prefix, address,date, sexe, email){
         const newPass = crypto.createHmac("SHA256", pass).update("Yabana, An other NaN").digest('hex')
         return new Promise(async next=>{
-            let admin = new User({date:date,name:name,password:newPass, ident:name.substring(0,7)+Math.floor(Math.random()*9999), numero:number, address:address, prefix:prefix,sexe:sexe, email:email});
+            let admin = new User({date:date,name:name,password:newPass, ident:name.substring(0,7)+Math.floor(Math.random()*9999), numero:number, address:address, prefix:prefix,sexe:sexe, email:email, recovery:Math.floor(Math.random()*9999)});
             await admin.save().then(res=>{next({etat:true,user:res})}).catch(err=>{next({etat:false})})
 
         })
@@ -790,6 +803,19 @@ exports.AdminQuerie = class {
                 }).catch(err=>{next(err)});
         })
     }
+    static getUserByNumber(numero){
+        return new Promise(async next=>{
+            await User.findOne({numero:numero})
+                .then(res=>{
+                    if(res === null){
+                        next({etat:false})
+                    }
+                    else{
+                        next({etat:true, user:res});
+                    }
+                }).catch(err=>{next(err)});
+        })
+    }
 
     static getPaysByPrefix(prefix){
         return new Promise(async next=>{
@@ -828,6 +854,13 @@ exports.AdminQuerie = class {
         const newPass = crypto.createHmac("SHA256", pass).update("Yabana, An other NaN").digest('hex')
         return new Promise(async next=>{
            await User.findOneAndUpdate({$and:[{ident:ident,password:newPass}]}, {$set:{ "email": ele,"numero":number,"address":address,name:name,date:date,profil:profil }}, {new: true}).then(ress=>{
+               next({etat:true,user:ress})
+           }).catch(err=>next({etat:false,err:err}))
+        })
+    }
+    static updateUserPhotoOnly(photo,ident){
+        return new Promise(async next=>{
+           await User.findOneAndUpdate({ident:ident}, {$set:{profil:photo}}, {new: true}).then(ress=>{
                next({etat:true,user:ress})
            }).catch(err=>next({etat:false,err:err}))
         })
@@ -953,8 +986,7 @@ exports.AdminQuerie = class {
 
         var drake = {name:name,nameResponsable:nameRespo,fonctionResponsable:fonction,contactUn:numero,contactDeux:numeroSecond,situationGeographique:localisation,ville:address,email:email,pays:pays,complementaire:complementaire,image:file,specialite:spec, ouverture,fermerture,tarif:specs,remboursement, spec:field.join('').toLowerCase()}
         return new Promise(async next=>{
-            await EtablissementSchema.findOneAndUpdate({email:id}, {$set:drake}, {new:true}).then(res=>{
-                
+            await EtablissementSchema.findOneAndUpdate({code:parseInt(id,10)}, {$set:drake}, {new:true}).then(res=>{
                 next(res);
             }).catch(err=>{ next(err)});
         })
@@ -1030,6 +1062,17 @@ exports.AdminQuerie = class {
         return new Promise(async next=>{
             let medecin = new Medoc({name:name,price:price,ordonnance:ordonnance,familie:familie, recovery:leta})
             await medecin.save().then(res=>next({etat:true, resultat:res})).catch(err=>next({etat:false, err:err}))
+        })
+    }
+
+    static updateMedoc(old, name,price, ordonnance, familie){
+
+        const drake = {name, price, ordonnance, familie};
+        return new Promise(async next=>{
+            await Medoc.findOneAndUpdate({recovery:parseInt(old,10)}, {$set:drake}, {new:true}).then(res=>{
+                
+                next(res);
+            }).catch(err=>{ next(err)});
         })
     }
     static setAssuranceAuto(data){

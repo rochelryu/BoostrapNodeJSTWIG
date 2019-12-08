@@ -3080,6 +3080,10 @@ li.head i.fa {
     overflow: auto;
     list-style: none;
 }
+.autre.autress ul{
+  max-height: 100% !important;
+  overflow: scroll !important;
+}
 .autre ul li{
     color:#777;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";

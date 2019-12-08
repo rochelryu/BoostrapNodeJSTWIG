@@ -108,6 +108,7 @@ router.route('/') // afin de decrire mieux une route on utilise la methode route
     })
 
 
+
     router.route('/prof/:id')
     .get(async (req,res)=>{
         if(req.session.alloSante){
@@ -225,7 +226,7 @@ router.route('/login')
                 req.session.alloSante = admin.user;
                 res.redirect(301,'/ryu')
             }
-            res.redirect('/ryu/login')
+            res.redirect(301,'/ryu/login')
         }
         //Plus d'info sur express-validator ?  --> https://express-validator.github.io/docs/
     });
@@ -237,7 +238,6 @@ router.route('/refetablissement')
             let ville = await AdminQuerie.getAllVille();
             info.Admin = Admin;
             info.ville = ville;
-            console.log("ici c'est paris",Admin.length)
             info.user = req.session.alloSante;
             res.render('Etablissement.twig', {info: info})
         }
@@ -388,7 +388,6 @@ router.route('/test')
         });*/
 
         res.send({focus:"beta"})
-       //?username=john&password=xxxxxxxxx&dca=16bit&msisdn=441231234&message=004200430044
     });
 router.route('/client')
     .get(async (req,res)=>{
@@ -402,25 +401,11 @@ router.route('/client')
             }
 
              // je crée une variable info  qui va prendre après les différentes valeur du traitement avec ma base de donnés
-            /*let rdv = await AdminQuerie.getCommandeInWait("Render-vous");
-            let assurance = await AdminQuerie.getCommandeInWait("Assistance");
-            let InWaitClinic = await AdminQuerie.getCommandewithEtat(2);
-            let BackClinic = await AdminQuerie.getCommandewithEtat(3);
-            let medecin = await AdminQuerie.getAllMedecin();
-            info.medecin = medecin;
-            info.rdv = rdv;
-            info.assurance = assurance;
-            info.InWaitClinic = InWaitClinic;
-            info.BackClinic = BackClinic;
-            info.user = req.session.alloSante;*/
+           
             info.clients = clients;
             info.user = req.session.alloSante;
             res.render("client3BD.twig",{info:info});
-            /*
-            ICi je n'ai pas fait directement info.fakeLangage = [{nom:"Rochel", language:"JS", level: "85%"},{nom:"Ryu", language:"TS",...
-            parce que le retour de nos different traitement avec la base de Donné peut retourné des fois des tableau ou des objet Simple ou encore d'autre type du coup c'est plus facile d'enregistrer cela dans une variable intermédiaire afin de faire d'autre traitement si on veut puis après venir  l'assigner à notre grand objet contenant tout.
-            Mais bon ça c'est mon avis personnel, vous pouvez choisir de faire l'autre option. LE code C'est la Factorisation.
-             */
+            
         }
         else res.redirect('/ryu/login') //je ne met pas de else parce que une fois qu'un if est ecrit ce qui est en dessous est toujours un else
     })
@@ -582,6 +567,22 @@ router.route('/assurance')
         else res.redirect('/ryu/login') //je ne met pas de else parce que une fois qu'un if est ecrit ce qui est en dessous est toujours un else
     });
     
+    router.route('/medocEdit')
+    .post([
+        check("name","nom Invalide").not().isEmpty(),
+        check("price","numero Invalide").not().isEmpty(),
+    ], async (req,res)=>{
+        const errors = validationResult(req);
+        if(!errors.isEmpty()){//ça veut dire s'il y a erreur exécute mois ça
+            res.redirect('/ryu/medoc')
+        }
+        else {
+            const input = req.body;
+            const ordon = (input.ordon == "on") ? true:false;
+            const admin = await AdminQuerie.updateMedoc(input.nameOld,input.name,input.price,ordon, input.familie)
+            res.redirect('/ryu/medoc')
+        }
+    });
 router.route('/medoc')
     .get(async (req,res)=>{
         if(req.session.alloSante) {

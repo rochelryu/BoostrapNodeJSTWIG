@@ -9,6 +9,7 @@ const router = express.Router(); // Je Crée maintenant ici mon routeur tout sim
 const { check, validationResult } = require('express-validator');
 const {AdminQuerie} = require('../../Controller/AdminQuerie');
 const scrap = require('scrape-it')
+const {Messagerie, OrangeTocken} = require('../../Controller/Message');
 
 //Première Route
 router.route('/ville') // afin de decrire mieux une route on utilise la methode route("l'url de la route qu'on veut") ensuite on utilise la methode que nous vpulons utiliser (ex de methode : GET, POST, OPTIONS, PUT, DELETE, etc...)
@@ -37,6 +38,52 @@ router.route('/changeSer')
             const admin = await AdminQuerie.delHisorique(input.token, input.code)
             if(admin.etat){
                 res.send({etat:true})
+            }
+            else{
+                res.send({etat:false,err:"Identifiant incorrect"})
+            }
+
+        }
+    });
+
+    router.route('/verifNumber')
+    .post([
+        check("numero","numero Invalide").not().isEmpty(),
+    ],async (req,res)=>{
+        const errors = validationResult(req);
+        if(!errors.isEmpty()){//ça veut dire s'il y a erreur exécute mois ça
+            res.send({etat:false,err:errors})
+        }
+        else {
+            const input = req.body;
+            const admin = await AdminQuerie.getUserByNumber(input.numero)
+            if(admin.etat){
+                const message = await Messagerie.sendSmsForForgetPass(admin.user.prefix + admin.user.numero,admin.user.recovery);
+
+                res.send({etat:true, user:{name:admin.user.name, ident:admin.user.ident}})
+            }
+            else{
+                res.send({etat:false,err:"Identifiant incorrect"})
+            }
+
+        }
+    });
+
+    router.route('/verifNumberFinal')
+    .post([
+        check("ident","ident Invalide").not().isEmpty(),
+        check("code","code Invalide").not().isEmpty(),
+        check("newPass","newPass Invalide").not().isEmpty(),
+    ],async (req,res)=>{
+        const errors = validationResult(req);
+        if(!errors.isEmpty()){//ça veut dire s'il y a erreur exécute mois ça
+            res.send({etat:false,err:errors})
+        }
+        else {
+            const input = req.body;
+            const admin = await AdminQuerie.updatePasswordUser(input.ident,input.newPass,input.code)
+            if(admin.etat){
+                res.send({etat:true, user:admin.user})
             }
             else{
                 res.send({etat:false,err:"Identifiant incorrect"})
