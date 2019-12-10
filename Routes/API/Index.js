@@ -95,7 +95,7 @@ router.route('/changeSer')
 router.route('/login')
     .post([
         check("numero","numero Invalide").not().isEmpty(),
-        check("password","Veillez entrer un Mot de Passe Alphanumerique et d'au moins 8 Charactère").not().isEmpty()
+        check("password","Veuillez entrer un Mot de Passe Alphanumerique et d'au moins 8 Charactère").not().isEmpty()
     ],async (req,res)=>{
         const errors = validationResult(req);
         if(!errors.isEmpty()){//ça veut dire s'il y a erreur exécute mois ça
@@ -117,7 +117,7 @@ router.route('/signin')
         check("date","date Invalide").not().isEmpty(),
         check("sexe","date Invalide").not().isEmpty(),
         check("email","Email Invalide").isEmail(),
-        check("password","Veillez entrer un Mot de Passe Alphanumerique et d'au moins 8 Charactère").not().isEmpty()
+        check("password","Veuillez entrer un Mot de Passe Alphanumerique et d'au moins 8 Charactère").not().isEmpty()
     ],async (req,res)=>{
 
         const errors = validationResult(req);
@@ -130,7 +130,7 @@ router.route('/signin')
             if(admin.etat){
                 res.send({etat:true,user:admin.user})
             }
-            res.send({etat:false,err:"enregistrement echoué Veillez recommencé ultérieurement"})
+            res.send({etat:false,err:"enregistrement echoué Veuillez recommencé ultérieurement"})
         }
     });
     router.route('/editProfil')
@@ -141,7 +141,7 @@ router.route('/signin')
         check("date","date Invalide").not().isEmpty(),
         check("email","Email Invalide").isEmail(),
         check("ident","Identifiant Invalide").not().isEmpty(),
-        check("password","Veillez entrer un Mot de Passe Alphanumerique et d'au moins 8 Charactère").not().isEmpty()
+        check("password","Veuillez entrer un Mot de Passe Alphanumerique et d'au moins 8 Charactère").not().isEmpty()
     ],async (req,res)=>{
 
         const errors = validationResult(req);
@@ -154,7 +154,7 @@ router.route('/signin')
             if(admin.etat){
                 res.send({etat:true,user:admin.user})
             }
-            res.send({etat:false,err:"enregistrement echoué Veillez recommencé ultérieurement"})
+            res.send({etat:false,err:"enregistrement echoué Veuillez recommencé ultérieurement"})
         }
     });
     router.route('/meteo')
@@ -253,7 +253,7 @@ router.route('/edit/')
     .post([
         check("email","email Invalide").isEmail(),
         check("numero","numero Invalide").isLength({ max: 8 }).not().isEmpty(),
-        check("password","Veillez entrer un Mot de Passe Alphanumerique et d'au moins 8 Charactère").not().isEmpty(),
+        check("password","Veuillez entrer un Mot de Passe Alphanumerique et d'au moins 8 Charactère").not().isEmpty(),
         check("address","Adresse Invalide").not().isEmpty()
     ],async (req,res)=>{
 
@@ -266,7 +266,7 @@ router.route('/edit/')
             if(admin.etat){
                 res.send({etat:true,user:admin.user})
             }
-            res.send({etat:false,err:"Modification echoué Veillez recommencé ultérieurement"})
+            res.send({etat:false,err:"Modification echoué Veuillez recommencé ultérieurement"})
         }
     });
 

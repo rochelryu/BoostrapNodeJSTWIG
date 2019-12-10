@@ -68,7 +68,6 @@
                             <table class="display table table-hover table-striped table-bordered" id="tab1" border="1"  style="width:100%">
 																	<thead>
 																	<tr>
-																		<th>N</th>
 																		<th>Demande</th>
 																		<th>Position</th>
 																		<th>Heure</th>
@@ -78,7 +77,6 @@
 																	<tbody>
                             {% for item in info.today %}
                                                                         <tr class="mtn">
-																			<td scope="row">{{ loop.index }}</td>
 																			<td>{{ item.autreProbleme }}</td>
 																			<td>{{ item.posAc }} </td>
 																			<td>{{ item.heure }} </td>
@@ -95,20 +93,18 @@
                         <table class="display table table-hover table-striped table-bordered" id="listClient2" border="1"  style="width:100%">
 																	<thead>
 																	<tr>
-																		<th>N</th>
 																		<th>Demande</th>
 																		<th>Position</th>
-																		<th>Heure</th>
+																		<th>Date & Heure</th>
 																		<th>Client</th>
 																	</tr>
 																	</thead>
 																	<tbody>
                             {% for item in info.became %}
                                                                         <tr class="mtn">
-																			<td scope="row">{{ loop.index }}</td>
 																			<td>{{ item.autreProbleme }}</td>
 																			<td>{{ item.posAc }} </td>
-																			<td>{{ item.heure }} </td>
+																			<td>{{ item.date|date('d/m/Y') }} <br/> {{ item.heure }} </td>
 																			<td>{{ item.clientName }} </td>
 																			
 																		</tr>
@@ -122,20 +118,18 @@
                             <table class="display table table-hover table-striped table-bordered" id="listClient3" border="1"  style="width:100%">
 																	<thead>
 																	<tr>
-																		<th>N</th>
 																		<th>Demande</th>
 																		<th>Position</th>
-																		<th>Heure</th>
+																		<th>Date & Heure</th>
 																		<th>Client</th>
 																	</tr>
 																	</thead>
 																	<tbody>
                             {% for item in info.old %}
                                                                         <tr class="mtn">
-																			<td scope="row">{{ loop.index }}</td>
 																			<td>{{ item.autreProbleme }}</td>
 																			<td>{{ item.posAc }} </td>
-																			<td>{{ item.heure }} </td>
+																			<td>{{ item.date|date('d/m/Y') }} <br/> {{ item.heure }} </td>
 																			<td>{{ item.clientName }} </td>
 																			
 																		</tr>

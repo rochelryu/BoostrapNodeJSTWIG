@@ -57,7 +57,7 @@ $('.choiceF').on('click', '.intent', function () {
                     position: 8,
                     type: 'error',
                     autoClose: false,
-                    message:  "Veillez renseignez les champs correctement"
+                    message:  "Veuillez renseignez les champs correctement"
                 });
             }
         })
@@ -74,7 +74,7 @@ $('.choiceF').on('click', '.intent', function () {
                     position: 8,
                     type: 'error',
                     autoClose: false,
-                    message:  "Veillez renseignez le champ correctement"
+                    message:  "Veuillez renseignez le champ correctement"
                 });
             }
         })
@@ -82,7 +82,7 @@ $('.choiceF').on('click', '.intent', function () {
             ele = data.code;
             console.log(data);
             const content = "Prise pour le " +data.date.substring(8,10) +"/"+ data.date.substring(5,7) +"/"+ data.date.substring(0,4) + " à "+data.heure+". Demande pour "+ data.autreProbleme;
-            const mini = (data.age != "") ? "Pour " + data.name + " : " + data.age +" ans": "Pour mui même"; 
+            const mini = (data.age != "") ? "Pour " + data.name + " : " + data.age +" ans": "Pour lui même"; 
             $("#global .material-card h2 span").html(data.clientName);
             $("#global .material-card h2 strong").html("<i class=\"fa fa-fw fa-person\"></i>  " + mini);
             $("#global .material-card .mc-description").html(content);

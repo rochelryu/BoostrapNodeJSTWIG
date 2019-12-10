@@ -188,7 +188,7 @@ router.route('/login')
     })//ICI on a fini de faire notre première route qui etait un get. Regarder Bien ce qui va venir, cette fois ci je vaire un post sur la même route pour dire que si l'utilisateur post quelque chose sur cette route
     .post([
         check("email","email Invalide").not().isEmpty(),
-        check("password","Veillez entrer un Mot de Passe d'au moins 6 Charactère").isLength({ min: 6 })
+        check("password","Veuillez entrer un Mot de Passe d'au moins 6 Charactère").isLength({ min: 6 })
         ], async (req,res)=>{
 
         /*

@@ -41,7 +41,7 @@ router.route('/') // afin de decrire mieux une route on utilise la methode route
 router.route('/login')
     .post([
         check("email","email Invalide").isEmail(),
-        check("password","Veillez entrer un Mot de Passe Alphanumerique et d'au moins 8 Charactère").not().isEmpty()
+        check("password","Veuillez entrer un Mot de Passe Alphanumerique et d'au moins 8 Charactère").not().isEmpty()
     ],async (req,res)=>{
 
         const errors = validationResult(req);
@@ -65,7 +65,7 @@ router.route('/signin')
         check("name","Nom & prénom invalide").not().isEmpty(),
         check("numero","numero Invalide").isLength({ max: 8 }).not().isEmpty(),
         check("address","numero Invalide").not().isEmpty(),
-        check("password","Veillez entrer un Mot de Passe Alphanumerique et d'au moins 8 Charactère").not().isEmpty()
+        check("password","Veuillez entrer un Mot de Passe Alphanumerique et d'au moins 8 Charactère").not().isEmpty()
     ],async (req,res)=>{
 
         const errors = validationResult(req);

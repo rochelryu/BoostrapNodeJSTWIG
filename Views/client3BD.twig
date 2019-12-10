@@ -15,7 +15,6 @@
 <table class="display table table-hover table-striped table-bordered" id="listClient" border="1"  style="width:100%">
 																	<thead>
 																	<tr>
-																		<th>N</th>
 																		<th>Code</th>
 																		<th>nom & prénom</th>
 																		<th>numero</th>
@@ -30,7 +29,6 @@
 																	{% for item in info.clients %}
 
 																		<tr class="mtn" id="{{ item._id }}">
-																			<td scope="row">{{ loop.index }}</td>
 																			<td>{{ item.ident }}</td>
 																			<td>{{ item.name }} </td>
 																			<td>{{ item.prefix }} {{ item.numero }}</td>
