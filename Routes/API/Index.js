@@ -46,6 +46,28 @@ router.route('/changeSer')
         }
     });
 
+    router.route('/changePassword')
+    .post([
+        check("ident","token Invalide").not().isEmpty(),
+        check("newPass", "Nouveau Mot de passe Invalide").not().isEmpty(),
+        check("oldPass", "Ancien Mot de passe Invalide").not().isEmpty(),
+    ],async (req,res)=>{
+        const errors = validationResult(req);
+        if(!errors.isEmpty()){//ça veut dire s'il y a erreur exécute mois ça
+            res.send({etat:false,err:errors})
+        }
+        else {const input = req.body;
+            const admin = await AdminQuerie.updatePasswordClient(input.ident, input.oldPass, input.newPass)
+            if(admin.etat){
+                res.send({etat:true})
+            }
+            else{
+                res.send({etat:false,err:"Identifiant incorrect"})
+            }
+
+        }
+    });
+
     router.route('/verifNumber')
     .post([
         check("numero","numero Invalide").not().isEmpty(),

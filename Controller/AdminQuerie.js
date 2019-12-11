@@ -103,6 +103,19 @@ exports.AdminQuerie = class {
             }).catch(err=>next({etat:false}))
         })
     }
+    static updatePasswordClient(ident, pass, code){
+        const pas = crypto.createHmac("SHA256", pass).update("Yabana, An other NaN").digest('hex')
+        const co = crypto.createHmac("SHA256", code).update("Yabana, An other NaN").digest('hex')
+        return new Promise(async next=>{
+            await User.findOneAndUpdate({$and:[{ident:ident}, {password:pas}]}, {$set:{ "password": co }}, {new: true}).then( res=>{
+                if(res === null){
+                    next({etat:false});
+                }else {
+                    next({etat:true, user:res});
+                }
+            }).catch(err=>next({etat:false}))
+        })
+    }
     static setAdmin(ele, pass, name, numberss, etat, clinicName, address, pays, nameResponsable,fonctionResponsable, field, tarr){
         const newPass = crypto.createHmac("SHA256", pass).update("Yabana, An other NaN").digest('hex');
         let spec = [];
