@@ -16,6 +16,7 @@
 
   <!-- Bootstrap CSS File -->
   <link href="focus/NEW/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="focus/NEW/lib/mdb.min.css" rel="stylesheet">
 
   <!-- Libraries CSS Files -->
   <link href="focus/NEW/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -57,6 +58,7 @@
          
           
           <li><a href="#contact">Contact Us</a></li>
+          {{(info.user != 'nil') ? '<li><a href="/account"><i class="fa fa-user"></i><br/>Mon Compte</a></li>':'<li><a data-toggle="modal" data-target="#basicExampleModal">Authentification</a></li>'}}
         </ul>
       </nav><!-- .main-nav -->
       
@@ -243,30 +245,6 @@
             </div>
           </div>
 
-        </div>
-
-        <div class="row counters">
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">274</span>
-            <p>PATIENTS</p>
-          </div>
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">421</span>
-            <p>RDV MEDICALE</p>
-          </div>
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">1,364</span>
-            <p>ASSISTANCE MEDICALE</p>
-          </div>
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">18</span>
-            <p>NOS MEDECINS</p>
-          </div>
-  
         </div>
 
       </div>
@@ -549,14 +527,122 @@
     </div>
   </footer><!-- #footer -->
 
+  <!--Modal: Login / Register Form-->
+<div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog cascading-modal" role="document">
+    <!--Content-->
+    <div class="modal-content">
+
+      <!--Modal cascading tabs-->
+      <div class="modal-c-tabs">
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab"><i class="fa fa-user mr-1"></i>
+              Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#panel8" role="tab"><i class="fa fa-user-plus mr-1"></i>
+              Register</a>
+          </li>
+        </ul>
+
+        <!-- Tab panels -->
+        <div class="tab-content">
+          <!--Panel 7-->
+          <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
+
+            <!--Body-->
+            <div class="modal-body mb-1">
+              <div class="md-form form-sm mb-5">
+                <i class="fa fa-call prefix"></i>
+                <input type="number" id="modalLRInput10" class="form-control form-control-sm">
+                <label for="modalLRInput10">Veuillez entrer votre contact (ex: 01020304)</label>
+              </div>
+
+              <div class="md-form form-sm mb-4">
+                <i class="fa fa-lock prefix"></i>
+                <input type="password" id="modalLRInput11" class="form-control form-control-sm">
+                <label for="modalLRInput11">Votre mot de passe</label>
+              </div>
+              <div class="text-center mt-2">
+                <button class="btn btn-info">Connexion <i class="fa fa-sign-in ml-1"></i></button>
+              </div>
+            </div>
+            <!--Footer-->
+            <div class="modal-footer">
+              <div class="options text-center text-md-right mt-1">
+                <p>Pas encore de Compte ? <a href="#" class="blue-text">Cliquez ici</a></p>
+                <p><a href="#" class="blue-text">Mot de passe Oublié ?</a></p>
+              </div>
+              <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Fermer</button>
+            </div>
+
+          </div>
+          <!--/.Panel 7-->
+
+          <!--Panel 8-->
+          <div class="tab-pane fade" id="panel8" role="tabpanel">
+
+            <!--Body-->
+            <div class="modal-body">
+              <div class="md-form form-sm mb-5">
+                <i class="fas fa-envelope prefix"></i>
+                <input type="email" id="modalLRInput12" class="form-control form-control-sm validate">
+                <label data-error="wrong" data-success="right" for="modalLRInput12">Your email</label>
+              </div>
+
+              <div class="md-form form-sm mb-5">
+                <i class="fas fa-lock prefix"></i>
+                <input type="password" id="modalLRInput13" class="form-control form-control-sm validate">
+                <label data-error="wrong" data-success="right" for="modalLRInput13">Your password</label>
+              </div>
+
+              <div class="md-form form-sm mb-4">
+                <i class="fas fa-lock prefix"></i>
+                <input type="password" id="modalLRInput14" class="form-control form-control-sm validate">
+                <label data-error="wrong" data-success="right" for="modalLRInput14">Repeat password</label>
+              </div>
+
+              <div class="text-center form-sm mt-2">
+                <button class="btn btn-info">Sign up <i class="fas fa-sign-in ml-1"></i></button>
+              </div>
+
+            </div>
+            <!--Footer-->
+            <div class="modal-footer">
+              <div class="options text-right">
+                <p class="pt-1">Already have an account? <a href="#" class="blue-text">Log In</a></p>
+              </div>
+              <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+          <!--/.Panel 8-->
+        </div>
+
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!--Modal: Login / Register Form-->
+
+<div class="text-center">
+  <a href="" class="btn btn-default btn-rounded my-3" data-toggle="modal" data-target="#modalLRForm">Launch
+    Modal LogIn/Register</a>
+</div>
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
   <!-- Uncomment below i you want to use a preloader -->
   <!-- <div id="preloader"></div> -->
 
   <!-- JavaScript Libraries -->
   <script src="focus/NEW/lib/jquery/jquery.min.js"></script>
+  <script src="focus/js/popper.min.js"></script>
   <script src="focus/NEW/lib/jquery/jquery-migrate.min.js"></script>
   <script src="focus/NEW/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="focus/js/mdb.min.js"></script>
+
   <script src="focus/NEW/lib/easing/easing.min.js"></script>
   <script src="focus/NEW/lib/mobile-nav/mobile-nav.js"></script>
   <script src="focus/NEW/lib/wow/wow.min.js"></script>

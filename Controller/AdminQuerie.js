@@ -512,7 +512,12 @@ exports.AdminQuerie = class {
                     ville.services[i].del = 2;
                 }
             }
-            await ville.save().then(res=>next({etat:true,ville:res})).catch(err=>next({etat:false,error:err}))
+            await ville.save().then(res=>{
+                console.log(res)
+                next({etat:true,ville:res})
+            }).catch(err=>{
+                console.log(err)
+                next({etat:false,error:err})})
     })
 }
     static getAllAutre(level){
