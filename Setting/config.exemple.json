@@ -1,6 +1,6 @@
 {
   "db": {
-    "url": "mongodb://localhost/sante",
+    "url": "mongodb://localhost/santeDeFer",
     "useFindAndModify": false
   },
   "sms":{
